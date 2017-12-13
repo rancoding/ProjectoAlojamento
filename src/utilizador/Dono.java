@@ -9,6 +9,20 @@ package utilizador;
  *
  * @author Rafael
  */
-public class Dono {
+public class Dono extends Utilizador {
+    private boolean banido;
+
+    public Dono(boolean banido) {
+        this.banido = banido;
+    }
+
+    public boolean isBanido() {
+        return banido;
+    }
+
+    public void setBanido(boolean banido) {
+        this.banido = banido;
+    }
+    
     
 }
