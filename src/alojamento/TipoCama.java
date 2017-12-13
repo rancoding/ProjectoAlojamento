@@ -10,5 +10,17 @@ package alojamento;
  * @author Rafael
  */
 public class TipoCama {
-    
+    private String descricao;
+
+    public TipoCama(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 }
