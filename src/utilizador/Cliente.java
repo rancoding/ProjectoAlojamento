@@ -6,9 +6,9 @@
 package utilizador;
 
 import alojamento.Alojamento;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import utilizador.contacto.Messagem;
 
 /**
  *
@@ -17,11 +17,12 @@ import utilizador.contacto.Messagem;
 public class Cliente extends Utilizador {
     
     private boolean banido;
-    private List<Alojamento> favorito;
+    private List<Alojamento> favoritos;
 
-    public Cliente(boolean banido,List<Alojamento> favorito, String username, String password, String nome, String cartaoCidadao, int nFiscal, String morada, String localidade, Date dataCriacao, List<Messagem> mensagem, boolean perfilPrivado){
-        super(username, password,nome, cartaoCidadao,  nFiscal, morada, localidade,dataCriacao, mensagem, perfilPrivado);
+    public Cliente(String username, String password, String nome, String cartaoCidadao, int nFiscal, int telefone, String morada, String localidade, Date dataCriacao, boolean perfilPrivado){
+        super(username, password,nome, cartaoCidadao,  nFiscal, telefone, morada, localidade,dataCriacao, perfilPrivado);
         this.banido = false;
+        favoritos = new ArrayList<>();
     }
 
     public boolean isBanido() {
@@ -33,11 +34,11 @@ public class Cliente extends Utilizador {
     }
 
     public List<Alojamento> getFavorito() {
-        return favorito;
+        return favoritos;
     }
 
     public void setFavorito(List<Alojamento> favorito) {
-        this.favorito = favorito;
+        this.favoritos = favorito;
     }
     
     

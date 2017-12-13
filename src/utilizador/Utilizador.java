@@ -1,5 +1,6 @@
 package utilizador;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import utilizador.contacto.Messagem;
@@ -15,22 +16,23 @@ public class Utilizador {
     private String morada;
     private String localidade;
     private Date dataCriacao;
-    private List<Messagem> mensagem;
+    private List<Messagem> mensagens;
     private boolean perfilPrivado;
 
     
     
-    public Utilizador(String username, String password, String nome, String cartaoCidadao, int nFiscal, String morada, String localidade, Date dataCriacao, List<Messagem> mensagem, boolean perfilPrivado) {
+    public Utilizador(String username, String password, String nome, String cartaoCidadao, int nFiscal, int telefone, String morada, String localidade, Date dataCriacao, boolean perfilPrivado) {
         this.username = username;
         this.password = password;
         this.nome = nome;
         this.cartaoCidadao = cartaoCidadao;
         this.nFiscal = nFiscal;
+        this.telefone = telefone;
         this.morada = morada;
         this.localidade = localidade;
         this.dataCriacao = dataCriacao;
-        this.mensagem = mensagem;
         this.perfilPrivado = perfilPrivado;
+        mensagens = new ArrayList<>();
     }
 
     
@@ -108,11 +110,11 @@ public class Utilizador {
     }
 
     public List<Messagem> getMensagem() {
-        return mensagem;
+        return mensagens;
     }
 
     public void setMensagem(List<Messagem> mensagem) {
-        this.mensagem = mensagem;
+        this.mensagens = mensagem;
     }
 
     public boolean isPerfilPrivado() {
