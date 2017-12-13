@@ -5,10 +5,7 @@
  */
 package alojamento;
 
-/**
- *
- * @author Rafael
- */
+
 public class CaracteristicaAlojamento {
     
 }

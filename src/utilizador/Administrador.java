@@ -5,10 +5,28 @@
  */
 package utilizador;
 
+import utilizador.contacto.Departamento;
+
 /**
  *
  * @author Rafael
  */
-public class Administrador {
+public class Administrador extends Utilizador {
+    
+    private Departamento departamento;
+
+    public Administrador(Departamento departamento) {
+        this.departamento = departamento;
+    }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
+    }
+    
+    
     
 }
