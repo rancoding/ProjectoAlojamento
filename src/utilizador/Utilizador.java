@@ -18,6 +18,23 @@ public class Utilizador {
     private List<Messagem> mensagem;
     private boolean perfilPrivado;
 
+    
+    
+    public Utilizador(String username, String password, String nome, String cartaoCidadao, int nFiscal, String morada, String localidade, Date dataCriacao, List<Messagem> mensagem, boolean perfilPrivado) {
+        this.username = username;
+        this.password = password;
+        this.nome = nome;
+        this.cartaoCidadao = cartaoCidadao;
+        this.nFiscal = nFiscal;
+        this.morada = morada;
+        this.localidade = localidade;
+        this.dataCriacao = dataCriacao;
+        this.mensagem = mensagem;
+        this.perfilPrivado = perfilPrivado;
+    }
+
+    
+    
     public String getUsername() {
         return username;
     }

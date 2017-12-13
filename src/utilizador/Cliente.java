@@ -6,7 +6,9 @@
 package utilizador;
 
 import alojamento.Alojamento;
+import java.util.Date;
 import java.util.List;
+import utilizador.contacto.Messagem;
 
 /**
  *
@@ -17,9 +19,9 @@ public class Cliente extends Utilizador {
     private boolean banido;
     private List<Alojamento> favorito;
 
-    public Cliente(boolean banido, List<Alojamento> favorito) {
-        this.banido = banido;
-        this.favorito = favorito;
+    public Cliente(boolean banido,List<Alojamento> favorito, String username, String password, String nome, String cartaoCidadao, int nFiscal, String morada, String localidade, Date dataCriacao, List<Messagem> mensagem, boolean perfilPrivado){
+        super(username, password,nome, cartaoCidadao,  nFiscal, morada, localidade,dataCriacao, mensagem, perfilPrivado);
+        this.banido = false;
     }
 
     public boolean isBanido() {

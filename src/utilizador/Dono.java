@@ -5,6 +5,10 @@
  */
 package utilizador;
 
+import java.util.Date;
+import java.util.List;
+import utilizador.contacto.Messagem;
+
 /**
  *
  * @author Rafael
@@ -12,8 +16,9 @@ package utilizador;
 public class Dono extends Utilizador {
     private boolean banido;
 
-    public Dono(boolean banido) {
-        this.banido = banido;
+    public Dono(boolean banido, String username, String password, String nome, String cartaoCidadao, int nFiscal, String morada, String localidade, Date dataCriacao, List<Messagem> mensagem, boolean perfilPrivado){
+        super(username, password,nome, cartaoCidadao,  nFiscal, morada, localidade,dataCriacao, mensagem, perfilPrivado);
+        this.banido = false;
     }
 
     public boolean isBanido() {
