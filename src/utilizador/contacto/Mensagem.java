@@ -12,14 +12,14 @@ import utilizador.Utilizador;
  *
  * @author Rafael
  */
-public class Messagem {
+public class Mensagem {
     
     private String titulo;
     private String descricao;
     private Utilizador remetente;
     private List<Utilizador> destinatarios;
 
-    public Messagem(String titulo, String descricao, Utilizador remetente, List<Utilizador> destinatarios) {
+    public Mensagem(String titulo, String descricao, Utilizador remetente, List<Utilizador> destinatarios) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.remetente = remetente;

@@ -13,7 +13,7 @@ import utilizador.Cliente;
  * @author Rafael
  */
 public class Reserva {
-    private int nReferencia;
+    private final int nReferencia;
     private int nPessoas;
     private double precoTotal;
     private boolean confirmada;

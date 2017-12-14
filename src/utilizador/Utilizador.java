@@ -3,7 +3,7 @@ package utilizador;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import utilizador.contacto.Messagem;
+import utilizador.contacto.Mensagem;
 
 
 public class Utilizador {
@@ -16,7 +16,7 @@ public class Utilizador {
     private String morada;
     private String localidade;
     private Date dataCriacao;
-    private List<Messagem> mensagens;
+    private List<Mensagem> mensagens;
     private boolean perfilPrivado;
 
     
@@ -109,11 +109,11 @@ public class Utilizador {
         this.dataCriacao = dataCriacao;
     }
 
-    public List<Messagem> getMensagem() {
+    public List<Mensagem> getMensagem() {
         return mensagens;
     }
 
-    public void setMensagem(List<Messagem> mensagem) {
+    public void setMensagem(List<Mensagem> mensagem) {
         this.mensagens = mensagem;
     }
 

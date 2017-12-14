@@ -6,7 +6,6 @@
 package utilizador;
 
 import java.util.Date;
-import java.util.List;
 import utilizador.contacto.Departamento;
 
 /**

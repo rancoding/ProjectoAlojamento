@@ -15,10 +15,9 @@ import utilizador.Dono;
  * @author Rafael
  */
 public class Alojamento {
-    private int nReferencia;
+    private final int nReferencia;
     private double precoNoite;
     private String descricao;
-    private String localidade;
     private TipoAlojamento tipoAlojamento;
     private Dono dono;
     private CaracteristicasAlojamento caracteristicas;
@@ -29,11 +28,10 @@ public class Alojamento {
     private List<Reserva> reservas;
     private static int cont;
 
-    public Alojamento(double precoNoite, String descricao, String localidade, TipoAlojamento tipoAlojamento, Dono dono, CaracteristicasAlojamento caracteristicas) {
+    public Alojamento(double precoNoite, String descricao, TipoAlojamento tipoAlojamento, Dono dono, CaracteristicasAlojamento caracteristicas) {
         this.nReferencia = cont;
         this.precoNoite = precoNoite;
         this.descricao = descricao;
-        this.localidade = localidade;
         this.tipoAlojamento = tipoAlojamento;
         this.dono = dono;
         this.caracteristicas = caracteristicas;
@@ -63,14 +61,6 @@ public class Alojamento {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public String getLocalidade() {
-        return localidade;
-    }
-
-    public void setLocalidade(String localidade) {
-        this.localidade = localidade;
     }
 
     public TipoAlojamento getTipoAlojamento() {
