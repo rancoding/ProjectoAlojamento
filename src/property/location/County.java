@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package alojamento.localidade;
+package property.location;
 
 /**
  *
- * @author Gustavo Vieira
+ * @author Rafael
+ * @author Gustavo
  */
-public class Concelho {
-    private String nome;
+public class County {
+    private String name;
 }

@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package alojamento.localidade;
+package property.location;
 
 import java.util.List;
 
 /**
  *
- * @author Gustavo Vieira
+ * @author Rafael
+ * @author Gustavo
  */
-public class Distrito {
+public class District {
     private int id;
-    private String nome;
-    List<Concelho> concelhos;
+    private String name;
+    List<County> counties;
 }

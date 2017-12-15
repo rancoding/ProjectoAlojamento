@@ -5,9 +5,13 @@
  */
 package projectoalojamento;
 
+import java.util.Date;
+import user.Client;
+
 /**
  *
  * @author Rafael
+ * @author Gustavo
  */
 public class ProjectoAlojamento {
 
@@ -15,6 +19,12 @@ public class ProjectoAlojamento {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Client c1 = new Client("gustavo","pass","Gustavo Vieira","111222",1010,962222222,"Rua Das ruas","Portugal",new Date(),false);
+        Client c2 = new Client("gustavo2","pass","Gustavo Vieira2","111333",1010,962222222,"Rua Das ruas","Portugal",new Date(),false);
+        Client c3 = new Client("gustavo3","pass","Gustavo Vieira3","111444",1010,962222222,"Rua Das ruas","Portugal",new Date(),false);
+        Client c4 = new Client("gustavo4","pass","Gustavo Vieira4","111555",1010,962222222,"Rua Das ruas","Portugal",new Date(),false);
+        
+        Repository repo = new Repository();
         
        
         
