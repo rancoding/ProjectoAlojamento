@@ -1,12 +1,13 @@
 package utilizador;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import utilizador.contacto.Mensagem;
 
 
-public class Utilizador {
+public class Utilizador implements Serializable {
     private String username;
     private String password;
     private String nome;
@@ -18,7 +19,6 @@ public class Utilizador {
     private Date dataCriacao;
     private List<Mensagem> mensagens;
     private boolean perfilPrivado;
-
     
     
     public Utilizador(String username, String password, String nome, String cartaoCidadao, int nFiscal, int telefone, String morada, String localidade, Date dataCriacao, boolean perfilPrivado) {
@@ -124,7 +124,6 @@ public class Utilizador {
     public void setPerfilPrivado(boolean perfilPrivado) {
         this.perfilPrivado = perfilPrivado;
     }
-    
     
     
 }

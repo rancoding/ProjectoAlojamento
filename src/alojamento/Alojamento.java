@@ -6,6 +6,7 @@
 package alojamento;
 
 import alojamento.reserva.Reserva;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import utilizador.Dono;
@@ -14,7 +15,7 @@ import utilizador.Dono;
  *
  * @author Rafael
  */
-public class Alojamento {
+public class Alojamento implements Serializable{
     private final int nReferencia;
     private double precoNoite;
     private String descricao;
