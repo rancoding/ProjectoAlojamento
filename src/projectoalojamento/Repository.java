@@ -31,6 +31,9 @@ import user.contact.Division;
 import user.contact.Status;
 import user.contact.Ticket;
 import user.contact.TicketType;
+import user.exceptions.ExistentCitizenIdException;
+import user.exceptions.ExistentNifException;
+import user.exceptions.ExistentUsernameException;
 
 /**
  *
@@ -38,102 +41,136 @@ import user.contact.TicketType;
  * @author Gustavo
  */
 public class Repository {
-    private final Map<Property, County> alojamentos;
-    private final List<PropertyCharacteristics> caracteristicas;
-    private final List<PropertyType> tipoAlojamento;
-    private final List<BedType> tipoCama;
-    private final List<Location> localidades;
-    private final List<PaymentType> tipoPagamento;
-    private final List<BookingType> tipoReserva;
-    private final List<User> utilizadores;
+    private final Map<Property, County> properties;
+    private final List<PropertyCharacteristics> features;
+    private final List<PropertyType> propertiesTypes;
+    private final List<BedType> bedTypes;
+    private final List<Location> locations;
+    private final List<PaymentType> paymentTypes;
+    private final List<BookingType> bookingTypes;
+    private final List<User> users;
     private final List<Ticket> tickets;
-    private final List<Category> categoriasTicket;
-    private final List<Status> estadosTicket;
-    private final List<TicketType> tiposTicket;
-    private final List<Division> departamentos;
+    private final List<Category> ticketCategories;
+    private final List<Status> ticketStatus;
+    private final List<TicketType> ticketTypes;
+    private final List<Division> divisions;
     
     public Repository() {
-        this.alojamentos = new HashMap<>();
-        this.caracteristicas = new ArrayList<>();
-        this.tipoAlojamento = new ArrayList<>();
-        this.tipoCama = new ArrayList<>();
-        this.localidades = new ArrayList<>();
-        this.tipoPagamento = new ArrayList<>();
-        this.tipoReserva = new ArrayList<>();
-        this.utilizadores = new ArrayList<>();
+        this.properties = new HashMap<>();
+        this.features = new ArrayList<>();
+        this.propertiesTypes = new ArrayList<>();
+        this.bedTypes = new ArrayList<>();
+        this.locations = new ArrayList<>();
+        this.paymentTypes = new ArrayList<>();
+        this.bookingTypes = new ArrayList<>();
+        this.users = new ArrayList<>();
         this.tickets = new ArrayList<>();
-        this.categoriasTicket = new ArrayList<>();
-        this.estadosTicket = new ArrayList<>();
-        this.tiposTicket = new ArrayList<>();
-        this.departamentos = new ArrayList<>();
+        this.ticketCategories = new ArrayList<>();
+        this.ticketStatus = new ArrayList<>();
+        this.ticketTypes = new ArrayList<>();
+        this.divisions = new ArrayList<>();
     }
+    
+    
+    //////////////////////////////////////////// Adding User /////////////////////////////////////////////
     
     /**
     *   Verifica se o Cartão de Cidadão de um utilizador já existe na lista do repositório
-    *   @param utilizador User para ir buscar o próprio Cartão de Cidadão com qual deseja comparar o Cartão de Cidadão enviado por parâmetro
-    *   @param cartaoCidadao Cartão de cidadão enviado para comparar com o cartão de cidadão do utilizador
-    *   @return Se o Cartão de Cidadão existe ou não
+    *   @param user User para ir buscar o próprio Cartão de Cidadão com qual deseja comparar o Cartão de Cidadão enviado por parâmetro
+    *   @param citizenID Cartão de cidadão enviado para comparar com o cartão de cidadão do utilizador
+    *   @return If the citizenID exists or not
     */
-    public boolean verificaCartaoCidadao(User utilizador, String cartaoCidadao) {
-        boolean existe = false;
+    public boolean checkCitizenID(User user, String citizenID) {
+        boolean exists = false;
         
-        if(utilizador.getCitizenID().equals(cartaoCidadao))
+        if(user.getCitizenID().equals(citizenID))
         {
-            existe = true;
+            exists = true;
         }
         
-        return existe;
+        return exists;
     }
     
     /**
     *   Verifica se o NIF de um utilizador já existe na lista do repositório
-    *   @param utilizador User para ir buscar o próprio NIF com qual deseja comparar o NIF enviado por parâmetro
+    *   @param user User para ir buscar o próprio NIF com qual deseja comparar o NIF enviado por parâmetro
     *   @param NIF NIF enviado para comparar com o NIF do utilizador
-    *   @return Se o NIF existe ou não
+    *   @return If the NIF exists or not
     */
-    public boolean verificaNIF(User utilizador, int NIF) {
-        boolean existe = false;
+    public boolean checkNIF(User user, int NIF) {
+        boolean exists = false;
         
-        if(utilizador.getNIF() == NIF)
+        if(user.getNIF() == NIF)
         {
-            existe = true;
+            exists = true;
         }
         
-        return existe;
+        return exists;
     }
     
     /**
-    *   Verifica se o username do utilizador já foi usado
-    *   @param utilizador User já criado para saber o seu username
-    *   @param username username enviado para ver se já existe em algum utilizador
-    *   @return Se o username existe ou não
+    *   Check if the username is already in the database 
+    *   @param user User already created to know his username
+    *   @param username username sent to see if exists another user with the same username
+    *   @return If the username exists or not
     */
-    public boolean verificaUsername(User utilizador, String username)
+    public boolean checkUsername(User user, String username)
     {
-        boolean existe = false;
+        boolean exists = false;
         
-        if(utilizador.getUsername().equals(username))
+        if(user.getUsername().equals(username))
         {
-            existe = true;
+            exists = true;
         }
         
-        return existe;
+        return exists;
     }
     
-    //Adicionar Utilizadores na lista
-    public void addUtilizador(User utilizador) {
+    public boolean checkAllUser(User user) throws ExistentCitizenIdException, ExistentNifException, ExistentUsernameException{
+        boolean exists = false;
         
-        boolean existe = false;
+        exists = checkCitizenID(user, user.getCitizenID());
+        if(exists){
+            throw new ExistentCitizenIdException();
         
-        for(User u: utilizadores)
+        }
+        exists =  checkNIF(user, user.getNIF());
+        if(exists){
+            throw new ExistentNifException();
+        
+        }
+        exists = checkUsername(user, user.getUsername());
+        if(exists){
+            throw new ExistentUsernameException();
+        }
+    
+        return exists;
+    }
+    
+    //Add users in the list
+    public void addUser(User user) throws ExistentCitizenIdException, ExistentNifException, ExistentUsernameException {
+        
+        boolean exists = false;
+        
+        for(User u: users)
         {
+            try{
+                checkAllUser(user);
+            }
+            catch(ExistentCitizenIdException | ExistentNifException | ExistentUsernameException ex){
+                exists = true;
+            }
         }
         
-        if(!existe)
+        if(!exists)
         {
-            this.utilizadores.add(utilizador);
+            this.users.add(user);
         }
     }
+    
+    
+    
+    //////////////////////////////////////////// Serialize and Deserialize ///////////////////////////////////////////
 
     /**
      * Serializes a given list to a given file
