@@ -15,5 +15,5 @@ import java.util.List;
 public class District {
     private int id;
     private String name;
-    List<County> counties;
+    List<Country> counties;
 }

@@ -10,6 +10,6 @@ package property.location;
  * @author Rafael
  * @author Gustavo
  */
-public class County {
+public class Country {
     private String name;
 }

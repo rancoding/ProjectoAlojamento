@@ -9,7 +9,7 @@ import property.Property;
 import property.PropertyCharacteristics;
 import property.PropertyType;
 import property.BedType;
-import property.location.County;
+import property.location.Country;
 import property.location.Location;
 import property.booking.PaymentType;
 import property.booking.BookingType;
@@ -41,7 +41,7 @@ import user.exceptions.ExistentUsernameException;
  * @author Gustavo
  */
 public class Repository {
-    private final Map<Property, County> properties;
+    private final Map<Property, Country> properties;
     private final List<PropertyCharacteristics> features;
     private final List<PropertyType> propertiesTypes;
     private final List<BedType> bedTypes;
@@ -80,7 +80,7 @@ public class Repository {
     *   @param citizenID Cartão de cidadão enviado para comparar com o cartão de cidadão do utilizador
     *   @return If the citizenID exists or not
     */
-    public boolean checkCitizenID(User user, String citizenID) {
+    public boolean verifyCitizenID(User user, String citizenID) {
         boolean exists = false;
         
         if(user.getCitizenID().equals(citizenID))
@@ -97,7 +97,7 @@ public class Repository {
     *   @param NIF NIF enviado para comparar com o NIF do utilizador
     *   @return If the NIF exists or not
     */
-    public boolean checkNIF(User user, int NIF) {
+    public boolean verifyNIF(User user, int NIF) {
         boolean exists = false;
         
         if(user.getNIF() == NIF)
@@ -114,7 +114,7 @@ public class Repository {
     *   @param username username sent to see if exists another user with the same username
     *   @return If the username exists or not
     */
-    public boolean checkUsername(User user, String username)
+    public boolean verifyUsername(User user, String username)
     {
         boolean exists = false;
         
@@ -126,20 +126,20 @@ public class Repository {
         return exists;
     }
     
-    public boolean checkAllUser(User user) throws ExistentCitizenIdException, ExistentNifException, ExistentUsernameException{
+    public boolean verifyUserInfo(User user) throws ExistentCitizenIdException, ExistentNifException, ExistentUsernameException{
         boolean exists = false;
         
-        exists = checkCitizenID(user, user.getCitizenID());
+        exists = verifyCitizenID(user, user.getCitizenID());
         if(exists){
             throw new ExistentCitizenIdException();
         
         }
-        exists =  checkNIF(user, user.getNIF());
+        exists =  verifyNIF(user, user.getNIF());
         if(exists){
             throw new ExistentNifException();
         
         }
-        exists = checkUsername(user, user.getUsername());
+        exists = verifyUsername(user, user.getUsername());
         if(exists){
             throw new ExistentUsernameException();
         }
@@ -155,7 +155,7 @@ public class Repository {
         for(User u: users)
         {
             try{
-                checkAllUser(user);
+                verifyUserInfo(user);
             }
             catch(ExistentCitizenIdException | ExistentNifException | ExistentUsernameException ex){
                 exists = true;
@@ -170,14 +170,25 @@ public class Repository {
     
     
     
-    //////////////////////////////////////////// Serialize and Deserialize ///////////////////////////////////////////
+    ///////////////////////////////////////// Adding Property //////////////////////////////////////////////
+    
+    //Add properties in the list
+    public void addProperty(Property property, Country country){
+
+            this.properties.put(property, country);
+        
+    }
+    
+    
+    
+    //////////////////////////////////////////// Serialize and Deserialize Lists ///////////////////////////////////////////
 
     /**
      * Serializes a given list to a given file
      * @param fileName Name of the file to put the information
      * @param list List that contains information to place on the file
      */
-    public void serializing(String fileName, List list) {
+    public void serializingList(String fileName, List list) {
         
         try(ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(fileName)))
         {
@@ -199,7 +210,7 @@ public class Repository {
      * @param fileName Name of the file containing the information
      * @param list List to contain the file information
      */
-    public void deserializing(String fileName, List list) {
+    public void deserializingList(String fileName, List list) {
         
         try(ObjectInputStream os = new ObjectInputStream(new FileInputStream(fileName)))
         {
@@ -221,6 +232,56 @@ public class Repository {
     }
     
     
+    
+    //////////////////////////////////////////// Serialize and Deserialize Maps ///////////////////////////////////////////
+
+    /**
+     * Serializes a given list to a given map
+     * @param fileName Name of the file to put the information
+     * @param map Map that contains information to place on the file
+     */
+    public void serializingMap(String fileName, Map map) {
+        
+        try(ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(fileName)))
+        {
+            os.writeObject(map);
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println("Ficheiro não encontrado");
+        }
+        catch (IOException e)
+        {
+            System.out.println("Não sei o que é");
+        }
+    
+    }
+    
+    /**
+     * Deserializes a given file to a given map
+     * @param fileName Name of the file containing the information
+     * @param map Map to contain the file information
+     */
+    public void deserializingMap(String fileName, Map map) {
+        
+        try(ObjectInputStream os = new ObjectInputStream(new FileInputStream(fileName)))
+        {
+            map = (Map)os.readObject();
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println("Ficheiro não encontrado");
+        }
+        catch (IOException e)
+        {
+            System.out.println("Não sei o que é");
+        }
+        catch (ClassNotFoundException ex)
+        {
+            System.out.println("Classe não encontrada");
+        }
+    
+    }
     
     
 }
