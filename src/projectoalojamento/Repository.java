@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import user.User;
 import user.contact.Category;
 import user.contact.Division;
@@ -132,38 +134,51 @@ public class Repository {
             this.utilizadores.add(utilizador);
         }
     }
-    
-    //escrever utilizadores
-    public void escreverUtilizadores() throws FileNotFoundException, IOException{
+
+    /**
+     * Serializes a given list to a given file
+     * @param fileName Name of the file to put the information
+     * @param list List that contains information to place on the file
+     */
+    public void serializing(String fileName, List list) {
         
-        try(FileOutputStream fs = new FileOutputStream("utilizadores.bin"); ObjectOutputStream os = new ObjectOutputStream(fs)){
-            
-            os.writeObject(utilizadores);
-            
-        } catch(FileNotFoundException e) {
+        try(ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(fileName)))
+        {
+            os.writeObject(list);
+        }
+        catch(FileNotFoundException e)
+        {
             System.out.println("Ficheiro não encontrado");
-        
-        } catch (IOException e){
-        
-        
+        }
+        catch (IOException e)
+        {
+            System.out.println("Não sei o que é");
         }
     
     }
     
-    //ler utilizadores
-    public void lerUtilizadores() throws FileNotFoundException, IOException, ClassNotFoundException{
+    /**
+     * Deserializes a given file to a given list
+     * @param fileName Name of the file containing the information
+     * @param list List to contain the file information
+     */
+    public void deserializing(String fileName, List list) {
         
-        try(FileInputStream fs = new FileInputStream("utilizadores.bin")){
-            ObjectInputStream os = new ObjectInputStream(fs);
-            
-            List<User> utilizadores = (List<User>)os.readObject();
-            
-        } catch(FileNotFoundException e) {
+        try(ObjectInputStream os = new ObjectInputStream(new FileInputStream(fileName)))
+        {
+            list = (List)os.readObject();
+        }
+        catch(FileNotFoundException e)
+        {
             System.out.println("Ficheiro não encontrado");
-        
-        } catch (IOException e){
-        
-        
+        }
+        catch (IOException e)
+        {
+            System.out.println("Não sei o que é");
+        }
+        catch (ClassNotFoundException ex)
+        {
+            System.out.println("Classe não encontrada");
         }
     
     }
