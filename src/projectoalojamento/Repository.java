@@ -71,6 +71,55 @@ public class Repository {
         this.divisions = new ArrayList<>();
     }
     
+    ////////// Adding Property Characteristics /////////////
+    public void addFeatures(PropertyCharacteristics features){
+        this.features.add(features);   
+    }
+    ////////// Adding Property Types /////////////
+    public void addPropertyType(PropertyType propertiesTypes){
+        this.propertiesTypes.add(propertiesTypes);   
+    }
+    ////////// Adding Bed Types /////////////
+    public void addBedType(BedType bedTypes){
+        this.bedTypes.add(bedTypes);   
+    }
+    ////////// Adding Locations /////////////
+    public void addLocation(Location locations){
+        this.locations.add(locations);   
+    }
+    ////////// Adding Payment Types /////////////
+    public void addPaymentType(PaymentType paymentTypes){
+        this.paymentTypes.add(paymentTypes);   
+    }
+    ////////// Adding Booking Types /////////////
+    public void addBookingType(BookingType bookingTypes){
+        this.bookingTypes.add(bookingTypes);   
+    }
+    ////////// Adding Ticket /////////////
+    public void addTicket(Ticket tickets){
+        this.tickets.add(tickets);   
+    }
+    ////////// Adding Category Tickets /////////////
+    public void addCategory(Category ticketCategories){
+        this.ticketCategories.add(ticketCategories);   
+    }
+    ////////// Adding Status Tickets /////////////
+    public void addStatus(Status ticketStatus){
+        this.ticketStatus.add(ticketStatus);   
+    }
+    ////////// Adding TicketType /////////////
+    public void addTicketType(TicketType ticketTypes){
+        this.ticketTypes.add(ticketTypes);   
+    }
+    ////////// Adding Divisions /////////////
+    public void addDivision(Division divisions){
+        this.divisions.add(divisions);   
+    }
+  
+    
+    
+    
+   
     
     //////////////////////////////////////////// Adding User /////////////////////////////////////////////
     
