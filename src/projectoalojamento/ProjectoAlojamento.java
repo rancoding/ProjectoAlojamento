@@ -6,7 +6,9 @@
 package projectoalojamento;
 
 import java.util.Date;
+import java.util.List;
 import user.Client;
+import user.User;
 
 /**
  *
@@ -25,10 +27,6 @@ public class ProjectoAlojamento {
         Client c4 = new Client("gustavo4","pass","Gustavo Vieira4","111555",1010,962222222,"Rua Das ruas","Portugal",new Date(),false);
         
         Repository repo = new Repository();
-        
-       
-        
-        
     }
     
 }

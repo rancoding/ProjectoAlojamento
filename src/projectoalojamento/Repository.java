@@ -23,8 +23,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import user.User;
 import user.contact.Category;
 import user.contact.Division;
@@ -42,7 +40,6 @@ import user.exceptions.ExistentUsernameException;
  */
 public class Repository {
     private final Map<Property, Country> properties;
-    private final List<PropertyCharacteristics> features;
     private final List<PropertyType> propertiesTypes;
     private final List<BedType> bedTypes;
     private final List<Location> locations;
@@ -57,7 +54,6 @@ public class Repository {
     
     public Repository() {
         this.properties = new HashMap<>();
-        this.features = new ArrayList<>();
         this.propertiesTypes = new ArrayList<>();
         this.bedTypes = new ArrayList<>();
         this.locations = new ArrayList<>();
@@ -71,14 +67,55 @@ public class Repository {
         this.divisions = new ArrayList<>();
     }
     
-    ////////// Adding Property Characteristics /////////////
-    public void addFeatures(PropertyCharacteristics features){
-        this.features.add(features);   
+    // Lista alojamentos dado uma localizaçao
+    // Adiciona a uma lista para a retornar depois (para no swing termos a lista com a localizaçao dada)
+    // deve ser algo assim
+    public Map getPropertyByLocation(Country country) {
+        Map<Property, Country> propertyMap = new HashMap<>(); // Não sei se é HashMap mas y
+        
+        for(Map.Entry<Property, Country> mp : this.properties.entrySet())
+        {
+            if(mp.getValue().equals(country))
+            {
+                propertyMap.put(mp.getKey(), country);
+            }
+        }
+        
+        return propertyMap;
     }
+    
     ////////// Adding Property Types /////////////
-    public void addPropertyType(PropertyType propertiesTypes){
-        this.propertiesTypes.add(propertiesTypes);   
+    
+    // Fazer isto para todos que não podem ser repetidos (como tipo de cama, tipo de pagamento, tipo de alojamento, etc)
+    
+    public boolean verifyPropertyName(PropertyType pt, String name) {
+        boolean exists = false;
+        
+        if(pt.getName().equals(name))
+        {
+            exists = true; // Aqui vai dar throw new exception (que tem de se criar)
+        }
+        
+        return exists; // Vai-se retirar o return e o tipo de retorno da função de boolean para void
     }
+    
+    public void addPropertyType(PropertyType propertiesTypes) {
+        boolean exists = false;
+        
+        for(PropertyType pt : this.propertiesTypes) // Mudar o for para um iterator
+        {
+            if(pt.getName().equals(propertiesTypes.getName()))
+            {
+                exists = verifyPropertyName(pt, propertiesTypes.getName()); // Try catch com a exception
+            }
+        }
+        
+        if(!exists)
+        {
+            this.propertiesTypes.add(propertiesTypes);
+        }
+    }
+    
     ////////// Adding Bed Types /////////////
     public void addBedType(BedType bedTypes){
         this.bedTypes.add(bedTypes);   
@@ -175,21 +212,24 @@ public class Repository {
         return exists;
     }
     
-    public boolean verifyUserInfo(User user) throws ExistentCitizenIdException, ExistentNifException, ExistentUsernameException{
-        boolean exists = false;
+    public boolean verifyUserInfo(User u, User user) throws ExistentCitizenIdException, ExistentNifException, ExistentUsernameException {
+        boolean exists;
         
-        exists = verifyCitizenID(user, user.getCitizenID());
-        if(exists){
+        exists = verifyCitizenID(u, user.getCitizenID());
+        if(exists)
+        {
             throw new ExistentCitizenIdException();
-        
         }
-        exists =  verifyNIF(user, user.getNIF());
-        if(exists){
+        
+        exists =  verifyNIF(u, user.getNIF());
+        if(exists)
+        {
             throw new ExistentNifException();
-        
         }
-        exists = verifyUsername(user, user.getUsername());
-        if(exists){
+        
+        exists = verifyUsername(u, user.getUsername());
+        if(exists)
+        {
             throw new ExistentUsernameException();
         }
     
@@ -203,10 +243,12 @@ public class Repository {
         
         for(User u: users)
         {
-            try{
-                verifyUserInfo(user);
+            try
+            {
+                verifyUserInfo(u, user);
             }
-            catch(ExistentCitizenIdException | ExistentNifException | ExistentUsernameException ex){
+            catch(ExistentCitizenIdException | ExistentNifException | ExistentUsernameException ex)
+            {
                 exists = true;
             }
         }
@@ -218,16 +260,12 @@ public class Repository {
     }
     
     
-    
     ///////////////////////////////////////// Adding Property //////////////////////////////////////////////
     
     //Add properties in the list
-    public void addProperty(Property property, Country country){
-
-            this.properties.put(property, country);
-        
+    public void addProperty(Property property, Country country) {
+        this.properties.put(property, country);
     }
-    
     
     
     //////////////////////////////////////////// Serialize and Deserialize Lists ///////////////////////////////////////////
@@ -237,7 +275,7 @@ public class Repository {
      * @param fileName Name of the file to put the information
      * @param list List that contains information to place on the file
      */
-    public void serializingList(String fileName, List list) {
+    public void serializing(String fileName, List list) {
         
         try(ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(fileName)))
         {
@@ -259,7 +297,7 @@ public class Repository {
      * @param fileName Name of the file containing the information
      * @param list List to contain the file information
      */
-    public void deserializingList(String fileName, List list) {
+    public void deserializing(String fileName, List list) {
         
         try(ObjectInputStream os = new ObjectInputStream(new FileInputStream(fileName)))
         {
@@ -283,13 +321,13 @@ public class Repository {
     
     
     //////////////////////////////////////////// Serialize and Deserialize Maps ///////////////////////////////////////////
-
+  
     /**
-     * Serializes a given list to a given map
+     * Serializes a given map to a given file
      * @param fileName Name of the file to put the information
-     * @param map Map that contains information to place on the file
+     * @param map map that contains information to place on the file
      */
-    public void serializingMap(String fileName, Map map) {
+    public void serializing(String fileName, Map map) {
         
         try(ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(fileName)))
         {
@@ -309,9 +347,9 @@ public class Repository {
     /**
      * Deserializes a given file to a given map
      * @param fileName Name of the file containing the information
-     * @param map Map to contain the file information
+     * @param map Mapto contain the file information
      */
-    public void deserializingMap(String fileName, Map map) {
+    public void deserializing(String fileName, Map map) {
         
         try(ObjectInputStream os = new ObjectInputStream(new FileInputStream(fileName)))
         {
@@ -331,7 +369,6 @@ public class Repository {
         }
     
     }
-    
     
 }
 
