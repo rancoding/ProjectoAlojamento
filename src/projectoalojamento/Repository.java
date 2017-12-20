@@ -24,9 +24,11 @@ import java.util.List;
 import java.util.Map;
 import property.exceptions.ExistentBedTypeNameException;
 import property.exceptions.ExistentBookingTypeNameException;
+import property.exceptions.ExistentDivisionNameException;
 import property.exceptions.ExistentPaymentTypeNameException;
 import property.exceptions.ExistentPropertyTypeNameException;
 import property.exceptions.ExistentTicketCategoryNameException;
+import property.exceptions.ExistentTicketStatusNameException;
 import property.exceptions.ExistentTicketTypeNameException;
 import user.User;
 import user.contact.Category;
@@ -71,6 +73,8 @@ public class Repository {
         this.ticketTypes = new ArrayList<>();
         this.divisions = new ArrayList<>();
     }
+    
+    
     
     // Lista alojamentos dado uma localizaçao
     // Adiciona a uma lista para a retornar depois (para no swing termos a lista com a localizaçao dada)
@@ -364,6 +368,10 @@ public class Repository {
         }
     }
     
+    /**
+     * Adds a ticket category if no exceptions are thrown
+     * @param ticketCategory The ticket category to be added
+     */
     public void addCategory(Category ticketCategory) {
         boolean exists = false;
         
@@ -392,15 +400,90 @@ public class Repository {
     /*            Ticket Status            */
     /* *********************************** */
     
-    public void addStatus(Status ticketStatus){
-        this.ticketStatus.add(ticketStatus);   
+    /**
+     * Check whether a given ticket status name exists
+     * @param ts The ticket status list value
+     * @param name The new ticket status name
+     * @throws ExistentTicketStatusNameException in case the ticket status name already exists inside the list
+     */
+    public void verifyTicketStatusName(Status ts, String name) throws ExistentTicketStatusNameException {
+        if(ts.getName().equals(name))
+        {
+            throw new ExistentTicketStatusNameException();
+        }
+    }
+    
+     /**
+     * Adds a ticket status if no exceptions are thrown
+     * @param ticketStatus The ticket status to be added
+     */
+    public void addStatus(Status ticketStatus) {
+        boolean exists = false;
+        
+        for(Status ts : this.ticketStatus) // Mudar o for para um iterator
+        {
+            if(ts.getName().equals(ticketStatus.getName()))
+            {
+                try
+                {
+                    verifyTicketStatusName(ts, ticketStatus.getName());
+                }
+                catch(ExistentTicketStatusNameException ex)
+                {
+                    exists = true;
+                }
+            }
+        }
+        
+        if(!exists)
+        {
+            this.ticketStatus.add(ticketStatus);
+        }
     }
     
     
     /*            Division            */
     /* ****************************** */
-    public void addDivision(Division divisions){
-        this.divisions.add(divisions);   
+    
+    /**
+     * Check whether a given division name exists
+     * @param d The division list value
+     * @param name The new division name
+     * @throws ExistentDivisionNameException in case the division name already exists inside the list
+     */
+    public void verifyDivisionName(Division d, String name) throws ExistentDivisionNameException {
+        if(d.getName().equals(name))
+        {
+            throw new ExistentDivisionNameException();
+        }
+    }
+    
+     /**
+     * Adds a division if no exceptions are thrown
+     * @param division The division to be added
+     */
+    public void addDivision(Division division){
+        boolean exists = false;
+        
+        for(Division d : this.divisions) // Mudar o for para um iterator
+        {
+            if(d.getName().equals(division.getName()))
+            {
+                try
+                {
+                    verifyDivisionName(d, division.getName());
+                }
+                catch(ExistentDivisionNameException ex)
+                {
+                    exists = true;
+                }
+            }
+        }
+        
+        if(!exists)
+        {
+            this.divisions.add(division);
+        }
     }
   
     
