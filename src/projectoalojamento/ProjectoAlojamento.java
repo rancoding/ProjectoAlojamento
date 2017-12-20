@@ -8,7 +8,9 @@ package projectoalojamento;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import user.Administrator;
 import user.Client;
+import user.Owner;
 import user.User;
 
 /**
@@ -23,21 +25,33 @@ public class ProjectoAlojamento {
      */
     public static void main(String[] args) {
         Client c1 = new Client("gustavo","pass","Gustavo Vieira","111222",1010,962222222,"Rua Das ruas","Portugal",new Date(),false);
-        Client c2 = new Client("gustavo2","pass","Gustavo Vieira2","111333",1010,962222222,"Rua Das ruas","Portugal",new Date(),false);
-        Client c3 = new Client("gustavo3","pass","Gustavo Vieira3","111444",1010,962222222,"Rua Das ruas","Portugal",new Date(),false);
-        Client c4 = new Client("gustavo4","pass","Gustavo Vieira4","111555",1010,962222222,"Rua Das ruas","Portugal",new Date(),false);
+        Client c2 = new Client("gustavo2","pass","Gustavo Vieira2","111333",1013,962222222,"Rua Das ruas","Portugal",new Date(),false);
+        Client c3 = new Client("gustavo3","pass","Gustavo Vieira3","111444",1014,962222222,"Rua Das ruas","Portugal",new Date(),false);
+        Client c4 = new Client("gustavo4","pass","Gustavo Vieira4","111555",1015,962222222,"Rua Das ruas","Portugal",new Date(),false);
+        Owner o1 =  new Owner("Rafa1","tres","Rafael Morais1","111556",1011,962222543,"Rua Das ruas","Portugal",new Date(),false);
         
         Repository repo = new Repository();
         
-        Client c5 = new Client("","","","",1010,0,"","",new Date(),false);
-        List<Client> lista1 = new ArrayList<>();
-        List<Client> lista2 = new ArrayList<>();
+        repo.addUser(c1);
+        repo.addUser(c2);
+        repo.addUser(o1);
+        repo.addUser(c4);
+        repo.addUser(c3);
         
-        lista1.add(c4);
-        lista2.add(c5);
-        System.out.println(lista1.containsAll(lista2));
         
-        System.out.println(c1.equals(c5));
+        
+        User u1 = repo.login(Owner.class,"Rahfa1","tres");
+        if(u1 == null){
+            System.out.println("Não existe");
+        }
+        else{
+            System.out.println(u1.getUsername());
+        }
+
+        
+        
+        
+        
     }
     
 }

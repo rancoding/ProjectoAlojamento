@@ -30,6 +30,9 @@ import property.exceptions.ExistentPropertyTypeNameException;
 import property.exceptions.ExistentTicketCategoryNameException;
 import property.exceptions.ExistentTicketStatusNameException;
 import property.exceptions.ExistentTicketTypeNameException;
+import user.Administrator;
+import user.Client;
+import user.Owner;
 import user.User;
 import user.contact.Category;
 import user.contact.Division;
@@ -73,8 +76,28 @@ public class Repository {
         this.ticketTypes = new ArrayList<>();
         this.divisions = new ArrayList<>();
     }
+
+    public List<User> getUsers() {
+        return users;
+    }
     
     
+    
+    ////////////// LOGIN  ////////////////
+    public User login(Class classe, String username, String pass){  
+        
+        for(User u: users){
+            if(classe.isInstance(u)){
+                if(username.equals(u.getUsername()) && pass.equals(u.getPassword())){
+                    return u;
+                }
+            }    
+        
+        }  
+    return null;
+    }
+    
+  
     
     // Lista alojamentos dado uma localizaçao
     // Adiciona a uma lista para a retornar depois (para no swing termos a lista com a localizaçao dada)
@@ -568,7 +591,7 @@ public class Repository {
     }
     
     //Add users in the list
-    public void addUser(User user) throws ExistentCitizenIdException, ExistentNifException, ExistentUsernameException {
+    public void addUser(User user)  {
         
         boolean exists = false;
         
