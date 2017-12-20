@@ -5,6 +5,7 @@
  */
 package projectoalojamento;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import user.Client;
@@ -27,6 +28,16 @@ public class ProjectoAlojamento {
         Client c4 = new Client("gustavo4","pass","Gustavo Vieira4","111555",1010,962222222,"Rua Das ruas","Portugal",new Date(),false);
         
         Repository repo = new Repository();
+        
+        Client c5 = new Client("","","","",1010,0,"","",new Date(),false);
+        List<Client> lista1 = new ArrayList<>();
+        List<Client> lista2 = new ArrayList<>();
+        
+        lista1.add(c4);
+        lista2.add(c5);
+        System.out.println(lista1.containsAll(lista2));
+        
+        System.out.println(c1.equals(c5));
     }
     
 }

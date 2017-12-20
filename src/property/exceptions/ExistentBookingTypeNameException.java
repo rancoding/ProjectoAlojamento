@@ -3,19 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package user.exceptions;
+package property.exceptions;
 
 /**
  *
- * @author Rafael
- * @author Gustavo
+ * @author Gustavo Vieira
  */
-public class ExistentCitizenIdException extends Exception {
+public class ExistentBookingTypeNameException extends Exception {
     
-    public ExistentCitizenIdException() {
+    public ExistentBookingTypeNameException() {
         super();
     }
-    public ExistentCitizenIdException(String message) {
+    public ExistentBookingTypeNameException(String message) {
         super(message);
     }
     

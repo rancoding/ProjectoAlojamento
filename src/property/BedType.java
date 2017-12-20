@@ -11,7 +11,16 @@ package property;
  * @author Gustavo
  */
 public class BedType {
+    private String name;
     private String description;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     /**
      *

@@ -6,7 +6,6 @@
 package projectoalojamento;
 
 import property.Property;
-import property.PropertyCharacteristics;
 import property.PropertyType;
 import property.BedType;
 import property.location.Country;
@@ -23,6 +22,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import property.exceptions.ExistentBedTypeNameException;
+import property.exceptions.ExistentBookingTypeNameException;
+import property.exceptions.ExistentPaymentTypeNameException;
+import property.exceptions.ExistentPropertyTypeNameException;
+import property.exceptions.ExistentTicketCategoryNameException;
+import property.exceptions.ExistentTicketTypeNameException;
 import user.User;
 import user.contact.Category;
 import user.contact.Division;
@@ -84,71 +89,316 @@ public class Repository {
         return propertyMap;
     }
     
-    ////////// Adding Property Types /////////////
+    // Lista alojamentos dado o Dono dos mesmos
+    // Adiciona a uma lista para a retornar depois (para no swing termos a lista com o dono dado)
+    public Map getPropertyByOwner(User owner){
+        Map<Property, Country> propertyOwner = new HashMap<>();
+
+        for(Map.Entry<Property, Country> mp : this.properties.entrySet()){
+            if(mp.getKey().getOwner().equals(owner)){
+            propertyOwner.put(mp.getKey(), mp.getValue());
+            } 
+        } 
+        return propertyOwner;
+    }
     
-    // Fazer isto para todos que não podem ser repetidos (como tipo de cama, tipo de pagamento, tipo de alojamento, etc)
     
-    public boolean verifyPropertyName(PropertyType pt, String name) {
-        boolean exists = false;
+    /*            Property Type            */
+    /* *********************************** */
+    
+    /**
+     * Checks whether a given property type name exists
+     * @param pt The property type list value
+     * @param name The new property type name
+     * @throws ExistentPropertyTypeNameException in case the property type name already exists inside the list
+     */
+    public void verifyPropertyTypeName(PropertyType pt, String name) throws ExistentPropertyTypeNameException {
         
         if(pt.getName().equals(name))
         {
-            exists = true; // Aqui vai dar throw new exception (que tem de se criar)
+            throw new ExistentPropertyTypeNameException();
         }
-        
-        return exists; // Vai-se retirar o return e o tipo de retorno da função de boolean para void
     }
     
-    public void addPropertyType(PropertyType propertiesTypes) {
+    /**
+     * Adds a property type if no exceptions are thrown
+     * @param propertiesType The property type to be added
+     */
+    public void addPropertyType(PropertyType propertiesType) {
         boolean exists = false;
         
         for(PropertyType pt : this.propertiesTypes) // Mudar o for para um iterator
         {
-            if(pt.getName().equals(propertiesTypes.getName()))
+            if(pt.getName().equals(propertiesType.getName()))
             {
-                exists = verifyPropertyName(pt, propertiesTypes.getName()); // Try catch com a exception
+                try
+                {
+                    verifyPropertyTypeName(pt, propertiesType.getName());
+                }
+                catch(ExistentPropertyTypeNameException ex)
+                {
+                    exists = true;
+                }  
             }
         }
         
         if(!exists)
         {
-            this.propertiesTypes.add(propertiesTypes);
+            this.propertiesTypes.add(propertiesType);
         }
     }
     
-    ////////// Adding Bed Types /////////////
-    public void addBedType(BedType bedTypes){
-        this.bedTypes.add(bedTypes);   
+    
+    /*            Bed Type            */
+    /* ****************************** */
+    
+    /**
+     * Check whether a given bed type name exists
+     * @param bt The bed type list value
+     * @param name The new bed type name
+     * @throws ExistentBedTypeNameException in case the bed type name already exists inside the list
+     */
+    public void verifyBedTypeName(BedType bt, String name) throws ExistentBedTypeNameException {
+        if(bt.getName().equals(name))
+        {
+            throw new ExistentBedTypeNameException();
+        }
     }
-    ////////// Adding Locations /////////////
+    
+    /**
+     * Adds a bed type if no exceptions are thrown
+     * @param bedType The bed type to be added
+     */
+    public void addBedType(BedType bedType){
+        
+        boolean exists = false;
+        
+        for(BedType bt : this.bedTypes) // Mudar o for para um iterator
+        {
+            if(bt.getName().equals(bedType.getName()))
+            {
+                try
+                {
+                    verifyBedTypeName(bt, bedType.getName());
+                }
+                catch(ExistentBedTypeNameException ex)
+                {
+                    exists = true;
+                }
+            }
+        }
+        
+        if(!exists)
+        {
+            this.bedTypes.add(bedType);  
+        }
+         
+    }
+    
+    
+    /*            Location            */
+    /* ****************************** */
+    
     public void addLocation(Location locations){
-        this.locations.add(locations);   
+        this.locations.add(locations);
     }
-    ////////// Adding Payment Types /////////////
-    public void addPaymentType(PaymentType paymentTypes){
-        this.paymentTypes.add(paymentTypes);   
+    
+    
+    /*            Payment Type            */
+    /* ********************************** */
+    
+    /**
+     * Check whether a given payment type name exists
+     * @param pt The payment type list value
+     * @param name The new payment type name
+     * @throws ExistentPaymentTypeNameException in case the payment type name already exists inside the list
+     */
+    public void verifyPaymentTypeName(PaymentType pt, String name) throws ExistentPaymentTypeNameException {
+        if(pt.getName().equals(name))
+        {
+            throw new ExistentPaymentTypeNameException();
+        }
     }
-    ////////// Adding Booking Types /////////////
-    public void addBookingType(BookingType bookingTypes){
-        this.bookingTypes.add(bookingTypes);   
+    
+    /**
+     * Adds a payment type if no exceptions are thrown
+     * @param paymentType The payment type to be added
+     */
+    public void addPaymentType(PaymentType paymentType){
+        boolean exists = false;
+        
+        for(PaymentType pt : this.paymentTypes) // Mudar o for para um iterator
+        {
+            if(pt.getName().equals(paymentType.getName()))
+            {
+                try
+                {
+                    verifyPaymentTypeName(pt, paymentType.getName());
+                }
+                catch(ExistentPaymentTypeNameException ex)
+                {
+                    exists = true;
+                }
+            }
+        }
+        
+        if(!exists)
+        {
+            this.paymentTypes.add(paymentType);
+        }
     }
-    ////////// Adding Ticket /////////////
+    
+    
+    /*            Booking Type            */
+    /* ********************************** */
+    
+    /**
+     * Check whether a given booking type name exists
+     * @param bt The booking type list value
+     * @param name The new booking type name
+     * @throws ExistentBookingTypeNameException in case the booking type name already exists inside the list
+     */
+    public void verifyBookingTypeName(BookingType bt, String name) throws ExistentBookingTypeNameException {
+        if(bt.getName().equals(name))
+        {
+            throw new ExistentBookingTypeNameException();
+        }
+    }
+    
+    /**
+     * Adds a booking type if no exceptions are thrown
+     * @param bookingType The booking type to be added
+     */
+    public void addBookingType(BookingType bookingType){
+        boolean exists = false;
+        
+        for(BookingType bt : this.bookingTypes) // Mudar o for para um iterator
+        {
+            if(bt.getName().equals(bookingType.getName()))
+            {
+                try
+                {
+                    verifyBookingTypeName(bt, bookingType.getName());
+                }
+                catch(ExistentBookingTypeNameException ex)
+                {
+                    exists = true;
+                }
+            }
+        }
+        
+        if(!exists)
+        {
+            this.bookingTypes.add(bookingType);
+        }
+    }
+    
+    
+    /*            Ticket            */
+    /* **************************** */
+    
     public void addTicket(Ticket tickets){
         this.tickets.add(tickets);   
     }
-    ////////// Adding Category Tickets /////////////
-    public void addCategory(Category ticketCategories){
-        this.ticketCategories.add(ticketCategories);   
+    
+    
+    /*            Ticket Type            */
+    /* ********************************* */
+    
+    /**
+     * Check whether a given ticket type name exists
+     * @param tt The ticket type list value
+     * @param name The new ticket type name
+     * @throws ExistentTicketTypeNameException in case the ticket type name already exists inside the list
+     */
+    public void verifyTicketTypeName(TicketType tt, String name) throws ExistentTicketTypeNameException {
+        if(tt.getName().equals(name))
+        {
+            throw new ExistentTicketTypeNameException();
+        }
     }
-    ////////// Adding Status Tickets /////////////
+    
+    
+    /**
+     * Adds a ticket type if no exceptions are thrown
+     * @param ticketType The ticket type to be added
+     */
+    public void addTicketType(TicketType ticketType){
+        boolean exists = false;
+        
+        for(TicketType tt : this.ticketTypes) // Mudar o for para um iterator
+        {
+            if(tt.getName().equals(ticketType.getName()))
+            {
+                try
+                {
+                    verifyTicketTypeName(tt, ticketType.getName());
+                }
+                catch(ExistentTicketTypeNameException ex)
+                {
+                    exists = true;
+                }
+            }
+        }
+        
+        if(!exists)
+        {
+            this.ticketTypes.add(ticketType);
+        }
+    }
+    
+    
+    /*            Ticket Category            */
+    /* ************************************* */
+    
+    /**
+     * Check whether a given ticket category name exists
+     * @param tc The ticket category list value
+     * @param name The new ticket category name
+     * @throws ExistentTicketCategoryNameException in case the ticket category name already exists inside the list
+     */
+    public void verifyTicketCategoryName(Category tc, String name) throws ExistentTicketCategoryNameException {
+        if(tc.getName().equals(name))
+        {
+            throw new ExistentTicketCategoryNameException();
+        }
+    }
+    
+    public void addCategory(Category ticketCategory) {
+        boolean exists = false;
+        
+        for(Category tc : this.ticketCategories) // Mudar o for para um iterator
+        {
+            if(tc.getName().equals(ticketCategory.getName()))
+            {
+                try
+                {
+                    verifyTicketCategoryName(tc, ticketCategory.getName());
+                }
+                catch(ExistentTicketCategoryNameException ex)
+                {
+                    exists = true;
+                }
+            }
+        }
+        
+        if(!exists)
+        {
+            this.ticketCategories.add(ticketCategory);
+        }
+    }
+    
+    
+    /*            Ticket Status            */
+    /* *********************************** */
+    
     public void addStatus(Status ticketStatus){
         this.ticketStatus.add(ticketStatus);   
     }
-    ////////// Adding TicketType /////////////
-    public void addTicketType(TicketType ticketTypes){
-        this.ticketTypes.add(ticketTypes);   
-    }
-    ////////// Adding Divisions /////////////
+    
+    
+    /*            Division            */
+    /* ****************************** */
     public void addDivision(Division divisions){
         this.divisions.add(divisions);   
     }
@@ -212,7 +462,7 @@ public class Repository {
         return exists;
     }
     
-    public boolean verifyUserInfo(User u, User user) throws ExistentCitizenIdException, ExistentNifException, ExistentUsernameException {
+    public void verifyUserInfo(User u, User user) throws ExistentCitizenIdException, ExistentNifException, ExistentUsernameException {
         boolean exists;
         
         exists = verifyCitizenID(u, user.getCitizenID());
@@ -232,8 +482,6 @@ public class Repository {
         {
             throw new ExistentUsernameException();
         }
-    
-        return exists;
     }
     
     //Add users in the list
