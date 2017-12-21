@@ -14,6 +14,7 @@ public class ExistentBookingTypeNameException extends Exception {
     public ExistentBookingTypeNameException() {
         super();
     }
+    
     public ExistentBookingTypeNameException(String message) {
         super(message);
     }

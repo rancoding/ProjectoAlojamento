@@ -24,7 +24,7 @@ public class BedType {
 
     /**
      *
-     * @param description
+     * @param description The bed type description
      */
     public BedType(String description) {
         this.description = description;
@@ -32,7 +32,7 @@ public class BedType {
 
     /**
      *
-     * @return
+     * @return The bed type description
      */
     public String getDescription() {
         return description;
@@ -40,7 +40,7 @@ public class BedType {
 
     /**
      *
-     * @param description
+     * @param description The new bed type description
      */
     public void setDescription(String description) {
         this.description = description;

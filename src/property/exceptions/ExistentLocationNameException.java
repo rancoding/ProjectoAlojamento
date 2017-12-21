@@ -9,13 +9,13 @@ package property.exceptions;
  *
  * @author Gustavo Vieira
  */
-public class ExistentPropertyTypeNameException extends Exception {
+public class ExistentLocationNameException extends Exception {
     
-    public ExistentPropertyTypeNameException() {
+    public ExistentLocationNameException() {
         super();
     }
     
-    public ExistentPropertyTypeNameException(String message) {
+    public ExistentLocationNameException(String message) {
         super(message);
     }
     

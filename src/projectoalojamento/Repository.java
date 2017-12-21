@@ -8,7 +8,7 @@ package projectoalojamento;
 import property.Property;
 import property.PropertyType;
 import property.BedType;
-import property.location.Country;
+import property.location.County;
 import property.location.Location;
 import property.booking.PaymentType;
 import property.booking.BookingType;
@@ -22,26 +22,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import property.exceptions.ExistentBedTypeNameException;
-import property.exceptions.ExistentBookingTypeNameException;
-import property.exceptions.ExistentDivisionNameException;
-import property.exceptions.ExistentPaymentTypeNameException;
-import property.exceptions.ExistentPropertyTypeNameException;
-import property.exceptions.ExistentTicketCategoryNameException;
-import property.exceptions.ExistentTicketStatusNameException;
-import property.exceptions.ExistentTicketTypeNameException;
-import user.Administrator;
-import user.Client;
-import user.Owner;
 import user.User;
 import user.contact.Category;
 import user.contact.Division;
 import user.contact.Status;
 import user.contact.Ticket;
 import user.contact.TicketType;
-import user.exceptions.ExistentCitizenIdException;
-import user.exceptions.ExistentNifException;
-import user.exceptions.ExistentUsernameException;
+import property.exceptions.*;
+import user.exceptions.*;
 
 /**
  *
@@ -49,7 +37,7 @@ import user.exceptions.ExistentUsernameException;
  * @author Gustavo
  */
 public class Repository {
-    private final Map<Property, Country> properties;
+    private final Map<Property, County> properties;
     private final List<PropertyType> propertiesTypes;
     private final List<BedType> bedTypes;
     private final List<Location> locations;
@@ -77,24 +65,84 @@ public class Repository {
         this.divisions = new ArrayList<>();
     }
 
+    public Map<Property, County> getProperties() {
+        return properties;
+    }
+
+    public List<PropertyType> getPropertiesTypes() {
+        return propertiesTypes;
+    }
+
+    public List<BedType> getBedTypes() {
+        return bedTypes;
+    }
+
+    public List<Location> getLocations() {
+        return locations;
+    }
+
+    public List<PaymentType> getPaymentTypes() {
+        return paymentTypes;
+    }
+
+    public List<BookingType> getBookingTypes() {
+        return bookingTypes;
+    }
+
     public List<User> getUsers() {
         return users;
     }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public List<Category> getTicketCategories() {
+        return ticketCategories;
+    }
+
+    public List<Status> getTicketStatus() {
+        return ticketStatus;
+    }
+
+    public List<TicketType> getTicketTypes() {
+        return ticketTypes;
+    }
+
+    public List<Division> getDivisions() {
+        return divisions;
+    }
+
+    /* Setters = Não sei como vamos fazer ainda */
+    /* Mas vamos ter de saber em que posição está o objecto a que chegamos na lista para depois poder editalo */
+    /* Pode-se fazer tipo: fazes get á lista (tipo getUsers()) e lá no swing (?) vais buscar o utilizador que queres, editas e fazes repo.setUsers(novaLista); ou algo assim */
+    /* Não sei é se é no swing que vais buscar user ou se tem uma funçao daqui que retorna, idk */
+    /* **************************************** */
     
+    /*            Login            */
+    /* *************************** */
     
-    
-    ////////////// LOGIN  ////////////////
-    public User login(Class classe, String username, String pass){  
+    /**
+     * Using a class parameter, allows you to login with any type of user
+     * @param c The class sent as an argument (Client, Owner or Administrator)
+     * @param username The username of the user you want to log in as
+     * @param password The password of the user you want to log in as
+     * @return 
+     */
+    public User login(Class c, String username, String password) {  
         
-        for(User u: users){
-            if(classe.isInstance(u)){
-                if(username.equals(u.getUsername()) && pass.equals(u.getPassword())){
+        for(User u: users)
+        {
+            if(c.isInstance(u))
+            {
+                if(username.equals(u.getUsername()) && password.equals(u.getPassword()))
+                {
                     return u;
                 }
             }    
-        
         }  
-    return null;
+        
+        return null;
     }
     
   
@@ -102,10 +150,10 @@ public class Repository {
     // Lista alojamentos dado uma localizaçao
     // Adiciona a uma lista para a retornar depois (para no swing termos a lista com a localizaçao dada)
     // deve ser algo assim
-    public Map getPropertyByLocation(Country country) {
-        Map<Property, Country> propertyMap = new HashMap<>(); // Não sei se é HashMap mas y
+    public Map getPropertyByLocation(County country) {
+        Map<Property, County> propertyMap = new HashMap<>(); // Não sei se é HashMap mas y
         
-        for(Map.Entry<Property, Country> mp : this.properties.entrySet())
+        for(Map.Entry<Property, County> mp : this.properties.entrySet())
         {
             if(mp.getValue().equals(country))
             {
@@ -119,13 +167,16 @@ public class Repository {
     // Lista alojamentos dado o Dono dos mesmos
     // Adiciona a uma lista para a retornar depois (para no swing termos a lista com o dono dado)
     public Map getPropertyByOwner(User owner){
-        Map<Property, Country> propertyOwner = new HashMap<>();
+        Map<Property, County> propertyOwner = new HashMap<>();
 
-        for(Map.Entry<Property, Country> mp : this.properties.entrySet()){
-            if(mp.getKey().getOwner().equals(owner)){
-            propertyOwner.put(mp.getKey(), mp.getValue());
+        for(Map.Entry<Property, County> mp : this.properties.entrySet())
+        {
+            if(mp.getKey().getOwner().equals(owner))
+            {
+                propertyOwner.put(mp.getKey(), mp.getValue());
             } 
-        } 
+        }
+        
         return propertyOwner;
     }
     
@@ -226,8 +277,47 @@ public class Repository {
     /*            Location            */
     /* ****************************** */
     
-    public void addLocation(Location locations){
-        this.locations.add(locations);
+    /**
+     * Check whether a given location name exists
+     * @param l The location list value
+     * @param name The new location name
+     * @throws ExistentLocationNameException in case the location name already exists inside the list
+     */
+    public void verifyLocationName(Location l, String name) throws ExistentLocationNameException {
+        if(l.getName().equals(name))
+        {
+            throw new ExistentLocationNameException();
+        }
+    }
+    
+    /**
+     * Adds a location if no exceptions are thrown
+     * @param location The location to be added
+     */
+    public void addLocation(Location location) {
+        
+        boolean exists = false;
+        
+        for(Location l : this.locations) // Mudar o for para um iterator
+        {
+            if(l.getName().equals(location.getName()))
+            {
+                try
+                {
+                    verifyLocationName(l, location.getName());
+                }
+                catch(ExistentLocationNameException ex)
+                {
+                    exists = true;
+                }
+            }
+        }
+        
+        if(!exists)
+        {
+            this.locations.add(location);
+        }
+        
     }
     
     
@@ -251,7 +341,8 @@ public class Repository {
      * Adds a payment type if no exceptions are thrown
      * @param paymentType The payment type to be added
      */
-    public void addPaymentType(PaymentType paymentType){
+    public void addPaymentType(PaymentType paymentType) {
+        
         boolean exists = false;
         
         for(PaymentType pt : this.paymentTypes) // Mudar o for para um iterator
@@ -296,7 +387,8 @@ public class Repository {
      * Adds a booking type if no exceptions are thrown
      * @param bookingType The booking type to be added
      */
-    public void addBookingType(BookingType bookingType){
+    public void addBookingType(BookingType bookingType) {
+        
         boolean exists = false;
         
         for(BookingType bt : this.bookingTypes) // Mudar o for para um iterator
@@ -318,6 +410,7 @@ public class Repository {
         {
             this.bookingTypes.add(bookingType);
         }
+        
     }
     
     
@@ -617,7 +710,7 @@ public class Repository {
     ///////////////////////////////////////// Adding Property //////////////////////////////////////////////
     
     //Add properties in the list
-    public void addProperty(Property property, Country country) {
+    public void addProperty(Property property, County country) {
         this.properties.put(property, country);
     }
     

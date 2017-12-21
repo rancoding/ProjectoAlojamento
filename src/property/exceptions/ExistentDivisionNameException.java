@@ -14,6 +14,7 @@ public class ExistentDivisionNameException extends Exception {
     public ExistentDivisionNameException() {
         super();
     }
+    
     public ExistentDivisionNameException(String message) {
         super(message);
     }

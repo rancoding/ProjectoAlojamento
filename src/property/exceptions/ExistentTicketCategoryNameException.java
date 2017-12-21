@@ -14,6 +14,7 @@ public class ExistentTicketCategoryNameException extends Exception {
     public ExistentTicketCategoryNameException() {
         super();
     }
+    
     public ExistentTicketCategoryNameException(String message) {
         super(message);
     }

@@ -14,6 +14,7 @@ public class ExistentBedTypeNameException extends Exception {
     public ExistentBedTypeNameException() {
         super();
     }
+    
     public ExistentBedTypeNameException(String message) {
         super(message);
     }

@@ -14,6 +14,7 @@ public class ExistentPaymentTypeNameException extends Exception {
     public ExistentPaymentTypeNameException() {
         super();
     }
+    
     public ExistentPaymentTypeNameException(String message) {
         super(message);
     }
