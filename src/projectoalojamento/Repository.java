@@ -20,8 +20,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 import user.User;
 import user.contact.Category;
 import user.contact.Division;
@@ -43,7 +46,7 @@ public class Repository {
     private final List<Location> locations;
     private final List<PaymentType> paymentTypes;
     private final List<BookingType> bookingTypes;
-    private final List<User> users;
+    private List<User> users;
     private final List<Ticket> tickets;
     private final List<Category> ticketCategories;
     private final List<Status> ticketStatus;
@@ -712,6 +715,45 @@ public class Repository {
     //Add properties in the list
     public void addProperty(Property property, County country) {
         this.properties.put(property, country);
+    }
+    
+    ////////////////////////////////////// Edit /////////////////////////////////////////
+    
+    /////////// Edit Users ///////////////
+    public List<User> editUsers(Class c, User user){
+        
+    List<User> novaLista = new ArrayList<>();
+    for(User u : users) 
+    {
+        if(c.isInstance(u))
+        {
+            if(u.getUsername().equals(user.getUsername()))
+            {
+                novaLista.add(user);
+            }
+            else
+            {
+                 novaLista.add(u);
+             }
+        }
+    }
+    return novaLista; 
+        
+    }
+    
+public void setUsers(List<User> users){
+    this.users = users;
+}    
+        
+    
+    
+    ////////////////////////////////////// List /////////////////////////////////////////
+    
+    //////////// List Type of Users //////////////
+    
+    public List<User> listTypeUsers(Class c){
+        return this.users.stream().filter(p -> c.isInstance(p)).collect(Collectors.toList());
+                
     }
     
     

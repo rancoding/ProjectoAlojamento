@@ -29,6 +29,7 @@ public class Property implements Serializable{
     private List<Discount> extras;
     private List<Booking> bookings;
     private static int count;
+    private boolean closed;
 
     /**
      *
@@ -38,7 +39,7 @@ public class Property implements Serializable{
      * @param owner
      * @param characteristics
      */
-    public Property(double pricePerNight, String description, PropertyType propertyType, Owner owner, PropertyCharacteristics characteristics) {
+    public Property(double pricePerNight, String description, PropertyType propertyType, Owner owner, PropertyCharacteristics characteristics, boolean closed) {
         this.referenceID = count;
         this.pricePerNight = pricePerNight;
         this.description = description;
@@ -50,8 +51,10 @@ public class Property implements Serializable{
         this.discounts = new ArrayList<>();
         this.extras = new ArrayList<>();
         this.bookings = new ArrayList<>();
+        this.closed = closed;
         count++;
     }
+
     
     /**
      *
@@ -220,4 +223,15 @@ public class Property implements Serializable{
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
+    
+    
+    public boolean isClosed() {
+        return closed;
+    }
+
+    public void setClosed(boolean closed) {
+        this.closed = closed;
+    }
+    
+    
 }

@@ -38,18 +38,25 @@ public class ProjectoAlojamento {
         repo.addUser(c4);
         repo.addUser(c3);
         
-        
-        
-        User u1 = repo.login(Owner.class,"Rahfa1","tres");
-        if(u1 == null){
-            System.out.println("Não existe");
-        }
-        else{
-            System.out.println(u1.getUsername());
-        }
+        Client c5 = new Client("gustavo4","pass","Gustavo 123","111555",1015,962222222,"Rua Das ruas","Portugal",new Date(),false);
+
+        List<User> users=repo.editUsers(Client.class, c5);
+        repo.setUsers(users);
+
+//        User u1 = repo.login(Owner.class,"Rahfa1","tres");
+//        if(u1 == null){
+//            System.out.println("Não existe");
+//        }
+//        else{
+//            System.out.println(u1.getUsername());
+//        }
 
         
+        List<User> list = repo.listTypeUsers(Client.class);
         
+        for(User u: users){
+            System.out.println(u.getName());
+        }
         
         
     }
