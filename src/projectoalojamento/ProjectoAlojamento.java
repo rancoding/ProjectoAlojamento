@@ -52,7 +52,7 @@ public class ProjectoAlojamento {
 //        }
 
         
-        List<User> list = repo.listTypeUsers(Client.class);
+        List<User> list = repo.listUserTypes(Client.class);
         
         for(User u: users){
             System.out.println(u.getName());

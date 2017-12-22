@@ -40,18 +40,18 @@ import user.exceptions.*;
  * @author Gustavo
  */
 public class Repository {
-    private final Map<Property, County> properties;
-    private final List<PropertyType> propertiesTypes;
-    private final List<BedType> bedTypes;
-    private final List<Location> locations;
-    private final List<PaymentType> paymentTypes;
-    private final List<BookingType> bookingTypes;
+    private Map<Property, County> properties;
+    private List<PropertyType> propertiesTypes;
+    private List<BedType> bedTypes;
+    private List<Location> locations;
+    private List<PaymentType> paymentTypes;
+    private List<BookingType> bookingTypes;
     private List<User> users;
-    private final List<Ticket> tickets;
-    private final List<Category> ticketCategories;
-    private final List<Status> ticketStatus;
-    private final List<TicketType> ticketTypes;
-    private final List<Division> divisions;
+    private List<Ticket> tickets;
+    private List<Category> ticketCategories;
+    private List<Status> ticketStatus;
+    private List<TicketType> ticketTypes;
+    private List<Division> divisions;
     
     public Repository() {
         this.properties = new HashMap<>();
@@ -114,6 +114,50 @@ public class Repository {
 
     public List<Division> getDivisions() {
         return divisions;
+    }
+
+    public void setProperties(Map<Property, County> properties) {
+        this.properties = properties;
+    }
+
+    public void setPropertiesTypes(List<PropertyType> propertiesTypes) {
+        this.propertiesTypes = propertiesTypes;
+    }
+
+    public void setBedTypes(List<BedType> bedTypes) {
+        this.bedTypes = bedTypes;
+    }
+
+    public void setLocations(List<Location> locations) {
+        this.locations = locations;
+    }
+
+    public void setPaymentTypes(List<PaymentType> paymentTypes) {
+        this.paymentTypes = paymentTypes;
+    }
+
+    public void setBookingTypes(List<BookingType> bookingTypes) {
+        this.bookingTypes = bookingTypes;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public void setTicketCategories(List<Category> ticketCategories) {
+        this.ticketCategories = ticketCategories;
+    }
+
+    public void setTicketStatus(List<Status> ticketStatus) {
+        this.ticketStatus = ticketStatus;
+    }
+
+    public void setTicketTypes(List<TicketType> ticketTypes) {
+        this.ticketTypes = ticketTypes;
+    }
+
+    public void setDivisions(List<Division> divisions) {
+        this.divisions = divisions;
     }
 
     /* Setters = Não sei como vamos fazer ainda */
@@ -229,6 +273,24 @@ public class Repository {
         }
     }
     
+    public List editPropertyType(PropertyType oldPropertyType, PropertyType newPropertyType) {
+        List<PropertyType> newList = new ArrayList<>();
+        
+        for(PropertyType pt : this.propertiesTypes)
+        {
+            if(pt.equals(oldPropertyType))
+            {
+                newList.add(newPropertyType);
+            }
+            else
+            {
+                newList.add(pt);
+            }
+        }
+        
+        return newList;
+    }
+    
     
     /*            Bed Type            */
     /* ****************************** */
@@ -274,6 +336,24 @@ public class Repository {
             this.bedTypes.add(bedType);  
         }
          
+    }
+    
+    public List editBedType(BedType oldBedType, BedType newBedType) {
+        List<BedType> newList = new ArrayList<>();
+        
+        for(BedType bt : this.bedTypes)
+        {
+            if(bt.equals(oldBedType))
+            {
+                newList.add(newBedType);
+            }
+            else
+            {
+                newList.add(bt);
+            }
+        }
+        
+        return newList;
     }
     
     
@@ -323,6 +403,24 @@ public class Repository {
         
     }
     
+    public List editLocation(Location location) {
+        List<Location> newList = new ArrayList<>();
+        
+        for(Location l : this.locations)
+        {
+            if(l.getId() == location.getId())
+            {
+                newList.add(location);
+            }
+            else
+            {
+                newList.add(l);
+            }
+        }
+        
+        return newList;
+    }
+    
     
     /*            Payment Type            */
     /* ********************************** */
@@ -367,6 +465,24 @@ public class Repository {
         {
             this.paymentTypes.add(paymentType);
         }
+    }
+    
+    public List editPaymentType(PaymentType oldPaymentType, PaymentType newPaymentType) {
+        List<PaymentType> newList = new ArrayList<>();
+        
+        for(PaymentType pt : this.paymentTypes)
+        {
+            if(pt.equals(oldPaymentType))
+            {
+                newList.add(newPaymentType);
+            }
+            else
+            {
+                newList.add(pt);
+            }
+        }
+        
+        return newList;
     }
     
     
@@ -414,6 +530,24 @@ public class Repository {
             this.bookingTypes.add(bookingType);
         }
         
+    }
+    
+    public List editBookingType(BookingType oldBookingType, BookingType newBookingType) {
+        List<BookingType> newList = new ArrayList<>();
+        
+        for(BookingType bt : this.bookingTypes)
+        {
+            if(bt.equals(oldBookingType))
+            {
+                newList.add(newBookingType);
+            }
+            else
+            {
+                newList.add(bt);
+            }
+        }
+        
+        return newList;
     }
     
     
@@ -470,6 +604,24 @@ public class Repository {
         }
     }
     
+    public List editTicketType(TicketType oldTicketType, TicketType newTicketType) {
+        List<TicketType> newList = new ArrayList<>();
+        
+        for(TicketType tt : this.ticketTypes)
+        {
+            if(tt.equals(oldTicketType))
+            {
+                newList.add(newTicketType);
+            }
+            else
+            {
+                newList.add(tt);
+            }
+        }
+        
+        return newList;
+    }
+    
     
     /*            Ticket Category            */
     /* ************************************* */
@@ -513,6 +665,24 @@ public class Repository {
         {
             this.ticketCategories.add(ticketCategory);
         }
+    }
+    
+    public List editTicketType(Category oldTicketCategory, Category newTicketCategory) {
+        List<Category> newList = new ArrayList<>();
+        
+        for(Category tc : this.ticketCategories)
+        {
+            if(tc.equals(oldTicketCategory))
+            {
+                newList.add(newTicketCategory);
+            }
+            else
+            {
+                newList.add(tc);
+            }
+        }
+        
+        return newList;
     }
     
     
@@ -560,6 +730,23 @@ public class Repository {
         }
     }
     
+    public List editTicketStatus(Status oldTicketStatus, Status newTicketStatus) {
+        List<Status> newList = new ArrayList<>();
+        
+        for(Status ts : this.ticketStatus)
+        {
+            if(ts.equals(oldTicketStatus))
+            {
+                newList.add(newTicketStatus);
+            }
+            else
+            {
+                newList.add(ts);
+            }
+        }
+        
+        return newList;
+    }
     
     /*            Division            */
     /* ****************************** */
@@ -605,7 +792,23 @@ public class Repository {
         }
     }
   
-    
+    public List editDivision(Division oldDivision, Division newDivision) {
+        List<Division> newList = new ArrayList<>();
+        
+        for(Division d : this.divisions)
+        {
+            if(d.equals(oldDivision))
+            {
+                newList.add(newDivision);
+            }
+            else
+            {
+                newList.add(d);
+            }
+        }
+        
+        return newList;
+    }
     
     
    
@@ -751,7 +954,7 @@ public void setUsers(List<User> users){
     
     //////////// List Type of Users //////////////
     
-    public List<User> listTypeUsers(Class c){
+    public List<User> listUserTypes(Class c){
         return this.users.stream().filter(p -> c.isInstance(p)).collect(Collectors.toList());
                 
     }
