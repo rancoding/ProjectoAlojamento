@@ -54,6 +54,22 @@ public class PropertyCharacteristics {
     }
 
     /**
+     * 
+     */
+    public PropertyCharacteristics() {
+        this.minClients = -1;
+        this.maxClients = -1;
+        this.roomsQuantity = -1;
+        this.bathroomQuantity = -1;
+        this.rooms = new ArrayList<>();
+        this.pets = false;
+        this.kitchen = false;
+        this.washingMachine = false;
+        this.breakfast = false;
+        this.pool = false;
+        this.wifi = false;
+    }
+    /**
      *
      * @return
      */

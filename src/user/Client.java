@@ -25,6 +25,12 @@ public class Client extends User {
         this.banned = false;
         favorites = new ArrayList<>();
     }
+    
+    public Client() {
+        super("","","","",-1,-1,"","",new Date(),false);
+        this.banned = false;
+        this.favorites = new ArrayList<>();
+    }
 
     public boolean isBanned() {
         return banned;

@@ -23,6 +23,12 @@ public class District {
         this.name = name;
         counties = new ArrayList<>();
     }
+    
+    public District() {
+        this.id = -1;
+        this.name = "";
+        this.counties = new ArrayList<>();
+    }
 
     public int getId() {
         return id;

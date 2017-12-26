@@ -23,6 +23,14 @@ public class BookingType {
         this.name = name;
         this.description = description;
     }
+    
+    /**
+     * 
+     */
+    public BookingType() {
+        this.name = "";
+        this.description = "";
+    }
 
     /**
      *

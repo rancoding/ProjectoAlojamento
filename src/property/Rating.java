@@ -35,6 +35,14 @@ public class Rating {
         this.ratingDate = ratingDate;
         this.client = client;
     }
+    
+    public Rating() {
+        this.subject = "";
+        this.message = "";
+        this.points = -1;
+        this.ratingDate = new Date();
+        this.client = new Client();
+    }
 
     /**
      *

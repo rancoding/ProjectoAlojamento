@@ -28,6 +28,15 @@ public class Photo {
     }
 
     /**
+     * 
+     */
+    public Photo() {
+        this.name = "";
+        this.directory = "";
+        this.format = "";
+    }
+    
+    /**
      *
      * @return
      */

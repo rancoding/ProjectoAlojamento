@@ -23,9 +23,17 @@ public class Room {
      */
     public Room(int bedsQuantity) {
         this.bedsQuantity = bedsQuantity;
-        bedType = new ArrayList<>();
+        this.bedType = new ArrayList<>();
     }
 
+    /**
+     * 
+     */
+    public Room() {
+        this.bedsQuantity = -1;
+        this.bedType = new ArrayList<>();
+    }
+    
     /**
      *
      * @return

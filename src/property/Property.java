@@ -25,11 +25,12 @@ public class Property implements Serializable{
     private PropertyCharacteristics characteristics;
     private List<Rating> ratings;
     private List<Photo> photos;
+    private List<Discount> oldDiscounts;
     private List<Discount> discounts;
     private List<Discount> extras;
     private List<Booking> bookings;
-    private static int count;
     private boolean closed;
+    private static int count;
 
     /**
      *
@@ -48,6 +49,7 @@ public class Property implements Serializable{
         this.characteristics = characteristics;
         this.ratings = new ArrayList<>();
         this.photos = new ArrayList<>();
+        this.oldDiscounts = new ArrayList<>();
         this.discounts = new ArrayList<>();
         this.extras = new ArrayList<>();
         this.bookings = new ArrayList<>();
@@ -55,6 +57,21 @@ public class Property implements Serializable{
         count++;
     }
 
+    public Property() {
+        this.referenceID = -1;
+        this.pricePerNight = -1;
+        this.description = "";
+        this.propertyType = new PropertyType();
+        this.owner = new Owner();
+        this.characteristics = new PropertyCharacteristics();
+        this.ratings = new ArrayList<>();
+        this.photos = new ArrayList<>();
+        this.oldDiscounts = new ArrayList<>();
+        this.discounts = new ArrayList<>();
+        this.extras = new ArrayList<>();
+        this.bookings = new ArrayList<>();
+        this.closed = false;
+    }
     
     /**
      *

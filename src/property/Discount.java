@@ -28,6 +28,15 @@ public class Discount {
         this.startingDate = startDate;
         this.endingDate = endDate;
     }
+    
+    /**
+     * 
+     */
+    public Discount() {
+        this.description = "";
+        this.startingDate = new Date();
+        this.endingDate = new Date();
+    }
 
     /**
      *

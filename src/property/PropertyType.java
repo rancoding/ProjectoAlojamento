@@ -25,6 +25,14 @@ public class PropertyType {
     }
 
     /**
+     * 
+     */
+    public PropertyType() {
+        this.name = "";
+        this.description = "";
+    }
+    
+    /**
      *
      * @return
      */

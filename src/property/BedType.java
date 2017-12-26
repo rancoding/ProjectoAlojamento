@@ -14,12 +14,14 @@ public class BedType {
     private String name;
     private String description;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    /**
+     * 
+     * @param name
+     * @param description 
+     */
+    public BedType(String name, String description) {
         this.name = name;
+        this.description = description;
     }
 
     /**
@@ -30,6 +32,22 @@ public class BedType {
         this.description = description;
     }
 
+    /**
+     * 
+     */
+    public BedType() {
+        this.name = "";
+        this.description = "";
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     /**
      *
      * @return The bed type description

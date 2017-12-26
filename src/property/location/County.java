@@ -16,6 +16,10 @@ public class County {
     public County(String name) {
         this.name = name;
     }
+    
+    public County() {
+        this.name = "";
+    }
 
     public String getName() {
         return name;

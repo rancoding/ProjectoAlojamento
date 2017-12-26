@@ -23,6 +23,11 @@ public class PaymentType {
         this.name = name;
         this.description = description;
     }
+    
+    public PaymentType() {
+        this.name = "";
+        this.description = "";
+    }
 
     /**
      *

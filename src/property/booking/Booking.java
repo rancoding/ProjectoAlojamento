@@ -53,6 +53,23 @@ public class Booking {
     }
     
     /**
+     * 
+     */
+    public Booking() {
+        this.referenceID = -1;
+        this.nClients = -1;
+        this.finalPrice = -1;
+        this.confirmed = false;
+        this.closed = false;
+        this.paid = false;
+        this.startingDate = new Date();
+        this.endingDate = new Date();
+        this.bookingType = new BookingType();
+        this.paymentType = new PaymentType();
+        this.client = New Client();
+    }
+    
+    /**
      *
      * @return
      */

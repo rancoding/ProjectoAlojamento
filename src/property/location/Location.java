@@ -23,6 +23,12 @@ public class Location {
         this.name = name;
         districts = new ArrayList<>();
     }
+    
+    public Location() {
+        this.id = -1;
+        this.name = "";
+        this.districts = new ArrayList<>();
+    }
 
     public int getId() {
         return id;
