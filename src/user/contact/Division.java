@@ -19,6 +19,11 @@ public class Division {
         this.description = description;
     }
 
+    public Division() {
+        this.name = "";
+        this.description = "";
+    }
+
     public String getName() {
         return name;
     }

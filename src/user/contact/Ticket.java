@@ -21,14 +21,19 @@ public class Ticket {
     private boolean finalised;
     private User sender;
     private Status status;
+    private static int count;
 
-    public Ticket(TicketType ticketType, String subject, String message, Division division, boolean finalised, Status status) {
+    public Ticket(TicketType ticketType, String subject, String message, Division division, boolean finalised, Status status, User sender) {
+        
+        this.referenceID = count;
         this.ticketType = ticketType;
         this.subject = subject;
         this.message = message;
         this.division = division;
         this.finalised = finalised;
         this.status = status;
+        this.sender = sender;
+        count++;
     }
     
     public int getReferenceID() {

@@ -19,6 +19,7 @@ public class Administrator extends User {
 
     public Administrator(String username, String password, String name, String citizenID, int NIF, int phoneNumber, String address, String location, Date registerDate, boolean privateProfile){
         super(username, password, name, citizenID, NIF, phoneNumber, address, location, registerDate, privateProfile);
+        this.division = new Division();
     }
 
     public Division getDivision() {

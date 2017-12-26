@@ -26,20 +26,33 @@ public class User implements Serializable {
     private boolean privateProfile;
     
     
-    public User(String username, String password, String nome, String cartaoCidadao, int nFiscal, int telefone, String morada, String localidade, Date dataCriacao, boolean perfilPrivado) {
+    public User(String username, String password, String name, String citizenID, int NIF, int phoneNumber, String address, String location, Date registerDate, boolean privateProfile) {
         this.username = username;
         this.password = password;
-        this.name = nome;
-        this.citizenID = cartaoCidadao;
-        this.NIF = nFiscal;
-        this.phoneNumber = telefone;
-        this.address = morada;
-        this.location = localidade;
-        this.registerDate = dataCriacao;
-        this.privateProfile = perfilPrivado;
+        this.name = name;
+        this.citizenID = citizenID;
+        this.NIF = NIF;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.location = location;
+        this.registerDate = registerDate;
+        this.privateProfile = privateProfile;
         messages = new ArrayList<>();
     }
 
+    public User() {
+        this.username = "";
+        this.password = "";
+        this.name = "";
+        this.citizenID = "";
+        this.NIF = -1;
+        this.phoneNumber = -1;
+        this.address = "";
+        this.location = "";
+        this.registerDate = registerDate;
+        this.privateProfile = privateProfile;
+        messages = new ArrayList<>();
+    }
     
     
     public String getUsername() {

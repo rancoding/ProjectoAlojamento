@@ -19,6 +19,14 @@ public class Owner extends User {
         super(username, password, name, citizenID, NIF, phoneNumber, address, location, registerDate, privateProfile);
         this.banned = false;
     }
+    
+    
+
+    public Owner() {
+        
+        super("","","","",-1,-1,"","",new Date(),false);
+        this.banned = false;
+    }
 
     public boolean isBanned() {
         return banned;
