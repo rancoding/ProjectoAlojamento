@@ -66,7 +66,7 @@ public class Booking {
         this.endingDate = new Date();
         this.bookingType = new BookingType();
         this.paymentType = new PaymentType();
-        this.client = New Client();
+        this.client = new Client();
     }
     
     /**
