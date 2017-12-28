@@ -20,11 +20,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
+import property.PropertyCharacteristics;
 import user.User;
 import user.contact.Category;
 import user.contact.Division;
@@ -32,6 +32,7 @@ import user.contact.Status;
 import user.contact.Ticket;
 import user.contact.TicketType;
 import property.exceptions.*;
+import user.Owner;
 import user.exceptions.*;
 
 /**
@@ -160,6 +161,135 @@ public class Repository {
         this.divisions = divisions;
     }
 
+    /* List */
+    /* **** */
+    
+    public Map listProperties(Property property) {
+        Map<Property, County> newMap = this.properties;
+        
+        if(property.getPricePerNight() != -1)
+        {
+            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getPricePerNight() == property.getPricePerNight()).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+        }
+        
+        if(!(property.getPropertyType().equals(new PropertyType())))
+        {
+            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getPropertyType().getName().equalsIgnoreCase(property.getPropertyType().getName())).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+        }
+        
+        if(!(property.getCharacteristics().equals(new PropertyCharacteristics())))
+        {
+            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getCharacteristics().equals(property.getCharacteristics())).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+        }
+        
+        if(!(property.getOwner().equals(new Owner())))
+        {
+            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getOwner().equals(property.getOwner())).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+        }
+        
+        return newMap;
+    }
+    
+    public List listTickets(Ticket ticket) {
+        List<Ticket> newList = this.tickets;
+        
+        if(ticket.getReferenceID() != -1)
+        {
+            newList = newList.stream().filter(t -> t.getReferenceID() != -1).collect(Collectors.toList());
+        }
+        
+        if(!(ticket.getTicketType().equals(new TicketType())))
+        {
+            newList = newList.stream().filter(t -> t.getTicketType().equals(ticket.getTicketType())).collect(Collectors.toList());
+        }
+        
+        if(!(ticket.getTicketType().getName().equals(new TicketType())))
+        {
+            newList = newList.stream().filter(t -> t.getTicketType().getName().equals(ticket.getTicketType().getName())).collect(Collectors.toList());
+        }
+        
+        if(!(ticket.getTicketType().getCategory().getName().equals(new Category())))
+        {
+            newList = newList.stream().filter(t -> t.getTicketType().getCategory().getName().equals(ticket.getTicketType().getCategory().getName())).collect(Collectors.toList());
+        }
+        
+        if(!(ticket.getDivision().equals(new Division())))
+        {
+            newList = newList.stream().filter(t -> t.getDivision().equals(ticket.getDivision())).collect(Collectors.toList());
+        }
+        
+        if(ticket.isFinalised() == false)
+        {
+            newList = newList.stream().filter(t -> t.isFinalised() == ticket.isFinalised()).collect(Collectors.toList());
+        }
+        else
+        {
+            newList = newList.stream().filter(t -> t.isFinalised() == ticket.isFinalised()).collect(Collectors.toList());
+        }
+        
+        if(!(ticket.getSender().equals(new User())))
+        {
+            newList = newList.stream().filter(t -> t.getSender().equals(ticket.getSender())).collect(Collectors.toList());
+        }
+        
+        if(!(ticket.getStatus().equals(new Status())))
+        {
+            newList = newList.stream().filter(t -> t.getStatus().equals(ticket.getStatus())).collect(Collectors.toList());
+        }
+        
+        return newList;
+    }
+    
+    public List listUsers(User user) {
+        List<User> newList = this.users;
+        
+        if(!(user.getName().equals("")))
+        {
+            newList = newList.stream().filter(u -> u.getName().equals(user.getName())).collect(Collectors.toList());
+        }
+        
+        if(!(user.getCitizenID().equals("")))
+        {
+            newList = newList.stream().filter(u -> u.getCitizenID().equals(user.getCitizenID())).collect(Collectors.toList());
+        }
+        
+        if(user.getNIF() != -1)
+        {
+            newList = newList.stream().filter(u -> u.getNIF() == user.getNIF()).collect(Collectors.toList());
+        }
+        
+        if(user.getPhoneNumber() != -1)
+        {
+            newList = newList.stream().filter(u -> u.getPhoneNumber() == user.getPhoneNumber()).collect(Collectors.toList());
+        }
+        
+        if(!(user.getAddress().equals("")))
+        {
+            newList = newList.stream().filter(u -> u.getAddress().equals(user.getAddress())).collect(Collectors.toList());
+        }
+        
+        if(!(user.getLocation().equals("")))
+        {
+            newList = newList.stream().filter(u -> u.getLocation().equals(user.getLocation())).collect(Collectors.toList());
+        }
+        
+        /*if(!(user.getRegisterDate().equals("0/0/0")))
+        {
+            newList = newList.stream().filter(u -> u.getRegisterDate() >= user.getRegisterDate()).collect(Collectors.toList());
+        } Não sei fazer com datas ainda */
+        
+        if(user.isPrivateProfile() == false)
+        {
+            newList = newList.stream().filter(u -> u.isPrivateProfile() == user.isPrivateProfile()).collect(Collectors.toList());
+        }
+        else
+        {
+            newList = newList.stream().filter(u -> u.isPrivateProfile() == user.isPrivateProfile()).collect(Collectors.toList());
+        }
+        
+        return newList;
+    }
+    
     /* Setters = Não sei como vamos fazer ainda */
     /* Mas vamos ter de saber em que posição está o objecto a que chegamos na lista para depois poder editalo */
     /* Pode-se fazer tipo: fazes get á lista (tipo getUsers()) e lá no swing (?) vais buscar o utilizador que queres, editas e fazes repo.setUsers(novaLista); ou algo assim */
@@ -912,6 +1042,9 @@ public class Repository {
         }
     }
     
+    public void addUserAutoRegister(User user) {
+        this.users.add(user);
+    }
     
     ///////////////////////////////////////// Adding Property //////////////////////////////////////////////
     
@@ -923,6 +1056,8 @@ public class Repository {
     ////////////////////////////////////// Edit /////////////////////////////////////////
     
     /////////// Edit Users ///////////////
+    
+    
     public List<User> editUsers(Class c, User user){
         
     List<User> novaLista = new ArrayList<>();
@@ -936,8 +1071,12 @@ public class Repository {
             }
             else
             {
-                 novaLista.add(u);
-             }
+                novaLista.add(u);
+            }
+        }
+        else
+        {
+            novaLista.add(u);
         }
     }
     return novaLista; 

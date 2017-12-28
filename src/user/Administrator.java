@@ -21,6 +21,11 @@ public class Administrator extends User {
         super(username, password, name, citizenID, NIF, phoneNumber, address, location, registerDate, privateProfile);
         this.division = new Division();
     }
+    
+    public Administrator() {
+        super("","","","",-1,-1,"","",new Date(),false);
+        this.division = new Division();
+    }
 
     public Division getDivision() {
         return division;

@@ -19,7 +19,10 @@ public class Category{
         this.description = description;
     }
     
-    
+    public Category() {
+        this.name = "";
+        this.description = "";
+    }
 
     public String getName() {
         return name;

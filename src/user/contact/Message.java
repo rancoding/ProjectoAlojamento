@@ -5,6 +5,7 @@
  */
 package user.contact;
 
+import java.util.ArrayList;
 import java.util.List;
 import user.User;
 
@@ -25,6 +26,13 @@ public class Message {
         this.message = description;
         this.sender = sender;
         this.receivers = receivers;
+    }
+    
+    public Message() {
+        this.subject = "";
+        this.message = "";
+        this.sender = new User();
+        this.receivers = new ArrayList<>();
     }
 
     public String getSubject() {

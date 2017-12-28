@@ -6,21 +6,22 @@
 package projectoalojamento;
 
 import java.awt.Dimension;
-import java.awt.Toolkit;
-import javax.swing.*;
-import java.awt.event.*;
+import javax.swing.JFrame;
 
 /**
  *
  * @author Gustavo Vieira
  */
-public class Application extends javax.swing.JFrame {
+public class Application extends javax.swing.JFrame implements Runnable {
 
     /**
      * Creates new form Application
      */
     public Application() {
         initComponents();
+        this.setSize(200,200);
+        this.setMinimumSize(new Dimension(200,200));
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -38,7 +39,7 @@ public class Application extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 629, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -47,7 +48,7 @@ public class Application extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     /**
      * @param args the command line arguments
      */
@@ -82,199 +83,25 @@ public class Application extends javax.swing.JFrame {
             }
         });
         
-        JFrame j = new JFrame();
-        j.setSize(400,400);
+        Application a = new Application();
+        a.setVisible(true);
+        a.setSize(500,500);
+        a.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Thread t = new Thread(a);
+        t.start();
         
-        // Mete a janela a abrir no meio do ecrã
-        // this.setLocationRelativeTo(null);
-        
-        // Mesma coisa maneira diferente ?
-        Toolkit tk = Toolkit.getDefaultToolkit();
-        Dimension dim = tk.getScreenSize();
-        
-        int xPos = (dim.width / 2) - (j.getWidth() / 2);
-        int yPos = (dim.height / 2) - (j.getHeight() / 2);
-        
-        j.setLocation(xPos, yPos);
-        
-        // Não deixa mudar o tamanho da janela com o rato
-        j.setResizable(false);
-        
-        // Fecha a aplicação ao clicar no X
-        j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        j.setTitle("My First Frame");
-        
-        JPanel thePanel = new JPanel();
-        
-        JLabel label1 = new JLabel("Tell me something");
-        
-        label1.setText("New Text");
-        label1.setToolTipText("Doesn't do anything");
-        
-        thePanel.add(label1);
-        
-        JButton button1 = new JButton("Send");
-        //button1.setBorderPainted(false);
-        //button1.setContentAreaFilled(false);
-        button1.setText("New Button");
-        button1.setToolTipText("It's a button");
-        
-        thePanel.add(button1);
-        
-        JTextField textField1 = new JTextField("Type here", 15);
-        // Tamanho caracteres acho eu
-        textField1.setColumns(10);
-        textField1.setText("Type again");
-        textField1.setToolTipText("It's a field");
-        thePanel.add(textField1);
-        
-        JTextArea textArea1 = new JTextArea(15,20);
-        textArea1.setText("Just a whole bunch of text that is important\n");
-        // Ao chegar ao fim da linha passa pa baixo
-        textArea1.setLineWrap(true);
-        // Não parte as palavras com a cena de cima
-        textArea1.setWrapStyleWord(true);
-        
-        // Conta o número de linhas NOVAS
-        int nLines = textArea1.getLineCount();
-        textArea1.append(" number of lines: " + nLines);
-        
-        // Barra scroll po texto quando precisar
-        JScrollPane scrollbar1 = new JScrollPane(textArea1, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        
-        thePanel.add(scrollbar1);
-        
-        button1.setText("Click Here");
-        j.setTitle("My Second Frame");
-        textField1.setText("Type Here");
-        
-        //ListenForButton lForButton = new ListenForButton();
-        //button1.addActionListener(lForButton);
-        
-        j.add(button1);
-        
-        //ListenForKeys lForKeys = new ListenForKeys();
-        //textField1.addKeyListener(lForKeys);
-        
-        textArea1.setText("Tracking Events\n");
-        j.add(thePanel);
-        
-        //ListenForWindow lForWindow = new ListenForWindow();
-        //j.addWindowListener(lForWindow);
-        
-        j.setVisible(true);
-        
-        // Começa logo com o focus (escreves sem precisar clicar basicamente po caso do textfield)
-        //textField1.requestFocus();
-        
-        //ListenForMouse lForMouse = new ListenForMouse();
-        //thePanel.addMouseListener(lForMouse);
+        Application a2 = new Application();
+        a2.setVisible(true);
+        a2.setSize(250,200);
+        a2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Thread t2 = new Thread(a2);
+        t2.start();
     }
 
-    /*
-    private class ListenForMouse implements MouseListener {
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            textArea1.append("Mouse Panel pos: " + e.getX() + " " + e.getY() + "\n");
-            textArea1.append("Mouse Screen pos: " + e.getXOnScreen() + " " + e.getYOnScreen() + "\n");
-            textArea1.append("Mouse Button: " + e.getButton() + "\n");
-            textArea1.append("Mouse Clicks: " + e.getClickCount() + "\n");
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-        
-    }*/
-    /*
-    private class ListenForWindow implements WindowListener {
-
-        @Override
-        public void windowOpened(WindowEvent e) {
-            textArea1.append("Window is active");
-        }
-
-        @Override
-        public void windowClosing(WindowEvent e) {
-            
-        }
-
-        @Override
-        public void windowClosed(WindowEvent e) {
-            
-        }
-
-        @Override
-        public void windowIconified(WindowEvent e) {
-            
-        }
-
-        @Override
-        public void windowDeiconified(WindowEvent e) {
-            
-        }
-
-        @Override
-        public void windowActivated(WindowEvent e) {
-            
-        }
-
-        @Override
-        public void windowDeactivated(WindowEvent e) {
-            
-        }
-        
-    }*/
-    
-    /*
-    private class ListenForKeys implements KeyListener {
-
-        @Override
-        public void keyTyped(KeyEvent e) {
-            textArea1.append("Key Hit:" + e.getKeyChar() + "\n");
-        }
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void keyReleased(KeyEvent e) {
-            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-        
-    }*/
-    // Se desse variaveis globais
-    /*
-    private class ListenForButton implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            if(e.getSource() == button1) {
-                buttonClicked++;
-                textArea1.append("Button clicked " + buttonClicked + " times\n");
-                e.getSource().toString();
-            }
-        }
-    }*/
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void run() {
+    }
 }

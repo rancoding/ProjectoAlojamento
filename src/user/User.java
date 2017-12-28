@@ -49,8 +49,8 @@ public class User implements Serializable {
         this.phoneNumber = -1;
         this.address = "";
         this.location = "";
-        this.registerDate = registerDate;
-        this.privateProfile = privateProfile;
+        this.registerDate = new Date();
+        this.privateProfile = false;
         messages = new ArrayList<>();
     }
     

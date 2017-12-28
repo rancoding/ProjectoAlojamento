@@ -13,7 +13,7 @@ import user.User;
  * @author Gustavo
  */
 public class Ticket {
-    private int referenceID;
+    private final int referenceID;
     private TicketType ticketType;
     private String subject;
     private String message;

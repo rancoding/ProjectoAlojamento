@@ -18,6 +18,11 @@ public class Status {
         this.name = name;
         this.description = description;
     }
+    
+    public Status() {
+        this.name = "";
+        this.description = "";
+    }
 
     public String getName() {
         return name;

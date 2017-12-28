@@ -21,6 +21,12 @@ public class TicketType {
         this.category = category;
     }
     
+    public TicketType() {
+        this.name = "";
+        this.description = "";
+        this.category = new Category();
+    }
+    
     public String getName() {
         return name;
     }
