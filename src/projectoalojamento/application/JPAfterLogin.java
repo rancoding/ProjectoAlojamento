@@ -19,8 +19,8 @@ public class JPAfterLogin extends javax.swing.JPanel {
      */
     public JPAfterLogin(Application frame, JPLogin jpl) {
         initComponents();
-        this.frame = frame;
-        this.jpl = jpl;
+        //this.frame = frame;
+        //this.jpl = jpl;
     }
 
     /**
@@ -32,49 +32,186 @@ public class JPAfterLogin extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        afterLoginPanel = new javax.swing.JPanel();
+        afterLoginTopBarPanel = new javax.swing.JPanel();
+        afterLoginLanguageBox = new javax.swing.JComboBox();
+        afterLoginNameLabel = new javax.swing.JLabel();
+        afterLoginLogoPanel = new javax.swing.JPanel();
+        afterLoginInfoPanel = new javax.swing.JPanel();
+        afterLoginErrorPanel = new javax.swing.JPanel();
+        afterLoginErrorLabel = new javax.swing.JLabel();
+        afterLoginLocationField = new javax.swing.JTextField();
+        afterLoginStartingDatePicker = new org.jdesktop.swingx.JXDatePicker();
+        afterLoginEndingDatePicker = new org.jdesktop.swingx.JXDatePicker();
+        afterLoginNClientsSlider = new javax.swing.JSlider();
+        afterLoginPropertyTypeBox = new javax.swing.JComboBox();
+        afterLoginSearchButton = new javax.swing.JButton();
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        afterLoginLanguageBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PT", "EN" }));
+        afterLoginLanguageBox.setToolTipText("");
 
-        jButton2.setText("jButton2");
+        afterLoginNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        afterLoginNameLabel.setText("Gustavo Moreira Vieira");
+
+        javax.swing.GroupLayout afterLoginTopBarPanelLayout = new javax.swing.GroupLayout(afterLoginTopBarPanel);
+        afterLoginTopBarPanel.setLayout(afterLoginTopBarPanelLayout);
+        afterLoginTopBarPanelLayout.setHorizontalGroup(
+            afterLoginTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(afterLoginTopBarPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(afterLoginLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(afterLoginNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        afterLoginTopBarPanelLayout.setVerticalGroup(
+            afterLoginTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(afterLoginTopBarPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(afterLoginTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(afterLoginLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(afterLoginNameLabel))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout afterLoginLogoPanelLayout = new javax.swing.GroupLayout(afterLoginLogoPanel);
+        afterLoginLogoPanel.setLayout(afterLoginLogoPanelLayout);
+        afterLoginLogoPanelLayout.setHorizontalGroup(
+            afterLoginLogoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        afterLoginLogoPanelLayout.setVerticalGroup(
+            afterLoginLogoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 61, Short.MAX_VALUE)
+        );
+
+        afterLoginErrorLabel.setForeground(new java.awt.Color(240, 240, 240));
+        afterLoginErrorLabel.setText(" ");
+
+        javax.swing.GroupLayout afterLoginErrorPanelLayout = new javax.swing.GroupLayout(afterLoginErrorPanel);
+        afterLoginErrorPanel.setLayout(afterLoginErrorPanelLayout);
+        afterLoginErrorPanelLayout.setHorizontalGroup(
+            afterLoginErrorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, afterLoginErrorPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(afterLoginErrorLabel)
+                .addGap(480, 480, 480))
+        );
+        afterLoginErrorPanelLayout.setVerticalGroup(
+            afterLoginErrorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, afterLoginErrorPanelLayout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(afterLoginErrorLabel)
+                .addContainerGap())
+        );
+
+        afterLoginLocationField.setText(" Procurar por localidade");
+
+        afterLoginPropertyTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Quarto", "Apartamento" }));
+
+        afterLoginSearchButton.setText("Pesquisar");
+
+        javax.swing.GroupLayout afterLoginInfoPanelLayout = new javax.swing.GroupLayout(afterLoginInfoPanel);
+        afterLoginInfoPanel.setLayout(afterLoginInfoPanelLayout);
+        afterLoginInfoPanelLayout.setHorizontalGroup(
+            afterLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(afterLoginErrorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(afterLoginInfoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(afterLoginLocationField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(afterLoginStartingDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(afterLoginEndingDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(afterLoginNClientsSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(afterLoginPropertyTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(afterLoginSearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        afterLoginInfoPanelLayout.setVerticalGroup(
+            afterLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, afterLoginInfoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(afterLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(afterLoginLocationField)
+                    .addComponent(afterLoginStartingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(afterLoginEndingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(afterLoginNClientsSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(afterLoginPropertyTypeBox)
+                    .addComponent(afterLoginSearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addComponent(afterLoginErrorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout afterLoginPanelLayout = new javax.swing.GroupLayout(afterLoginPanel);
+        afterLoginPanel.setLayout(afterLoginPanelLayout);
+        afterLoginPanelLayout.setHorizontalGroup(
+            afterLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(afterLoginTopBarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(afterLoginLogoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(afterLoginInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        afterLoginPanelLayout.setVerticalGroup(
+            afterLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(afterLoginPanelLayout.createSequentialGroup()
+                .addComponent(afterLoginTopBarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(afterLoginLogoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(afterLoginInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(109, 109, 109)
-                .addComponent(jButton1)
-                .addGap(72, 72, 72)
-                .addComponent(jButton2)
-                .addContainerGap(73, Short.MAX_VALUE))
+            .addComponent(afterLoginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(205, Short.MAX_VALUE))
+            .addComponent(afterLoginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
         //frame.changePanel(this.jpl);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private org.jdesktop.swingx.JXDatePicker afterLoginEndingDatePicker;
+    private javax.swing.JLabel afterLoginErrorLabel;
+    private javax.swing.JPanel afterLoginErrorPanel;
+    private javax.swing.JPanel afterLoginInfoPanel;
+    private javax.swing.JComboBox afterLoginLanguageBox;
+    private javax.swing.JTextField afterLoginLocationField;
+    private javax.swing.JPanel afterLoginLogoPanel;
+    private javax.swing.JSlider afterLoginNClientsSlider;
+    private javax.swing.JLabel afterLoginNameLabel;
+    private javax.swing.JPanel afterLoginPanel;
+    private javax.swing.JComboBox afterLoginPropertyTypeBox;
+    private javax.swing.JButton afterLoginSearchButton;
+    private org.jdesktop.swingx.JXDatePicker afterLoginStartingDatePicker;
+    private javax.swing.JPanel afterLoginTopBarPanel;
+    private javax.swing.JPanel framePanel;
+    private javax.swing.JPanel framePanel1;
+    private javax.swing.JPanel framePanel2;
+    private javax.swing.JPanel framePanel3;
+    private javax.swing.JPanel frameTopBarPanel;
+    private javax.swing.JPanel frameTopBarPanel1;
+    private javax.swing.JPanel frameTopBarPanel2;
+    private javax.swing.JPanel frameTopBarPanel3;
+    private javax.swing.JComboBox languageBox;
+    private javax.swing.JComboBox languageBox1;
+    private javax.swing.JComboBox languageBox2;
+    private javax.swing.JComboBox languageBox3;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JButton loginButton1;
+    private javax.swing.JButton loginButton2;
+    private javax.swing.JButton loginButton3;
+    private javax.swing.JButton registerButton;
+    private javax.swing.JButton registerButton1;
+    private javax.swing.JButton registerButton2;
+    private javax.swing.JButton registerButton3;
     // End of variables declaration//GEN-END:variables
 }

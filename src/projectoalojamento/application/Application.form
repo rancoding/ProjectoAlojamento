@@ -26,7 +26,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="framePanel" alignment="0" max="32767" attributes="0"/>
+          <Component id="framePanel" alignment="0" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -142,7 +142,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="endingDatePicker" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="nClientsSlider" max="-2" attributes="0"/>
+                      <Component id="nClientsSlider" min="-2" pref="200" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="propertyTypeBox" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>

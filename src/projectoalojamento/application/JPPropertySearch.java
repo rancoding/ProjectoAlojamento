@@ -27,19 +27,191 @@ public class JPPropertySearch extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        propertySearchPanel = new javax.swing.JPanel();
+        propertySearchTopBarPanel = new javax.swing.JPanel();
+        registerLanguageBox = new javax.swing.JComboBox();
+        propertySearchLogoPanel = new javax.swing.JPanel();
+        propertySearchInfoPanel = new javax.swing.JPanel();
+        registerLocationField = new javax.swing.JTextField();
+        registerStartingDatePicker = new org.jdesktop.swingx.JXDatePicker();
+        registerEndingDatePicker = new org.jdesktop.swingx.JXDatePicker();
+        registerNClientsSlider = new javax.swing.JSlider();
+        registerPropertyTypeBox = new javax.swing.JComboBox();
+        registerSearchButton = new javax.swing.JButton();
+        registerExtraSearchInfoPanel = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox();
+        propertySearchListPanel = new javax.swing.JPanel();
+        propertySearchListScrollPane = new javax.swing.JScrollPane();
+        propertySearchList = new javax.swing.JList();
+
+        registerLanguageBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PT", "EN" }));
+
+        javax.swing.GroupLayout propertySearchTopBarPanelLayout = new javax.swing.GroupLayout(propertySearchTopBarPanel);
+        propertySearchTopBarPanel.setLayout(propertySearchTopBarPanelLayout);
+        propertySearchTopBarPanelLayout.setHorizontalGroup(
+            propertySearchTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchTopBarPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(registerLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        propertySearchTopBarPanelLayout.setVerticalGroup(
+            propertySearchTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchTopBarPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(registerLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout propertySearchLogoPanelLayout = new javax.swing.GroupLayout(propertySearchLogoPanel);
+        propertySearchLogoPanel.setLayout(propertySearchLogoPanelLayout);
+        propertySearchLogoPanelLayout.setHorizontalGroup(
+            propertySearchLogoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        propertySearchLogoPanelLayout.setVerticalGroup(
+            propertySearchLogoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        registerLocationField.setText(" Localidade");
+
+        registerPropertyTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Quarto", "Apartamento" }));
+
+        registerSearchButton.setText("Pesquisar");
+
+        registerExtraSearchInfoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Informação Extra"));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Quarto", "Alojamento" }));
+
+        javax.swing.GroupLayout registerExtraSearchInfoPanelLayout = new javax.swing.GroupLayout(registerExtraSearchInfoPanel);
+        registerExtraSearchInfoPanel.setLayout(registerExtraSearchInfoPanelLayout);
+        registerExtraSearchInfoPanelLayout.setHorizontalGroup(
+            registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registerExtraSearchInfoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        registerExtraSearchInfoPanelLayout.setVerticalGroup(
+            registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registerExtraSearchInfoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(101, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout propertySearchInfoPanelLayout = new javax.swing.GroupLayout(propertySearchInfoPanel);
+        propertySearchInfoPanel.setLayout(propertySearchInfoPanelLayout);
+        propertySearchInfoPanelLayout.setHorizontalGroup(
+            propertySearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(propertySearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(registerExtraSearchInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(propertySearchInfoPanelLayout.createSequentialGroup()
+                        .addComponent(registerLocationField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(registerStartingDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(registerEndingDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(registerNClientsSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(registerPropertyTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(registerSearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        propertySearchInfoPanelLayout.setVerticalGroup(
+            propertySearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(propertySearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(registerSearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(registerPropertyTypeBox)
+                    .addComponent(registerNClientsSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(registerEndingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(registerStartingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(registerLocationField))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(registerExtraSearchInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        propertySearchList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        propertySearchListScrollPane.setViewportView(propertySearchList);
+
+        javax.swing.GroupLayout propertySearchListPanelLayout = new javax.swing.GroupLayout(propertySearchListPanel);
+        propertySearchListPanel.setLayout(propertySearchListPanelLayout);
+        propertySearchListPanelLayout.setHorizontalGroup(
+            propertySearchListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchListPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(propertySearchListScrollPane)
+                .addContainerGap())
+        );
+        propertySearchListPanelLayout.setVerticalGroup(
+            propertySearchListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchListPanelLayout.createSequentialGroup()
+                .addComponent(propertySearchListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout propertySearchPanelLayout = new javax.swing.GroupLayout(propertySearchPanel);
+        propertySearchPanel.setLayout(propertySearchPanelLayout);
+        propertySearchPanelLayout.setHorizontalGroup(
+            propertySearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(propertySearchTopBarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(propertySearchLogoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(propertySearchInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(propertySearchListPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        propertySearchPanelLayout.setVerticalGroup(
+            propertySearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchPanelLayout.createSequentialGroup()
+                .addComponent(propertySearchTopBarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(propertySearchLogoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(propertySearchInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(propertySearchListPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(propertySearchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(propertySearchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JPanel propertySearchInfoPanel;
+    private javax.swing.JList propertySearchList;
+    private javax.swing.JPanel propertySearchListPanel;
+    private javax.swing.JScrollPane propertySearchListScrollPane;
+    private javax.swing.JPanel propertySearchLogoPanel;
+    private javax.swing.JPanel propertySearchPanel;
+    private javax.swing.JPanel propertySearchTopBarPanel;
+    private org.jdesktop.swingx.JXDatePicker registerEndingDatePicker;
+    private javax.swing.JPanel registerExtraSearchInfoPanel;
+    private javax.swing.JComboBox registerLanguageBox;
+    private javax.swing.JTextField registerLocationField;
+    private javax.swing.JSlider registerNClientsSlider;
+    private javax.swing.JComboBox registerPropertyTypeBox;
+    private javax.swing.JButton registerSearchButton;
+    private org.jdesktop.swingx.JXDatePicker registerStartingDatePicker;
     // End of variables declaration//GEN-END:variables
 }
