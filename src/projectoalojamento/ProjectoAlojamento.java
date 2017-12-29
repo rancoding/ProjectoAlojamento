@@ -5,7 +5,6 @@
  */
 package projectoalojamento;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +13,6 @@ import property.Property;
 import property.PropertyCharacteristics;
 import property.PropertyType;
 import property.location.County;
-import user.Administrator;
 import user.Client;
 import user.Owner;
 import user.User;
