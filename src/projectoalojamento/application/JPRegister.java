@@ -39,7 +39,6 @@ public class JPRegister extends javax.swing.JPanel {
         registerTitleLabel = new javax.swing.JLabel();
         registerUserInfoPanel = new javax.swing.JPanel();
         registerUsernameField = new javax.swing.JTextField();
-        registerPasswordField = new javax.swing.JTextField();
         registerNameField = new javax.swing.JTextField();
         registerAddressField = new javax.swing.JTextField();
         registerLocationBox = new javax.swing.JComboBox();
@@ -51,6 +50,7 @@ public class JPRegister extends javax.swing.JPanel {
         registerOwnerAccountButton = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
         registerButton = new javax.swing.JButton();
+        registerPasswordField = new javax.swing.JPasswordField();
 
         registerLanguageBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PT", "EN" }));
 
@@ -123,8 +123,6 @@ public class JPRegister extends javax.swing.JPanel {
 
         registerUsernameField.setText(" Utilizador");
 
-        registerPasswordField.setText(" Password");
-
         registerNameField.setText(" Nome");
 
         registerAddressField.setText(" Morada");
@@ -164,6 +162,8 @@ public class JPRegister extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        registerPasswordField.setText("jPasswordField1");
+
         javax.swing.GroupLayout registerUserInfoPanelLayout = new javax.swing.GroupLayout(registerUserInfoPanel);
         registerUserInfoPanel.setLayout(registerUserInfoPanelLayout);
         registerUserInfoPanelLayout.setHorizontalGroup(
@@ -173,21 +173,21 @@ public class JPRegister extends javax.swing.JPanel {
                     .addGroup(registerUserInfoPanelLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(registerUserInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(registerUserInfoPanelLayout.createSequentialGroup()
-                                .addComponent(registerCitizenIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(registerNIFField))
-                            .addComponent(registerNameField, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registerUserInfoPanelLayout.createSequentialGroup()
                                 .addComponent(registerUsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(registerPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(registerPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                            .addComponent(registerNameField)
                             .addGroup(registerUserInfoPanelLayout.createSequentialGroup()
-                                .addComponent(registerAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(registerUserInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(registerAddressField)
+                                    .addComponent(registerCitizenIdField, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(registerLocationBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGroup(registerUserInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(registerNIFField)
+                                    .addComponent(registerLocationBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(registerUserInfoPanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(45, Short.MAX_VALUE)
                         .addGroup(registerUserInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(registerPhoneNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(registerClientAccountButton))
@@ -203,8 +203,8 @@ public class JPRegister extends javax.swing.JPanel {
             .addGroup(registerUserInfoPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(registerUserInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(registerPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(registerUsernameField))
+                    .addComponent(registerUsernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(registerPasswordField))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(registerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -300,7 +300,7 @@ public class JPRegister extends javax.swing.JPanel {
     private javax.swing.JTextField registerNameField;
     private javax.swing.JRadioButton registerOwnerAccountButton;
     private javax.swing.JPanel registerPanel;
-    private javax.swing.JTextField registerPasswordField;
+    private javax.swing.JPasswordField registerPasswordField;
     private javax.swing.JTextField registerPhoneNumberField;
     private javax.swing.JComboBox registerProfileBox;
     private javax.swing.JLabel registerTitleLabel;

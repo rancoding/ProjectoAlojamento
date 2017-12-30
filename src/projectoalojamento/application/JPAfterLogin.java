@@ -193,25 +193,5 @@ public class JPAfterLogin extends javax.swing.JPanel {
     private javax.swing.JButton afterLoginSearchButton;
     private org.jdesktop.swingx.JXDatePicker afterLoginStartingDatePicker;
     private javax.swing.JPanel afterLoginTopBarPanel;
-    private javax.swing.JPanel framePanel;
-    private javax.swing.JPanel framePanel1;
-    private javax.swing.JPanel framePanel2;
-    private javax.swing.JPanel framePanel3;
-    private javax.swing.JPanel frameTopBarPanel;
-    private javax.swing.JPanel frameTopBarPanel1;
-    private javax.swing.JPanel frameTopBarPanel2;
-    private javax.swing.JPanel frameTopBarPanel3;
-    private javax.swing.JComboBox languageBox;
-    private javax.swing.JComboBox languageBox1;
-    private javax.swing.JComboBox languageBox2;
-    private javax.swing.JComboBox languageBox3;
-    private javax.swing.JButton loginButton;
-    private javax.swing.JButton loginButton1;
-    private javax.swing.JButton loginButton2;
-    private javax.swing.JButton loginButton3;
-    private javax.swing.JButton registerButton;
-    private javax.swing.JButton registerButton1;
-    private javax.swing.JButton registerButton2;
-    private javax.swing.JButton registerButton3;
     // End of variables declaration//GEN-END:variables
 }

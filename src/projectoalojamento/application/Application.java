@@ -23,7 +23,7 @@ public class Application extends javax.swing.JFrame {
     public Application() {
         initComponents();
         
-        this.setSize(1000, 300);
+        this.setSize(1015, 300);
         this.setLocationRelativeTo(null);
         
         /*
@@ -74,6 +74,8 @@ public class Application extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 300));
 
+        frameTopBarPanel.setPreferredSize(new java.awt.Dimension(1000, 45));
+
         languageBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PT", "EN" }));
 
         registerButton.setText("Registo");
@@ -103,6 +105,8 @@ public class Application extends javax.swing.JFrame {
                     .addComponent(loginButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        frameLogoPanel.setPreferredSize(new java.awt.Dimension(1000, 60));
 
         javax.swing.GroupLayout frameLogoPanelLayout = new javax.swing.GroupLayout(frameLogoPanel);
         frameLogoPanel.setLayout(frameLogoPanelLayout);
@@ -174,7 +178,7 @@ public class Application extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(propertyTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         frameInfoPanelLayout.setVerticalGroup(

@@ -61,6 +61,11 @@
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="frameTopBarPanel">
+          <Properties>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 45]"/>
+            </Property>
+          </Properties>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -114,6 +119,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="frameLogoPanel">
+          <Properties>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 60]"/>
+            </Property>
+          </Properties>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -146,7 +156,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="propertyTypeBox" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="searchButton" pref="100" max="32767" attributes="0"/>
+                      <Component id="searchButton" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>

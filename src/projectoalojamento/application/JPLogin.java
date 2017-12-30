@@ -44,10 +44,10 @@ public class JPLogin extends javax.swing.JPanel {
         loginTitleLabel = new javax.swing.JLabel();
         loginUserPassPanel = new javax.swing.JPanel();
         loginUserField = new javax.swing.JTextField();
-        loginPassField = new javax.swing.JTextField();
         loginClientAccountButton = new javax.swing.JRadioButton();
         loginOwnerAccountButton = new javax.swing.JRadioButton();
         loginAdminAccountButton = new javax.swing.JRadioButton();
+        loginPassField = new javax.swing.JPasswordField();
         loginButtonPanel = new javax.swing.JPanel();
         loginButton = new javax.swing.JButton();
         loginErrorPanel = new javax.swing.JPanel();
@@ -107,9 +107,6 @@ public class JPLogin extends javax.swing.JPanel {
         loginUserField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         loginUserField.setText("Utilizador");
 
-        loginPassField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        loginPassField.setText("Password");
-
         buttonGroup1.add(loginClientAccountButton);
         loginClientAccountButton.setText("Conta Cliente");
 
@@ -119,6 +116,9 @@ public class JPLogin extends javax.swing.JPanel {
         buttonGroup1.add(loginAdminAccountButton);
         loginAdminAccountButton.setText("Conta Administrador");
 
+        loginPassField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        loginPassField.setText("Password");
+
         javax.swing.GroupLayout loginUserPassPanelLayout = new javax.swing.GroupLayout(loginUserPassPanel);
         loginUserPassPanel.setLayout(loginUserPassPanelLayout);
         loginUserPassPanelLayout.setHorizontalGroup(
@@ -127,25 +127,25 @@ public class JPLogin extends javax.swing.JPanel {
                 .addGap(117, 117, 117)
                 .addGroup(loginUserPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(loginUserPassPanelLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addGroup(loginUserPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(loginPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(loginUserField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(loginUserPassPanelLayout.createSequentialGroup()
                         .addComponent(loginClientAccountButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(loginOwnerAccountButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(loginAdminAccountButton)))
+                        .addComponent(loginAdminAccountButton))
+                    .addGroup(loginUserPassPanelLayout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addGroup(loginUserPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(loginUserField, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(loginPassField))))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
         loginUserPassPanelLayout.setVerticalGroup(
             loginUserPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginUserPassPanelLayout.createSequentialGroup()
                 .addComponent(loginUserField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(loginPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(loginUserPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginClientAccountButton)
                     .addComponent(loginOwnerAccountButton)
@@ -273,7 +273,7 @@ public class JPLogin extends javax.swing.JPanel {
     private javax.swing.JComboBox loginLanguageBox;
     private javax.swing.JRadioButton loginOwnerAccountButton;
     private javax.swing.JPanel loginPanel;
-    private javax.swing.JTextField loginPassField;
+    private javax.swing.JPasswordField loginPassField;
     private javax.swing.JLabel loginTitleLabel;
     private javax.swing.JPanel loginTitlePanel;
     private javax.swing.JPanel loginTopBarPanel;
