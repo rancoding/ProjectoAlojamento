@@ -5,17 +5,19 @@
  */
 package projectoalojamento.application;
 
-import java.util.Date;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
  *
  * @author Gustavo Vieira
  */
-public class Application extends javax.swing.JFrame {
+public class Application extends javax.swing.JFrame implements Runnable {
 
-    //private JPanel painelVisivel;
-    //private JPLogin jpl;
+    private JPanel visiblePanel;
+    private JPLogin jpl;
+    private JPRegister jpr;
+    private JPPropertySearch jpps;
     
     /**
      * Creates new form Application
@@ -23,28 +25,19 @@ public class Application extends javax.swing.JFrame {
     public Application() {
         initComponents();
         
-        this.setSize(1015, 300);
+        this.visiblePanel = this.framePanel;
+        this.pack();
         this.setLocationRelativeTo(null);
-        
-        /*
-        this.setLocationRelativeTo(null);
-        
-        this.jpl = new JPLogin(this);
-        
-        this.painelVisivel = jpl;
-        this.setContentPane(this.painelVisivel);
-        this.painelVisivel.setVisible(true);
-        */
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setVisible(true);
     }
 
-    /*
     public void changePanel(JPanel panel) {
-        this.painelVisivel.setVisible(false);
-        this.painelVisivel = panel;
-        this.setContentPane(this.painelVisivel);
-        this.painelVisivel.setVisible(true);
+        this.visiblePanel.setVisible(false);
+        this.visiblePanel = panel;
+        this.setContentPane(this.visiblePanel);
+        this.visiblePanel.setVisible(true);
     }
-    */
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,25 +55,39 @@ public class Application extends javax.swing.JFrame {
         loginButton = new javax.swing.JButton();
         frameLogoPanel = new javax.swing.JPanel();
         frameInfoPanel = new javax.swing.JPanel();
-        frameErrorPanel = new javax.swing.JPanel();
-        errorLabel = new javax.swing.JLabel();
         locationField = new javax.swing.JTextField();
         startingDatePicker = new org.jdesktop.swingx.JXDatePicker();
         endingDatePicker = new org.jdesktop.swingx.JXDatePicker();
         nClientsSlider = new javax.swing.JSlider();
         propertyTypeBox = new javax.swing.JComboBox();
         searchButton = new javax.swing.JButton();
+        frameErrorPanel = new javax.swing.JPanel();
+        errorLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 300));
 
         frameTopBarPanel.setPreferredSize(new java.awt.Dimension(1000, 45));
 
         languageBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PT", "EN" }));
+        languageBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                languageBoxItemStateChanged(evt);
+            }
+        });
 
         registerButton.setText("Registo");
+        registerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerButtonActionPerformed(evt);
+            }
+        });
 
         loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout frameTopBarPanelLayout = new javax.swing.GroupLayout(frameTopBarPanel);
         frameTopBarPanel.setLayout(frameTopBarPanelLayout);
@@ -119,6 +126,72 @@ public class Application extends javax.swing.JFrame {
             .addGap(0, 60, Short.MAX_VALUE)
         );
 
+        locationField.setForeground(new java.awt.Color(102, 102, 102));
+        locationField.setText(" Procurar por localidade");
+        locationField.setToolTipText("Localidade do alojamento");
+
+        startingDatePicker.setToolTipText("Data inicial disponível em reserva");
+
+        endingDatePicker.setToolTipText("Data final disponível em reserva");
+
+        nClientsSlider.setPaintLabels(true);
+        nClientsSlider.setToolTipText("Número de Viajantes");
+        nClientsSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                nClientsSliderStateChanged(evt);
+            }
+        });
+
+        propertyTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Quarto", "Apartamento" }));
+        propertyTypeBox.setToolTipText("Tipo de Alojamento");
+        propertyTypeBox.setMaximumSize(new java.awt.Dimension(150, 30));
+        propertyTypeBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                propertyTypeBoxActionPerformed(evt);
+            }
+        });
+
+        searchButton.setText("Pesquisar");
+        searchButton.setMaximumSize(new java.awt.Dimension(100, 30));
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout frameInfoPanelLayout = new javax.swing.GroupLayout(frameInfoPanel);
+        frameInfoPanel.setLayout(frameInfoPanelLayout);
+        frameInfoPanelLayout.setHorizontalGroup(
+            frameInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frameInfoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(locationField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(startingDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(endingDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nClientsSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(propertyTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        frameInfoPanelLayout.setVerticalGroup(
+            frameInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameInfoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(frameInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(locationField, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(startingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(propertyTypeBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nClientsSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(endingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
+        );
+
         errorLabel.setForeground(new java.awt.Color(240, 240, 240));
         errorLabel.setText(" ");
 
@@ -139,70 +212,14 @@ public class Application extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        locationField.setForeground(new java.awt.Color(102, 102, 102));
-        locationField.setText(" Procurar por localidade");
-
-        nClientsSlider.setPaintLabels(true);
-        nClientsSlider.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                nClientsSliderStateChanged(evt);
-            }
-        });
-
-        propertyTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Quarto", "Apartamento" }));
-        propertyTypeBox.setToolTipText("");
-        propertyTypeBox.setMaximumSize(new java.awt.Dimension(150, 30));
-        propertyTypeBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                propertyTypeBoxActionPerformed(evt);
-            }
-        });
-
-        searchButton.setText("Pesquisar");
-        searchButton.setMaximumSize(new java.awt.Dimension(100, 30));
-
-        javax.swing.GroupLayout frameInfoPanelLayout = new javax.swing.GroupLayout(frameInfoPanel);
-        frameInfoPanel.setLayout(frameInfoPanelLayout);
-        frameInfoPanelLayout.setHorizontalGroup(
-            frameInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(frameErrorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(frameInfoPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(locationField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(startingDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(endingDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nClientsSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(propertyTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        frameInfoPanelLayout.setVerticalGroup(
-            frameInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameInfoPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(frameInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(locationField, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(startingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(propertyTypeBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nClientsSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(endingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(frameErrorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
         javax.swing.GroupLayout framePanelLayout = new javax.swing.GroupLayout(framePanel);
         framePanel.setLayout(framePanelLayout);
         framePanelLayout.setHorizontalGroup(
             framePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(frameTopBarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(frameLogoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(frameLogoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(frameInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(frameErrorPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         framePanelLayout.setVerticalGroup(
             framePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,14 +229,15 @@ public class Application extends javax.swing.JFrame {
                 .addComponent(frameLogoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(frameInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(frameErrorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(framePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(framePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,6 +254,48 @@ public class Application extends javax.swing.JFrame {
     private void nClientsSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_nClientsSliderStateChanged
 
     }//GEN-LAST:event_nClientsSliderStateChanged
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+        Application a = new Application();
+        
+        a.jpl = new JPLogin(a, this.languageBox.getSelectedItem());
+        a.changePanel(a.jpl);
+        
+        Thread t = new Thread(a);
+        t.start();
+    }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
+        // TODO add your handling code here:
+        Application a = new Application();
+        
+        a.jpr = new JPRegister(a, this.languageBox.getSelectedItem());
+        a.changePanel(a.jpr);
+        
+        Thread t = new Thread(a);
+        t.start();
+    }//GEN-LAST:event_registerButtonActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+        this.jpps = new JPPropertySearch(this, this.languageBox.getSelectedItem());
+        this.changePanel(this.jpps);
+    }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void languageBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_languageBoxItemStateChanged
+        // TODO add your handling code here:
+        if(languageBox.getSelectedItem() == "EN")
+        {
+            this.loginButton.setText("Sign in");
+            this.registerButton.setText("Register");
+        }
+        else
+        {
+            this.loginButton.setText("Login");
+            this.registerButton.setText("Registo");
+        }
+    }//GEN-LAST:event_languageBoxItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -263,6 +323,9 @@ public class Application extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Application.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -289,4 +352,8 @@ public class Application extends javax.swing.JFrame {
     private javax.swing.JButton searchButton;
     private org.jdesktop.swingx.JXDatePicker startingDatePicker;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void run() {
+    }
 }

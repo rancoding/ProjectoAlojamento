@@ -11,11 +11,18 @@ package projectoalojamento.application;
  */
 public class JPPropertySearchInfo extends javax.swing.JPanel {
 
+    private Application frame;
+    private JPPropertySearch jpps;
+    private JPBooking jpb;
+    
     /**
      * Creates new form JPPropertyInfo
      */
-    public JPPropertySearchInfo() {
+    public JPPropertySearchInfo(Application frame, Object language) {
         initComponents();
+        this.frame = frame;
+        this.frame.setSize(1095, 659);
+        this.propertySearchInfoLanguageBox.setSelectedItem(language);
     }
 
     /**
@@ -27,356 +34,571 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jPanel10 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jPanel12 = new javax.swing.JPanel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jButton1 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
-        jPanel7 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        propertySearchInfoPanel = new javax.swing.JPanel();
+        propertySearchInfoTopBarPanel = new javax.swing.JPanel();
+        propertySearchInfoLanguageBox = new javax.swing.JComboBox();
+        propertySearchInfoNameLabel = new javax.swing.JLabel();
+        propertySearchInfoLogoPanel = new javax.swing.JPanel();
+        propertySearchInfoInfoPanel = new javax.swing.JPanel();
+        propertySearchInfoPropertyPanel = new javax.swing.JPanel();
+        propertySearchInfoPhotoPanel = new javax.swing.JPanel();
+        propertySearchInfoPhotoField = new javax.swing.JTextField();
+        propertySearchInfoDescriptionPanel = new javax.swing.JPanel();
+        propertySearchInfoDescriptionScrollPane = new javax.swing.JScrollPane();
+        propertySearchInfoDescriptionArea = new javax.swing.JTextArea();
+        propertySearchInfoPropertyInfoPanel = new javax.swing.JPanel();
+        propertySearchInfoFinalPriceField = new javax.swing.JFormattedTextField();
+        propertySearchInfoMessageButton = new javax.swing.JButton();
+        propertySearchInfoPropertyTypeField = new javax.swing.JTextField();
+        propertySearchInfoDiscountCheckBox = new javax.swing.JCheckBox();
+        propertySearchInfoDiscountLabel = new javax.swing.JLabel();
+        propertySearchInfoOriginalPriceLabel = new javax.swing.JLabel();
+        propertySearchInfoRatingField = new javax.swing.JTextField();
+        jComboBox2 = new javax.swing.JComboBox();
+        jTextField6 = new javax.swing.JTextField();
+        propertySearchInfoCharacteristicsPanel = new javax.swing.JPanel();
+        propertySearchInfoContainerPanel = new javax.swing.JPanel();
+        propertySearchInfoMinClientsField = new javax.swing.JTextField();
+        propertySearchInfoMaxClientsField = new javax.swing.JTextField();
+        propertySearchInfoMinClientsLabel = new javax.swing.JLabel();
+        propertySearchInfoMaxClientsLabel = new javax.swing.JLabel();
+        propertySearchInfoNRoomsField = new javax.swing.JTextField();
+        propertySearchInfoNBathroomsField = new javax.swing.JTextField();
+        propertySearchInfoNRoomsLabel = new javax.swing.JLabel();
+        propertySearchInfoNBathroomsLabel = new javax.swing.JLabel();
+        propertySearchInfoNBedsField = new javax.swing.JTextField();
+        propertySearchInfoBedsTypeBox = new javax.swing.JComboBox();
+        propertySearchInfoNBedsLabel = new javax.swing.JLabel();
+        propertySearchInfoExtrasLeftPanel = new javax.swing.JPanel();
+        propertySearchInfoPetsCheckBox = new javax.swing.JCheckBox();
+        propertySearchInfoBreakfastCheckBox = new javax.swing.JCheckBox();
+        propertySearchInfoWifiCheckBox = new javax.swing.JCheckBox();
+        propertySearchInfoPoolCheckBox = new javax.swing.JCheckBox();
+        propertySearchInfoWashingMachineCheckBox = new javax.swing.JCheckBox();
+        propertySearchInfoKitchenCheckBox = new javax.swing.JCheckBox();
+        propertySearchInfoRatingPanel = new javax.swing.JPanel();
+        propertySearchInfoRatingScrollPane = new javax.swing.JScrollPane();
+        propertySearchInfoRatingList = new javax.swing.JList();
+        propertySearchInfoButtonPanel = new javax.swing.JPanel();
+        propertySearchInfoBookingButton = new javax.swing.JButton();
+        propertySearchInfoBackButton = new javax.swing.JButton();
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PT", "EN" }));
+        propertySearchInfoLanguageBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PT", "EN" }));
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Gustavo Moreira Vieira");
+        propertySearchInfoNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        propertySearchInfoNameLabel.setText("Gustavo Moreira Vieira");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout propertySearchInfoTopBarPanelLayout = new javax.swing.GroupLayout(propertySearchInfoTopBarPanel);
+        propertySearchInfoTopBarPanel.setLayout(propertySearchInfoTopBarPanelLayout);
+        propertySearchInfoTopBarPanelLayout.setHorizontalGroup(
+            propertySearchInfoTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoTopBarPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(propertySearchInfoLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(propertySearchInfoNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        propertySearchInfoTopBarPanelLayout.setVerticalGroup(
+            propertySearchInfoTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoTopBarPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                .addGroup(propertySearchInfoTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(propertySearchInfoLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(propertySearchInfoNameLabel))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout propertySearchInfoLogoPanelLayout = new javax.swing.GroupLayout(propertySearchInfoLogoPanel);
+        propertySearchInfoLogoPanel.setLayout(propertySearchInfoLogoPanelLayout);
+        propertySearchInfoLogoPanelLayout.setHorizontalGroup(
+            propertySearchInfoLogoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        propertySearchInfoLogoPanelLayout.setVerticalGroup(
+            propertySearchInfoLogoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 60, Short.MAX_VALUE)
         );
 
-        jTextField1.setEditable(false);
-        jTextField1.setText("jTextField1");
+        propertySearchInfoPhotoField.setEditable(false);
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
+        javax.swing.GroupLayout propertySearchInfoPhotoPanelLayout = new javax.swing.GroupLayout(propertySearchInfoPhotoPanel);
+        propertySearchInfoPhotoPanel.setLayout(propertySearchInfoPhotoPanelLayout);
+        propertySearchInfoPhotoPanelLayout.setHorizontalGroup(
+            propertySearchInfoPhotoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoPhotoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                .addComponent(propertySearchInfoPhotoField, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
+        propertySearchInfoPhotoPanelLayout.setVerticalGroup(
+            propertySearchInfoPhotoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoPhotoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1)
+                .addComponent(propertySearchInfoPhotoField)
                 .addContainerGap())
         );
 
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        propertySearchInfoDescriptionArea.setEditable(false);
+        propertySearchInfoDescriptionArea.setColumns(20);
+        propertySearchInfoDescriptionArea.setRows(5);
+        propertySearchInfoDescriptionScrollPane.setViewportView(propertySearchInfoDescriptionArea);
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addComponent(jScrollPane2)
+        javax.swing.GroupLayout propertySearchInfoDescriptionPanelLayout = new javax.swing.GroupLayout(propertySearchInfoDescriptionPanel);
+        propertySearchInfoDescriptionPanel.setLayout(propertySearchInfoDescriptionPanelLayout);
+        propertySearchInfoDescriptionPanelLayout.setHorizontalGroup(
+            propertySearchInfoDescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, propertySearchInfoDescriptionPanelLayout.createSequentialGroup()
+                .addComponent(propertySearchInfoDescriptionScrollPane)
                 .addContainerGap())
         );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
+        propertySearchInfoDescriptionPanelLayout.setVerticalGroup(
+            propertySearchInfoDescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoDescriptionPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2)
+                .addComponent(propertySearchInfoDescriptionScrollPane)
                 .addContainerGap())
         );
 
-        jFormattedTextField1.setEditable(false);
-        jFormattedTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jFormattedTextField1.setText("120,000.00€");
-        jFormattedTextField1.setFocusable(false);
+        propertySearchInfoFinalPriceField.setEditable(false);
+        propertySearchInfoFinalPriceField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        propertySearchInfoFinalPriceField.setText("120,000.00€");
+        propertySearchInfoFinalPriceField.setFocusable(false);
 
-        jButton1.setText("Enviar mensagem a DonoXPTO");
+        propertySearchInfoMessageButton.setText("Enviar mensagem a DonoXPTO");
 
-        jTextField2.setEditable(false);
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("Quarto");
+        propertySearchInfoPropertyTypeField.setEditable(false);
+        propertySearchInfoPropertyTypeField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        propertySearchInfoPropertyTypeField.setText("Quarto");
 
-        jCheckBox1.setSelected(true);
-        jCheckBox1.setText("Contém desconto");
-        jCheckBox1.setEnabled(false);
+        propertySearchInfoDiscountCheckBox.setSelected(true);
+        propertySearchInfoDiscountCheckBox.setText("Contém desconto");
+        propertySearchInfoDiscountCheckBox.setEnabled(false);
 
-        jLabel1.setForeground(new java.awt.Color(204, 51, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("(100%)");
+        propertySearchInfoDiscountLabel.setForeground(new java.awt.Color(204, 51, 0));
+        propertySearchInfoDiscountLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        propertySearchInfoDiscountLabel.setText("(100%)");
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("150,000.00€");
+        propertySearchInfoOriginalPriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        propertySearchInfoOriginalPriceLabel.setText("150,000.00€");
 
-        jTextField3.setEditable(false);
-        jTextField3.setBackground(new java.awt.Color(102, 153, 255));
-        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("7.9");
-        jTextField3.setToolTipText("Avaliação do Alojamento");
-        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 255), 1, true));
+        propertySearchInfoRatingField.setEditable(false);
+        propertySearchInfoRatingField.setBackground(new java.awt.Color(102, 153, 255));
+        propertySearchInfoRatingField.setForeground(new java.awt.Color(255, 255, 255));
+        propertySearchInfoRatingField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        propertySearchInfoRatingField.setText("7.9");
+        propertySearchInfoRatingField.setToolTipText("Avaliação do Alojamento");
+        propertySearchInfoRatingField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 255), 1, true));
 
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1))
+        javax.swing.GroupLayout propertySearchInfoPropertyInfoPanelLayout = new javax.swing.GroupLayout(propertySearchInfoPropertyInfoPanel);
+        propertySearchInfoPropertyInfoPanel.setLayout(propertySearchInfoPropertyInfoPanelLayout);
+        propertySearchInfoPropertyInfoPanelLayout.setHorizontalGroup(
+            propertySearchInfoPropertyInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoPropertyInfoPanelLayout.createSequentialGroup()
+                .addGroup(propertySearchInfoPropertyInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(propertySearchInfoMessageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(propertySearchInfoDiscountCheckBox))
                 .addGap(190, 190, 190)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(propertySearchInfoPropertyTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(propertySearchInfoRatingField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(propertySearchInfoPropertyInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(propertySearchInfoPropertyInfoPanelLayout.createSequentialGroup()
+                        .addComponent(propertySearchInfoOriginalPriceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1))
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(propertySearchInfoDiscountLabel))
+                    .addComponent(propertySearchInfoFinalPriceField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        propertySearchInfoPropertyInfoPanelLayout.setVerticalGroup(
+            propertySearchInfoPropertyInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoPropertyInfoPanelLayout.createSequentialGroup()
+                .addGroup(propertySearchInfoPropertyInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(propertySearchInfoFinalPriceField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(propertySearchInfoMessageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(propertySearchInfoPropertyTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(propertySearchInfoRatingField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                .addGroup(propertySearchInfoPropertyInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(propertySearchInfoDiscountCheckBox)
+                    .addComponent(propertySearchInfoDiscountLabel)
+                    .addComponent(propertySearchInfoOriginalPriceLabel))
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Contém Extras", "Extra 1", "Extra 2" }));
+
+        jTextField6.setEditable(false);
+        jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField6.setText("17/06/2017");
+
+        javax.swing.GroupLayout propertySearchInfoPropertyPanelLayout = new javax.swing.GroupLayout(propertySearchInfoPropertyPanel);
+        propertySearchInfoPropertyPanel.setLayout(propertySearchInfoPropertyPanelLayout);
+        propertySearchInfoPropertyPanelLayout.setHorizontalGroup(
+            propertySearchInfoPropertyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoPropertyPanelLayout.createSequentialGroup()
+                .addComponent(propertySearchInfoPhotoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(propertySearchInfoPropertyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(propertySearchInfoDescriptionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(propertySearchInfoPropertyInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(propertySearchInfoPropertyPanelLayout.createSequentialGroup()
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        propertySearchInfoPropertyPanelLayout.setVerticalGroup(
+            propertySearchInfoPropertyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoPropertyPanelLayout.createSequentialGroup()
+                .addComponent(propertySearchInfoDescriptionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
-            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(propertySearchInfoPropertyInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(propertySearchInfoPropertyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                    .addComponent(jTextField6))
+                .addContainerGap())
+            .addComponent(propertySearchInfoPhotoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Características"));
+        propertySearchInfoContainerPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Características"));
 
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        propertySearchInfoMinClientsField.setEditable(false);
+        propertySearchInfoMinClientsField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        propertySearchInfoMinClientsField.setText("1");
+
+        propertySearchInfoMaxClientsField.setEditable(false);
+        propertySearchInfoMaxClientsField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        propertySearchInfoMaxClientsField.setText("5");
+
+        propertySearchInfoMinClientsLabel.setText("Nº Viajantes Mínimo");
+
+        propertySearchInfoMaxClientsLabel.setText("Nº Viajantes Máximo");
+
+        propertySearchInfoNRoomsField.setEditable(false);
+        propertySearchInfoNRoomsField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        propertySearchInfoNRoomsField.setText("3");
+
+        propertySearchInfoNBathroomsField.setEditable(false);
+        propertySearchInfoNBathroomsField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        propertySearchInfoNBathroomsField.setText("7");
+
+        propertySearchInfoNRoomsLabel.setText("Nº Quartos");
+
+        propertySearchInfoNBathroomsLabel.setText("Nº Quartos de Banho");
+
+        propertySearchInfoNBedsField.setEditable(false);
+        propertySearchInfoNBedsField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        propertySearchInfoNBedsField.setText("5");
+
+        propertySearchInfoBedsTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipos de Cama" }));
+
+        propertySearchInfoNBedsLabel.setText("Nº Camas");
+
+        propertySearchInfoPetsCheckBox.setText("Animais de Estimação");
+        propertySearchInfoPetsCheckBox.setEnabled(false);
+
+        propertySearchInfoBreakfastCheckBox.setSelected(true);
+        propertySearchInfoBreakfastCheckBox.setText("Pequeno Almoço");
+        propertySearchInfoBreakfastCheckBox.setEnabled(false);
+
+        propertySearchInfoWifiCheckBox.setText("Wi-fi");
+        propertySearchInfoWifiCheckBox.setEnabled(false);
+
+        javax.swing.GroupLayout propertySearchInfoExtrasLeftPanelLayout = new javax.swing.GroupLayout(propertySearchInfoExtrasLeftPanel);
+        propertySearchInfoExtrasLeftPanel.setLayout(propertySearchInfoExtrasLeftPanelLayout);
+        propertySearchInfoExtrasLeftPanelLayout.setHorizontalGroup(
+            propertySearchInfoExtrasLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoExtrasLeftPanelLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(propertySearchInfoExtrasLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(propertySearchInfoPetsCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(propertySearchInfoBreakfastCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(propertySearchInfoWifiCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 128, Short.MAX_VALUE)
+        propertySearchInfoExtrasLeftPanelLayout.setVerticalGroup(
+            propertySearchInfoExtrasLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoExtrasLeftPanelLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(propertySearchInfoPetsCheckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(propertySearchInfoBreakfastCheckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(propertySearchInfoWifiCheckBox)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        propertySearchInfoPoolCheckBox.setSelected(true);
+        propertySearchInfoPoolCheckBox.setText("Piscina");
+        propertySearchInfoPoolCheckBox.setEnabled(false);
+
+        propertySearchInfoWashingMachineCheckBox.setText("Máquinha de Lavar");
+        propertySearchInfoWashingMachineCheckBox.setEnabled(false);
+
+        propertySearchInfoKitchenCheckBox.setText("Cozinha");
+        propertySearchInfoKitchenCheckBox.setEnabled(false);
+
+        javax.swing.GroupLayout propertySearchInfoContainerPanelLayout = new javax.swing.GroupLayout(propertySearchInfoContainerPanel);
+        propertySearchInfoContainerPanel.setLayout(propertySearchInfoContainerPanelLayout);
+        propertySearchInfoContainerPanelLayout.setHorizontalGroup(
+            propertySearchInfoContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoContainerPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(propertySearchInfoContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(propertySearchInfoMinClientsField)
+                    .addComponent(propertySearchInfoMaxClientsField, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(propertySearchInfoContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(propertySearchInfoMinClientsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(propertySearchInfoMaxClientsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(propertySearchInfoContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(propertySearchInfoNRoomsField)
+                    .addComponent(propertySearchInfoNBathroomsField, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(propertySearchInfoContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(propertySearchInfoNRoomsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(propertySearchInfoNBathroomsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(propertySearchInfoContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(propertySearchInfoContainerPanelLayout.createSequentialGroup()
+                        .addComponent(propertySearchInfoNBedsField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(propertySearchInfoNBedsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(propertySearchInfoBedsTypeBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(propertySearchInfoExtrasLeftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addGroup(propertySearchInfoContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(propertySearchInfoKitchenCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(propertySearchInfoWashingMachineCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(propertySearchInfoPoolCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(54, 54, 54))
+        );
+        propertySearchInfoContainerPanelLayout.setVerticalGroup(
+            propertySearchInfoContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoContainerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(propertySearchInfoContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(propertySearchInfoMinClientsField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(propertySearchInfoMinClientsLabel)
+                    .addComponent(propertySearchInfoNRoomsField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(propertySearchInfoNRoomsLabel)
+                    .addComponent(propertySearchInfoNBedsField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(propertySearchInfoNBedsLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(propertySearchInfoContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(propertySearchInfoContainerPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(propertySearchInfoContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(propertySearchInfoMaxClientsField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(propertySearchInfoMaxClientsLabel)
+                            .addComponent(propertySearchInfoNBathroomsField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(propertySearchInfoNBathroomsLabel)))
+                    .addComponent(propertySearchInfoBedsTypeBox))
+                .addGap(51, 51, 51))
+            .addGroup(propertySearchInfoContainerPanelLayout.createSequentialGroup()
+                .addComponent(propertySearchInfoExtrasLeftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(propertySearchInfoContainerPanelLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(propertySearchInfoKitchenCheckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(propertySearchInfoWashingMachineCheckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(propertySearchInfoPoolCheckBox)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout propertySearchInfoCharacteristicsPanelLayout = new javax.swing.GroupLayout(propertySearchInfoCharacteristicsPanel);
+        propertySearchInfoCharacteristicsPanel.setLayout(propertySearchInfoCharacteristicsPanelLayout);
+        propertySearchInfoCharacteristicsPanelLayout.setHorizontalGroup(
+            propertySearchInfoCharacteristicsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoCharacteristicsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(propertySearchInfoContainerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        propertySearchInfoCharacteristicsPanelLayout.setVerticalGroup(
+            propertySearchInfoCharacteristicsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoCharacteristicsPanelLayout.createSequentialGroup()
+                .addComponent(propertySearchInfoContainerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
+        propertySearchInfoRatingList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        propertySearchInfoRatingScrollPane.setViewportView(propertySearchInfoRatingList);
 
-        jButton2.setText("Reservar");
+        propertySearchInfoBookingButton.setText("Reservar");
+        propertySearchInfoBookingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                propertySearchInfoBookingButtonActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Voltar");
+        propertySearchInfoBackButton.setText("Voltar");
+        propertySearchInfoBackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                propertySearchInfoBackButtonActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout propertySearchInfoButtonPanelLayout = new javax.swing.GroupLayout(propertySearchInfoButtonPanel);
+        propertySearchInfoButtonPanel.setLayout(propertySearchInfoButtonPanelLayout);
+        propertySearchInfoButtonPanelLayout.setHorizontalGroup(
+            propertySearchInfoButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoButtonPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(propertySearchInfoBookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(propertySearchInfoBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+        propertySearchInfoButtonPanelLayout.setVerticalGroup(
+            propertySearchInfoButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, propertySearchInfoButtonPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                .addGroup(propertySearchInfoButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(propertySearchInfoBookingButton)
+                    .addComponent(propertySearchInfoBackButton))
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        javax.swing.GroupLayout propertySearchInfoRatingPanelLayout = new javax.swing.GroupLayout(propertySearchInfoRatingPanel);
+        propertySearchInfoRatingPanel.setLayout(propertySearchInfoRatingPanelLayout);
+        propertySearchInfoRatingPanelLayout.setHorizontalGroup(
+            propertySearchInfoRatingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoRatingPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(propertySearchInfoRatingScrollPane)
                 .addContainerGap())
-            .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(propertySearchInfoButtonPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        propertySearchInfoRatingPanelLayout.setVerticalGroup(
+            propertySearchInfoRatingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoRatingPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                .addComponent(propertySearchInfoRatingScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(propertySearchInfoButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout propertySearchInfoInfoPanelLayout = new javax.swing.GroupLayout(propertySearchInfoInfoPanel);
+        propertySearchInfoInfoPanel.setLayout(propertySearchInfoInfoPanelLayout);
+        propertySearchInfoInfoPanelLayout.setHorizontalGroup(
+            propertySearchInfoInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(propertySearchInfoPropertyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(propertySearchInfoCharacteristicsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(propertySearchInfoRatingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        propertySearchInfoInfoPanelLayout.setVerticalGroup(
+            propertySearchInfoInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoInfoPanelLayout.createSequentialGroup()
+                .addComponent(propertySearchInfoPropertyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(propertySearchInfoCharacteristicsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(propertySearchInfoRatingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout propertySearchInfoPanelLayout = new javax.swing.GroupLayout(propertySearchInfoPanel);
+        propertySearchInfoPanel.setLayout(propertySearchInfoPanelLayout);
+        propertySearchInfoPanelLayout.setHorizontalGroup(
+            propertySearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(propertySearchInfoTopBarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(propertySearchInfoLogoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(propertySearchInfoInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        propertySearchInfoPanelLayout.setVerticalGroup(
+            propertySearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoPanelLayout.createSequentialGroup()
+                .addComponent(propertySearchInfoTopBarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(propertySearchInfoLogoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(propertySearchInfoInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(propertySearchInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(propertySearchInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void propertySearchInfoBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchInfoBackButtonActionPerformed
+        // TODO add your handling code here:
+        this.jpps = new JPPropertySearch(this.frame, this.propertySearchInfoLanguageBox.getSelectedItem());
+        frame.changePanel(this.jpps);
+    }//GEN-LAST:event_propertySearchInfoBackButtonActionPerformed
+
+    private void propertySearchInfoBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchInfoBookingButtonActionPerformed
+        // TODO add your handling code here:
+        this.jpb = new JPBooking(this.frame, this.propertySearchInfoLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jpb);
+    }//GEN-LAST:event_propertySearchInfoBookingButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JList jList1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JButton propertySearchInfoBackButton;
+    private javax.swing.JComboBox propertySearchInfoBedsTypeBox;
+    private javax.swing.JButton propertySearchInfoBookingButton;
+    private javax.swing.JCheckBox propertySearchInfoBreakfastCheckBox;
+    private javax.swing.JPanel propertySearchInfoButtonPanel;
+    private javax.swing.JPanel propertySearchInfoCharacteristicsPanel;
+    private javax.swing.JPanel propertySearchInfoContainerPanel;
+    private javax.swing.JTextArea propertySearchInfoDescriptionArea;
+    private javax.swing.JPanel propertySearchInfoDescriptionPanel;
+    private javax.swing.JScrollPane propertySearchInfoDescriptionScrollPane;
+    private javax.swing.JCheckBox propertySearchInfoDiscountCheckBox;
+    private javax.swing.JLabel propertySearchInfoDiscountLabel;
+    private javax.swing.JPanel propertySearchInfoExtrasLeftPanel;
+    private javax.swing.JFormattedTextField propertySearchInfoFinalPriceField;
+    private javax.swing.JPanel propertySearchInfoInfoPanel;
+    private javax.swing.JCheckBox propertySearchInfoKitchenCheckBox;
+    private javax.swing.JComboBox propertySearchInfoLanguageBox;
+    private javax.swing.JPanel propertySearchInfoLogoPanel;
+    private javax.swing.JTextField propertySearchInfoMaxClientsField;
+    private javax.swing.JLabel propertySearchInfoMaxClientsLabel;
+    private javax.swing.JButton propertySearchInfoMessageButton;
+    private javax.swing.JTextField propertySearchInfoMinClientsField;
+    private javax.swing.JLabel propertySearchInfoMinClientsLabel;
+    private javax.swing.JTextField propertySearchInfoNBathroomsField;
+    private javax.swing.JLabel propertySearchInfoNBathroomsLabel;
+    private javax.swing.JTextField propertySearchInfoNBedsField;
+    private javax.swing.JLabel propertySearchInfoNBedsLabel;
+    private javax.swing.JTextField propertySearchInfoNRoomsField;
+    private javax.swing.JLabel propertySearchInfoNRoomsLabel;
+    private javax.swing.JLabel propertySearchInfoNameLabel;
+    private javax.swing.JLabel propertySearchInfoOriginalPriceLabel;
+    private javax.swing.JPanel propertySearchInfoPanel;
+    private javax.swing.JCheckBox propertySearchInfoPetsCheckBox;
+    private javax.swing.JTextField propertySearchInfoPhotoField;
+    private javax.swing.JPanel propertySearchInfoPhotoPanel;
+    private javax.swing.JCheckBox propertySearchInfoPoolCheckBox;
+    private javax.swing.JPanel propertySearchInfoPropertyInfoPanel;
+    private javax.swing.JPanel propertySearchInfoPropertyPanel;
+    private javax.swing.JTextField propertySearchInfoPropertyTypeField;
+    private javax.swing.JTextField propertySearchInfoRatingField;
+    private javax.swing.JList propertySearchInfoRatingList;
+    private javax.swing.JPanel propertySearchInfoRatingPanel;
+    private javax.swing.JScrollPane propertySearchInfoRatingScrollPane;
+    private javax.swing.JPanel propertySearchInfoTopBarPanel;
+    private javax.swing.JCheckBox propertySearchInfoWashingMachineCheckBox;
+    private javax.swing.JCheckBox propertySearchInfoWifiCheckBox;
     // End of variables declaration//GEN-END:variables
 }

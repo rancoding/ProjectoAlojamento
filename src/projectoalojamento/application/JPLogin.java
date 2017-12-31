@@ -5,6 +5,7 @@
  */
 package projectoalojamento.application;
 
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
 /**
@@ -19,9 +20,11 @@ public class JPLogin extends javax.swing.JPanel {
     /**
      * Creates new form JPLogin
      */
-    public JPLogin(Application frame) {
+    public JPLogin(Application frame, Object language) {
         initComponents();
         this.frame = frame;
+        this.frame.setSize(530,360);
+        this.loginLanguageBox.setSelectedItem(language);
         // N iniciar paineis
     }
 
@@ -55,6 +58,11 @@ public class JPLogin extends javax.swing.JPanel {
 
         loginLanguageBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PT", "EN" }));
         loginLanguageBox.setToolTipText("");
+        loginLanguageBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                loginLanguageBoxItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout loginTopBarPanelLayout = new javax.swing.GroupLayout(loginTopBarPanel);
         loginTopBarPanel.setLayout(loginTopBarPanelLayout);
@@ -85,16 +93,17 @@ public class JPLogin extends javax.swing.JPanel {
         );
 
         loginTitleLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        loginTitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         loginTitleLabel.setText("INICIAR SESSÃO");
 
         javax.swing.GroupLayout loginTitlePanelLayout = new javax.swing.GroupLayout(loginTitlePanel);
         loginTitlePanel.setLayout(loginTitlePanelLayout);
         loginTitlePanelLayout.setHorizontalGroup(
             loginTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginTitlePanelLayout.createSequentialGroup()
-                .addGap(209, 209, 209)
-                .addComponent(loginTitleLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginTitlePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(loginTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         loginTitlePanelLayout.setVerticalGroup(
             loginTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,8 +144,8 @@ public class JPLogin extends javax.swing.JPanel {
                     .addGroup(loginUserPassPanelLayout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addGroup(loginUserPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(loginUserField, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(loginPassField))))
+                            .addComponent(loginUserField)
+                            .addComponent(loginPassField, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
         loginUserPassPanelLayout.setVerticalGroup(
@@ -249,17 +258,26 @@ public class JPLogin extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(loginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
+        // Dentro do button    
+        this.jpal = new JPAfterLogin(this.frame, this, this.loginLanguageBox.getSelectedItem());   
+        this.frame.changePanel(this.jpal);
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void loginLanguageBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_loginLanguageBoxItemStateChanged
+        // TODO add your handling code here:
+        if(this.loginLanguageBox.getSelectedItem() == "EN")
+        {
+            this.loginTitleLabel.setText("SIGN IN");
+        }
+    }//GEN-LAST:event_loginLanguageBoxItemStateChanged
         
-// Dentro do button    
-//this.jpal = new JPAfterLogin(this.frame, this);   
-//this.frame.changePanel(this.jpal);
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

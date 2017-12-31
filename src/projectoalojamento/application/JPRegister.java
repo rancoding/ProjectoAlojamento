@@ -11,11 +11,17 @@ package projectoalojamento.application;
  */
 public class JPRegister extends javax.swing.JPanel {
 
+    private Application frame;
+    private JPAfterLogin jpal;
+    
     /**
      * Creates new form JPRegister
      */
-    public JPRegister() {
+    public JPRegister(Application frame, Object language) {
         initComponents();
+        this.frame = frame;
+        this.frame.setSize(500,472);
+        this.registerLanguageBox.setSelectedItem(language);
     }
 
     /**
@@ -48,7 +54,7 @@ public class JPRegister extends javax.swing.JPanel {
         registerProfileBox = new javax.swing.JComboBox();
         registerClientAccountButton = new javax.swing.JRadioButton();
         registerOwnerAccountButton = new javax.swing.JRadioButton();
-        jPanel1 = new javax.swing.JPanel();
+        registerButtonPanel = new javax.swing.JPanel();
         registerButton = new javax.swing.JButton();
         registerPasswordField = new javax.swing.JPasswordField();
 
@@ -144,19 +150,24 @@ public class JPRegister extends javax.swing.JPanel {
         registerOwnerAccountButton.setText("Conta Dono");
 
         registerButton.setText("Registar");
+        registerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerButtonActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout registerButtonPanelLayout = new javax.swing.GroupLayout(registerButtonPanel);
+        registerButtonPanel.setLayout(registerButtonPanelLayout);
+        registerButtonPanelLayout.setHorizontalGroup(
+            registerButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registerButtonPanelLayout.createSequentialGroup()
                 .addGap(205, 205, 205)
                 .addComponent(registerButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        registerButtonPanelLayout.setVerticalGroup(
+            registerButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registerButtonPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(registerButton)
                 .addContainerGap())
@@ -196,7 +207,7 @@ public class JPRegister extends javax.swing.JPanel {
                             .addComponent(registerOwnerAccountButton)
                             .addComponent(registerProfileBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(49, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(registerButtonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         registerUserInfoPanelLayout.setVerticalGroup(
             registerUserInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,7 +235,7 @@ public class JPRegister extends javax.swing.JPanel {
                     .addComponent(registerClientAccountButton)
                     .addComponent(registerOwnerAccountButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(registerButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout registerInfoPanelLayout = new javax.swing.GroupLayout(registerInfoPanel);
@@ -281,12 +292,19 @@ public class JPRegister extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
+        // TODO add your handling code here:
+        // Dentro do button    
+        this.jpal = new JPAfterLogin(this.frame, this, this.registerLanguageBox.getSelectedItem());   
+        this.frame.changePanel(this.jpal);
+    }//GEN-LAST:event_registerButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField registerAddressField;
     private javax.swing.JButton registerButton;
+    private javax.swing.JPanel registerButtonPanel;
     private javax.swing.JTextField registerCitizenIdField;
     private javax.swing.JRadioButton registerClientAccountButton;
     private javax.swing.JLabel registerErrorLabel;

@@ -59,7 +59,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="registerLanguageBox" min="-2" max="-2" attributes="0"/>
+                      <Component id="propertySearchLanguageBox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -68,14 +68,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="registerLanguageBox" min="-2" max="-2" attributes="0"/>
+                      <Component id="propertySearchLanguageBox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="14" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JComboBox" name="registerLanguageBox">
+            <Component class="javax.swing.JComboBox" name="propertySearchLanguageBox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
@@ -110,21 +110,21 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="registerExtraSearchInfoPanel" max="32767" attributes="0"/>
+                          <Component id="propertySearchExtraSearchInfoPanel" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="registerLocationField" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="propertySearchLocationField" min="-2" pref="200" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="registerStartingDatePicker" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="propertySearchStartingDatePicker" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="registerEndingDatePicker" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="propertySearchEndingDatePicker" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="registerNClientsSlider" min="-2" pref="135" max="-2" attributes="0"/>
+                              <Component id="propertySearchNClientsSlider" min="-2" pref="135" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="jTextField3" min="-2" pref="63" max="-2" attributes="0"/>
+                              <Component id="propertySearchNClientsField" min="-2" pref="63" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="registerPropertyTypeBox" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="propertySearchPropertyTypeBox" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="registerSearchButton" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="propertySearchSearchButton" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -136,40 +136,40 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="registerSearchButton" max="32767" attributes="0"/>
-                          <Component id="registerNClientsSlider" pref="30" max="32767" attributes="0"/>
-                          <Component id="registerEndingDatePicker" max="32767" attributes="0"/>
-                          <Component id="registerStartingDatePicker" max="32767" attributes="0"/>
-                          <Component id="registerLocationField" max="32767" attributes="0"/>
-                          <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
-                          <Component id="registerPropertyTypeBox" alignment="0" max="32767" attributes="0"/>
+                          <Component id="propertySearchSearchButton" max="32767" attributes="0"/>
+                          <Component id="propertySearchNClientsSlider" pref="30" max="32767" attributes="0"/>
+                          <Component id="propertySearchEndingDatePicker" max="32767" attributes="0"/>
+                          <Component id="propertySearchStartingDatePicker" max="32767" attributes="0"/>
+                          <Component id="propertySearchLocationField" max="32767" attributes="0"/>
+                          <Component id="propertySearchNClientsField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="propertySearchPropertyTypeBox" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="registerExtraSearchInfoPanel" max="32767" attributes="0"/>
+                      <Component id="propertySearchExtraSearchInfoPanel" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="registerLocationField">
+            <Component class="javax.swing.JTextField" name="propertySearchLocationField">
               <Properties>
                 <Property name="text" type="java.lang.String" value=" Localidade"/>
               </Properties>
             </Component>
-            <Component class="org.jdesktop.swingx.JXDatePicker" name="registerStartingDatePicker">
+            <Component class="org.jdesktop.swingx.JXDatePicker" name="propertySearchStartingDatePicker">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Dia inicial dispon&#xed;vel para reserva"/>
               </Properties>
             </Component>
-            <Component class="org.jdesktop.swingx.JXDatePicker" name="registerEndingDatePicker">
+            <Component class="org.jdesktop.swingx.JXDatePicker" name="propertySearchEndingDatePicker">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Dia final dispon&#xed;vel para reserva"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JSlider" name="registerNClientsSlider">
+            <Component class="javax.swing.JSlider" name="propertySearchNClientsSlider">
             </Component>
-            <Component class="javax.swing.JComboBox" name="registerPropertyTypeBox">
+            <Component class="javax.swing.JComboBox" name="propertySearchPropertyTypeBox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
@@ -179,12 +179,12 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="registerSearchButton">
+            <Component class="javax.swing.JButton" name="propertySearchSearchButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pesquisar"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JPanel" name="registerExtraSearchInfoPanel">
+            <Container class="javax.swing.JPanel" name="propertySearchExtraSearchInfoPanel">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -199,40 +199,40 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jSpinner1" pref="100" max="32767" attributes="0"/>
-                              <Component id="jSpinner2" max="32767" attributes="0"/>
-                              <Component id="jSpinner3" max="32767" attributes="0"/>
-                              <Component id="jSpinner4" max="32767" attributes="0"/>
+                              <Component id="propertySearchNClientsSpinner" pref="100" max="32767" attributes="0"/>
+                              <Component id="propertySearchNRoomsSpinner" max="32767" attributes="0"/>
+                              <Component id="propertySearchNBathroomsSpinner" max="32767" attributes="0"/>
+                              <Component id="propertySearchNBedsSpinner" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="propertySearchNBedsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="propertySearchNBathroomssLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="propertySearchNRoomsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="propertySearchNClientsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jSlider1" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="propertySearchMinPricePerNightSlider" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField1" max="32767" attributes="0"/>
+                                  <Component id="propertySearchMinPricePerNightField" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jComboBox1" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="propertySearchBedTypeBox" min="-2" pref="200" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jSlider2" pref="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel5" pref="100" max="32767" attributes="0"/>
+                                      <Component id="propertySearchMaxPricePerNightSlider" pref="0" max="32767" attributes="0"/>
+                                      <Component id="propertySearchMinRatingLabel" pref="100" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextField2" max="32767" attributes="0"/>
-                                      <Component id="jSpinner5" max="32767" attributes="0"/>
+                                      <Component id="propertySearchMaxPricePerNightField" max="32767" attributes="0"/>
+                                      <Component id="propertySearchMinRatingField" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jPanel1" max="32767" attributes="0"/>
+                          <Component id="propertySearchInfoExtraInfoPanel" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -242,47 +242,47 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="propertySearchInfoExtraInfoPanel" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jSpinner1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="propertySearchNClientsSpinner" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="propertySearchNClientsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                          <Component id="jSpinner5" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="propertySearchMinRatingField" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="propertySearchMinRatingLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jSpinner2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="propertySearchNRoomsSpinner" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="propertySearchNRoomsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jTextField2" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="jSlider2" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="propertySearchMaxPricePerNightField" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="propertySearchMaxPricePerNightSlider" alignment="1" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jSpinner3" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="propertySearchNBathroomsSpinner" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="propertySearchNBathroomssLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jTextField1" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jSlider1" alignment="0" pref="30" max="32767" attributes="0"/>
+                                          <Component id="propertySearchMinPricePerNightField" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="propertySearchMinPricePerNightSlider" alignment="0" pref="30" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jSpinner4" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="propertySearchNBedsSpinner" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="propertySearchNBedsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jComboBox1" max="32767" attributes="0"/>
+                                      <Component id="propertySearchBedTypeBox" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -292,44 +292,44 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JSpinner" name="jSpinner1">
+                <Component class="javax.swing.JSpinner" name="propertySearchNClientsSpinner">
                 </Component>
-                <Component class="javax.swing.JSpinner" name="jSpinner2">
+                <Component class="javax.swing.JSpinner" name="propertySearchNRoomsSpinner">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero m&#xed;nimo de quartos do alojamento"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JSpinner" name="jSpinner3">
+                <Component class="javax.swing.JSpinner" name="propertySearchNBathroomsSpinner">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero m&#xed;nimo de quartos de banho do alojamento"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JSpinner" name="jSpinner4">
+                <Component class="javax.swing.JSpinner" name="propertySearchNBedsSpinner">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero m&#xed;nimo de camas do alojamento"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel1">
+                <Component class="javax.swing.JLabel" name="propertySearchNClientsLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="N&#xba; Viajantes"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel2">
+                <Component class="javax.swing.JLabel" name="propertySearchNRoomsLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="N&#xba; Quartos"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel3">
+                <Component class="javax.swing.JLabel" name="propertySearchNBathroomssLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="N&#xba; Quartos de Banho"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel4">
+                <Component class="javax.swing.JLabel" name="propertySearchNBedsLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="N&#xba; Camas"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox1">
+                <Component class="javax.swing.JComboBox" name="propertySearchBedTypeBox">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
@@ -338,47 +338,47 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JSlider" name="jSlider1">
+                <Component class="javax.swing.JSlider" name="propertySearchMinPricePerNightSlider">
                   <Properties>
                     <Property name="minimum" type="int" value="1"/>
                     <Property name="value" type="int" value="1"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField1">
+                <Component class="javax.swing.JTextField" name="propertySearchMinPricePerNightField">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="120&#x20ac;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JSlider" name="jSlider2">
+                <Component class="javax.swing.JSlider" name="propertySearchMaxPricePerNightSlider">
                   <Properties>
                     <Property name="minimum" type="int" value="1"/>
                     <Property name="value" type="int" value="100"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField2">
+                <Component class="javax.swing.JTextField" name="propertySearchMaxPricePerNightField">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="120,000.00&#x20ac;"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertySearchMaxPricePerNightFieldActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JSpinner" name="jSpinner5">
+                <Component class="javax.swing.JSpinner" name="propertySearchMinRatingField">
                   <Properties>
                     <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
                       <SpinnerModel initial="0" maximum="10" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel5">
+                <Component class="javax.swing.JLabel" name="propertySearchMinRatingLabel">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="Avalia&#xe7;&#xe3;o M&#xed;nima"/>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JPanel" name="jPanel1">
+                <Container class="javax.swing.JPanel" name="propertySearchInfoExtraInfoPanel">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -393,22 +393,22 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jCheckBox4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="propertySearchPetsCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="propertySearchWashingMachineCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jCheckBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="propertySearchDiscountsCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="propertySearchKitchenCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="propertySearchWifiCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jCheckBox9" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox8" min="-2" max="-2" attributes="0"/>
+                                          <Component id="propertySearchPoolCheckBox" min="-2" max="-2" attributes="0"/>
+                                          <Component id="propertySearchBreakfastCheckBox" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" attributes="0">
-                                              <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="propertySearchExtrasCheckBox" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="propertySearchRatingsCheckBox" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -421,23 +421,23 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="propertySearchDiscountsCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="propertySearchExtrasCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="propertySearchRatingsCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
+                              <Component id="propertySearchPetsCheckBox" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jCheckBox5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="propertySearchKitchenCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="propertySearchBreakfastCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox6" min="-2" max="-2" attributes="0"/>
+                              <Component id="propertySearchWashingMachineCheckBox" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jCheckBox7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="propertySearchWifiCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="propertySearchPoolCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -445,47 +445,47 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+                    <Component class="javax.swing.JCheckBox" name="propertySearchDiscountsCheckBox">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Cont&#xe9;m descontos"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+                    <Component class="javax.swing.JCheckBox" name="propertySearchExtrasCheckBox">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Cont&#xe9;m extras"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+                    <Component class="javax.swing.JCheckBox" name="propertySearchRatingsCheckBox">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Cont&#xe9;m avalia&#xe7;&#xf5;es"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+                    <Component class="javax.swing.JCheckBox" name="propertySearchPetsCheckBox">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Animais de Estima&#xe7;&#xe3;o"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox5">
+                    <Component class="javax.swing.JCheckBox" name="propertySearchKitchenCheckBox">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Cozinha"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox6">
+                    <Component class="javax.swing.JCheckBox" name="propertySearchWashingMachineCheckBox">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="M&#xe1;quina de Lavar"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox7">
+                    <Component class="javax.swing.JCheckBox" name="propertySearchWifiCheckBox">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Wi-fi"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox8">
+                    <Component class="javax.swing.JCheckBox" name="propertySearchBreakfastCheckBox">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Pequeno Almo&#xe7;o"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox9">
+                    <Component class="javax.swing.JCheckBox" name="propertySearchPoolCheckBox">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Piscina"/>
                       </Properties>
@@ -494,7 +494,7 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JTextField" name="jTextField3">
+            <Component class="javax.swing.JTextField" name="propertySearchNClientsField">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="50"/>
@@ -544,6 +544,9 @@
                       </StringArray>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="propertySearchListMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

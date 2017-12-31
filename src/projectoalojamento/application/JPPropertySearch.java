@@ -5,17 +5,25 @@
  */
 package projectoalojamento.application;
 
+import javax.swing.JList;
+
 /**
  *
  * @author Gustavo Vieira
  */
 public class JPPropertySearch extends javax.swing.JPanel {
 
+    private Application frame;
+    private JPPropertySearchInfo jppsi;
+    
     /**
      * Creates new form JPPropertySearch
      */
-    public JPPropertySearch() {
+    public JPPropertySearch(Application frame, Object language) {
         initComponents();
+        this.frame = frame;
+        this.frame.setSize(1000,600);
+        this.propertySearchLanguageBox.setSelectedItem(language);
     }
 
     /**
@@ -29,47 +37,47 @@ public class JPPropertySearch extends javax.swing.JPanel {
 
         propertySearchPanel = new javax.swing.JPanel();
         propertySearchTopBarPanel = new javax.swing.JPanel();
-        registerLanguageBox = new javax.swing.JComboBox();
+        propertySearchLanguageBox = new javax.swing.JComboBox();
         propertySearchLogoPanel = new javax.swing.JPanel();
         propertySearchInfoPanel = new javax.swing.JPanel();
-        registerLocationField = new javax.swing.JTextField();
-        registerStartingDatePicker = new org.jdesktop.swingx.JXDatePicker();
-        registerEndingDatePicker = new org.jdesktop.swingx.JXDatePicker();
-        registerNClientsSlider = new javax.swing.JSlider();
-        registerPropertyTypeBox = new javax.swing.JComboBox();
-        registerSearchButton = new javax.swing.JButton();
-        registerExtraSearchInfoPanel = new javax.swing.JPanel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
-        jSpinner3 = new javax.swing.JSpinner();
-        jSpinner4 = new javax.swing.JSpinner();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jSlider1 = new javax.swing.JSlider();
-        jTextField1 = new javax.swing.JTextField();
-        jSlider2 = new javax.swing.JSlider();
-        jTextField2 = new javax.swing.JTextField();
-        jSpinner5 = new javax.swing.JSpinner();
-        jLabel5 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
-        jCheckBox8 = new javax.swing.JCheckBox();
-        jCheckBox9 = new javax.swing.JCheckBox();
-        jTextField3 = new javax.swing.JTextField();
+        propertySearchLocationField = new javax.swing.JTextField();
+        propertySearchStartingDatePicker = new org.jdesktop.swingx.JXDatePicker();
+        propertySearchEndingDatePicker = new org.jdesktop.swingx.JXDatePicker();
+        propertySearchNClientsSlider = new javax.swing.JSlider();
+        propertySearchPropertyTypeBox = new javax.swing.JComboBox();
+        propertySearchSearchButton = new javax.swing.JButton();
+        propertySearchExtraSearchInfoPanel = new javax.swing.JPanel();
+        propertySearchNClientsSpinner = new javax.swing.JSpinner();
+        propertySearchNRoomsSpinner = new javax.swing.JSpinner();
+        propertySearchNBathroomsSpinner = new javax.swing.JSpinner();
+        propertySearchNBedsSpinner = new javax.swing.JSpinner();
+        propertySearchNClientsLabel = new javax.swing.JLabel();
+        propertySearchNRoomsLabel = new javax.swing.JLabel();
+        propertySearchNBathroomssLabel = new javax.swing.JLabel();
+        propertySearchNBedsLabel = new javax.swing.JLabel();
+        propertySearchBedTypeBox = new javax.swing.JComboBox();
+        propertySearchMinPricePerNightSlider = new javax.swing.JSlider();
+        propertySearchMinPricePerNightField = new javax.swing.JTextField();
+        propertySearchMaxPricePerNightSlider = new javax.swing.JSlider();
+        propertySearchMaxPricePerNightField = new javax.swing.JTextField();
+        propertySearchMinRatingField = new javax.swing.JSpinner();
+        propertySearchMinRatingLabel = new javax.swing.JLabel();
+        propertySearchInfoExtraInfoPanel = new javax.swing.JPanel();
+        propertySearchDiscountsCheckBox = new javax.swing.JCheckBox();
+        propertySearchExtrasCheckBox = new javax.swing.JCheckBox();
+        propertySearchRatingsCheckBox = new javax.swing.JCheckBox();
+        propertySearchPetsCheckBox = new javax.swing.JCheckBox();
+        propertySearchKitchenCheckBox = new javax.swing.JCheckBox();
+        propertySearchWashingMachineCheckBox = new javax.swing.JCheckBox();
+        propertySearchWifiCheckBox = new javax.swing.JCheckBox();
+        propertySearchBreakfastCheckBox = new javax.swing.JCheckBox();
+        propertySearchPoolCheckBox = new javax.swing.JCheckBox();
+        propertySearchNClientsField = new javax.swing.JTextField();
         propertySearchListPanel = new javax.swing.JPanel();
         propertySearchListScrollPane = new javax.swing.JScrollPane();
         propertySearchList = new javax.swing.JList();
 
-        registerLanguageBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PT", "EN" }));
+        propertySearchLanguageBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PT", "EN" }));
 
         javax.swing.GroupLayout propertySearchTopBarPanelLayout = new javax.swing.GroupLayout(propertySearchTopBarPanel);
         propertySearchTopBarPanel.setLayout(propertySearchTopBarPanelLayout);
@@ -77,14 +85,14 @@ public class JPPropertySearch extends javax.swing.JPanel {
             propertySearchTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(propertySearchTopBarPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(registerLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(propertySearchLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         propertySearchTopBarPanelLayout.setVerticalGroup(
             propertySearchTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(propertySearchTopBarPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(registerLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(propertySearchLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -99,200 +107,200 @@ public class JPPropertySearch extends javax.swing.JPanel {
             .addGap(0, 60, Short.MAX_VALUE)
         );
 
-        registerLocationField.setText(" Localidade");
+        propertySearchLocationField.setText(" Localidade");
 
-        registerStartingDatePicker.setToolTipText("Dia inicial disponível para reserva");
+        propertySearchStartingDatePicker.setToolTipText("Dia inicial disponível para reserva");
 
-        registerEndingDatePicker.setToolTipText("Dia final disponível para reserva");
+        propertySearchEndingDatePicker.setToolTipText("Dia final disponível para reserva");
 
-        registerPropertyTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Quarto", "Apartamento" }));
+        propertySearchPropertyTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Quarto", "Apartamento" }));
 
-        registerSearchButton.setText("Pesquisar");
+        propertySearchSearchButton.setText("Pesquisar");
 
-        registerExtraSearchInfoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Informação Extra"));
+        propertySearchExtraSearchInfoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Informação Extra"));
 
-        jSpinner2.setToolTipText("Número mínimo de quartos do alojamento");
+        propertySearchNRoomsSpinner.setToolTipText("Número mínimo de quartos do alojamento");
 
-        jSpinner3.setToolTipText("Número mínimo de quartos de banho do alojamento");
+        propertySearchNBathroomsSpinner.setToolTipText("Número mínimo de quartos de banho do alojamento");
 
-        jSpinner4.setToolTipText("Número mínimo de camas do alojamento");
+        propertySearchNBedsSpinner.setToolTipText("Número mínimo de camas do alojamento");
 
-        jLabel1.setText("Nº Viajantes");
+        propertySearchNClientsLabel.setText("Nº Viajantes");
 
-        jLabel2.setText("Nº Quartos");
+        propertySearchNRoomsLabel.setText("Nº Quartos");
 
-        jLabel3.setText("Nº Quartos de Banho");
+        propertySearchNBathroomssLabel.setText("Nº Quartos de Banho");
 
-        jLabel4.setText("Nº Camas");
+        propertySearchNBedsLabel.setText("Nº Camas");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo de Cama" }));
+        propertySearchBedTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo de Cama" }));
 
-        jSlider1.setMinimum(1);
-        jSlider1.setValue(1);
+        propertySearchMinPricePerNightSlider.setMinimum(1);
+        propertySearchMinPricePerNightSlider.setValue(1);
 
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("120€");
+        propertySearchMinPricePerNightField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        propertySearchMinPricePerNightField.setText("120€");
 
-        jSlider2.setMinimum(1);
-        jSlider2.setValue(100);
+        propertySearchMaxPricePerNightSlider.setMinimum(1);
+        propertySearchMaxPricePerNightSlider.setValue(100);
 
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("120,000.00€");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        propertySearchMaxPricePerNightField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        propertySearchMaxPricePerNightField.setText("120,000.00€");
+        propertySearchMaxPricePerNightField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                propertySearchMaxPricePerNightFieldActionPerformed(evt);
             }
         });
 
-        jSpinner5.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
+        propertySearchMinRatingField.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Avaliação Mínima");
+        propertySearchMinRatingLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        propertySearchMinRatingLabel.setText("Avaliação Mínima");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Extras"));
+        propertySearchInfoExtraInfoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Extras"));
 
-        jCheckBox1.setText("Contém descontos");
+        propertySearchDiscountsCheckBox.setText("Contém descontos");
 
-        jCheckBox2.setText("Contém extras");
+        propertySearchExtrasCheckBox.setText("Contém extras");
 
-        jCheckBox3.setText("Contém avaliações");
+        propertySearchRatingsCheckBox.setText("Contém avaliações");
 
-        jCheckBox4.setText("Animais de Estimação");
+        propertySearchPetsCheckBox.setText("Animais de Estimação");
 
-        jCheckBox5.setText("Cozinha");
+        propertySearchKitchenCheckBox.setText("Cozinha");
 
-        jCheckBox6.setText("Máquina de Lavar");
+        propertySearchWashingMachineCheckBox.setText("Máquina de Lavar");
 
-        jCheckBox7.setText("Wi-fi");
+        propertySearchWifiCheckBox.setText("Wi-fi");
 
-        jCheckBox8.setText("Pequeno Almoço");
+        propertySearchBreakfastCheckBox.setText("Pequeno Almoço");
 
-        jCheckBox9.setText("Piscina");
+        propertySearchPoolCheckBox.setText("Piscina");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout propertySearchInfoExtraInfoPanelLayout = new javax.swing.GroupLayout(propertySearchInfoExtraInfoPanel);
+        propertySearchInfoExtraInfoPanel.setLayout(propertySearchInfoExtraInfoPanelLayout);
+        propertySearchInfoExtraInfoPanelLayout.setHorizontalGroup(
+            propertySearchInfoExtraInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoExtraInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox4)
-                    .addComponent(jCheckBox6)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox1)
-                            .addComponent(jCheckBox5)
-                            .addComponent(jCheckBox7))
+                .addGroup(propertySearchInfoExtraInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(propertySearchPetsCheckBox)
+                    .addComponent(propertySearchWashingMachineCheckBox)
+                    .addGroup(propertySearchInfoExtraInfoPanelLayout.createSequentialGroup()
+                        .addGroup(propertySearchInfoExtraInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(propertySearchDiscountsCheckBox)
+                            .addComponent(propertySearchKitchenCheckBox)
+                            .addComponent(propertySearchWifiCheckBox))
                         .addGap(16, 16, 16)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox9)
-                            .addComponent(jCheckBox8)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jCheckBox2)
+                        .addGroup(propertySearchInfoExtraInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(propertySearchPoolCheckBox)
+                            .addComponent(propertySearchBreakfastCheckBox)
+                            .addGroup(propertySearchInfoExtraInfoPanelLayout.createSequentialGroup()
+                                .addComponent(propertySearchExtrasCheckBox)
                                 .addGap(18, 18, 18)
-                                .addComponent(jCheckBox3)))))
+                                .addComponent(propertySearchRatingsCheckBox)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox3))
+        propertySearchInfoExtraInfoPanelLayout.setVerticalGroup(
+            propertySearchInfoExtraInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchInfoExtraInfoPanelLayout.createSequentialGroup()
+                .addGroup(propertySearchInfoExtraInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(propertySearchDiscountsCheckBox)
+                    .addComponent(propertySearchExtrasCheckBox)
+                    .addComponent(propertySearchRatingsCheckBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox4)
+                .addComponent(propertySearchPetsCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox5)
-                    .addComponent(jCheckBox8))
+                .addGroup(propertySearchInfoExtraInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(propertySearchKitchenCheckBox)
+                    .addComponent(propertySearchBreakfastCheckBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox6)
+                .addComponent(propertySearchWashingMachineCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox7)
-                    .addComponent(jCheckBox9))
+                .addGroup(propertySearchInfoExtraInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(propertySearchWifiCheckBox)
+                    .addComponent(propertySearchPoolCheckBox))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout registerExtraSearchInfoPanelLayout = new javax.swing.GroupLayout(registerExtraSearchInfoPanel);
-        registerExtraSearchInfoPanel.setLayout(registerExtraSearchInfoPanelLayout);
-        registerExtraSearchInfoPanelLayout.setHorizontalGroup(
-            registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(registerExtraSearchInfoPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout propertySearchExtraSearchInfoPanelLayout = new javax.swing.GroupLayout(propertySearchExtraSearchInfoPanel);
+        propertySearchExtraSearchInfoPanel.setLayout(propertySearchExtraSearchInfoPanelLayout);
+        propertySearchExtraSearchInfoPanelLayout.setHorizontalGroup(
+            propertySearchExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchExtraSearchInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(jSpinner2)
-                    .addComponent(jSpinner3)
-                    .addComponent(jSpinner4))
+                .addGroup(propertySearchExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(propertySearchNClientsSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(propertySearchNRoomsSpinner)
+                    .addComponent(propertySearchNBathroomsSpinner)
+                    .addComponent(propertySearchNBedsSpinner))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
+                .addGroup(propertySearchExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(propertySearchNBedsLabel)
+                    .addComponent(propertySearchNBathroomssLabel)
+                    .addComponent(propertySearchNRoomsLabel)
+                    .addComponent(propertySearchNClientsLabel))
                 .addGap(44, 44, 44)
-                .addGroup(registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(registerExtraSearchInfoPanelLayout.createSequentialGroup()
-                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(propertySearchExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(propertySearchExtraSearchInfoPanelLayout.createSequentialGroup()
+                        .addComponent(propertySearchMinPricePerNightSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1))
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(registerExtraSearchInfoPanelLayout.createSequentialGroup()
-                        .addGroup(registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                        .addComponent(propertySearchMinPricePerNightField))
+                    .addComponent(propertySearchBedTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(propertySearchExtraSearchInfoPanelLayout.createSequentialGroup()
+                        .addGroup(propertySearchExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(propertySearchMaxPricePerNightSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(propertySearchMinRatingLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                         .addGap(6, 6, 6)
-                        .addGroup(registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2)
-                            .addComponent(jSpinner5))))
+                        .addGroup(propertySearchExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(propertySearchMaxPricePerNightField)
+                            .addComponent(propertySearchMinRatingField))))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(propertySearchInfoExtraInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        registerExtraSearchInfoPanelLayout.setVerticalGroup(
-            registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(registerExtraSearchInfoPanelLayout.createSequentialGroup()
+        propertySearchExtraSearchInfoPanelLayout.setVerticalGroup(
+            propertySearchExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(propertySearchExtraSearchInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(registerExtraSearchInfoPanelLayout.createSequentialGroup()
-                        .addGroup(registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1))
-                            .addGroup(registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5)))
+                .addGroup(propertySearchExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(propertySearchInfoExtraInfoPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(propertySearchExtraSearchInfoPanelLayout.createSequentialGroup()
+                        .addGroup(propertySearchExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(propertySearchExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(propertySearchNClientsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(propertySearchNClientsLabel))
+                            .addGroup(propertySearchExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(propertySearchMinRatingField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(propertySearchMinRatingLabel)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2))
-                            .addGroup(registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jSlider2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(propertySearchExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(propertySearchExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(propertySearchNRoomsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(propertySearchNRoomsLabel))
+                            .addGroup(propertySearchExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(propertySearchMaxPricePerNightField, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(propertySearchMaxPricePerNightSlider, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3))
-                            .addGroup(registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jSlider1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)))
+                        .addGroup(propertySearchExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(propertySearchExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(propertySearchNBathroomsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(propertySearchNBathroomssLabel))
+                            .addGroup(propertySearchExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(propertySearchMinPricePerNightField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(propertySearchMinPricePerNightSlider, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(registerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4))
-                            .addComponent(jComboBox1))))
+                        .addGroup(propertySearchExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(propertySearchExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(propertySearchNBedsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(propertySearchNBedsLabel))
+                            .addComponent(propertySearchBedTypeBox))))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("50");
-        jTextField3.setToolTipText("Número de Viajantes");
+        propertySearchNClientsField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        propertySearchNClientsField.setText("50");
+        propertySearchNClientsField.setToolTipText("Número de Viajantes");
 
         javax.swing.GroupLayout propertySearchInfoPanelLayout = new javax.swing.GroupLayout(propertySearchInfoPanel);
         propertySearchInfoPanel.setLayout(propertySearchInfoPanelLayout);
@@ -301,21 +309,21 @@ public class JPPropertySearch extends javax.swing.JPanel {
             .addGroup(propertySearchInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(propertySearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(registerExtraSearchInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(propertySearchExtraSearchInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(propertySearchInfoPanelLayout.createSequentialGroup()
-                        .addComponent(registerLocationField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(propertySearchLocationField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(registerStartingDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(propertySearchStartingDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(registerEndingDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(propertySearchEndingDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(registerNClientsSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(propertySearchNClientsSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(propertySearchNClientsField, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(registerPropertyTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(propertySearchPropertyTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(registerSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(propertySearchSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         propertySearchInfoPanelLayout.setVerticalGroup(
@@ -323,15 +331,15 @@ public class JPPropertySearch extends javax.swing.JPanel {
             .addGroup(propertySearchInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(propertySearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(registerSearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(registerNClientsSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(registerEndingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(registerStartingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(registerLocationField)
-                    .addComponent(jTextField3)
-                    .addComponent(registerPropertyTypeBox))
+                    .addComponent(propertySearchSearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(propertySearchNClientsSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(propertySearchEndingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(propertySearchStartingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(propertySearchLocationField)
+                    .addComponent(propertySearchNClientsField)
+                    .addComponent(propertySearchPropertyTypeBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(registerExtraSearchInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(propertySearchExtraSearchInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -339,6 +347,11 @@ public class JPPropertySearch extends javax.swing.JPanel {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
+        });
+        propertySearchList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                propertySearchListMouseClicked(evt);
+            }
         });
         propertySearchListScrollPane.setViewportView(propertySearchList);
 
@@ -391,52 +404,64 @@ public class JPPropertySearch extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void propertySearchMaxPricePerNightFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchMaxPricePerNightFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_propertySearchMaxPricePerNightFieldActionPerformed
+
+    private void propertySearchListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_propertySearchListMouseClicked
+        // TODO add your handling code here:
+        JList list = (JList)evt.getSource();
+        
+        if(evt.getClickCount() == 2)
+        {
+            this.jppsi = new JPPropertySearchInfo(this.frame, this.propertySearchLanguageBox.getSelectedItem());
+            this.frame.changePanel(this.jppsi);
+        }
+        
+    }//GEN-LAST:event_propertySearchListMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
-    private javax.swing.JCheckBox jCheckBox8;
-    private javax.swing.JCheckBox jCheckBox9;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JSlider jSlider1;
-    private javax.swing.JSlider jSlider2;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
-    private javax.swing.JSpinner jSpinner5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JComboBox propertySearchBedTypeBox;
+    private javax.swing.JCheckBox propertySearchBreakfastCheckBox;
+    private javax.swing.JCheckBox propertySearchDiscountsCheckBox;
+    private org.jdesktop.swingx.JXDatePicker propertySearchEndingDatePicker;
+    private javax.swing.JPanel propertySearchExtraSearchInfoPanel;
+    private javax.swing.JCheckBox propertySearchExtrasCheckBox;
+    private javax.swing.JPanel propertySearchInfoExtraInfoPanel;
     private javax.swing.JPanel propertySearchInfoPanel;
+    private javax.swing.JCheckBox propertySearchKitchenCheckBox;
+    private javax.swing.JComboBox propertySearchLanguageBox;
     private javax.swing.JList propertySearchList;
     private javax.swing.JPanel propertySearchListPanel;
     private javax.swing.JScrollPane propertySearchListScrollPane;
+    private javax.swing.JTextField propertySearchLocationField;
     private javax.swing.JPanel propertySearchLogoPanel;
+    private javax.swing.JTextField propertySearchMaxPricePerNightField;
+    private javax.swing.JSlider propertySearchMaxPricePerNightSlider;
+    private javax.swing.JTextField propertySearchMinPricePerNightField;
+    private javax.swing.JSlider propertySearchMinPricePerNightSlider;
+    private javax.swing.JSpinner propertySearchMinRatingField;
+    private javax.swing.JLabel propertySearchMinRatingLabel;
+    private javax.swing.JSpinner propertySearchNBathroomsSpinner;
+    private javax.swing.JLabel propertySearchNBathroomssLabel;
+    private javax.swing.JLabel propertySearchNBedsLabel;
+    private javax.swing.JSpinner propertySearchNBedsSpinner;
+    private javax.swing.JTextField propertySearchNClientsField;
+    private javax.swing.JLabel propertySearchNClientsLabel;
+    private javax.swing.JSlider propertySearchNClientsSlider;
+    private javax.swing.JSpinner propertySearchNClientsSpinner;
+    private javax.swing.JLabel propertySearchNRoomsLabel;
+    private javax.swing.JSpinner propertySearchNRoomsSpinner;
     private javax.swing.JPanel propertySearchPanel;
+    private javax.swing.JCheckBox propertySearchPetsCheckBox;
+    private javax.swing.JCheckBox propertySearchPoolCheckBox;
+    private javax.swing.JComboBox propertySearchPropertyTypeBox;
+    private javax.swing.JCheckBox propertySearchRatingsCheckBox;
+    private javax.swing.JButton propertySearchSearchButton;
+    private org.jdesktop.swingx.JXDatePicker propertySearchStartingDatePicker;
     private javax.swing.JPanel propertySearchTopBarPanel;
-    private org.jdesktop.swingx.JXDatePicker registerEndingDatePicker;
-    private javax.swing.JPanel registerExtraSearchInfoPanel;
-    private javax.swing.JComboBox registerLanguageBox;
-    private javax.swing.JTextField registerLocationField;
-    private javax.swing.JSlider registerNClientsSlider;
-    private javax.swing.JComboBox registerPropertyTypeBox;
-    private javax.swing.JButton registerSearchButton;
-    private org.jdesktop.swingx.JXDatePicker registerStartingDatePicker;
+    private javax.swing.JCheckBox propertySearchWashingMachineCheckBox;
+    private javax.swing.JCheckBox propertySearchWifiCheckBox;
     // End of variables declaration//GEN-END:variables
 }

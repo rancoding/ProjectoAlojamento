@@ -5,6 +5,8 @@
  */
 package projectoalojamento.application;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author Gustavo Vieira
@@ -12,15 +14,25 @@ package projectoalojamento.application;
 public class JPAfterLogin extends javax.swing.JPanel {
 
     private Application frame;
-    private JPLogin jpl;
+    //private JPLogin jpl;
+    //private JPRegister jpr;
     
     /**
      * Creates new form JPAfterLogin
      */
-    public JPAfterLogin(Application frame, JPLogin jpl) {
+    public JPAfterLogin(Application frame, JPanel panel, Object language) {
         initComponents();
-        //this.frame = frame;
-        //this.jpl = jpl;
+        this.frame = frame;
+        this.frame.setSize(1000, 253);
+        
+        /*if(panel instanceof JPLogin)
+        {
+            this.jpl = (JPLogin)panel;
+        }
+        else
+        {
+            this.jpr = (JPRegister)panel;
+        }*/
     }
 
     /**
