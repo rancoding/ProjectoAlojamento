@@ -36,6 +36,17 @@ public class Ticket {
         count++;
     }
     
+    public Ticket() {
+        this.referenceID = -1;
+        this.ticketType = new TicketType();
+        this.subject = "";
+        this.message = "";
+        this.division = new Division();
+        this.finalised = false;
+        this.status = new Status();
+        this.sender = new User();
+    }
+    
     public int getReferenceID() {
         return referenceID;
     }

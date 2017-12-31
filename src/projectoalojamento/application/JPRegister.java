@@ -295,7 +295,7 @@ public class JPRegister extends javax.swing.JPanel {
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
         // Dentro do button    
-        this.jpal = new JPAfterLogin(this.frame, this, this.registerLanguageBox.getSelectedItem());   
+        this.jpal = new JPAfterLogin(this.frame, this.registerLanguageBox.getSelectedItem());   
         this.frame.changePanel(this.jpal);
     }//GEN-LAST:event_registerButtonActionPerformed
 

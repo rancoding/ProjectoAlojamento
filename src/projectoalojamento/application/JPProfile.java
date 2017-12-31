@@ -11,11 +11,18 @@ package projectoalojamento.application;
  */
 public class JPProfile extends javax.swing.JPanel {
 
+    private Application frame;
+    private JPRatingList jprl;
+    private JPBookingList jpbl;
+    private JPAutoRegister jpar;
+    
     /**
      * Creates new form JPProfile
      */
-    public JPProfile() {
+    public JPProfile(Application frame, Object language) {
         initComponents();
+        this.frame = frame;
+        this.profileLanguageBox.setSelectedItem(language);
     }
 
     /**
@@ -107,10 +114,25 @@ public class JPProfile extends javax.swing.JPanel {
         );
 
         profileBookingButton.setText("Reservas");
+        profileBookingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                profileBookingButtonActionPerformed(evt);
+            }
+        });
 
         profileRatingButton.setText("Avaliações");
+        profileRatingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                profileRatingButtonActionPerformed(evt);
+            }
+        });
 
         profileAutoRegisterButton.setText("Auto-Registo");
+        profileAutoRegisterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                profileAutoRegisterButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout profileButtonPanelLayout = new javax.swing.GroupLayout(profileButtonPanel);
         profileButtonPanel.setLayout(profileButtonPanelLayout);
@@ -280,6 +302,24 @@ public class JPProfile extends javax.swing.JPanel {
             .addComponent(profilePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void profileBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileBookingButtonActionPerformed
+        // TODO add your handling code here:
+        this.jpbl = new JPBookingList(this.frame, this.profileLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jpbl);
+    }//GEN-LAST:event_profileBookingButtonActionPerformed
+
+    private void profileRatingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileRatingButtonActionPerformed
+        // TODO add your handling code here:
+        this.jprl = new JPRatingList(this.frame, this.profileLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jprl);
+    }//GEN-LAST:event_profileRatingButtonActionPerformed
+
+    private void profileAutoRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileAutoRegisterButtonActionPerformed
+        // TODO add your handling code here:
+        this.jpar = new JPAutoRegister(this.frame, this.profileLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jpar);
+    }//GEN-LAST:event_profileAutoRegisterButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

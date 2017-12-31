@@ -11,11 +11,16 @@ package projectoalojamento.application;
  */
 public class JPRating extends javax.swing.JPanel {
 
+    private Application frame;
+    private JPBookingList jbrl;
+    
     /**
      * Creates new form JPRating
      */
-    public JPRating() {
+    public JPRating(Application frame, Object language) {
         initComponents();
+        this.frame = frame;
+        this.ratingLanguageBox.setSelectedItem(language);
     }
 
     /**
@@ -100,8 +105,18 @@ public class JPRating extends javax.swing.JPanel {
         ratingNDaysField.setText("5 Dias");
 
         ratingButton.setText("Voltar");
+        ratingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ratingButtonActionPerformed(evt);
+            }
+        });
 
         ratingBackButton.setText("Avaliar");
+        ratingBackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ratingBackButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ratingButtonInfoPanelLayout = new javax.swing.GroupLayout(ratingButtonInfoPanel);
         ratingButtonInfoPanel.setLayout(ratingButtonInfoPanelLayout);
@@ -187,6 +202,18 @@ public class JPRating extends javax.swing.JPanel {
             .addComponent(ratingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ratingBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ratingBackButtonActionPerformed
+        // TODO add your handling code here:
+        this.jbrl = new JPBookingList(this.frame, this.ratingLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jbrl);
+    }//GEN-LAST:event_ratingBackButtonActionPerformed
+
+    private void ratingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ratingButtonActionPerformed
+        // TODO add your handling code here:
+        this.jbrl = new JPBookingList(this.frame, this.ratingLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jbrl);
+    }//GEN-LAST:event_ratingButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

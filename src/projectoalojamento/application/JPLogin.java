@@ -265,7 +265,7 @@ public class JPLogin extends javax.swing.JPanel {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
         // Dentro do button    
-        this.jpal = new JPAfterLogin(this.frame, this, this.loginLanguageBox.getSelectedItem());   
+        this.jpal = new JPAfterLogin(this.frame, this.loginLanguageBox.getSelectedItem());   
         this.frame.changePanel(this.jpal);
     }//GEN-LAST:event_loginButtonActionPerformed
 

@@ -11,11 +11,17 @@ package projectoalojamento.application;
  */
 public class JPBookingList extends javax.swing.JPanel {
 
+    private Application frame;
+    private JPProfile jpp;
+    private JPRating jpr;
+    
     /**
      * Creates new form JPBookingList
      */
-    public JPBookingList() {
+    public JPBookingList(Application frame, Object language) {
         initComponents();
+        this.frame = frame;
+        this.bookingListLanguageBox.setSelectedItem(language);
     }
 
     /**
@@ -163,8 +169,18 @@ public class JPBookingList extends javax.swing.JPanel {
         bookingListPropertyReferenceField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 0)));
 
         bookingListRatingButton.setText("Voltar");
+        bookingListRatingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookingListRatingButtonActionPerformed(evt);
+            }
+        });
 
         bookingListBackButton.setText("Avaliar");
+        bookingListBackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookingListBackButtonActionPerformed(evt);
+            }
+        });
 
         bookingListEditButton.setText("Editar");
         bookingListEditButton.setEnabled(false);
@@ -303,6 +319,18 @@ public class JPBookingList extends javax.swing.JPanel {
             .addComponent(bookingListPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bookingListRatingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingListRatingButtonActionPerformed
+        // TODO add your handling code here:
+        this.jpp = new JPProfile(this.frame, this.bookingListLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jpp);
+    }//GEN-LAST:event_bookingListRatingButtonActionPerformed
+
+    private void bookingListBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingListBackButtonActionPerformed
+        // TODO add your handling code here:
+        this.jpr = new JPRating(this.frame, this.bookingListLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jpr);
+    }//GEN-LAST:event_bookingListBackButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -11,11 +11,15 @@ package projectoalojamento.application;
  */
 public class JPRatingList extends javax.swing.JPanel {
 
+    private Application frame;
+    private JPProfile jpp;
     /**
      * Creates new form JPRatingList
      */
-    public JPRatingList() {
+    public JPRatingList(Application frame, Object language) {
         initComponents();
+        this.frame = frame;
+        this.ratingListLanguageBox.setSelectedItem(language);
     }
 
     /**
@@ -173,6 +177,11 @@ public class JPRatingList extends javax.swing.JPanel {
         );
 
         ratingListBackButton.setText("Voltar");
+        ratingListBackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ratingListBackButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ratingListInfoPanelLayout = new javax.swing.GroupLayout(ratingListInfoPanel);
         ratingListInfoPanel.setLayout(ratingListInfoPanelLayout);
@@ -245,6 +254,12 @@ public class JPRatingList extends javax.swing.JPanel {
                 .addComponent(ratingListRatingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ratingListBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ratingListBackButtonActionPerformed
+        // TODO add your handling code here:
+        this.jpp = new JPProfile(this.frame, this.ratingListLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jpp);
+    }//GEN-LAST:event_ratingListBackButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

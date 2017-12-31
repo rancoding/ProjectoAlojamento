@@ -5,17 +5,32 @@
  */
 package projectoalojamento;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import property.BedType;
+import property.Discount;
+import property.Photo;
 import property.Property;
 import property.PropertyCharacteristics;
 import property.PropertyType;
+import property.Rating;
+import property.Room;
+import property.booking.Booking;
+import property.booking.PaymentType;
 import property.location.County;
+import user.Administrator;
 import user.Client;
 import user.Owner;
 import user.User;
+import user.contact.Category;
+import user.contact.Division;
+import user.contact.Message;
+import user.contact.Status;
+import user.contact.Ticket;
+import user.contact.TicketType;
 
 /**
  *
@@ -28,6 +43,429 @@ public class ProjectoAlojamento {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        // Adicionar 20 propriedades xxxxxxxxxxx
+        // Adicionar 20 fotos xxxxxxxxxxxxxxx
+        // Adicionar 25 quartos xxxxxxxxxxxxx
+        // Adicionar 10 clientes xxxxxxxxxxxxx
+        // Adicionar 6 donos xxxxxxxxxxxxxxxxx
+        // Adicionar 3 admins xxxxxxxxxxxxxxx
+        // Adicionar 50 reservas xxxxxxxxxxxx
+        // Adicionar 2 tipos de pagamento xxxxxx
+        // Adicionar 20 avaliações xxxxxxxxxxx
+        // Adicionar 3 tipos de cama xxxxxxxxxxxx
+        // Adicionar 10 descontos xxxxxxxxxxxxx
+        // Adicionar 2 tipos de alojamento xxxxxx
+        // Adicionar 3 divisões xxxxxxxxxxxxxx
+        // Adicionar 3 tipos de ticket xxxxxxxx
+        // Adicionar 3 status xxxxxxxxxxxxxxx
+        // Adicionar 5 tickets xxxxxxxxxx
+        // Adicionar 10 mensagens xxxxxxxxxxx
+        // Adicionar 5 categorias xxxxxxxxxxxxxx
+        // Adicionar 20 características
+        // Adicionar as localidades
+        
+        Client c1 = new Client();
+        Client c2 = new Client();
+        Client c3 = new Client();
+        Client c4 = new Client();
+        Client c5 = new Client();
+        Client c6 = new Client();
+        Client c7 = new Client();
+        Client c8 = new Client();
+        Client c9 = new Client();
+        Client c10 = new Client();
+        
+        Owner o1 = new Owner();
+        Owner o2 = new Owner();
+        Owner o3 = new Owner();
+        Owner o4 = new Owner();
+        Owner o5 = new Owner();
+        Owner o6 = new Owner();
+        
+        Administrator a1 = new Administrator();
+        Administrator a2 = new Administrator();
+        Administrator a3 = new Administrator();
+        
+        PropertyType pt1 = new PropertyType();
+        PropertyType pt2 = new PropertyType();
+        
+        PaymentType pay1 = new PaymentType();
+        PaymentType pay2 = new PaymentType();
+        
+        BedType bt1 = new BedType();
+        BedType bt2 = new BedType();
+        BedType bt3 = new BedType();
+        
+        Division d1 = new Division();
+        Division d2 = new Division();
+        Division d3 = new Division();
+        
+        TicketType tt1 = new TicketType();
+        TicketType tt2 = new TicketType();
+        TicketType tt3 = new TicketType();
+        
+        Status s1 = new Status();
+        Status s2 = new Status();
+        Status s3 = new Status();
+        
+        Category ca1 = new Category();
+        Category ca2 = new Category();
+        Category ca3 = new Category();
+        Category ca4 = new Category();
+        Category ca5 = new Category();
+        
+        Ticket t1 = new Ticket();
+        Ticket t2 = new Ticket();
+        Ticket t3 = new Ticket();
+        Ticket t4 = new Ticket();
+        Ticket t5 = new Ticket();
+        
+        Message m1 = new Message();
+        Message m2 = new Message();
+        Message m3 = new Message();
+        Message m4 = new Message();
+        Message m5 = new Message();
+        Message m6 = new Message();
+        Message m7 = new Message();
+        Message m8 = new Message();
+        Message m9 = new Message();
+        Message m10 = new Message();
+        
+        Property p1 = new Property();
+        Property p2 = new Property();
+        Property p3 = new Property();
+        Property p4 = new Property();
+        Property p5 = new Property();
+        Property p6 = new Property();
+        Property p7 = new Property();
+        Property p8 = new Property();
+        Property p9 = new Property();
+        Property p10 = new Property();
+        Property p11 = new Property();
+        Property p12 = new Property();
+        Property p13 = new Property();
+        Property p14 = new Property();
+        Property p15 = new Property();
+        Property p16 = new Property();
+        Property p17 = new Property();
+        Property p18 = new Property();
+        Property p19 = new Property();
+        Property p20 = new Property();
+        
+        PropertyCharacteristics pc1 = new PropertyCharacteristics();
+        PropertyCharacteristics pc2 = new PropertyCharacteristics();
+        PropertyCharacteristics pc3 = new PropertyCharacteristics();
+        PropertyCharacteristics pc4 = new PropertyCharacteristics();
+        PropertyCharacteristics pc5 = new PropertyCharacteristics();
+        PropertyCharacteristics pc6 = new PropertyCharacteristics();
+        PropertyCharacteristics pc7 = new PropertyCharacteristics();
+        PropertyCharacteristics pc8 = new PropertyCharacteristics();
+        PropertyCharacteristics pc9 = new PropertyCharacteristics();
+        PropertyCharacteristics pc10 = new PropertyCharacteristics();
+        PropertyCharacteristics pc11 = new PropertyCharacteristics();
+        PropertyCharacteristics pc12 = new PropertyCharacteristics();
+        PropertyCharacteristics pc13 = new PropertyCharacteristics();
+        PropertyCharacteristics pc14 = new PropertyCharacteristics();
+        PropertyCharacteristics pc15 = new PropertyCharacteristics();
+        PropertyCharacteristics pc16 = new PropertyCharacteristics();
+        PropertyCharacteristics pc17 = new PropertyCharacteristics();
+        PropertyCharacteristics pc18 = new PropertyCharacteristics();
+        PropertyCharacteristics pc19 = new PropertyCharacteristics();
+        PropertyCharacteristics pc20 = new PropertyCharacteristics();
+        
+        Photo pho1 = new Photo();
+        Photo pho2 = new Photo();
+        Photo pho3 = new Photo();
+        Photo pho4 = new Photo();
+        Photo pho5 = new Photo();
+        Photo pho6 = new Photo();
+        Photo pho7 = new Photo();
+        Photo pho8 = new Photo();
+        Photo pho9 = new Photo();
+        Photo pho10 = new Photo();
+        Photo pho11 = new Photo();
+        Photo pho12 = new Photo();
+        Photo pho13 = new Photo();
+        Photo pho14 = new Photo();
+        Photo pho15 = new Photo();
+        Photo pho16 = new Photo();
+        Photo pho17 = new Photo();
+        Photo pho18 = new Photo();
+        Photo pho19 = new Photo();
+        Photo pho20 = new Photo();
+        
+        Room r1 = new Room();
+        Room r2 = new Room();
+        Room r3 = new Room();
+        Room r4 = new Room();
+        Room r5 = new Room();
+        Room r6 = new Room();
+        Room r7 = new Room();
+        Room r8 = new Room();
+        Room r9 = new Room();
+        Room r10 = new Room();
+        Room r11 = new Room();
+        Room r12 = new Room();
+        Room r13 = new Room();
+        Room r14 = new Room();
+        Room r15 = new Room();
+        Room r16 = new Room();
+        Room r17 = new Room();
+        Room r18 = new Room();
+        Room r19 = new Room();
+        Room r20 = new Room();
+        Room r21 = new Room();
+        Room r22 = new Room();
+        Room r23 = new Room();
+        Room r24 = new Room();
+        Room r25 = new Room();
+        
+        Booking b1 = new Booking();
+        Booking b2 = new Booking();
+        Booking b3 = new Booking();
+        Booking b4 = new Booking();
+        Booking b5 = new Booking();
+        Booking b6 = new Booking();
+        Booking b7 = new Booking();
+        Booking b8 = new Booking();
+        Booking b9 = new Booking();
+        Booking b10 = new Booking();
+        Booking b11 = new Booking();
+        Booking b12 = new Booking();
+        Booking b13 = new Booking();
+        Booking b14 = new Booking();
+        Booking b15 = new Booking();
+        Booking b16 = new Booking();
+        Booking b17 = new Booking();
+        Booking b18 = new Booking();
+        Booking b19 = new Booking();
+        Booking b20 = new Booking();
+        Booking b21 = new Booking();
+        Booking b22 = new Booking();
+        Booking b23 = new Booking();
+        Booking b24 = new Booking();
+        Booking b25 = new Booking();
+        Booking b26 = new Booking();
+        Booking b27 = new Booking();
+        Booking b28 = new Booking();
+        Booking b29 = new Booking();
+        Booking b30 = new Booking();
+        Booking b31 = new Booking();
+        Booking b32 = new Booking();
+        Booking b33 = new Booking();
+        Booking b34 = new Booking();
+        Booking b35 = new Booking();
+        Booking b36 = new Booking();
+        Booking b37 = new Booking();
+        Booking b38 = new Booking();
+        Booking b39 = new Booking();
+        Booking b40 = new Booking();
+        Booking b41 = new Booking();
+        Booking b42 = new Booking();
+        Booking b43 = new Booking();
+        Booking b44 = new Booking();
+        Booking b45 = new Booking();
+        Booking b46 = new Booking();
+        Booking b47 = new Booking();
+        Booking b48 = new Booking();
+        Booking b49 = new Booking();
+        Booking b50 = new Booking();
+        
+        Rating ra1 = new Rating();
+        Rating ra2 = new Rating();
+        Rating ra3 = new Rating();
+        Rating ra4 = new Rating();
+        Rating ra5 = new Rating();
+        Rating ra6 = new Rating();
+        Rating ra7 = new Rating();
+        Rating ra8 = new Rating();
+        Rating ra9 = new Rating();
+        Rating ra10 = new Rating();
+        Rating ra11 = new Rating();
+        Rating ra12 = new Rating();
+        Rating ra13 = new Rating();
+        Rating ra14 = new Rating();
+        Rating ra15 = new Rating();
+        Rating ra16 = new Rating();
+        Rating ra17 = new Rating();
+        Rating ra18 = new Rating();
+        Rating ra19 = new Rating();
+        Rating ra20 = new Rating();
+        
+        Discount dis1 = new Discount();
+        Discount dis2 = new Discount();
+        Discount dis3 = new Discount();
+        Discount dis4 = new Discount();
+        Discount dis5 = new Discount();
+        Discount dis6 = new Discount();
+        Discount dis7 = new Discount();
+        Discount dis8 = new Discount();
+        Discount dis9 = new Discount();
+        Discount dis10 = new Discount();
+        
+        List<Message> messages = new ArrayList<>();
+        List<Photo> photos = new ArrayList<>();
+        List<Room> rooms = new ArrayList<>();
+        List<Booking> bookings = new ArrayList<>();
+        List<Rating> ratings = new ArrayList<>();
+        List<Discount> discounts = new ArrayList<>();
+        
+        messages.add(m1);
+        messages.add(m2);
+        messages.add(m3);
+        messages.add(m4);
+        messages.add(m5);
+        messages.add(m6);
+        messages.add(m7);
+        messages.add(m8);
+        messages.add(m9);
+        
+        photos.add(pho1);
+        photos.add(pho2);
+        photos.add(pho3);
+        photos.add(pho4);
+        photos.add(pho5);
+        photos.add(pho6);
+        photos.add(pho7);
+        photos.add(pho8);
+        photos.add(pho9);
+        
+        rooms.add(r1);
+        rooms.add(r2);
+        rooms.add(r3);
+        rooms.add(r4);
+        rooms.add(r5);
+        rooms.add(r6);
+        rooms.add(r7);
+        rooms.add(r8);
+        rooms.add(r9);
+        
+        bookings.add(b1);
+        bookings.add(b2);
+        bookings.add(b3);
+        bookings.add(b4);
+        bookings.add(b5);
+        bookings.add(b6);
+        bookings.add(b7);
+        bookings.add(b8);
+        bookings.add(b9);
+        
+        ratings.add(ra1);
+        ratings.add(ra2);
+        ratings.add(ra3);
+        ratings.add(ra4);
+        ratings.add(ra5);
+        ratings.add(ra6);
+        ratings.add(ra7);
+        ratings.add(ra8);
+        ratings.add(ra9);
+        
+        discounts.add(dis1);
+        discounts.add(dis2);
+        discounts.add(dis3);
+        discounts.add(dis4);
+        discounts.add(dis5);
+        discounts.add(dis6);
+        discounts.add(dis7);
+        discounts.add(dis8);
+        discounts.add(dis9);
+        
+        Repository repo = new Repository();
+        
+        repo.addUser(c1);
+        repo.addUser(c2);
+        repo.addUser(c3);
+        repo.addUser(c4);
+        repo.addUserAutoRegister(c5);
+        repo.addUserAutoRegister(c6);
+        repo.addUser(c7);
+        repo.addUser(c8);
+        repo.addUser(c9);
+        repo.addUser(c10);
+        
+        repo.addUser(o1);
+        repo.addUser(o2);
+        repo.addUserAutoRegister(o3);
+        repo.addUserAutoRegister(o4);
+        repo.addUser(o5);
+        repo.addUser(o6);
+        
+        repo.addUser(a1);
+        repo.addUser(a2);
+        repo.addUser(a3);
+        
+        repo.addPropertyType(pt1);
+        repo.addPropertyType(pt2);
+        
+        repo.addPaymentType(pay1);
+        repo.addPaymentType(pay2);
+        
+        repo.addBedType(bt1);
+        repo.addBedType(bt2);
+        repo.addBedType(bt3);
+        
+        repo.addDivision(d1);
+        repo.addDivision(d2);
+        repo.addDivision(d3);
+        
+        repo.addTicketType(tt1);
+        repo.addTicketType(tt2);
+        repo.addTicketType(tt3);
+        
+        repo.addStatus(s1);
+        repo.addStatus(s2);
+        repo.addStatus(s3);
+        
+        repo.addCategory(ca1);
+        repo.addCategory(ca2);
+        repo.addCategory(ca3);
+        repo.addCategory(ca4);
+        repo.addCategory(ca5);
+        
+        // Não deveria ser aqui mas sim no user talvez, mas pronto
+        repo.addTicket(t1);
+        repo.addTicket(t2);
+        repo.addTicket(t3);
+        repo.addTicket(t4);
+        repo.addTicket(t5);
+        
+        c1.setMessages(messages);
+        
+        repo.addProperty(p1, null);
+        repo.addProperty(p2, null);
+        repo.addProperty(p3, null);
+        repo.addProperty(p4, null);
+        repo.addProperty(p5, null);
+        repo.addProperty(p6, null);
+        repo.addProperty(p7, null);
+        repo.addProperty(p8, null);
+        repo.addProperty(p9, null);
+        repo.addProperty(p10, null);
+        repo.addProperty(p11, null);
+        repo.addProperty(p12, null);
+        repo.addProperty(p13, null);
+        repo.addProperty(p14, null);
+        repo.addProperty(p15, null);
+        repo.addProperty(p16, null);
+        repo.addProperty(p17, null);
+        repo.addProperty(p18, null);
+        repo.addProperty(p19, null);
+        repo.addProperty(p20, null);
+        
+        p1.setCharacteristics(pc1);
+        
+        p1.setPhotos(photos);
+        
+        pc1.setRooms(rooms);
+        
+        p1.setBookings(bookings);
+        
+        p1.setRatings(ratings);
+        
+        p1.setDiscounts(discounts);
+        
+        /*
         Client c1 = new Client("gustavo","pass","G~ustávô vieira","111222",1010,962222222,"Rua Das ruas","Portugal",new Date(),false);
         Client c2 = new Client("gustavo2","pass","G~uStávô VIeira","111333",1013,962222222,"Rua Das ruas","Portugal",new Date(),false);
         Client c3 = new Client("gustavo3","pass","Gustavo Vieira3","111444",1014,962222222,"Rua Das ruas","Portugal",new Date(),false);
@@ -102,6 +540,7 @@ public class ProjectoAlojamento {
         {
             System.out.println(mp.getKey().getDescription());
         }
+                */
     }
     
 }

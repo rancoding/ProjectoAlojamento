@@ -16,11 +16,13 @@ public class JPAfterLogin extends javax.swing.JPanel {
     private Application frame;
     //private JPLogin jpl;
     //private JPRegister jpr;
+    private JPPropertySearch jpps;
+    private JPProfile jpp;
     
     /**
      * Creates new form JPAfterLogin
      */
-    public JPAfterLogin(Application frame, JPanel panel, Object language) {
+    public JPAfterLogin(Application frame, Object language) {
         initComponents();
         this.frame = frame;
         this.frame.setSize(1000, 253);
@@ -33,6 +35,7 @@ public class JPAfterLogin extends javax.swing.JPanel {
         {
             this.jpr = (JPRegister)panel;
         }*/
+        this.afterLoginLanguageBox.setSelectedItem(language);
     }
 
     /**
@@ -48,6 +51,7 @@ public class JPAfterLogin extends javax.swing.JPanel {
         afterLoginTopBarPanel = new javax.swing.JPanel();
         afterLoginLanguageBox = new javax.swing.JComboBox();
         afterLoginNameLabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         afterLoginLogoPanel = new javax.swing.JPanel();
         afterLoginInfoPanel = new javax.swing.JPanel();
         afterLoginErrorPanel = new javax.swing.JPanel();
@@ -64,6 +68,18 @@ public class JPAfterLogin extends javax.swing.JPanel {
 
         afterLoginNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         afterLoginNameLabel.setText("Gustavo Moreira Vieira");
+        afterLoginNameLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                afterLoginNameLabelMouseClicked(evt);
+            }
+        });
+
+        jButton1.setText("Acho que tem de ser button e nao label");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout afterLoginTopBarPanelLayout = new javax.swing.GroupLayout(afterLoginTopBarPanel);
         afterLoginTopBarPanel.setLayout(afterLoginTopBarPanelLayout);
@@ -72,6 +88,8 @@ public class JPAfterLogin extends javax.swing.JPanel {
             .addGroup(afterLoginTopBarPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(afterLoginLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(afterLoginNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -82,7 +100,8 @@ public class JPAfterLogin extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(afterLoginTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(afterLoginLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(afterLoginNameLabel))
+                    .addComponent(afterLoginNameLabel)
+                    .addComponent(jButton1))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -122,6 +141,11 @@ public class JPAfterLogin extends javax.swing.JPanel {
         afterLoginPropertyTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Quarto", "Apartamento" }));
 
         afterLoginSearchButton.setText("Pesquisar");
+        afterLoginSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                afterLoginSearchButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout afterLoginInfoPanelLayout = new javax.swing.GroupLayout(afterLoginInfoPanel);
         afterLoginInfoPanel.setLayout(afterLoginInfoPanelLayout);
@@ -154,7 +178,7 @@ public class JPAfterLogin extends javax.swing.JPanel {
                     .addComponent(afterLoginNClientsSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(afterLoginPropertyTypeBox)
                     .addComponent(afterLoginSearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(afterLoginErrorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -188,6 +212,24 @@ public class JPAfterLogin extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void afterLoginSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afterLoginSearchButtonActionPerformed
+        // TODO add your handling code here:
+        this.jpps = new JPPropertySearch(this.frame, this.afterLoginLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jpps);
+    }//GEN-LAST:event_afterLoginSearchButtonActionPerformed
+
+    private void afterLoginNameLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_afterLoginNameLabelMouseClicked
+        // TODO add your handling code here:
+        this.jpp = new JPProfile(this.frame, this.afterLoginLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jpp);
+    }//GEN-LAST:event_afterLoginNameLabelMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.jpp = new JPProfile(this.frame, this.afterLoginLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jpp);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
         //frame.changePanel(this.jpl);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -205,5 +247,6 @@ public class JPAfterLogin extends javax.swing.JPanel {
     private javax.swing.JButton afterLoginSearchButton;
     private org.jdesktop.swingx.JXDatePicker afterLoginStartingDatePicker;
     private javax.swing.JPanel afterLoginTopBarPanel;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

@@ -195,16 +195,25 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Reservas"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="profileBookingButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="profileRatingButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Avalia&#xe7;&#xf5;es"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="profileRatingButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="profileAutoRegisterButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Auto-Registo"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="profileAutoRegisterButtonActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

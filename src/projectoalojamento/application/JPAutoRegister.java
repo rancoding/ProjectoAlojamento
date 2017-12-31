@@ -11,11 +11,16 @@ package projectoalojamento.application;
  */
 public class JPAutoRegister extends javax.swing.JPanel {
 
+    private Application frame;
+    private JPProfile jpp;
+    
     /**
      * Creates new form JPAutoRegister
      */
-    public JPAutoRegister() {
+    public JPAutoRegister(Application frame, Object language) {
         initComponents();
+        this.frame = frame;
+        this.autoRegisterLanguageBox.setSelectedItem(language);
     }
 
     /**
@@ -105,8 +110,18 @@ public class JPAutoRegister extends javax.swing.JPanel {
         );
 
         autoRegisterRegisterButton.setText("Registar");
+        autoRegisterRegisterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                autoRegisterRegisterButtonActionPerformed(evt);
+            }
+        });
 
         autoRegisterBackButton.setText("Voltar");
+        autoRegisterBackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                autoRegisterBackButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout autoRegisterButtonPanelLayout = new javax.swing.GroupLayout(autoRegisterButtonPanel);
         autoRegisterButtonPanel.setLayout(autoRegisterButtonPanelLayout);
@@ -231,6 +246,18 @@ public class JPAutoRegister extends javax.swing.JPanel {
             .addComponent(autoRegisterPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void autoRegisterBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autoRegisterBackButtonActionPerformed
+        // TODO add your handling code here:
+        this.jpp = new JPProfile(this.frame, this.autoRegisterLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jpp);
+    }//GEN-LAST:event_autoRegisterBackButtonActionPerformed
+
+    private void autoRegisterRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autoRegisterRegisterButtonActionPerformed
+        // TODO add your handling code here:
+        this.jpp = new JPProfile(this.frame, this.autoRegisterLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jpp);
+    }//GEN-LAST:event_autoRegisterRegisterButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
