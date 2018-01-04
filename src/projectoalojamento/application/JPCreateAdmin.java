@@ -30,7 +30,7 @@ public class JPCreateAdmin extends javax.swing.JPanel {
         createAdminRegisterPanel = new javax.swing.JPanel();
         createAdminPanel = new javax.swing.JPanel();
         createAdminTopBarPanel = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        createAdminLanguageBox = new javax.swing.JComboBox<>();
         createAdminNickLabel = new javax.swing.JLabel();
         createAdminLogoPanel = new javax.swing.JPanel();
         createAdminInfoPanel = new javax.swing.JPanel();
@@ -61,10 +61,10 @@ public class JPCreateAdmin extends javax.swing.JPanel {
             .addGap(0, 45, Short.MAX_VALUE)
         );
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PT", "EN" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        createAdminLanguageBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PT", "EN" }));
+        createAdminLanguageBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                createAdminLanguageBoxActionPerformed(evt);
             }
         });
 
@@ -74,7 +74,7 @@ public class JPCreateAdmin extends javax.swing.JPanel {
             createAdminTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(createAdminTopBarPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createAdminLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(createAdminNickLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -83,9 +83,9 @@ public class JPCreateAdmin extends javax.swing.JPanel {
             createAdminTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createAdminTopBarPanelLayout.createSequentialGroup()
                 .addContainerGap(14, Short.MAX_VALUE)
-                .addGroup(createAdminTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(createAdminNickLabel))
+                .addGroup(createAdminTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(createAdminLanguageBox)
+                    .addComponent(createAdminNickLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -275,9 +275,9 @@ public class JPCreateAdmin extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void createAdminLanguageBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAdminLanguageBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_createAdminLanguageBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -289,6 +289,7 @@ public class JPCreateAdmin extends javax.swing.JPanel {
     private javax.swing.JPanel createAdminErrorPanel;
     private javax.swing.JPanel createAdminInfoPanel;
     private javax.swing.JPanel createAdminInfoTitlePanel;
+    private javax.swing.JComboBox<String> createAdminLanguageBox;
     private javax.swing.JComboBox createAdminLocationBox;
     private javax.swing.JPanel createAdminLogoPanel;
     private javax.swing.JTextField createAdminNIFField;
@@ -302,6 +303,5 @@ public class JPCreateAdmin extends javax.swing.JPanel {
     private javax.swing.JPanel createAdminTopBarPanel;
     private javax.swing.JPanel createAdminUserInfoPanel;
     private javax.swing.JTextField createAdminUsernameField;
-    private javax.swing.JComboBox<String> jComboBox1;
     // End of variables declaration//GEN-END:variables
 }

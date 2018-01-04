@@ -11,12 +11,29 @@ package projectoalojamento.application;
  */
 public class JPAfterLoginOwner extends javax.swing.JPanel {
 
+    private Application frame;
+    
+    
     /**
      * Creates new form JPAfterLoginOwner
      */
-    public JPAfterLoginOwner() {
+   
+    public JPAfterLoginOwner(Application frame, Object language) {
         initComponents();
+        this.frame = frame;
+        this.frame.setSize(1000, 253);
+        
+        /*if(panel instanceof JPLogin)
+        {
+            this.jpl = (JPLogin)panel;
+        }
+        else
+        {
+            this.jpr = (JPRegister)panel;
+        }*/
+        this.afterLoginOwnerLanguageBox.setSelectedItem(language);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,365 +44,536 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        label1 = new java.awt.Label();
-        jLabel4 = new javax.swing.JLabel();
+        afterLoginOwnerPanel = new javax.swing.JPanel();
+        afterLoginOwnerTopBarPanel = new javax.swing.JPanel();
+        afterLoginOwnerLanguageBox = new javax.swing.JComboBox<>();
+        afterLoginOwnerNickLabel = new javax.swing.JLabel();
+        afterLoginOwnerMessageButton = new javax.swing.JButton();
+        afterLoginOwnerAddPropertyButton = new javax.swing.JButton();
+        afterLoginOwnerTitlePanel = new javax.swing.JPanel();
+        afterLoginOwnerInfoPanel = new javax.swing.JPanel();
+        afterLoginOwnerErrorPanel = new javax.swing.JPanel();
+        afterLoginOwnerInformationPanel = new javax.swing.JPanel();
+        afterLoginOwnerPhotos = new javax.swing.JTextField();
+        afterLoginOwnerDescriptionTextField = new javax.swing.JTextField();
+        afterLoginOwnerLocationTextField = new javax.swing.JTextField();
+        afterLoginOwnerTypeBox = new javax.swing.JComboBox<>();
+        afterLoginOwnerDivisionsBox = new javax.swing.JComboBox<>();
+        afterLoginOwnerDiscountLabel = new javax.swing.JLabel();
+        afterLoginOwnerDiscountTextField = new javax.swing.JTextField();
+        afterLoginOwnerPercentageLabel = new javax.swing.JLabel();
+        afterLoginOwnerDatePicker = new org.jdesktop.swingx.JXDatePicker();
+        afterLoginOwnerPriceTextField = new javax.swing.JTextField();
+        afterLoginOwnerCoinTypeLabel = new javax.swing.JLabel();
+        afterLoginOwnerScoreLabel = new java.awt.Label();
+        afterLoginOwnerPontuationLabel = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        afterLoginOwnerRating = new javax.swing.JList<>();
+        afterLoginOwnerExtraSearchInfoPanel = new javax.swing.JPanel();
+        afterLoginOwnerNClientsSpinner = new javax.swing.JSpinner();
+        afterLoginOwnerNRoomsSpinner = new javax.swing.JSpinner();
+        afterLoginOwnerNBathroomsSpinner = new javax.swing.JSpinner();
+        afterLoginOwnerNBedsSpinner = new javax.swing.JSpinner();
+        afterLoginOwnerNClientsLabel = new javax.swing.JLabel();
+        afterLoginOwnerNRoomsLabel = new javax.swing.JLabel();
+        afterLoginOwnerNBathroomssLabel = new javax.swing.JLabel();
+        afterLoginOwnerNBedsLabel = new javax.swing.JLabel();
+        afterLoginOwnerBedTypeBox = new javax.swing.JComboBox();
+        afterLoginOwnerInfoExtraInfoPanel = new javax.swing.JPanel();
+        afterLoginOwnerDiscountsCheckBox = new javax.swing.JCheckBox();
+        afterLoginOwnerExtrasCheckBox = new javax.swing.JCheckBox();
+        afterLoginOwnerRatingsCheckBox = new javax.swing.JCheckBox();
+        afterLoginOwnerPetsCheckBox = new javax.swing.JCheckBox();
+        afterLoginOwnerKitchenCheckBox = new javax.swing.JCheckBox();
+        afterLoginOwnerWashingMachineCheckBox = new javax.swing.JCheckBox();
+        afterLoginOwnerWifiCheckBox = new javax.swing.JCheckBox();
+        afterLoginOwnerBreakfastCheckBox = new javax.swing.JCheckBox();
+        afterLoginOwnerPoolCheckBox = new javax.swing.JCheckBox();
+        afterLoginOwnerPreviousButton = new javax.swing.JButton();
+        afterLoginOwnerNextButton = new javax.swing.JButton();
+        afterLoginOwnerBookingButton = new javax.swing.JButton();
+        afterLoginOwnerDeletePropertyButton = new javax.swing.JButton();
+        afterLoginOwnerSaveChangesButton = new javax.swing.JButton();
+        afterLoginOwnerCancelChangesButton = new javax.swing.JButton();
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PT", "EN" }));
+        afterLoginOwnerLanguageBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PT", "EN" }));
 
-        jLabel5.setText("Rafael Morais");
+        afterLoginOwnerNickLabel.setText("Rafael Morais");
 
-        jButton7.setText("jButton7");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        afterLoginOwnerMessageButton.setText("jButton7");
+        afterLoginOwnerMessageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                afterLoginOwnerMessageButtonActionPerformed(evt);
             }
         });
 
-        jButton8.setText("+");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        afterLoginOwnerAddPropertyButton.setText("+");
+        afterLoginOwnerAddPropertyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                afterLoginOwnerAddPropertyButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout afterLoginOwnerTopBarPanelLayout = new javax.swing.GroupLayout(afterLoginOwnerTopBarPanel);
+        afterLoginOwnerTopBarPanel.setLayout(afterLoginOwnerTopBarPanelLayout);
+        afterLoginOwnerTopBarPanelLayout.setHorizontalGroup(
+            afterLoginOwnerTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(afterLoginOwnerTopBarPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(afterLoginOwnerLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton8)
+                .addComponent(afterLoginOwnerAddPropertyButton)
                 .addGap(18, 18, 18)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(afterLoginOwnerMessageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(afterLoginOwnerNickLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        afterLoginOwnerTopBarPanelLayout.setVerticalGroup(
+            afterLoginOwnerTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(afterLoginOwnerTopBarPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox3)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton7)
-                        .addComponent(jButton8)))
+                .addGroup(afterLoginOwnerTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(afterLoginOwnerLanguageBox)
+                    .addGroup(afterLoginOwnerTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(afterLoginOwnerNickLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(afterLoginOwnerMessageButton)
+                        .addComponent(afterLoginOwnerAddPropertyButton)))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout afterLoginOwnerTitlePanelLayout = new javax.swing.GroupLayout(afterLoginOwnerTitlePanel);
+        afterLoginOwnerTitlePanel.setLayout(afterLoginOwnerTitlePanelLayout);
+        afterLoginOwnerTitlePanelLayout.setHorizontalGroup(
+            afterLoginOwnerTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        afterLoginOwnerTitlePanelLayout.setVerticalGroup(
+            afterLoginOwnerTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 60, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout afterLoginOwnerErrorPanelLayout = new javax.swing.GroupLayout(afterLoginOwnerErrorPanel);
+        afterLoginOwnerErrorPanel.setLayout(afterLoginOwnerErrorPanelLayout);
+        afterLoginOwnerErrorPanelLayout.setHorizontalGroup(
+            afterLoginOwnerErrorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        afterLoginOwnerErrorPanelLayout.setVerticalGroup(
+            afterLoginOwnerErrorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jTextField1.setText("jTextField1");
+        afterLoginOwnerPhotos.setText("jTextField1");
 
-        jTextField2.setText("jTextField2");
+        afterLoginOwnerDescriptionTextField.setText("jTextField2");
 
-        jTextField3.setText("ola");
+        afterLoginOwnerLocationTextField.setText("ola");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Apartamento", "Casa" }));
+        afterLoginOwnerTypeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Apartamento", "Casa" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "T1", "T2", "T3", "T4", "T5" }));
+        afterLoginOwnerDivisionsBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "T1", "T2", "T3", "T4", "T5" }));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Desconto:");
+        afterLoginOwnerDiscountLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        afterLoginOwnerDiscountLabel.setText("Desconto:");
 
-        jTextField4.setText("jTextField4");
+        afterLoginOwnerDiscountTextField.setText("jTextField4");
 
-        jLabel2.setText("%");
+        afterLoginOwnerPercentageLabel.setText("%");
 
-        jTextField5.setText("jTextField5");
+        afterLoginOwnerPriceTextField.setText("jTextField5");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("€");
+        afterLoginOwnerCoinTypeLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        afterLoginOwnerCoinTypeLabel.setText("€");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        afterLoginOwnerScoreLabel.setAlignment(java.awt.Label.CENTER);
+        afterLoginOwnerScoreLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        afterLoginOwnerScoreLabel.setFont(new java.awt.Font("Baskerville Old Face", 0, 48)); // NOI18N
+        afterLoginOwnerScoreLabel.setText("8.7");
 
-        label1.setAlignment(java.awt.Label.CENTER);
-        label1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        label1.setFont(new java.awt.Font("Baskerville Old Face", 0, 48)); // NOI18N
-        label1.setText("8.7");
+        afterLoginOwnerPontuationLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        afterLoginOwnerPontuationLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        afterLoginOwnerPontuationLabel.setText("PONTUAÇÃO");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("PONTUAÇÃO");
-
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        afterLoginOwnerRating.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane3.setViewportView(jList1);
+        jScrollPane3.setViewportView(afterLoginOwnerRating);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        afterLoginOwnerExtraSearchInfoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Informação Extra"));
+
+        afterLoginOwnerNRoomsSpinner.setToolTipText("Número mínimo de quartos do alojamento");
+
+        afterLoginOwnerNBathroomsSpinner.setToolTipText("Número mínimo de quartos de banho do alojamento");
+
+        afterLoginOwnerNBedsSpinner.setToolTipText("Número mínimo de camas do alojamento");
+
+        afterLoginOwnerNClientsLabel.setText("Nº Pessoas");
+
+        afterLoginOwnerNRoomsLabel.setText("Nº Quartos");
+
+        afterLoginOwnerNBathroomssLabel.setText("Nº Quartos de Banho");
+
+        afterLoginOwnerNBedsLabel.setText("Nº Camas");
+
+        afterLoginOwnerBedTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo de Cama" }));
+
+        afterLoginOwnerInfoExtraInfoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Extras"));
+
+        afterLoginOwnerDiscountsCheckBox.setText("Contém descontos");
+
+        afterLoginOwnerExtrasCheckBox.setText("Contém extras");
+
+        afterLoginOwnerRatingsCheckBox.setText("Contém avaliações");
+
+        afterLoginOwnerPetsCheckBox.setText("Animais de Estimação");
+
+        afterLoginOwnerKitchenCheckBox.setText("Cozinha");
+
+        afterLoginOwnerWashingMachineCheckBox.setText("Máquina de Lavar");
+
+        afterLoginOwnerWifiCheckBox.setText("Wi-fi");
+
+        afterLoginOwnerBreakfastCheckBox.setText("Pequeno Almoço");
+
+        afterLoginOwnerPoolCheckBox.setText("Piscina");
+
+        javax.swing.GroupLayout afterLoginOwnerInfoExtraInfoPanelLayout = new javax.swing.GroupLayout(afterLoginOwnerInfoExtraInfoPanel);
+        afterLoginOwnerInfoExtraInfoPanel.setLayout(afterLoginOwnerInfoExtraInfoPanelLayout);
+        afterLoginOwnerInfoExtraInfoPanelLayout.setHorizontalGroup(
+            afterLoginOwnerInfoExtraInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(afterLoginOwnerInfoExtraInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(afterLoginOwnerInfoExtraInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(afterLoginOwnerPetsCheckBox)
+                    .addComponent(afterLoginOwnerWashingMachineCheckBox)
+                    .addGroup(afterLoginOwnerInfoExtraInfoPanelLayout.createSequentialGroup()
+                        .addGroup(afterLoginOwnerInfoExtraInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(afterLoginOwnerDiscountsCheckBox)
+                            .addComponent(afterLoginOwnerKitchenCheckBox)
+                            .addComponent(afterLoginOwnerWifiCheckBox))
+                        .addGap(16, 16, 16)
+                        .addGroup(afterLoginOwnerInfoExtraInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(afterLoginOwnerPoolCheckBox)
+                            .addComponent(afterLoginOwnerBreakfastCheckBox)
+                            .addGroup(afterLoginOwnerInfoExtraInfoPanelLayout.createSequentialGroup()
+                                .addComponent(afterLoginOwnerExtrasCheckBox)
+                                .addGap(18, 18, 18)
+                                .addComponent(afterLoginOwnerRatingsCheckBox)))))
+                .addContainerGap(95, Short.MAX_VALUE))
+        );
+        afterLoginOwnerInfoExtraInfoPanelLayout.setVerticalGroup(
+            afterLoginOwnerInfoExtraInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(afterLoginOwnerInfoExtraInfoPanelLayout.createSequentialGroup()
+                .addGroup(afterLoginOwnerInfoExtraInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(afterLoginOwnerDiscountsCheckBox)
+                    .addComponent(afterLoginOwnerExtrasCheckBox)
+                    .addComponent(afterLoginOwnerRatingsCheckBox))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(afterLoginOwnerPetsCheckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(afterLoginOwnerInfoExtraInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(afterLoginOwnerKitchenCheckBox)
+                    .addComponent(afterLoginOwnerBreakfastCheckBox))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(afterLoginOwnerWashingMachineCheckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(afterLoginOwnerInfoExtraInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(afterLoginOwnerWifiCheckBox)
+                    .addComponent(afterLoginOwnerPoolCheckBox))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout afterLoginOwnerExtraSearchInfoPanelLayout = new javax.swing.GroupLayout(afterLoginOwnerExtraSearchInfoPanel);
+        afterLoginOwnerExtraSearchInfoPanel.setLayout(afterLoginOwnerExtraSearchInfoPanelLayout);
+        afterLoginOwnerExtraSearchInfoPanelLayout.setHorizontalGroup(
+            afterLoginOwnerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(afterLoginOwnerExtraSearchInfoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(afterLoginOwnerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(afterLoginOwnerNClientsSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(afterLoginOwnerNRoomsSpinner)
+                    .addComponent(afterLoginOwnerNBathroomsSpinner)
+                    .addComponent(afterLoginOwnerNBedsSpinner))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(afterLoginOwnerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(afterLoginOwnerExtraSearchInfoPanelLayout.createSequentialGroup()
+                        .addGroup(afterLoginOwnerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(afterLoginOwnerNBathroomssLabel)
+                            .addComponent(afterLoginOwnerNRoomsLabel))
+                        .addGap(262, 262, 262))
+                    .addGroup(afterLoginOwnerExtraSearchInfoPanelLayout.createSequentialGroup()
+                        .addGroup(afterLoginOwnerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(afterLoginOwnerExtraSearchInfoPanelLayout.createSequentialGroup()
+                                .addComponent(afterLoginOwnerNClientsLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(afterLoginOwnerBedTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(afterLoginOwnerNBedsLabel))
+                        .addGap(18, 18, 18)))
+                .addComponent(afterLoginOwnerInfoExtraInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        afterLoginOwnerExtraSearchInfoPanelLayout.setVerticalGroup(
+            afterLoginOwnerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(afterLoginOwnerExtraSearchInfoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(afterLoginOwnerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(afterLoginOwnerInfoExtraInfoPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(afterLoginOwnerExtraSearchInfoPanelLayout.createSequentialGroup()
+                        .addGroup(afterLoginOwnerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(afterLoginOwnerNClientsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(afterLoginOwnerNClientsLabel)
+                            .addComponent(afterLoginOwnerBedTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(afterLoginOwnerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(afterLoginOwnerNRoomsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(afterLoginOwnerNRoomsLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(afterLoginOwnerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(afterLoginOwnerNBathroomsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(afterLoginOwnerNBathroomssLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(afterLoginOwnerExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(afterLoginOwnerNBedsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(afterLoginOwnerNBedsLabel))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout afterLoginOwnerInformationPanelLayout = new javax.swing.GroupLayout(afterLoginOwnerInformationPanel);
+        afterLoginOwnerInformationPanel.setLayout(afterLoginOwnerInformationPanelLayout);
+        afterLoginOwnerInformationPanelLayout.setHorizontalGroup(
+            afterLoginOwnerInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(afterLoginOwnerInformationPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(afterLoginOwnerInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(afterLoginOwnerInformationPanelLayout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(afterLoginOwnerInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(afterLoginOwnerScoreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(afterLoginOwnerPontuationLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(afterLoginOwnerInformationPanelLayout.createSequentialGroup()
+                        .addComponent(afterLoginOwnerPhotos, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField2)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(afterLoginOwnerInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(afterLoginOwnerLocationTextField)
+                            .addComponent(afterLoginOwnerDescriptionTextField)
+                            .addGroup(afterLoginOwnerInformationPanelLayout.createSequentialGroup()
+                                .addComponent(afterLoginOwnerTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(afterLoginOwnerDivisionsBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(24, 24, 24)
-                                .addComponent(jLabel1)
+                                .addComponent(afterLoginOwnerDiscountLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                                .addComponent(afterLoginOwnerDiscountTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(afterLoginOwnerPercentageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(afterLoginOwnerDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(afterLoginOwnerPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(afterLoginOwnerCoinTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(afterLoginOwnerExtraSearchInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        afterLoginOwnerInformationPanelLayout.setVerticalGroup(
+            afterLoginOwnerInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(afterLoginOwnerInformationPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(afterLoginOwnerInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(afterLoginOwnerPhotos, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(afterLoginOwnerInformationPanelLayout.createSequentialGroup()
+                        .addComponent(afterLoginOwnerLocationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)
-                        .addComponent(jTextField2)
+                        .addComponent(afterLoginOwnerDescriptionTextField)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1)
-                            .addComponent(jComboBox2)
-                            .addComponent(jTextField5)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jXDatePicker1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField4))))
+                        .addGroup(afterLoginOwnerInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(afterLoginOwnerTypeBox)
+                            .addComponent(afterLoginOwnerDivisionsBox)
+                            .addComponent(afterLoginOwnerPriceTextField)
+                            .addComponent(afterLoginOwnerCoinTypeLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(afterLoginOwnerDatePicker, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                            .addComponent(afterLoginOwnerPercentageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(afterLoginOwnerDiscountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(afterLoginOwnerDiscountTextField))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                .addComponent(afterLoginOwnerExtraSearchInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(afterLoginOwnerInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(afterLoginOwnerInformationPanelLayout.createSequentialGroup()
+                        .addComponent(afterLoginOwnerPontuationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(afterLoginOwnerScoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jButton1.setText("ANTERIOR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        afterLoginOwnerPreviousButton.setText("ANTERIOR");
+        afterLoginOwnerPreviousButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                afterLoginOwnerPreviousButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("SEGUINTE");
+        afterLoginOwnerNextButton.setText("SEGUINTE");
 
-        jButton3.setText("RESERVAS");
+        afterLoginOwnerBookingButton.setText("RESERVAS");
 
-        jButton4.setText("ELIMINAR ALOJAMENTO");
+        afterLoginOwnerDeletePropertyButton.setText("ELIMINAR ALOJAMENTO");
 
-        jButton5.setText("GUARDAR ALTERAÇÕES");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        afterLoginOwnerSaveChangesButton.setText("GUARDAR ALTERAÇÕES");
+        afterLoginOwnerSaveChangesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                afterLoginOwnerSaveChangesButtonActionPerformed(evt);
             }
         });
 
-        jButton6.setText("CANCELAR ALTERAÇÕES");
+        afterLoginOwnerCancelChangesButton.setText("CANCELAR ALTERAÇÕES");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout afterLoginOwnerInfoPanelLayout = new javax.swing.GroupLayout(afterLoginOwnerInfoPanel);
+        afterLoginOwnerInfoPanel.setLayout(afterLoginOwnerInfoPanelLayout);
+        afterLoginOwnerInfoPanelLayout.setHorizontalGroup(
+            afterLoginOwnerInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(afterLoginOwnerErrorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(afterLoginOwnerInformationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(afterLoginOwnerInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(afterLoginOwnerPreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(190, 190, 190)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(afterLoginOwnerInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(afterLoginOwnerInfoPanelLayout.createSequentialGroup()
+                        .addComponent(afterLoginOwnerBookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(afterLoginOwnerDeletePropertyButton))
+                    .addGroup(afterLoginOwnerInfoPanelLayout.createSequentialGroup()
+                        .addComponent(afterLoginOwnerSaveChangesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(afterLoginOwnerCancelChangesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(afterLoginOwnerNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        afterLoginOwnerInfoPanelLayout.setVerticalGroup(
+            afterLoginOwnerInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, afterLoginOwnerInfoPanelLayout.createSequentialGroup()
+                .addComponent(afterLoginOwnerInformationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(afterLoginOwnerInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(afterLoginOwnerNextButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(afterLoginOwnerInfoPanelLayout.createSequentialGroup()
+                        .addGroup(afterLoginOwnerInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(afterLoginOwnerCancelChangesButton, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                            .addComponent(afterLoginOwnerSaveChangesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addGroup(afterLoginOwnerInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(afterLoginOwnerDeletePropertyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(afterLoginOwnerBookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(afterLoginOwnerPreviousButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(afterLoginOwnerErrorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout afterLoginOwnerPanelLayout = new javax.swing.GroupLayout(afterLoginOwnerPanel);
+        afterLoginOwnerPanel.setLayout(afterLoginOwnerPanelLayout);
+        afterLoginOwnerPanelLayout.setHorizontalGroup(
+            afterLoginOwnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(afterLoginOwnerTopBarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(afterLoginOwnerTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(afterLoginOwnerInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        afterLoginOwnerPanelLayout.setVerticalGroup(
+            afterLoginOwnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(afterLoginOwnerPanelLayout.createSequentialGroup()
+                .addComponent(afterLoginOwnerTopBarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(afterLoginOwnerTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(afterLoginOwnerInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(afterLoginOwnerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(afterLoginOwnerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void afterLoginOwnerPreviousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afterLoginOwnerPreviousButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_afterLoginOwnerPreviousButtonActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void afterLoginOwnerSaveChangesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afterLoginOwnerSaveChangesButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_afterLoginOwnerSaveChangesButtonActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void afterLoginOwnerAddPropertyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afterLoginOwnerAddPropertyButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_afterLoginOwnerAddPropertyButtonActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void afterLoginOwnerMessageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afterLoginOwnerMessageButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_afterLoginOwnerMessageButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton afterLoginOwnerAddPropertyButton;
+    private javax.swing.JComboBox afterLoginOwnerBedTypeBox;
+    private javax.swing.JButton afterLoginOwnerBookingButton;
+    private javax.swing.JCheckBox afterLoginOwnerBreakfastCheckBox;
+    private javax.swing.JButton afterLoginOwnerCancelChangesButton;
+    private javax.swing.JLabel afterLoginOwnerCoinTypeLabel;
+    private org.jdesktop.swingx.JXDatePicker afterLoginOwnerDatePicker;
+    private javax.swing.JButton afterLoginOwnerDeletePropertyButton;
+    private javax.swing.JTextField afterLoginOwnerDescriptionTextField;
+    private javax.swing.JLabel afterLoginOwnerDiscountLabel;
+    private javax.swing.JTextField afterLoginOwnerDiscountTextField;
+    private javax.swing.JCheckBox afterLoginOwnerDiscountsCheckBox;
+    private javax.swing.JComboBox<String> afterLoginOwnerDivisionsBox;
+    private javax.swing.JPanel afterLoginOwnerErrorPanel;
+    private javax.swing.JPanel afterLoginOwnerExtraSearchInfoPanel;
+    private javax.swing.JCheckBox afterLoginOwnerExtrasCheckBox;
+    private javax.swing.JPanel afterLoginOwnerInfoExtraInfoPanel;
+    private javax.swing.JPanel afterLoginOwnerInfoPanel;
+    private javax.swing.JPanel afterLoginOwnerInformationPanel;
+    private javax.swing.JCheckBox afterLoginOwnerKitchenCheckBox;
+    private javax.swing.JComboBox<String> afterLoginOwnerLanguageBox;
+    private javax.swing.JTextField afterLoginOwnerLocationTextField;
+    private javax.swing.JButton afterLoginOwnerMessageButton;
+    private javax.swing.JSpinner afterLoginOwnerNBathroomsSpinner;
+    private javax.swing.JLabel afterLoginOwnerNBathroomssLabel;
+    private javax.swing.JLabel afterLoginOwnerNBedsLabel;
+    private javax.swing.JSpinner afterLoginOwnerNBedsSpinner;
+    private javax.swing.JLabel afterLoginOwnerNClientsLabel;
+    private javax.swing.JSpinner afterLoginOwnerNClientsSpinner;
+    private javax.swing.JLabel afterLoginOwnerNRoomsLabel;
+    private javax.swing.JSpinner afterLoginOwnerNRoomsSpinner;
+    private javax.swing.JButton afterLoginOwnerNextButton;
+    private javax.swing.JLabel afterLoginOwnerNickLabel;
+    private javax.swing.JPanel afterLoginOwnerPanel;
+    private javax.swing.JLabel afterLoginOwnerPercentageLabel;
+    private javax.swing.JCheckBox afterLoginOwnerPetsCheckBox;
+    private javax.swing.JTextField afterLoginOwnerPhotos;
+    private javax.swing.JLabel afterLoginOwnerPontuationLabel;
+    private javax.swing.JCheckBox afterLoginOwnerPoolCheckBox;
+    private javax.swing.JButton afterLoginOwnerPreviousButton;
+    private javax.swing.JTextField afterLoginOwnerPriceTextField;
+    private javax.swing.JList<String> afterLoginOwnerRating;
+    private javax.swing.JCheckBox afterLoginOwnerRatingsCheckBox;
+    private javax.swing.JButton afterLoginOwnerSaveChangesButton;
+    private java.awt.Label afterLoginOwnerScoreLabel;
+    private javax.swing.JPanel afterLoginOwnerTitlePanel;
+    private javax.swing.JPanel afterLoginOwnerTopBarPanel;
+    private javax.swing.JComboBox<String> afterLoginOwnerTypeBox;
+    private javax.swing.JCheckBox afterLoginOwnerWashingMachineCheckBox;
+    private javax.swing.JCheckBox afterLoginOwnerWifiCheckBox;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
-    private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }

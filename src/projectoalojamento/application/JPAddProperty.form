@@ -16,51 +16,51 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="addPropertyPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="addPropertyPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="addPropertyPanel">
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
-              <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
-              <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
+              <Component id="addPropertyTopBarPanel" alignment="0" max="32767" attributes="0"/>
+              <Component id="addPropertyTitlePanel" alignment="0" max="32767" attributes="0"/>
+              <Component id="addPropertyInfoPanel" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  <Component id="addPropertyTopBarPanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="addPropertyTitlePanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanel4" max="32767" attributes="0"/>
+                  <Component id="addPropertyInfoPanel" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanel2">
+        <Container class="javax.swing.JPanel" name="addPropertyTopBarPanel">
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jComboBox3" min="-2" max="-2" attributes="0"/>
+                      <Component id="addPropertyLanguageBox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButton7" min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="addPropertyMessageButton" min="-2" pref="42" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" pref="87" max="-2" attributes="0"/>
+                      <Component id="addPropertyNickLabel" min="-2" pref="87" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -70,10 +70,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jComboBox3" alignment="0" max="32767" attributes="0"/>
+                          <Component id="addPropertyLanguageBox" alignment="0" max="32767" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="jLabel5" alignment="3" max="32767" attributes="0"/>
-                              <Component id="jButton7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="addPropertyNickLabel" alignment="3" max="32767" attributes="0"/>
+                              <Component id="addPropertyMessageButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="14" max="32767" attributes="0"/>
@@ -82,7 +82,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JComboBox" name="jComboBox3">
+            <Component class="javax.swing.JComboBox" name="addPropertyLanguageBox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
@@ -95,22 +95,22 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
+            <Component class="javax.swing.JLabel" name="addPropertyNickLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Rafael Morais"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton7">
+            <Component class="javax.swing.JButton" name="addPropertyMessageButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jButton7"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addPropertyMessageButtonActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel3">
+        <Container class="javax.swing.JPanel" name="addPropertyTitlePanel">
 
           <Layout>
             <DimensionLayout dim="0">
@@ -125,27 +125,27 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel4">
+        <Container class="javax.swing.JPanel" name="addPropertyInfoPanel">
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel6" max="32767" attributes="0"/>
-                  <Component id="jPanel5" alignment="1" max="32767" attributes="0"/>
+                  <Component id="addPropertyInformationPanel" max="32767" attributes="0"/>
+                  <Component id="addPropertyErrorPanel" alignment="1" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jPanel6" max="32767" attributes="0"/>
+                      <Component id="addPropertyInformationPanel" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                      <Component id="addPropertyErrorPanel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="jPanel5">
+            <Container class="javax.swing.JPanel" name="addPropertyErrorPanel">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -160,7 +160,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanel6">
+            <Container class="javax.swing.JPanel" name="addPropertyInformationPanel">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -168,40 +168,36 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="jButton1" min="-2" pref="159" max="-2" attributes="0"/>
+                                  <Component id="addPropertyAddPicturesButton" min="-2" pref="159" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextField2" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="addPropertyDescriptionTextField" alignment="0" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jComboBox1" min="-2" pref="153" max="-2" attributes="0"/>
+                                          <Component id="addPropertyTypeBox" min="-2" pref="153" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="addPropertyDivisionsBox" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="addPropertyDiscountLabel" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField4" pref="84" max="32767" attributes="0"/>
+                                          <Component id="addPropertyDiscountTextField" pref="84" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLabel2" min="-2" pref="25" max="-2" attributes="0"/>
+                                          <Component id="addPropertyPercentageLabel" min="-2" pref="25" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jXDatePicker1" min="-2" pref="218" max="-2" attributes="0"/>
+                                          <Component id="addPropertyDatePicker" min="-2" pref="218" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jTextField5" min="-2" pref="124" max="-2" attributes="0"/>
+                                          <Component id="addPropertyPriceTextField" min="-2" pref="124" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLabel3" min="-2" pref="16" max="-2" attributes="0"/>
+                                          <Component id="addPropertyCoinTypeLabel" min="-2" pref="16" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jTextField3" min="-2" pref="377" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jTextField6" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="addPropertyLocationTextField" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="jButton2" min="-2" pref="152" max="-2" attributes="0"/>
+                                  <Component id="addPropertyButton" min="-2" pref="152" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="addPropertyExtraSearchInfoPanel" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -213,52 +209,44 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jTextField6" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Component id="jTextField2" min="-2" pref="91" max="-2" attributes="0"/>
+                                  <Component id="addPropertyLocationTextField" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                  <Component id="addPropertyDescriptionTextField" min="-2" pref="91" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jComboBox1" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Component id="jComboBox2" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Component id="jTextField5" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Component id="jLabel3" alignment="1" min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Component id="jXDatePicker1" alignment="1" min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Component id="jLabel2" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Component id="jLabel1" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Component id="jTextField4" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
+                                      <Component id="addPropertyTypeBox" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
+                                      <Component id="addPropertyDivisionsBox" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
+                                      <Component id="addPropertyPriceTextField" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
+                                      <Component id="addPropertyCoinTypeLabel" alignment="1" min="-2" pref="33" max="-2" attributes="0"/>
+                                      <Component id="addPropertyDatePicker" alignment="1" min="-2" pref="33" max="-2" attributes="0"/>
+                                      <Component id="addPropertyPercentageLabel" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
+                                      <Component id="addPropertyDiscountLabel" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
+                                      <Component id="addPropertyDiscountTextField" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jButton1" max="32767" attributes="0"/>
+                              <Component id="addPropertyAddPicturesButton" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="130" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButton2" pref="41" max="32767" attributes="0"/>
+                          <Component id="addPropertyExtraSearchInfoPanel" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="addPropertyButton" min="-2" pref="47" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="jTextField2">
+                <Component class="javax.swing.JTextField" name="addPropertyDescriptionTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField2"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField3">
+                <Component class="javax.swing.JTextField" name="addPropertyLocationTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField3"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox1">
+                <Component class="javax.swing.JComboBox" name="addPropertyTypeBox">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="2">
@@ -271,7 +259,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox2">
+                <Component class="javax.swing.JComboBox" name="addPropertyDivisionsBox">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="5">
@@ -287,7 +275,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel1">
+                <Component class="javax.swing.JLabel" name="addPropertyDiscountLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="14" style="0"/>
@@ -295,24 +283,24 @@
                     <Property name="text" type="java.lang.String" value="Desconto:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField4">
+                <Component class="javax.swing.JTextField" name="addPropertyDiscountTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField4"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel2">
+                <Component class="javax.swing.JLabel" name="addPropertyPercentageLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="%"/>
                   </Properties>
                 </Component>
-                <Component class="org.jdesktop.swingx.JXDatePicker" name="jXDatePicker1">
+                <Component class="org.jdesktop.swingx.JXDatePicker" name="addPropertyDatePicker">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField5">
+                <Component class="javax.swing.JTextField" name="addPropertyPriceTextField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField5"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel3">
+                <Component class="javax.swing.JLabel" name="addPropertyCoinTypeLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="14" style="0"/>
@@ -320,36 +308,259 @@
                     <Property name="text" type="java.lang.String" value="&#x20ac;"/>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea1">
-                      <Properties>
-                        <Property name="columns" type="int" value="20"/>
-                        <Property name="rows" type="int" value="5"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Component class="javax.swing.JTextField" name="jTextField6">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField6"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JButton" name="jButton1">
+                <Component class="javax.swing.JButton" name="addPropertyAddPicturesButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Adicionar Fotos"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton2">
+                <Component class="javax.swing.JButton" name="addPropertyButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Adicionar Alojamento"/>
                   </Properties>
                 </Component>
+                <Container class="javax.swing.JPanel" name="addPropertyExtraSearchInfoPanel">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder title="Informa&#xe7;&#xe3;o Extra"/>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="addPropertyNClientsSpinner" alignment="0" pref="100" max="32767" attributes="0"/>
+                                  <Component id="addPropertyNRoomsSpinner" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="addPropertyNBathroomsSpinner" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="addPropertyNBedsSpinner" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="addPropertyNBathroomssLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="addPropertyNRoomsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="262" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="addPropertyNClientsLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="addPropertyBedTypeBox" min="-2" pref="200" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="addPropertyNBedsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="addPropertyInfoExtraInfoPanel" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="addPropertyInfoExtraInfoPanel" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="addPropertyNClientsSpinner" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="addPropertyNClientsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="addPropertyBedTypeBox" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="addPropertyNRoomsSpinner" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="addPropertyNRoomsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="addPropertyNBathroomsSpinner" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="addPropertyNBathroomssLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="addPropertyNBedsSpinner" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="addPropertyNBedsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace pref="16" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JSpinner" name="addPropertyNClientsSpinner">
+                    </Component>
+                    <Component class="javax.swing.JSpinner" name="addPropertyNRoomsSpinner">
+                      <Properties>
+                        <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero m&#xed;nimo de quartos do alojamento"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JSpinner" name="addPropertyNBathroomsSpinner">
+                      <Properties>
+                        <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero m&#xed;nimo de quartos de banho do alojamento"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JSpinner" name="addPropertyNBedsSpinner">
+                      <Properties>
+                        <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero m&#xed;nimo de camas do alojamento"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="addPropertyNClientsLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="N&#xba; Pessoas"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="addPropertyNRoomsLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="N&#xba; Quartos"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="addPropertyNBathroomssLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="N&#xba; Quartos de Banho"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="addPropertyNBedsLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="N&#xba; Camas"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="addPropertyBedTypeBox">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="1">
+                            <StringItem index="0" value="Tipo de Cama"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Container class="javax.swing.JPanel" name="addPropertyInfoExtraInfoPanel">
+                      <Properties>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                            <TitledBorder title="Extras"/>
+                          </Border>
+                        </Property>
+                      </Properties>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="addPropertyPetsCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="addPropertyWashingMachineCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="addPropertyDiscountsCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="addPropertyKitchenCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="addPropertyWifiCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="addPropertyPoolCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="addPropertyBreakfastCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="addPropertyExtrasCheckBox" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="addPropertyRatingsCheckBox" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace pref="95" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="addPropertyDiscountsCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="addPropertyExtrasCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="addPropertyRatingsCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="addPropertyPetsCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="addPropertyKitchenCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="addPropertyBreakfastCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="addPropertyWashingMachineCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="addPropertyWifiCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="addPropertyPoolCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JCheckBox" name="addPropertyDiscountsCheckBox">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Cont&#xe9;m descontos"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="addPropertyExtrasCheckBox">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Cont&#xe9;m extras"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="addPropertyRatingsCheckBox">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Cont&#xe9;m avalia&#xe7;&#xf5;es"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="addPropertyPetsCheckBox">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Animais de Estima&#xe7;&#xe3;o"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="addPropertyKitchenCheckBox">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Cozinha"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="addPropertyWashingMachineCheckBox">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="M&#xe1;quina de Lavar"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="addPropertyWifiCheckBox">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Wi-fi"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="addPropertyBreakfastCheckBox">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Pequeno Almo&#xe7;o"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="addPropertyPoolCheckBox">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Piscina"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
               </SubComponents>
             </Container>
           </SubComponents>
