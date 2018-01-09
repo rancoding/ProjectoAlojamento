@@ -377,8 +377,7 @@ public class ProjectoAlojamento {
         repo.addUser(c2);
         repo.addUser(c3);
         repo.addUser(c4);
-        repo.addUserAutoRegister(c5);
-        repo.addUserAutoRegister(c6);
+        
         repo.addUser(c7);
         repo.addUser(c8);
         repo.addUser(c9);
@@ -386,8 +385,7 @@ public class ProjectoAlojamento {
         
         repo.addUser(o1);
         repo.addUser(o2);
-        repo.addUserAutoRegister(o3);
-        repo.addUserAutoRegister(o4);
+        
         repo.addUser(o5);
         repo.addUser(o6);
         

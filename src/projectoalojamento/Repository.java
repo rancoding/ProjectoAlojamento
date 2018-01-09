@@ -1022,7 +1022,7 @@ public class Repository {
     }
     
     //Add users in the list
-    public void addUser(Class c, User user)  {
+    public void addUser(User user)  {
         
         boolean exists = false;
         
