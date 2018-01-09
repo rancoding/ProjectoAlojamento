@@ -323,6 +323,8 @@ public class Repository {
     }
     
   
+    /*        Property List        */
+    /* *************************** */
     
     // Lista alojamentos dado uma localizaçao
     // Adiciona a uma lista para a retornar depois (para no swing termos a lista com a localizaçao dada)
@@ -1020,12 +1022,13 @@ public class Repository {
     }
     
     //Add users in the list
-    public void addUser(User user)  {
+    public void addUser(Class c, User user)  {
         
         boolean exists = false;
         
         for(User u: users)
         {
+            
             try
             {
                 verifyUserInfo(u, user);
@@ -1034,6 +1037,8 @@ public class Repository {
             {
                 exists = true;
             }
+            
+           
         }
         
         if(!exists)
@@ -1042,8 +1047,27 @@ public class Repository {
         }
     }
     
-    public void addUserAutoRegister(User user) {
-        this.users.add(user);
+    public void addUserAutoRegister(Class c,User user) {
+         boolean exists = false;
+        
+        for(User u: users)
+        {
+            if(c.isInstance(u)){
+                try
+                {
+                    verifyUserInfo(u, user);
+                }
+                catch(ExistentCitizenIdException | ExistentNifException | ExistentUsernameException ex)
+                {
+                    exists = true;
+                }  
+            }    
+        }
+        
+        if(!exists)
+        {
+            this.users.add(user);
+        }
     }
     
     ///////////////////////////////////////// Adding Property //////////////////////////////////////////////
