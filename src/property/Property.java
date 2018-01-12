@@ -337,12 +337,12 @@ public class Property implements Serializable{
         }
     }
     
-    public boolean verifyDate(LocalDate date) {
+    public boolean verifyDate(Date date) {
         boolean valid = true;
         
-        LocalDate todaysDate = LocalDate.now();
+        Date todaysDate =  new Date();
         
-        if(todaysDate.isAfter(date))
+        if(todaysDate.after(date))
         {
             valid = false;
         }

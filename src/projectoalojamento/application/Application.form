@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="framePanel" min="-2" pref="1000" max="-2" attributes="0"/>
+          <Component id="framePanel" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -153,7 +153,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="locationField" min="-2" pref="200" max="-2" attributes="0"/>
+                      <Component id="jComboBox1" min="-2" pref="200" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="startingDatePicker" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -170,15 +170,15 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="locationField" pref="30" max="32767" attributes="0"/>
                           <Component id="startingDatePicker" max="32767" attributes="0"/>
                           <Component id="propertyTypeBox" max="32767" attributes="0"/>
                           <Component id="searchButton" max="32767" attributes="0"/>
-                          <Component id="nClientsSlider" alignment="0" max="32767" attributes="0"/>
+                          <Component id="nClientsSlider" alignment="0" pref="30" max="32767" attributes="0"/>
                           <Component id="endingDatePicker" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jComboBox1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="95" max="32767" attributes="0"/>
                   </Group>
@@ -186,19 +186,13 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="locationField">
-              <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="66" green="66" red="66" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value=" Procurar por localidade"/>
-                <Property name="toolTipText" type="java.lang.String" value="Localidade do alojamento"/>
-              </Properties>
-            </Component>
             <Component class="org.jdesktop.swingx.JXDatePicker" name="startingDatePicker">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Data inicial dispon&#xed;vel em reserva"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="startingDatePickerActionPerformed"/>
+              </Events>
             </Component>
             <Component class="org.jdesktop.swingx.JXDatePicker" name="endingDatePicker">
               <Properties>
@@ -241,6 +235,15 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchButtonActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBox1">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="1">
+                    <StringItem index="0" value="Localidade"/>
+                  </StringArray>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

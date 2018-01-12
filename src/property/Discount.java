@@ -6,6 +6,7 @@
 package property;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 
 
@@ -16,8 +17,8 @@ import java.time.LocalDate;
  */
 public class Discount {
     private String description;
-    private LocalDate startingDate;
-    private LocalDate endingDate;
+    private Date startingDate;
+    private Date endingDate;
 
     /**
      *
@@ -25,7 +26,7 @@ public class Discount {
      * @param startDate
      * @param endDate
      */
-    public Discount(String description, LocalDate startDate, LocalDate endDate) {
+    public Discount(String description, Date startDate, Date endDate) {
         this.description = description;
         this.startingDate = startDate;
         this.endingDate = endDate;
@@ -36,8 +37,8 @@ public class Discount {
      */
     public Discount() {
         this.description = "";
-        this.startingDate = LocalDate.now();
-        this.endingDate = LocalDate.now();
+        this.startingDate = new Date();
+        this.endingDate = new Date();
     }
 
     /**
@@ -60,7 +61,7 @@ public class Discount {
      *
      * @return
      */
-    public LocalDate getStartingDate() {
+    public Date getStartingDate() {
         return startingDate;
     }
 
@@ -68,7 +69,7 @@ public class Discount {
      *
      * @param startingDate
      */
-    public void setStartingDate(LocalDate startingDate) {
+    public void setStartingDate(Date startingDate) {
         this.startingDate = startingDate;
     }
 
@@ -76,7 +77,7 @@ public class Discount {
      *
      * @return
      */
-    public LocalDate getEndingDate() {
+    public Date getEndingDate() {
         return endingDate;
     }
 
@@ -84,7 +85,7 @@ public class Discount {
      *
      * @param endingDate
      */
-    public void setEndingDate(LocalDate endingDate) {
+    public void setEndingDate(Date endingDate) {
         this.endingDate = endingDate;
     }
 }

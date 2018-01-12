@@ -6,6 +6,7 @@
 package property.booking;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 import user.Client;
 
@@ -21,8 +22,8 @@ public class Booking {
     private boolean confirmed;
     private boolean closed;
     private boolean paid;
-    private LocalDate startingDate;
-    private LocalDate endingDate;
+    private Date startingDate;
+    private Date endingDate;
     private BookingType bookingType;
     private PaymentType paymentType;
     private Client client;
@@ -38,7 +39,7 @@ public class Booking {
      * @param paymentType
      * @param client
      */
-    public Booking(int nClients, double finalPrice, LocalDate dataInicio, LocalDate dataFim, BookingType bookingType, PaymentType paymentType, Client client) {
+    public Booking(int nClients, double finalPrice, Date dataInicio, Date dataFim, BookingType bookingType, PaymentType paymentType, Client client) {
         this.referenceID = count;
         this.nClients = nClients;
         this.finalPrice = finalPrice;
@@ -63,8 +64,8 @@ public class Booking {
         this.confirmed = false;
         this.closed = false;
         this.paid = false;
-        this.startingDate = LocalDate.now();
-        this.endingDate = LocalDate.now();
+        this.startingDate = new Date();
+        this.endingDate = new Date();
         this.bookingType = new BookingType();
         this.paymentType = new PaymentType();
         this.client = new Client();
@@ -162,7 +163,7 @@ public class Booking {
      *
      * @return
      */
-    public LocalDate getStartingDate() {
+    public Date getStartingDate() {
         return startingDate;
     }
 
@@ -170,7 +171,7 @@ public class Booking {
      *
      * @param startingDate
      */
-    public void setStartingDate(LocalDate startingDate) {
+    public void setStartingDate(Date startingDate) {
         this.startingDate = startingDate;
     }
 
@@ -178,7 +179,7 @@ public class Booking {
      *
      * @return
      */
-    public LocalDate getEndingDate() {
+    public Date getEndingDate() {
         return endingDate;
     }
 
@@ -186,7 +187,7 @@ public class Booking {
      *
      * @param endingDate
      */
-    public void setEndingDate(LocalDate endingDate) {
+    public void setEndingDate(Date endingDate) {
         this.endingDate = endingDate;
     }
 

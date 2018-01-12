@@ -3,6 +3,7 @@ package user;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import user.contact.Message;
 
@@ -21,12 +22,12 @@ public class User implements Serializable {
     private int phoneNumber;
     private String address;
     private String location;
-    private LocalDate registerDate;
+    private Date registerDate;
     private List<Message> messages;
     private boolean privateProfile;
     
     
-    public User(String username, String password, String name, String citizenID, int NIF, int phoneNumber, String address, String location, LocalDate registerDate, boolean privateProfile) {
+    public User(String username, String password, String name, String citizenID, int NIF, int phoneNumber, String address, String location, Date registerDate, boolean privateProfile) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -49,7 +50,7 @@ public class User implements Serializable {
         this.phoneNumber = -1;
         this.address = "";
         this.location = "";
-        this.registerDate = LocalDate.now();
+        this.registerDate = new Date();
         this.privateProfile = false;
         messages = new ArrayList<>();
     }
@@ -119,11 +120,11 @@ public class User implements Serializable {
         this.location = location;
     }
 
-    public LocalDate getRegisterDate() {
+    public Date getRegisterDate() {
         return registerDate;
     }
 
-    public void setRegisterDate(LocalDate registerDate) {
+    public void setRegisterDate(Date registerDate) {
         this.registerDate = registerDate;
     }
 

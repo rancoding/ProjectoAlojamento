@@ -8,6 +8,7 @@ package user;
 import java.time.LocalDate;
 import property.Property;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,14 +21,14 @@ public class Client extends User {
     private boolean banned;
     private List<Property> favorites;
 
-    public Client(String username, String password, String name, String citizenID, int NIF, int phoneNumber, String address, String location, LocalDate registerDate, boolean privateProfile){
+    public Client(String username, String password, String name, String citizenID, int NIF, int phoneNumber, String address, String location, Date registerDate, boolean privateProfile){
         super(username, password, name, citizenID, NIF, phoneNumber, address, location, registerDate, privateProfile);
         this.banned = false;
         favorites = new ArrayList<>();
     }
     
     public Client() {
-        super("","","","",-1,-1,"","",LocalDate.now(),false);
+        super("","","","",-1,-1,"","", new Date(),false);
         this.banned = false;
         this.favorites = new ArrayList<>();
     }

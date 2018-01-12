@@ -5,8 +5,17 @@
  */
 package projectoalojamento.application;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import projectoalojamento.Repository;
+import property.Property;
+import property.booking.Booking;
+import property.location.County;
 
 /**
  *
@@ -18,6 +27,7 @@ public class Application extends javax.swing.JFrame implements Runnable {
     private JPLogin jpl;
     private JPRegister jpr;
     private JPPropertySearch jpps;
+    Repository repo = new Repository();
     
     /**
      * Creates new form Application
@@ -30,6 +40,30 @@ public class Application extends javax.swing.JFrame implements Runnable {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
+            
+        Date[] dates = {
+            
+        };
+        
+        int count = 0;
+        
+        for(Map.Entry<Property, County> m : repo.getProperties().entrySet()) {
+            for(Booking b : m.getKey().getBookings()) {
+                dates[count] = b.getStartingDate();
+                count++;
+                
+                long difference = b.getEndingDate().getTime() - b.getStartingDate().getTime();
+                Date d = new Date();
+                for(int i = 1; i <= difference; i++) {
+                    d.setTime(b.getStartingDate().getTime() + i);
+                    dates[count] = d;
+                    count++;
+                }
+            }
+        }
+        
+        startingDatePicker.getMonthView().setUnselectableDates(dates);
+        startingDatePicker.getMonthView().setLowerBound(new Date());
     }
 
     public void changePanel(JPanel panel) {
@@ -55,12 +89,12 @@ public class Application extends javax.swing.JFrame implements Runnable {
         loginButton = new javax.swing.JButton();
         frameLogoPanel = new javax.swing.JPanel();
         frameInfoPanel = new javax.swing.JPanel();
-        locationField = new javax.swing.JTextField();
         startingDatePicker = new org.jdesktop.swingx.JXDatePicker();
         endingDatePicker = new org.jdesktop.swingx.JXDatePicker();
         nClientsSlider = new javax.swing.JSlider();
         propertyTypeBox = new javax.swing.JComboBox();
         searchButton = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox();
         frameErrorPanel = new javax.swing.JPanel();
         errorLabel = new javax.swing.JLabel();
 
@@ -126,11 +160,12 @@ public class Application extends javax.swing.JFrame implements Runnable {
             .addGap(0, 60, Short.MAX_VALUE)
         );
 
-        locationField.setForeground(new java.awt.Color(102, 102, 102));
-        locationField.setText(" Procurar por localidade");
-        locationField.setToolTipText("Localidade do alojamento");
-
         startingDatePicker.setToolTipText("Data inicial disponível em reserva");
+        startingDatePicker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startingDatePickerActionPerformed(evt);
+            }
+        });
 
         endingDatePicker.setToolTipText("Data final disponível em reserva");
 
@@ -159,13 +194,15 @@ public class Application extends javax.swing.JFrame implements Runnable {
             }
         });
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Localidade" }));
+
         javax.swing.GroupLayout frameInfoPanelLayout = new javax.swing.GroupLayout(frameInfoPanel);
         frameInfoPanel.setLayout(frameInfoPanelLayout);
         frameInfoPanelLayout.setHorizontalGroup(
             frameInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(frameInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(locationField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(startingDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -180,15 +217,15 @@ public class Application extends javax.swing.JFrame implements Runnable {
         );
         frameInfoPanelLayout.setVerticalGroup(
             frameInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameInfoPanelLayout.createSequentialGroup()
+            .addGroup(frameInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(frameInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(locationField, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(startingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(propertyTypeBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nClientsSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(endingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(nClientsSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(endingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBox1))
                 .addContainerGap(95, Short.MAX_VALUE))
         );
 
@@ -237,7 +274,7 @@ public class Application extends javax.swing.JFrame implements Runnable {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(framePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(framePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,6 +334,10 @@ public class Application extends javax.swing.JFrame implements Runnable {
         }
     }//GEN-LAST:event_languageBoxItemStateChanged
 
+    private void startingDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startingDatePickerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_startingDatePickerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -343,8 +384,8 @@ public class Application extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel frameLogoPanel;
     private javax.swing.JPanel framePanel;
     private javax.swing.JPanel frameTopBarPanel;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox languageBox;
-    private javax.swing.JTextField locationField;
     private javax.swing.JButton loginButton;
     private javax.swing.JSlider nClientsSlider;
     private javax.swing.JComboBox propertyTypeBox;

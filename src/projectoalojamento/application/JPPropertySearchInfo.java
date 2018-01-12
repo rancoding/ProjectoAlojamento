@@ -21,7 +21,7 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
     public JPPropertySearchInfo(Application frame, Object language) {
         initComponents();
         this.frame = frame;
-        this.frame.setSize(1095, 659);
+        this.frame.setSize(1110, 696);
         this.propertySearchInfoLanguageBox.setSelectedItem(language);
     }
 

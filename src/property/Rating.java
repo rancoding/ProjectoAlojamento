@@ -7,6 +7,7 @@ package property;
 
 
 import java.time.LocalDate;
+import java.util.Date;
 import user.Client;
 
 /**
@@ -18,7 +19,7 @@ public class Rating {
     private String subject;
     private String message;
     private float points;
-    private LocalDate ratingDate;
+    private Date ratingDate;
     private Client client;
 
     /**
@@ -29,7 +30,7 @@ public class Rating {
      * @param ratingDate
      * @param client
      */
-    public Rating(String subject, String description, float points, LocalDate ratingDate, Client client) {
+    public Rating(String subject, String description, float points, Date ratingDate, Client client) {
         this.subject = subject;
         this.message = description;
         this.points = points;
@@ -41,7 +42,7 @@ public class Rating {
         this.subject = "";
         this.message = "";
         this.points = -1;
-        this.ratingDate = LocalDate.now();
+        this.ratingDate = new Date();
         this.client = new Client();
     }
 
@@ -97,7 +98,7 @@ public class Rating {
      *
      * @return
      */
-    public LocalDate getRatingDate() {
+    public Date getRatingDate() {
         return ratingDate;
     }
 
@@ -105,7 +106,7 @@ public class Rating {
      *
      * @param ratingDate
      */
-    public void setRatingDate(LocalDate ratingDate) {
+    public void setRatingDate(Date ratingDate) {
         this.ratingDate = ratingDate;
     }
 

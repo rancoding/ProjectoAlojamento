@@ -6,6 +6,7 @@
 package user;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
@@ -15,7 +16,7 @@ import java.time.LocalDate;
 public class Owner extends User {
     private boolean banned;
 
-    public Owner(String username, String password, String name, String citizenID, int NIF, int phoneNumber, String address, String location, LocalDate registerDate, boolean privateProfile){
+    public Owner(String username, String password, String name, String citizenID, int NIF, int phoneNumber, String address, String location, Date registerDate, boolean privateProfile){
         super(username, password, name, citizenID, NIF, phoneNumber, address, location, registerDate, privateProfile);
         this.banned = false;
     }
@@ -24,7 +25,7 @@ public class Owner extends User {
 
     public Owner() {
         
-        super("","","","",-1,-1,"","",LocalDate.now(),false);
+        super("","","","",-1,-1,"","", new Date(),false);
         this.banned = false;
     }
 
