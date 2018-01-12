@@ -156,16 +156,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value=" Localidade"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertySearchLocationFieldActionPerformed"/>
+              </Events>
             </Component>
             <Component class="org.jdesktop.swingx.JXDatePicker" name="propertySearchStartingDatePicker">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Dia inicial dispon&#xed;vel para reserva"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertySearchStartingDatePickerActionPerformed"/>
+              </Events>
             </Component>
             <Component class="org.jdesktop.swingx.JXDatePicker" name="propertySearchEndingDatePicker">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Dia final dispon&#xed;vel para reserva"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertySearchEndingDatePickerActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JSlider" name="propertySearchNClientsSlider">
             </Component>
@@ -293,21 +302,33 @@
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JSpinner" name="propertySearchNClientsSpinner">
+                  <Events>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="propertySearchNClientsSpinnerPropertyChange"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="propertySearchNRoomsSpinner">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero m&#xed;nimo de quartos do alojamento"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="propertySearchNRoomsSpinnerPropertyChange"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="propertySearchNBathroomsSpinner">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero m&#xed;nimo de quartos de banho do alojamento"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="propertySearchNBathroomsSpinnerPropertyChange"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="propertySearchNBedsSpinner">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero m&#xed;nimo de camas do alojamento"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="propertySearchNBedsSpinnerPropertyChange"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="propertySearchNClientsLabel">
                   <Properties>
@@ -355,6 +376,10 @@
                     <Property name="minimum" type="int" value="1"/>
                     <Property name="value" type="int" value="100"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="propertySearchMaxPricePerNightSliderStateChanged"/>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="propertySearchMaxPricePerNightSliderPropertyChange"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="propertySearchMaxPricePerNightField">
                   <Properties>
@@ -371,6 +396,9 @@
                       <SpinnerModel initial="0" maximum="10" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="propertySearchMinRatingFieldPropertyChange"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="propertySearchMinRatingLabel">
                   <Properties>
@@ -469,6 +497,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Cozinha"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertySearchKitchenCheckBoxActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="propertySearchWashingMachineCheckBox">
                       <Properties>
@@ -489,6 +520,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Piscina"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertySearchPoolCheckBoxActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -546,6 +580,7 @@
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="propertySearchListMouseClicked"/>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="propertySearchListPropertyChange"/>
                   </Events>
                 </Component>
               </SubComponents>
