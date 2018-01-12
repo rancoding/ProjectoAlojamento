@@ -13,6 +13,7 @@ public class JPRegister extends javax.swing.JPanel {
 
     private Application frame;
     private JPAfterLogin jpal;
+    private JPAfterLoginOwner jpalo;
     
     /**
      * Creates new form JPRegister
@@ -294,9 +295,14 @@ public class JPRegister extends javax.swing.JPanel {
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
-        // Dentro do button    
-        this.jpal = new JPAfterLogin(this.frame, this.registerLanguageBox.getSelectedItem());   
-        this.frame.changePanel(this.jpal);
+        // Dentro do button 
+        // Se for Cliente //
+        //this.jpal = new JPAfterLogin(this.frame, this.registerLanguageBox.getSelectedItem());   
+        //this.frame.changePanel(this.jpal);
+        
+        // Se for Dono //
+        this.jpalo = new JPAfterLoginOwner(this.frame, this.registerLanguageBox.getSelectedItem());   
+        this.frame.changePanel(this.jpalo);
     }//GEN-LAST:event_registerButtonActionPerformed
 
 

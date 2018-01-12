@@ -7,6 +7,7 @@ package property;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JSpinner;
 
 /**
  *
@@ -244,5 +245,7 @@ public class PropertyCharacteristics {
     public void setWifi(boolean wifi) {
         this.wifi = wifi;
     }
+
+    
     
 }

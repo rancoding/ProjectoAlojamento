@@ -16,6 +16,7 @@ public class JPLogin extends javax.swing.JPanel {
 
     private Application frame;
     private JPAfterLogin jpal;
+    private JPAfterLoginOwner jpalo;
     
     /**
      * Creates new form JPLogin
@@ -265,8 +266,13 @@ public class JPLogin extends javax.swing.JPanel {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
         // Dentro do button    
-        this.jpal = new JPAfterLogin(this.frame, this.loginLanguageBox.getSelectedItem());   
-        this.frame.changePanel(this.jpal);
+        // Para Login User //
+        //this.jpal = new JPAfterLogin(this.frame, this.loginLanguageBox.getSelectedItem());   
+        //this.frame.changePanel(this.jpal);
+        
+        // Para Login Owner 
+        this.jpalo = new JPAfterLoginOwner(this.frame, this.loginLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jpalo);
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void loginLanguageBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_loginLanguageBoxItemStateChanged

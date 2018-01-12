@@ -7,6 +7,7 @@ package property;
 
 import property.booking.Booking;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -336,12 +337,12 @@ public class Property implements Serializable{
         }
     }
     
-    public boolean verifyDate(Date date) {
+    public boolean verifyDate(LocalDate date) {
         boolean valid = true;
         
-        Date todaysDate = new Date();
+        LocalDate todaysDate = LocalDate.now();
         
-        if(todaysDate.after(date))
+        if(todaysDate.isAfter(date))
         {
             valid = false;
         }
@@ -449,6 +450,8 @@ public class Property implements Serializable{
         
         return newList;
     }
+    
+   
     
     /* Listing */
     /* ******* */
