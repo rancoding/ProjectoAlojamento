@@ -59,9 +59,10 @@ public class JPAfterLogin extends javax.swing.JPanel {
         afterLoginLocationField = new javax.swing.JTextField();
         afterLoginStartingDatePicker = new org.jdesktop.swingx.JXDatePicker();
         afterLoginEndingDatePicker = new org.jdesktop.swingx.JXDatePicker();
-        afterLoginNClientsSlider = new javax.swing.JSlider();
         afterLoginPropertyTypeBox = new javax.swing.JComboBox();
         afterLoginSearchButton = new javax.swing.JButton();
+        afterLoginNClientsSpinner = new javax.swing.JSpinner();
+        afterLoginNClientsLabel = new javax.swing.JLabel();
 
         afterLoginLanguageBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PT", "EN" }));
         afterLoginLanguageBox.setToolTipText("");
@@ -147,6 +148,9 @@ public class JPAfterLogin extends javax.swing.JPanel {
             }
         });
 
+        afterLoginNClientsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        afterLoginNClientsLabel.setText("Nº Viajantes");
+
         javax.swing.GroupLayout afterLoginInfoPanelLayout = new javax.swing.GroupLayout(afterLoginInfoPanel);
         afterLoginInfoPanel.setLayout(afterLoginInfoPanelLayout);
         afterLoginInfoPanelLayout.setHorizontalGroup(
@@ -160,7 +164,9 @@ public class JPAfterLogin extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(afterLoginEndingDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(afterLoginNClientsSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(afterLoginNClientsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(afterLoginNClientsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(afterLoginPropertyTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -175,9 +181,10 @@ public class JPAfterLogin extends javax.swing.JPanel {
                     .addComponent(afterLoginLocationField)
                     .addComponent(afterLoginStartingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(afterLoginEndingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(afterLoginNClientsSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(afterLoginPropertyTypeBox)
-                    .addComponent(afterLoginSearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(afterLoginSearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(afterLoginNClientsSpinner)
+                    .addComponent(afterLoginNClientsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(afterLoginErrorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -240,7 +247,8 @@ public class JPAfterLogin extends javax.swing.JPanel {
     private javax.swing.JComboBox afterLoginLanguageBox;
     private javax.swing.JTextField afterLoginLocationField;
     private javax.swing.JPanel afterLoginLogoPanel;
-    private javax.swing.JSlider afterLoginNClientsSlider;
+    private javax.swing.JLabel afterLoginNClientsLabel;
+    private javax.swing.JSpinner afterLoginNClientsSpinner;
     private javax.swing.JLabel afterLoginNameLabel;
     private javax.swing.JPanel afterLoginPanel;
     private javax.swing.JComboBox afterLoginPropertyTypeBox;

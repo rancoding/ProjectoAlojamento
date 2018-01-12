@@ -91,10 +91,11 @@ public class Application extends javax.swing.JFrame implements Runnable {
         frameInfoPanel = new javax.swing.JPanel();
         startingDatePicker = new org.jdesktop.swingx.JXDatePicker();
         endingDatePicker = new org.jdesktop.swingx.JXDatePicker();
-        nClientsSlider = new javax.swing.JSlider();
         propertyTypeBox = new javax.swing.JComboBox();
         searchButton = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
+        NClientsSpinner = new javax.swing.JSpinner();
+        afterLoginNClientsLabel = new javax.swing.JLabel();
         frameErrorPanel = new javax.swing.JPanel();
         errorLabel = new javax.swing.JLabel();
 
@@ -169,14 +170,6 @@ public class Application extends javax.swing.JFrame implements Runnable {
 
         endingDatePicker.setToolTipText("Data final disponível em reserva");
 
-        nClientsSlider.setPaintLabels(true);
-        nClientsSlider.setToolTipText("Número de Viajantes");
-        nClientsSlider.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                nClientsSliderStateChanged(evt);
-            }
-        });
-
         propertyTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Quarto", "Apartamento" }));
         propertyTypeBox.setToolTipText("Tipo de Alojamento");
         propertyTypeBox.setMaximumSize(new java.awt.Dimension(150, 30));
@@ -196,6 +189,9 @@ public class Application extends javax.swing.JFrame implements Runnable {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Localidade" }));
 
+        afterLoginNClientsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        afterLoginNClientsLabel.setText("Nº Viajantes");
+
         javax.swing.GroupLayout frameInfoPanelLayout = new javax.swing.GroupLayout(frameInfoPanel);
         frameInfoPanel.setLayout(frameInfoPanelLayout);
         frameInfoPanelLayout.setHorizontalGroup(
@@ -208,7 +204,9 @@ public class Application extends javax.swing.JFrame implements Runnable {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(endingDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nClientsSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(NClientsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(afterLoginNClientsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(propertyTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -222,24 +220,26 @@ public class Application extends javax.swing.JFrame implements Runnable {
                 .addGroup(frameInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(startingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(propertyTypeBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nClientsSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(endingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox1))
+                    .addComponent(jComboBox1)
+                    .addComponent(NClientsSpinner)
+                    .addComponent(afterLoginNClientsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(95, Short.MAX_VALUE))
         );
 
         errorLabel.setForeground(new java.awt.Color(240, 240, 240));
+        errorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errorLabel.setText(" ");
 
         javax.swing.GroupLayout frameErrorPanelLayout = new javax.swing.GroupLayout(frameErrorPanel);
         frameErrorPanel.setLayout(frameErrorPanelLayout);
         frameErrorPanelLayout.setHorizontalGroup(
             frameErrorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameErrorPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(errorLabel)
-                .addGap(465, 465, 465))
+            .addGroup(frameErrorPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(errorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         frameErrorPanelLayout.setVerticalGroup(
             frameErrorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,10 +287,6 @@ public class Application extends javax.swing.JFrame implements Runnable {
     private void propertyTypeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertyTypeBoxActionPerformed
 
     }//GEN-LAST:event_propertyTypeBoxActionPerformed
-
-    private void nClientsSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_nClientsSliderStateChanged
-
-    }//GEN-LAST:event_nClientsSliderStateChanged
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
@@ -377,6 +373,8 @@ public class Application extends javax.swing.JFrame implements Runnable {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner NClientsSpinner;
+    private javax.swing.JLabel afterLoginNClientsLabel;
     private org.jdesktop.swingx.JXDatePicker endingDatePicker;
     private javax.swing.JLabel errorLabel;
     private javax.swing.JPanel frameErrorPanel;
@@ -387,7 +385,6 @@ public class Application extends javax.swing.JFrame implements Runnable {
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox languageBox;
     private javax.swing.JButton loginButton;
-    private javax.swing.JSlider nClientsSlider;
     private javax.swing.JComboBox propertyTypeBox;
     private javax.swing.JButton registerButton;
     private javax.swing.JButton searchButton;

@@ -159,7 +159,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="endingDatePicker" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="nClientsSlider" min="-2" pref="200" max="-2" attributes="0"/>
+                      <Component id="NClientsSpinner" min="-2" pref="125" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="afterLoginNClientsLabel" min="-2" pref="73" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="propertyTypeBox" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -175,10 +177,11 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="startingDatePicker" max="32767" attributes="0"/>
                           <Component id="propertyTypeBox" max="32767" attributes="0"/>
-                          <Component id="searchButton" max="32767" attributes="0"/>
-                          <Component id="nClientsSlider" alignment="0" pref="30" max="32767" attributes="0"/>
+                          <Component id="searchButton" pref="30" max="32767" attributes="0"/>
                           <Component id="endingDatePicker" alignment="0" max="32767" attributes="0"/>
                           <Component id="jComboBox1" max="32767" attributes="0"/>
+                          <Component id="NClientsSpinner" max="32767" attributes="0"/>
+                          <Component id="afterLoginNClientsLabel" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="95" max="32767" attributes="0"/>
                   </Group>
@@ -198,15 +201,6 @@
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Data final dispon&#xed;vel em reserva"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JSlider" name="nClientsSlider">
-              <Properties>
-                <Property name="paintLabels" type="boolean" value="true"/>
-                <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero de Viajantes"/>
-              </Properties>
-              <Events>
-                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="nClientsSliderStateChanged"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="propertyTypeBox">
               <Properties>
@@ -245,6 +239,14 @@
                 </Property>
               </Properties>
             </Component>
+            <Component class="javax.swing.JSpinner" name="NClientsSpinner">
+            </Component>
+            <Component class="javax.swing.JLabel" name="afterLoginNClientsLabel">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="N&#xba; Viajantes"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="frameErrorPanel">
@@ -252,10 +254,10 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="errorLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="465" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="errorLabel" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -275,6 +277,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f0" green="f0" red="f0" type="rgb"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value=" "/>
               </Properties>
             </Component>
