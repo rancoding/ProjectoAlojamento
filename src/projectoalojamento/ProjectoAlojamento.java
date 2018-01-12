@@ -6,6 +6,7 @@
 package projectoalojamento;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -65,55 +66,53 @@ public class ProjectoAlojamento {
         // Adicionar 20 características
         // Adicionar as localidades
         
-        Client c1 = new Client();
-        Client c2 = new Client();
-        Client c3 = new Client();
-        Client c4 = new Client();
-        Client c5 = new Client();
-        Client c6 = new Client();
-        Client c7 = new Client();
-        Client c8 = new Client();
-        Client c9 = new Client();
-        Client c10 = new Client();
+        Client c1 = new Client("gustavo","gustavo123","Gustavo Vieira", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", "Esposende", new Date(), false);
+        Client c2 = new Client("rafael","rafael123","Rafa Morais", "222222222",987654321,963222222,"Rua de Outeiro", "Outeiro", new Date(), false);
+        Client c3 = new Client("andre","andre123","André Nogueira", "333333333",321654987,964333333,"Rua da Matemática", "Arcos de Valdevez", new Date(), false);
+        Client c4 = new Client("joao","joao123","João Cortez", "444444444",123654789,965444444,"Rua perto do IPVC", "Viana de Castelo", new Date(), false);
+        Client c5 = new Client("rui","rui123","Rui Rocha", "555555555",321456987,966555555,"Rua de Viana, 1º Andar", "Viana de Castelo", new Date(), false);
+        Client c6 = new Client("pedro","pedro123","Pedro Ribeiro", "666666666",321456789,967666666,"Rua da Belga", "Brafa", new Date(), true);
+        Client c7 = new Client("m1k4","m1k4123","Miguel Sousa", "777777777",123456987,968777777,"Rua dos Vampiros", "Fão", new Date(), true);
+        Client c8 = new Client("denis","denis123","Dinis Silva", "888888888",123123123,969888888,"Rua dos Indecisos", "Esposende", new Date(), false);
+        Client c9 = new Client("helder","helder123","Helder Freitas", "999999999",456456456,960000000,"Rua dos Faz-Portas", "Palmeira", new Date(), true);
+        Client c10 = new Client("figo","figo123","Miguel Lima", "000000000",789789789,961000000,"Rua dos Trabalhadores", "Marinhas", new Date(), true);
         
-        Owner o1 = new Owner();
-        Owner o2 = new Owner();
-        Owner o3 = new Owner();
-        Owner o4 = new Owner();
-        Owner o5 = new Owner();
-        Owner o6 = new Owner();
+        Owner o1 = new Owner("nuno", "nuno23", "Nuno Fernandes", "987987987", 999888777, 999234534, "Rua dos Vendedores", "Porto", new Date(), false);
+        Owner o2 = new Owner("", "", "", "", 1, 1, "", "", new Date(), false);
+        Owner o3 = new Owner("", "", "", "", 1, 1, "", "", new Date(), false);
+        Owner o4 = new Owner("", "", "", "", 1, 1, "", "", new Date(), false);
+        Owner o5 = new Owner("", "", "", "", 1, 1, "", "", new Date(), false);
+        Owner o6 = new Owner("", "", "", "", 1, 1, "", "", new Date(), false);
         
-        Administrator a1 = new Administrator();
-        Administrator a2 = new Administrator();
-        Administrator a3 = new Administrator();
+        Administrator a1 = new Administrator("admin1", "admin123", "Administrador Principal", "999999999", 989898989, 962045932, "Rua dos Administradores", "Porto", new Date(), true);
+        Administrator a2 = new Administrator("admin2", "admin123", "Administrador 2", "888888888", 767676767, 963243954, "Rua dos Administradores secundários", "Viana de Castelo", new Date(), false);
+        Administrator a3 = new Administrator("admin2", "admin123", "Administrador 3", "777777777", 545454545, 965023493, "Rua dos Administradores secundários", "Viana de Castelo", new Date(), false);
         
-        PropertyType pt1 = new PropertyType();
-        PropertyType pt2 = new PropertyType();
+        PropertyType pt1 = new PropertyType("Quarto", "Um quarto com camas e mobília necessária");
+        PropertyType pt2 = new PropertyType("Apartamento", "Uma casa com possíveis quartos e mobília necessária");
         
-        PaymentType pay1 = new PaymentType();
-        PaymentType pay2 = new PaymentType();
+        PaymentType pay1 = new PaymentType("Cartão", "Pagamento a cartão");
+        PaymentType pay2 = new PaymentType("Dinheiro", "Pagamento a dinheiro");
         
-        BedType bt1 = new BedType();
-        BedType bt2 = new BedType();
-        BedType bt3 = new BedType();
+        BedType bt1 = new BedType("Indivídual", "Uma cama para uma pessoa");
+        BedType bt2 = new BedType("Casal", "Uma cama para um casal e até um filho com idade menos a 5 anos");
+        BedType bt3 = new BedType("King Sized", "Uma cama para até 4 pessoas");
         
-        Division d1 = new Division();
-        Division d2 = new Division();
-        Division d3 = new Division();
+        Division d1 = new Division("Reservas", "Departamento de administração que trata de problemas de reservas");
+        Division d2 = new Division("Alojamentos", "Departamento de administração que trata de problemas de alojamentos");
+        Division d3 = new Division("Geral", "Departamento de administração que trata de qualquer problema");
         
-        TicketType tt1 = new TicketType();
-        TicketType tt2 = new TicketType();
-        TicketType tt3 = new TicketType();
+        Category ca1 = new Category("Reservas", "Tickets sobre as reservas");
+        Category ca2 = new Category("Alojamentos", "Tickets sobre os alojamentos");
+        Category ca3 = new Category("Login", "Tickets sobre os logins");
+        Category ca4 = new Category("Registo", "Tickets sobre os registos");
         
-        Status s1 = new Status();
-        Status s2 = new Status();
-        Status s3 = new Status();
+        TicketType tt1 = new TicketType("Problema a adicionar reservas", "Problemas em adicionar reservas", ca1);
+        TicketType tt2 = new TicketType("Problema a pagar reservas", "Problemas em adicionar reservas", ca1);
         
-        Category ca1 = new Category();
-        Category ca2 = new Category();
-        Category ca3 = new Category();
-        Category ca4 = new Category();
-        Category ca5 = new Category();
+        Status s1 = new Status("Pendente", "Ticket enviado pelo utilizador mas ainda sem resposta do administrador");
+        Status s2 = new Status("Respondido", "Ticket respondido por um administrador");
+        Status s3 = new Status("Completo", "Ticket completo");
         
         Ticket t1 = new Ticket();
         Ticket t2 = new Ticket();
@@ -411,7 +410,7 @@ public class ProjectoAlojamento {
         
         repo.addTicketType(tt1);
         repo.addTicketType(tt2);
-        repo.addTicketType(tt3);
+        //repo.addTicketType(tt3);
         
         repo.addStatus(s1);
         repo.addStatus(s2);
@@ -421,7 +420,7 @@ public class ProjectoAlojamento {
         repo.addCategory(ca2);
         repo.addCategory(ca3);
         repo.addCategory(ca4);
-        repo.addCategory(ca5);
+       // repo.addCategory(ca5);
         
         // Não deveria ser aqui mas sim no user talvez, mas pronto
         repo.addTicket(t1);

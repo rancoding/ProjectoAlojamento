@@ -1053,6 +1053,37 @@ public class Repository {
         this.properties.put(property, country);
     }
     
+    public int getLowestNumberOfClients() {
+        
+        Map.Entry<Property, County> m = (Map.Entry<Property, County>) this.properties.entrySet();
+        int min = m.getKey().getCharacteristics().getMinClients();
+        
+        for(Map.Entry<Property, County> mp : this.properties.entrySet())
+        {
+            if(min < mp.getKey().getCharacteristics().getMinClients())
+            {
+                min = mp.getKey().getCharacteristics().getMinClients();
+            }
+        }
+        
+        return min;
+    }
+    
+    public int getHighestNumberOfClients() {
+        
+        int max = 0;
+        
+        for(Map.Entry<Property, County> mp : this.properties.entrySet())
+        {
+            if(max > mp.getKey().getCharacteristics().getMaxClients())
+            {
+                max = mp.getKey().getCharacteristics().getMaxClients();
+            }
+        }
+        
+        return max;
+    }
+    
     ////////////////////////////////////// Edit /////////////////////////////////////////
     
     /////////// Edit Users ///////////////
