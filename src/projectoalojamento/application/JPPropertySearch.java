@@ -21,7 +21,7 @@ public class JPPropertySearch extends javax.swing.JPanel {
     private JPPropertySearchInfo jppsi;
     Property prop = new Property();
     int min = 0;
-    int max = 10;
+    int max = 5000;
     
     /**
      * Creates new form JPPropertySearch
@@ -182,9 +182,19 @@ public class JPPropertySearch extends javax.swing.JPanel {
         propertySearchNBedsLabel.setText("Nº Camas");
 
         propertySearchBedTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo de Cama" }));
+        propertySearchBedTypeBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                propertySearchBedTypeBoxActionPerformed(evt);
+            }
+        });
 
         propertySearchMinPricePerNightSlider.setMinimum(1);
         propertySearchMinPricePerNightSlider.setValue(1);
+        propertySearchMinPricePerNightSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                propertySearchMinPricePerNightSliderStateChanged(evt);
+            }
+        });
 
         propertySearchMinPricePerNightField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         propertySearchMinPricePerNightField.setText("120€");
@@ -223,12 +233,27 @@ public class JPPropertySearch extends javax.swing.JPanel {
         propertySearchInfoExtraInfoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Extras"));
 
         propertySearchDiscountsCheckBox.setText("Contém descontos");
+        propertySearchDiscountsCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                propertySearchDiscountsCheckBoxActionPerformed(evt);
+            }
+        });
 
         propertySearchExtrasCheckBox.setText("Contém extras");
+        propertySearchExtrasCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                propertySearchExtrasCheckBoxActionPerformed(evt);
+            }
+        });
 
         propertySearchRatingsCheckBox.setText("Contém avaliações");
 
         propertySearchPetsCheckBox.setText("Animais de Estimação");
+        propertySearchPetsCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                propertySearchPetsCheckBoxActionPerformed(evt);
+            }
+        });
 
         propertySearchKitchenCheckBox.setText("Cozinha");
         propertySearchKitchenCheckBox.addActionListener(new java.awt.event.ActionListener() {
@@ -238,10 +263,25 @@ public class JPPropertySearch extends javax.swing.JPanel {
         });
 
         propertySearchWashingMachineCheckBox.setText("Máquina de Lavar");
+        propertySearchWashingMachineCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                propertySearchWashingMachineCheckBoxActionPerformed(evt);
+            }
+        });
 
         propertySearchWifiCheckBox.setText("Wi-fi");
+        propertySearchWifiCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                propertySearchWifiCheckBoxActionPerformed(evt);
+            }
+        });
 
         propertySearchBreakfastCheckBox.setText("Pequeno Almoço");
+        propertySearchBreakfastCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                propertySearchBreakfastCheckBoxActionPerformed(evt);
+            }
+        });
 
         propertySearchPoolCheckBox.setText("Piscina");
         propertySearchPoolCheckBox.addActionListener(new java.awt.event.ActionListener() {
@@ -523,6 +563,12 @@ public class JPPropertySearch extends javax.swing.JPanel {
 
     private void propertySearchKitchenCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchKitchenCheckBoxActionPerformed
         // TODO add your handling code here:
+        if (propertySearchKitchenCheckBox.isEnabled()== true){
+            prop.getCharacteristics().setKitchen(true);
+        }
+        else{
+            prop.getCharacteristics().setKitchen(false && true);
+        }
     }//GEN-LAST:event_propertySearchKitchenCheckBoxActionPerformed
 
     private void propertySearchListPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_propertySearchListPropertyChange
@@ -555,15 +601,75 @@ public class JPPropertySearch extends javax.swing.JPanel {
     }//GEN-LAST:event_propertySearchMinRatingFieldPropertyChange
 
     private void propertySearchMaxPricePerNightSliderPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_propertySearchMaxPricePerNightSliderPropertyChange
-        // TODO add your handling code here:
-        
-        
+        // TODO add your handling code here:   
     }//GEN-LAST:event_propertySearchMaxPricePerNightSliderPropertyChange
 
     private void propertySearchMaxPricePerNightSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_propertySearchMaxPricePerNightSliderStateChanged
         // TODO add your handling code here:
         this.propertySearchMaxPricePerNightField.setText(String.valueOf(propertySearchMaxPricePerNightSlider.getValue()) );
+        this.propertySearchMinPricePerNightSlider.setMaximum(this.propertySearchMaxPricePerNightSlider.getValue());
     }//GEN-LAST:event_propertySearchMaxPricePerNightSliderStateChanged
+
+    private void propertySearchMinPricePerNightSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_propertySearchMinPricePerNightSliderStateChanged
+        // TODO add your handling code here:
+        this.propertySearchMinPricePerNightField.setText(String.valueOf(propertySearchMinPricePerNightSlider.getValue()));
+        this.propertySearchMaxPricePerNightSlider.setMinimum(this.propertySearchMinPricePerNightSlider.getValue());
+    }//GEN-LAST:event_propertySearchMinPricePerNightSliderStateChanged
+
+    private void propertySearchBedTypeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchBedTypeBoxActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_propertySearchBedTypeBoxActionPerformed
+
+    private void propertySearchDiscountsCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchDiscountsCheckBoxActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_propertySearchDiscountsCheckBoxActionPerformed
+
+    private void propertySearchPetsCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchPetsCheckBoxActionPerformed
+        // TODO add your handling code here:
+        if (propertySearchPetsCheckBox.isEnabled()== true){
+            prop.getCharacteristics().setPets(true);
+        }
+        else{
+            prop.getCharacteristics().setPets(false && true);
+        }
+    }//GEN-LAST:event_propertySearchPetsCheckBoxActionPerformed
+
+    private void propertySearchWashingMachineCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchWashingMachineCheckBoxActionPerformed
+        // TODO add your handling code here:
+        if (propertySearchWashingMachineCheckBox.isEnabled()== true){
+            prop.getCharacteristics().setWashingMachine(true);
+        }
+        else{
+            prop.getCharacteristics().setWashingMachine(false && true);
+        }
+    }//GEN-LAST:event_propertySearchWashingMachineCheckBoxActionPerformed
+
+    private void propertySearchWifiCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchWifiCheckBoxActionPerformed
+        // TODO add your handling code here:
+        if (propertySearchWifiCheckBox.isEnabled()== true){
+            prop.getCharacteristics().setWifi(true);
+        }
+        else{
+            prop.getCharacteristics().setWifi(false && true);
+        }
+    }//GEN-LAST:event_propertySearchWifiCheckBoxActionPerformed
+
+    private void propertySearchExtrasCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchExtrasCheckBoxActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_propertySearchExtrasCheckBoxActionPerformed
+
+    private void propertySearchBreakfastCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchBreakfastCheckBoxActionPerformed
+        // TODO add your handling code here:
+        if (propertySearchBreakfastCheckBox.isEnabled()== true){
+            prop.getCharacteristics().setBreakfast(true);
+        }
+        else{
+            prop.getCharacteristics().setBreakfast(false && true);
+        }
+    }//GEN-LAST:event_propertySearchBreakfastCheckBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

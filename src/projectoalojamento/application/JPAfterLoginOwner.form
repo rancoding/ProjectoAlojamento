@@ -102,6 +102,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Rafael Morais"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="afterLoginOwnerNickLabelMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="afterLoginOwnerMessageButton">
               <Properties>
@@ -679,6 +682,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="RESERVAS"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="afterLoginOwnerBookingButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="afterLoginOwnerDeletePropertyButton">
               <Properties>
