@@ -43,7 +43,6 @@ public class JPAddProperty extends javax.swing.JPanel {
         addPropertyDiscountLabel = new javax.swing.JLabel();
         addPropertyDiscountTextField = new javax.swing.JTextField();
         addPropertyPercentageLabel = new javax.swing.JLabel();
-        addPropertyDatePicker = new org.jdesktop.swingx.JXDatePicker();
         addPropertyPriceTextField = new javax.swing.JTextField();
         addPropertyCoinTypeLabel = new javax.swing.JLabel();
         addPropertyAddPicturesButton = new javax.swing.JButton();
@@ -312,9 +311,7 @@ public class JPAddProperty extends javax.swing.JPanel {
                                 .addComponent(addPropertyDiscountTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(addPropertyPercentageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(addPropertyDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addGap(254, 254, 254)
                                 .addComponent(addPropertyPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(addPropertyCoinTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -340,7 +337,6 @@ public class JPAddProperty extends javax.swing.JPanel {
                             .addComponent(addPropertyDivisionsBox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addPropertyPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addPropertyCoinTypeLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addPropertyDatePicker, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addPropertyPercentageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addPropertyDiscountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addPropertyDiscountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -408,7 +404,6 @@ public class JPAddProperty extends javax.swing.JPanel {
     private javax.swing.JCheckBox addPropertyBreakfastCheckBox;
     private javax.swing.JButton addPropertyButton;
     private javax.swing.JLabel addPropertyCoinTypeLabel;
-    private org.jdesktop.swingx.JXDatePicker addPropertyDatePicker;
     private javax.swing.JTextField addPropertyDescriptionTextField;
     private javax.swing.JLabel addPropertyDiscountLabel;
     private javax.swing.JTextField addPropertyDiscountTextField;

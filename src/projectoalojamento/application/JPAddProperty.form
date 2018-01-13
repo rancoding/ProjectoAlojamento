@@ -183,9 +183,7 @@
                                           <Component id="addPropertyDiscountTextField" pref="84" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="addPropertyPercentageLabel" min="-2" pref="25" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="addPropertyDatePicker" min="-2" pref="218" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="254" max="-2" attributes="0"/>
                                           <Component id="addPropertyPriceTextField" min="-2" pref="124" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="addPropertyCoinTypeLabel" min="-2" pref="16" max="-2" attributes="0"/>
@@ -218,7 +216,6 @@
                                       <Component id="addPropertyDivisionsBox" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
                                       <Component id="addPropertyPriceTextField" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
                                       <Component id="addPropertyCoinTypeLabel" alignment="1" min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Component id="addPropertyDatePicker" alignment="1" min="-2" pref="33" max="-2" attributes="0"/>
                                       <Component id="addPropertyPercentageLabel" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
                                       <Component id="addPropertyDiscountLabel" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
                                       <Component id="addPropertyDiscountTextField" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
@@ -292,8 +289,6 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="%"/>
                   </Properties>
-                </Component>
-                <Component class="org.jdesktop.swingx.JXDatePicker" name="addPropertyDatePicker">
                 </Component>
                 <Component class="javax.swing.JTextField" name="addPropertyPriceTextField">
                   <Properties>
