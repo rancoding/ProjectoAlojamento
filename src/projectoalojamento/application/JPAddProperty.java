@@ -29,7 +29,7 @@ public class JPAddProperty extends javax.swing.JPanel {
 
         addPropertyPanel = new javax.swing.JPanel();
         addPropertyTopBarPanel = new javax.swing.JPanel();
-        addPropertyLanguageBox = new javax.swing.JComboBox<>();
+        addPropertyLanguageBox = new javax.swing.JComboBox<String>();
         addPropertyNickLabel = new javax.swing.JLabel();
         addPropertyMessageButton = new javax.swing.JButton();
         addPropertyTitlePanel = new javax.swing.JPanel();
@@ -38,8 +38,8 @@ public class JPAddProperty extends javax.swing.JPanel {
         addPropertyInformationPanel = new javax.swing.JPanel();
         addPropertyDescriptionTextField = new javax.swing.JTextField();
         addPropertyLocationTextField = new javax.swing.JTextField();
-        addPropertyTypeBox = new javax.swing.JComboBox<>();
-        addPropertyDivisionsBox = new javax.swing.JComboBox<>();
+        addPropertyTypeBox = new javax.swing.JComboBox<String>();
+        addPropertyDivisionsBox = new javax.swing.JComboBox<String>();
         addPropertyDiscountLabel = new javax.swing.JLabel();
         addPropertyDiscountTextField = new javax.swing.JTextField();
         addPropertyPercentageLabel = new javax.swing.JLabel();
@@ -69,7 +69,7 @@ public class JPAddProperty extends javax.swing.JPanel {
         addPropertyBreakfastCheckBox = new javax.swing.JCheckBox();
         addPropertyPoolCheckBox = new javax.swing.JCheckBox();
 
-        addPropertyLanguageBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PT", "EN" }));
+        addPropertyLanguageBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PT", "EN" }));
 
         addPropertyNickLabel.setText("Rafael Morais");
 
@@ -131,9 +131,9 @@ public class JPAddProperty extends javax.swing.JPanel {
 
         addPropertyLocationTextField.setText("jTextField3");
 
-        addPropertyTypeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Apartamento", "Casa" }));
+        addPropertyTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Apartamento", "Casa" }));
 
-        addPropertyDivisionsBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "T1", "T2", "T3", "T4", "T5" }));
+        addPropertyDivisionsBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "T1", "T2", "T3", "T4", "T5" }));
 
         addPropertyDiscountLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addPropertyDiscountLabel.setText("Desconto:");
@@ -143,6 +143,11 @@ public class JPAddProperty extends javax.swing.JPanel {
         addPropertyPercentageLabel.setText("%");
 
         addPropertyPriceTextField.setText("jTextField5");
+        addPropertyPriceTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                addPropertyPriceTextFieldFocusLost(evt);
+            }
+        });
 
         addPropertyCoinTypeLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addPropertyCoinTypeLabel.setText("€");
@@ -400,6 +405,27 @@ public class JPAddProperty extends javax.swing.JPanel {
     private void addPropertyMessageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPropertyMessageButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addPropertyMessageButtonActionPerformed
+
+    private void addPropertyPriceTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_addPropertyPriceTextFieldFocusLost
+        // TODO add your handling code here:
+        
+        int price = 0;
+        
+        try
+        {
+            price = Integer.parseInt(addPropertyPriceTextField.getText());
+        }
+        catch(NumberFormatException e)
+        {
+            addPropertyPriceTextField.setText("");
+        }
+        
+        if(price < 0)
+        {
+            addPropertyPriceTextField.setText(String.valueOf(price * (-1)));
+        }
+        
+    }//GEN-LAST:event_addPropertyPriceTextFieldFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
