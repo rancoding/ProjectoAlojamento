@@ -17,94 +17,164 @@ public class Ticket {
     private TicketType ticketType;
     private String subject;
     private String message;
-    private Division division;
     private boolean finalised;
     private User sender;
     private Status status;
+    private String answer;
     private static int count;
 
-    public Ticket(TicketType ticketType, String subject, String message, Division division, boolean finalised, Status status, User sender) {
+    /**
+     *
+     * @param ticketType
+     * @param subject
+     * @param message
+     * @param finalised
+     * @param status
+     * @param sender
+     */
+    public Ticket(TicketType ticketType, String subject, String message, boolean finalised, Status status, User sender) {
         
         this.referenceID = count;
         this.ticketType = ticketType;
         this.subject = subject;
         this.message = message;
-        this.division = division;
         this.finalised = finalised;
         this.status = status;
         this.sender = sender;
         count++;
     }
     
+    /**
+     *
+     */
     public Ticket() {
         this.referenceID = -1;
         this.ticketType = new TicketType();
         this.subject = "";
         this.message = "";
-        this.division = new Division();
         this.finalised = false;
         this.status = new Status();
         this.sender = new User();
     }
     
+    /**
+     *
+     * @return
+     */
     public int getReferenceID() {
         return referenceID;
     }
 
+    /**
+     *
+     * @return
+     */
     public TicketType getTicketType() {
         return ticketType;
     }
 
+    /**
+     *
+     * @param ticketType
+     */
     public void setTicketType(TicketType ticketType) {
         this.ticketType = ticketType;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getSubject() {
         return subject;
     }
 
+    /**
+     *
+     * @param subject
+     */
     public void setSubject(String subject) {
         this.subject = subject;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMessage() {
         return message;
     }
 
+    /**
+     *
+     * @param message
+     */
     public void setMessage(String message) {
         this.message = message;
     }
 
-    public Division getDivision() {
-        return division;
-    }
-
-    public void setDivision(Division division) {
-        this.division = division;
-    }
-
+    /**
+     *
+     * @return
+     */
     public boolean isFinalised() {
         return finalised;
     }
 
+    /**
+     *
+     * @param finalised
+     */
     public void setFinalised(boolean finalised) {
         this.finalised = finalised;
     }
 
+    /**
+     *
+     * @return
+     */
     public User getSender() {
         return sender;
     }
 
+    /**
+     *
+     * @param sender
+     */
     public void setSender(User sender) {
         this.sender = sender;
     }
 
+    /**
+     *
+     * @return
+     */
     public Status getStatus() {
         return status;
     }
 
+    /**
+     *
+     * @param status
+     */
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount(int count) {
+        Ticket.count = count;
     }
     
     

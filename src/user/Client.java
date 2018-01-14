@@ -21,30 +21,62 @@ public class Client extends User {
     private boolean banned;
     private List<Property> favorites;
 
+    /**
+     *
+     * @param username
+     * @param password
+     * @param name
+     * @param citizenID
+     * @param NIF
+     * @param phoneNumber
+     * @param address
+     * @param location
+     * @param registerDate
+     * @param privateProfile
+     */
     public Client(String username, String password, String name, String citizenID, int NIF, int phoneNumber, String address, String location, Date registerDate, boolean privateProfile){
         super(username, password, name, citizenID, NIF, phoneNumber, address, location, registerDate, privateProfile);
         this.banned = false;
         favorites = new ArrayList<>();
     }
     
+    /**
+     *
+     */
     public Client() {
         super("","","","",-1,-1,"","", new Date(),false);
         this.banned = false;
         this.favorites = new ArrayList<>();
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isBanned() {
         return banned;
     }
 
+    /**
+     *
+     * @param banned
+     */
     public void setBanned(boolean banned) {
         this.banned = banned;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Property> getFavorite() {
         return favorites;
     }
 
+    /**
+     *
+     * @param favorites
+     */
     public void setFavorite(List<Property> favorites) {
         this.favorites = favorites;
     }

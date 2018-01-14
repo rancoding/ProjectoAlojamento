@@ -16,23 +16,45 @@ import java.util.Date;
 public class Owner extends User {
     private boolean banned;
 
+    /**
+     *
+     * @param username
+     * @param password
+     * @param name
+     * @param citizenID
+     * @param NIF
+     * @param phoneNumber
+     * @param address
+     * @param location
+     * @param registerDate
+     * @param privateProfile
+     */
     public Owner(String username, String password, String name, String citizenID, int NIF, int phoneNumber, String address, String location, Date registerDate, boolean privateProfile){
         super(username, password, name, citizenID, NIF, phoneNumber, address, location, registerDate, privateProfile);
         this.banned = false;
     }
     
-    
-
+    /**
+     *
+     */
     public Owner() {
         
         super("","","","",-1,-1,"","", new Date(),false);
         this.banned = false;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isBanned() {
         return banned;
     }
 
+    /**
+     *
+     * @param banned
+     */
     public void setBanned(boolean banned) {
         this.banned = banned;
     }

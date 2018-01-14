@@ -11,10 +11,17 @@ package property.exceptions;
  */
 public class InvalidRatingPointsException extends Exception {
     
+    /**
+     *
+     */
     public InvalidRatingPointsException() {
         super();
     }
     
+    /**
+     *
+     * @param message
+     */
     public InvalidRatingPointsException(String message) {
         super(message);
     }

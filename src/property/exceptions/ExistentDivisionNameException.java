@@ -11,10 +11,17 @@ package property.exceptions;
  */
 public class ExistentDivisionNameException extends Exception {
     
+    /**
+     *
+     */
     public ExistentDivisionNameException() {
         super();
     }
     
+    /**
+     *
+     * @param message
+     */
     public ExistentDivisionNameException(String message) {
         super(message);
     }

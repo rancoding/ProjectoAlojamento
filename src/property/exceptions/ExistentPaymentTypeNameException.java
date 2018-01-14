@@ -11,10 +11,17 @@ package property.exceptions;
  */
 public class ExistentPaymentTypeNameException extends Exception {
     
+    /**
+     *
+     */
     public ExistentPaymentTypeNameException() {
         super();
     }
     
+    /**
+     *
+     * @param message
+     */
     public ExistentPaymentTypeNameException(String message) {
         super(message);
     }

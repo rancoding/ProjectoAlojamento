@@ -12,9 +12,17 @@ package user.exceptions;
  */
 public class ExistentCitizenIdException extends Exception {
     
+    /**
+     *
+     */
     public ExistentCitizenIdException() {
         super();
     }
+
+    /**
+     *
+     * @param message
+     */
     public ExistentCitizenIdException(String message) {
         super(message);
     }

@@ -27,6 +27,7 @@ public class Application extends javax.swing.JFrame implements Runnable {
     private JPLogin jpl;
     private JPRegister jpr;
     private JPPropertySearch jpps;
+    private JPAddProperty jpap;
     Repository repo = new Repository();
     
     /**
@@ -41,6 +42,8 @@ public class Application extends javax.swing.JFrame implements Runnable {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
             
+        this.changeTextToSelectedLanguage();
+        
         Date[] dates = {
             
         };
@@ -62,10 +65,25 @@ public class Application extends javax.swing.JFrame implements Runnable {
             }
         }
         
+        for(Date d : dates)
+        {
+            System.out.println("Date: " + d.getTime());
+        }
+        
         startingDatePicker.getMonthView().setUnselectableDates(dates);
         startingDatePicker.getMonthView().setLowerBound(new Date());
+        
+        Date d = new Date();
+        
+        this.startingDatePicker.setDate(d);
+        d.setTime(this.startingDatePicker.getDate().getTime() + 86400000);
+        this.endingDatePicker.setDate(d);
     }
 
+    /**
+     *
+     * @param panel
+     */
     public void changePanel(JPanel panel) {
         this.visiblePanel.setVisible(false);
         this.visiblePanel = panel;
@@ -87,6 +105,7 @@ public class Application extends javax.swing.JFrame implements Runnable {
         languageBox = new javax.swing.JComboBox();
         registerButton = new javax.swing.JButton();
         loginButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         frameLogoPanel = new javax.swing.JPanel();
         frameInfoPanel = new javax.swing.JPanel();
         startingDatePicker = new org.jdesktop.swingx.JXDatePicker();
@@ -124,6 +143,13 @@ public class Application extends javax.swing.JFrame implements Runnable {
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout frameTopBarPanelLayout = new javax.swing.GroupLayout(frameTopBarPanel);
         frameTopBarPanel.setLayout(frameTopBarPanelLayout);
         frameTopBarPanelLayout.setHorizontalGroup(
@@ -131,6 +157,8 @@ public class Application extends javax.swing.JFrame implements Runnable {
             .addGroup(frameTopBarPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(languageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(138, 138, 138)
+                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(loginButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -144,7 +172,8 @@ public class Application extends javax.swing.JFrame implements Runnable {
                 .addGroup(frameTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(languageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(registerButton)
-                    .addComponent(loginButton))
+                    .addComponent(loginButton)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -318,21 +347,18 @@ public class Application extends javax.swing.JFrame implements Runnable {
 
     private void languageBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_languageBoxItemStateChanged
         // TODO add your handling code here:
-        if(languageBox.getSelectedItem() == "EN")
-        {
-            this.loginButton.setText("Sign in");
-            this.registerButton.setText("Register");
-        }
-        else
-        {
-            this.loginButton.setText("Login");
-            this.registerButton.setText("Registo");
-        }
+        changeTextToSelectedLanguage();
     }//GEN-LAST:event_languageBoxItemStateChanged
 
     private void startingDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startingDatePickerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_startingDatePickerActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.jpap = new JPAddProperty(this, this.repo, this.languageBox.getSelectedItem());
+        this.changePanel(this.jpap);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -372,6 +398,28 @@ public class Application extends javax.swing.JFrame implements Runnable {
         });
     }
 
+    /**
+     *
+     */
+    public void changeTextToSelectedLanguage() {
+        
+        if(this.languageBox.getSelectedIndex() == 0)
+        {
+            this.loginButton.setText("Login");
+            this.registerButton.setText("Registo");
+            this.afterLoginNClientsLabel.setText("Nº Viajantes");
+            this.searchButton.setText("Pesquisar");
+        }
+        else
+        {
+            this.loginButton.setText("Login");
+            this.registerButton.setText("Sign up");
+            this.afterLoginNClientsLabel.setText("Nº Travelers");
+            this.searchButton.setText("Search");
+        }
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner NClientsSpinner;
     private javax.swing.JLabel afterLoginNClientsLabel;
@@ -382,6 +430,7 @@ public class Application extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel frameLogoPanel;
     private javax.swing.JPanel framePanel;
     private javax.swing.JPanel frameTopBarPanel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox languageBox;
     private javax.swing.JButton loginButton;

@@ -11,10 +11,17 @@ package property.exceptions;
  */
 public class ExistentTicketCategoryNameException extends Exception {
     
+    /**
+     *
+     */
     public ExistentTicketCategoryNameException() {
         super();
     }
     
+    /**
+     *
+     * @param message
+     */
     public ExistentTicketCategoryNameException(String message) {
         super(message);
     }

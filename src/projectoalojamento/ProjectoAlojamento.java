@@ -78,11 +78,11 @@ public class ProjectoAlojamento {
         Client c10 = new Client("figo","figo123","Miguel Lima", "000000000",789789789,961000000,"Rua dos Trabalhadores", "Marinhas", new Date(), true);
         
         Owner o1 = new Owner("nuno", "nuno23", "Nuno Fernandes", "987987987", 999888777, 999234534, "Rua dos Vendedores", "Porto", new Date(), false);
-        Owner o2 = new Owner("", "", "", "", 1, 1, "", "", new Date(), false);
-        Owner o3 = new Owner("", "", "", "", 1, 1, "", "", new Date(), false);
-        Owner o4 = new Owner("", "", "", "", 1, 1, "", "", new Date(), false);
-        Owner o5 = new Owner("", "", "", "", 1, 1, "", "", new Date(), false);
-        Owner o6 = new Owner("", "", "", "", 1, 1, "", "", new Date(), false);
+        Owner o2 = new Owner("gustavo","gustavo123","Gustavo Vieira", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", "Esposende", new Date(), false);
+        Owner o3 = new Owner("m1k4","m1k4123","Miguel Sousa", "777777777",123456987,968777777,"Rua dos Vampiros", "Fão", new Date(), false);
+        Owner o4 = new Owner("antonio", "antonio123", "António Barros", "158158158", 102102102, 952158158, "Rua das Antonionetas", "Lisboa", new Date(), true);
+        Owner o5 = new Owner("miguel", "miguel123", "Miguel Ângelo", "645645645", 434434434, 912912912, "Rua dos Vendedores", "Lisboa", new Date(), false);
+        Owner o6 = new Owner("ana", "ana123", "Ana Antonieta", "283283283", 929929929, 910910910, "Rua dos Vendedores", "Porto", new Date(), true);
         
         Administrator a1 = new Administrator("admin1", "admin123", "Administrador Principal", "999999999", 989898989, 962045932, "Rua dos Administradores", "Porto", new Date(), true);
         Administrator a2 = new Administrator("admin2", "admin123", "Administrador 2", "888888888", 767676767, 963243954, "Rua dos Administradores secundários", "Viana de Castelo", new Date(), false);
@@ -95,12 +95,11 @@ public class ProjectoAlojamento {
         PaymentType pay2 = new PaymentType("Dinheiro", "Pagamento a dinheiro");
         
         BedType bt1 = new BedType("Indivídual", "Uma cama para uma pessoa");
-        BedType bt2 = new BedType("Casal", "Uma cama para um casal e até um filho com idade menos a 5 anos");
-        BedType bt3 = new BedType("King Sized", "Uma cama para até 4 pessoas");
+        BedType bt2 = new BedType("Casal", "Uma cama para um casal e até um filho com idade menor a 5 anos");
         
-        Division d1 = new Division("Reservas", "Departamento de administração que trata de problemas de reservas");
-        Division d2 = new Division("Alojamentos", "Departamento de administração que trata de problemas de alojamentos");
-        Division d3 = new Division("Geral", "Departamento de administração que trata de qualquer problema");
+        Division d1 = new Division("Departamento de Reservas", "Departamento de administração que trata de problemas de reservas");
+        Division d2 = new Division("Departamento de Alojamentos", "Departamento de administração que trata de problemas de alojamentos");
+        Division d3 = new Division("Departamento Geral", "Departamento de administração que trata de qualquer problema");
         
         Category ca1 = new Category("Reservas", "Tickets sobre as reservas");
         Category ca2 = new Category("Alojamentos", "Tickets sobre os alojamentos");
@@ -114,8 +113,8 @@ public class ProjectoAlojamento {
         Status s2 = new Status("Respondido", "Ticket respondido por um administrador");
         Status s3 = new Status("Completo", "Ticket completo");
         
-        Ticket t1 = new Ticket();
-        Ticket t2 = new Ticket();
+        Ticket t1 = new Ticket(tt1, "Não consigo adicionar a minha reserva", "Tenho a reserva e meto os meus dados e não consigo adicioná-la!", false, s1, c1);
+        Ticket t2 = new Ticket(tt1, "Não adiciona a reserva!", "Não importa o quanto tento eu não consigo adicionar!", false, s2, c1);
         Ticket t3 = new Ticket();
         Ticket t4 = new Ticket();
         Ticket t5 = new Ticket();
@@ -173,26 +172,26 @@ public class ProjectoAlojamento {
         PropertyCharacteristics pc19 = new PropertyCharacteristics();
         PropertyCharacteristics pc20 = new PropertyCharacteristics();
         
-        Photo pho1 = new Photo();
-        Photo pho2 = new Photo();
-        Photo pho3 = new Photo();
-        Photo pho4 = new Photo();
-        Photo pho5 = new Photo();
-        Photo pho6 = new Photo();
-        Photo pho7 = new Photo();
-        Photo pho8 = new Photo();
-        Photo pho9 = new Photo();
-        Photo pho10 = new Photo();
-        Photo pho11 = new Photo();
-        Photo pho12 = new Photo();
-        Photo pho13 = new Photo();
-        Photo pho14 = new Photo();
-        Photo pho15 = new Photo();
-        Photo pho16 = new Photo();
-        Photo pho17 = new Photo();
-        Photo pho18 = new Photo();
-        Photo pho19 = new Photo();
-        Photo pho20 = new Photo();
+        Photo pho1 = new Photo("foto1","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
+        Photo pho2 = new Photo("foto2","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
+        Photo pho3 = new Photo("foto3","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
+        Photo pho4 = new Photo("foto4","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
+        Photo pho5 = new Photo("foto5","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
+        Photo pho6 = new Photo("foto6","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
+        Photo pho7 = new Photo("foto7","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
+        Photo pho8 = new Photo("foto8","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
+        Photo pho9 = new Photo("foto9","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
+        Photo pho10 = new Photo("foto11","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
+        Photo pho11 = new Photo("foto12","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
+        Photo pho12 = new Photo("foto13","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
+        Photo pho13 = new Photo("foto14","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
+        Photo pho14 = new Photo("foto15","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
+        Photo pho15 = new Photo("foto16","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
+        Photo pho16 = new Photo("foto17","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
+        Photo pho17 = new Photo("foto18","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
+        Photo pho18 = new Photo("foto19","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
+        Photo pho19 = new Photo("foto20","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
+        Photo pho20 = new Photo("foto21","C:\\Users\\Gustavo Vieira\\Documents\\NetBeansProjects\\ProjectoAlojamento",".png");
         
         Room r1 = new Room();
         Room r2 = new Room();
@@ -400,7 +399,6 @@ public class ProjectoAlojamento {
         
         repo.addBedType(bt1);
         repo.addBedType(bt2);
-        repo.addBedType(bt3);
         
         repo.addDivision(d1);
         repo.addDivision(d2);

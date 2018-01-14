@@ -11,10 +11,17 @@ package property.exceptions;
  */
 public class ExistentLocationNameException extends Exception {
     
+    /**
+     *
+     */
     public ExistentLocationNameException() {
         super();
     }
     
+    /**
+     *
+     * @param message
+     */
     public ExistentLocationNameException(String message) {
         super(message);
     }

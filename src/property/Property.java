@@ -20,11 +20,11 @@ import user.Client;
 import user.Owner;
 
 /**
- *
+ * The property class which contains its variables
  * @author Rafael
  * @author Gustavo
  */
-public class Property implements Serializable{
+public class Property implements Serializable {
     private final int referenceID;
     private double pricePerNight;
     private String description;
@@ -38,15 +38,16 @@ public class Property implements Serializable{
     private List<Discount> extras;
     private List<Booking> bookings;
     private boolean closed;
-    private static int count;
+    private static int count = 0;
 
     /**
-     *
-     * @param pricePerNight
-     * @param description
-     * @param propertyType
-     * @param owner
-     * @param characteristics
+     * The Property constructor
+     * @param pricePerNight The property cost per night
+     * @param description The property description
+     * @param propertyType The property type
+     * @param owner Who owns the property
+     * @param characteristics The multiple characteristics of the property
+     * @param closed If the property is closed or not
      */
     public Property(double pricePerNight, String description, PropertyType propertyType, Owner owner, PropertyCharacteristics characteristics, boolean closed) {
         this.referenceID = count;
@@ -65,6 +66,9 @@ public class Property implements Serializable{
         count++;
     }
 
+    /**
+     * The Photo constructor, requiring nothing and initializing variables with "empty" values or -1 values
+     */
     public Property() {
         this.referenceID = -1;
         this.pricePerNight = -1;
@@ -81,112 +85,214 @@ public class Property implements Serializable{
         this.closed = false;
     }
 
+    /**
+     * Returns the current property price per night
+     * @return The cost per night
+     */
     public double getPricePerNight() {
         return pricePerNight;
     }
 
+    /**
+     * Sets a new cost per night (which is sent as an argument)
+     * @param pricePerNight The new price per night to be set
+     */
     public void setPricePerNight(double pricePerNight) {
         this.pricePerNight = pricePerNight;
     }
 
+    /**
+     * Returns the current property description
+     * @return The description
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Sets a new property description (which is sent as an argument)
+     * @param description The new property description to be set
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * Returns the current property type
+     * @return The property type
+     */
     public PropertyType getPropertyType() {
         return propertyType;
     }
 
+    /**
+     * Sets a new property type (which is sent as an argument)
+     * @param propertyType The new property type to be set
+     */
     public void setPropertyType(PropertyType propertyType) {
         this.propertyType = propertyType;
     }
 
+    /**
+     * Returns the current property owner
+     * @return The Owner
+     */
     public Owner getOwner() {
         return owner;
     }
 
+    /**
+     * Sets a new owner (which is sent as an argument)
+     * @param owner The new owner to be set
+     */
     public void setOwner(Owner owner) {
         this.owner = owner;
     }
 
+    /**
+     * Returns the current property characteristics
+     * @return The property characteristics
+     */
     public PropertyCharacteristics getCharacteristics() {
         return characteristics;
     }
 
+    /**
+     * Sets a new set of characteristics (which is sent as an argument)
+     * @param characteristics The new characteristics to be set
+     */
     public void setCharacteristics(PropertyCharacteristics characteristics) {
         this.characteristics = characteristics;
     }
 
+    /**
+     * Returns the whole rating list
+     * @return The property ratings list
+     */
     public List<Rating> getRatings() {
         return ratings;
     }
 
+    /**
+     * Sets a new ratings list (which is sent as an argument)
+     * @param ratings The new rating list to be set
+     */
     public void setRatings(List<Rating> ratings) {
         this.ratings = ratings;
     }
 
+    /**
+     * Returns the whole photo list
+     * @return The property photo list
+     */
     public List<Photo> getPhotos() {
         return photos;
     }
 
+    /**
+     * Sets a new photo list (which is sent as an argument)
+     * @param photos The new photo list to be set
+     */
     public void setPhotos(List<Photo> photos) {
         this.photos = photos;
     }
 
+    /**
+     * Returns the whole inactive discount list
+     * @return The old property discount list
+     */
     public List<Discount> getOldDiscounts() {
         return oldDiscounts;
     }
 
+    /**
+     * Sets a new old discounts list (which is sent as an argument)
+     * @param oldDiscounts The new old discounts list to be set
+     */
     public void setOldDiscounts(List<Discount> oldDiscounts) {
         this.oldDiscounts = oldDiscounts;
     }
 
+    /**
+     * Returns the whole discount list
+     * @return The property discount list
+     */
     public List<Discount> getDiscounts() {
         return discounts;
     }
 
+    /**
+     * Sets a new discounts list (which is sent as an argument)
+     * @param discounts The new discounts list to be set
+     */
     public void setDiscounts(List<Discount> discounts) {
         this.discounts = discounts;
     }
 
+    /**
+     * Returns the whole extras list (Museum tickets, etc)
+     * @return The property extras list
+     */
     public List<Discount> getExtras() {
         return extras;
     }
 
+    /**
+     * Sets a new extras list (which is sent as an argument)
+     * @param extras The new extras list to be set
+     */
     public void setExtras(List<Discount> extras) {
         this.extras = extras;
     }
 
+    /**
+     * Returns the whole booking list
+     * @return The property booking list
+     */
     public List<Booking> getBookings() {
         return bookings;
     }
 
+    /**
+     * Sets a new booking list (which is sent as an argument)
+     * @param bookings The new booking list to be set
+     */
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
 
+    /**
+     * Returns whether the property is closed or not
+     * @return If the property is closed
+     */
     public boolean isClosed() {
         return closed;
     }
 
+    /**
+     * Sets the property to be either closed or open
+     * @param closed If the property is to be set to closed or open
+     */
     public void setClosed(boolean closed) {
         this.closed = closed;
     }
 
+    /**
+     * Returns the current amount of properties, which is equal to the referenceID + 1
+     * @return The amount of properties
+     */
     public static int getCount() {
         return count;
-    }
-
-    public static void setCount(int count) {
-        Property.count = count;
     }
     
     /* Rating */
     /* ****** */
+
+    /**
+     *
+     * @return
+     */
+    
     
     public float getPropertyRatingMedianPoints() {
         float medianPoints = 0;
@@ -199,6 +305,12 @@ public class Property implements Serializable{
         return medianPoints / this.ratings.size();
     }
     
+    /**
+     *
+     * @param points
+     * @return
+     * @throws InvalidRatingPointsException
+     */
     public boolean verifyPoints(Float points) throws InvalidRatingPointsException {
         boolean valid = true;
         
@@ -210,6 +322,10 @@ public class Property implements Serializable{
         return valid;
     }
     
+    /**
+     *
+     * @param rating
+     */
     public void addRating(Rating rating) {
         
         boolean valid = true;
@@ -229,6 +345,12 @@ public class Property implements Serializable{
         }
     }
     
+    /**
+     *
+     * @param oldRating
+     * @param newRating
+     * @return
+     */
     public List editRating(Rating oldRating, Rating newRating) {
         List<Rating> newList = new ArrayList<>();
         
@@ -249,6 +371,15 @@ public class Property implements Serializable{
     
     /* Photos */
     /* ****** */
+
+    /**
+     *
+     * @param p
+     * @param photo
+     * @return
+     * @throws ExistentPropertyPhotoException
+     */
+    
     
     public boolean verifyPhotoInfo(Photo p, Photo photo) throws ExistentPropertyPhotoException {
         boolean exists = false;
@@ -261,6 +392,10 @@ public class Property implements Serializable{
         return exists;
     }
     
+    /**
+     *
+     * @param photo
+     */
     public void addPhoto(Photo photo) {
         
         boolean exists = false;
@@ -283,6 +418,12 @@ public class Property implements Serializable{
         }
     }
     
+    /**
+     *
+     * @param oldPhoto
+     * @param newPhoto
+     * @return
+     */
     public List editPhoto(Photo oldPhoto, Photo newPhoto) {
         List<Photo> newList = new ArrayList<>();
         
@@ -303,6 +444,15 @@ public class Property implements Serializable{
     
     /* Discounts */
     /* ********* */
+
+    /**
+     *
+     * @param d
+     * @param description
+     * @return
+     * @throws ExistentDiscountDescriptionException
+     */
+    
     
     public boolean verifyDiscountDescription(Discount d, String description) throws ExistentDiscountDescriptionException {
         boolean exists = false;
@@ -315,6 +465,10 @@ public class Property implements Serializable{
         return exists;
     }
     
+    /**
+     *
+     * @param discount
+     */
     public void addDiscount(Discount discount) {
         
         boolean exists = false;
@@ -337,6 +491,11 @@ public class Property implements Serializable{
         }
     }
     
+    /**
+     *
+     * @param date
+     * @return
+     */
     public boolean verifyDate(Date date) {
         boolean valid = true;
         
@@ -350,6 +509,9 @@ public class Property implements Serializable{
         return valid;
     }
     
+    /**
+     *
+     */
     public void transferOldDiscounts() {
         
         Iterator it = this.discounts.iterator();
@@ -366,6 +528,12 @@ public class Property implements Serializable{
         }
     }
     
+    /**
+     *
+     * @param oldDiscount
+     * @param newDiscount
+     * @return
+     */
     public List editDiscount(Discount oldDiscount, Discount newDiscount) {
         List<Discount> newList = new ArrayList<>();
         
@@ -386,6 +554,12 @@ public class Property implements Serializable{
     
     /* Extras */
     /* ****** */
+
+    /**
+     *
+     * @param extra
+     */
+    
     
     public void addExtras(Discount extra) {
         boolean exists = false;
@@ -408,6 +582,12 @@ public class Property implements Serializable{
         }
     }
     
+    /**
+     *
+     * @param oldExtra
+     * @param newExtra
+     * @return
+     */
     public List editExtra(Discount oldExtra, Discount newExtra) {
         List<Discount> newList = new ArrayList<>();
         
@@ -428,11 +608,23 @@ public class Property implements Serializable{
     
     /* Booking */
     /* ******* */
+
+    /**
+     *
+     * @param booking
+     */
+    
     
     public void addBooking(Booking booking) {
         this.bookings.add(booking);
     }
     
+    /**
+     *
+     * @param oldBooking
+     * @param newBooking
+     * @return
+     */
     public List editBooking(Booking oldBooking, Booking newBooking) {
         List<Booking> newList = new ArrayList<>();
         
@@ -455,6 +647,13 @@ public class Property implements Serializable{
     
     /* Listing */
     /* ******* */
+
+    /**
+     *
+     * @param rating
+     * @return
+     */
+    
     
     public List listRatings(Rating rating) {
         List<Rating> newList = this.ratings;
@@ -472,6 +671,11 @@ public class Property implements Serializable{
         return newList;
     }
     
+    /**
+     *
+     * @param booking
+     * @return
+     */
     public List listBookings(Booking booking) {
         List<Booking> newList = this.bookings;
         

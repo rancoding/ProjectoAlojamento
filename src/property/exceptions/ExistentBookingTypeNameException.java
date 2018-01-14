@@ -11,10 +11,17 @@ package property.exceptions;
  */
 public class ExistentBookingTypeNameException extends Exception {
     
+    /**
+     *
+     */
     public ExistentBookingTypeNameException() {
         super();
     }
     
+    /**
+     *
+     * @param message
+     */
     public ExistentBookingTypeNameException(String message) {
         super(message);
     }

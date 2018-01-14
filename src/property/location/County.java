@@ -13,18 +13,33 @@ package property.location;
 public class County {
     private String name;
 
+    /**
+     *
+     * @param name
+     */
     public County(String name) {
         this.name = name;
     }
     
+    /**
+     *
+     */
     public County() {
         this.name = "";
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }

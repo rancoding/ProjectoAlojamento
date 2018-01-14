@@ -6,7 +6,7 @@
 package property;
 
 /**
- *
+ * The bed type class which contains its variables
  * @author Rafael
  * @author Gustavo
  */
@@ -15,9 +15,9 @@ public class BedType {
     private String description;
 
     /**
-     * 
-     * @param name
-     * @param description 
+     * The BedType constructor
+     * @param name The bed type name
+     * @param description The bed type description
      */
     public BedType(String name, String description) {
         this.name = name;
@@ -25,7 +25,7 @@ public class BedType {
     }
 
     /**
-     *
+     * The BedType constructor, requiring only a description
      * @param description The bed type description
      */
     public BedType(String description) {
@@ -33,23 +33,31 @@ public class BedType {
     }
 
     /**
-     * 
+     * The BedType constructor, requiring nothing and initializing variables with "empty" values
      */
     public BedType() {
         this.name = "";
         this.description = "";
     }
     
+    /**
+     * Returns the current bed type name
+     * @return The bed type name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets a new bed type name (which is sent as an argument)
+     * @param name The new bed type name to be set
+     */
     public void setName(String name) {
         this.name = name;
     }
     
     /**
-     *
+     * Returns the current bed type description
      * @return The bed type description
      */
     public String getDescription() {
@@ -57,8 +65,8 @@ public class BedType {
     }
 
     /**
-     *
-     * @param description The new bed type description
+     * Sets a new bed type description (which is sent as an argument)
+     * @param description The new bed type description to be set
      */
     public void setDescription(String description) {
         this.description = description;

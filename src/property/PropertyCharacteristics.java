@@ -70,6 +70,7 @@ public class PropertyCharacteristics {
         this.pool = false;
         this.wifi = false;
     }
+    
     /**
      *
      * @return
@@ -245,7 +246,4 @@ public class PropertyCharacteristics {
     public void setWifi(boolean wifi) {
         this.wifi = wifi;
     }
-
-    
-    
 }

@@ -5,13 +5,10 @@
  */
 package property;
 
-import java.time.LocalDate;
 import java.util.Date;
 
-
-
 /**
- *
+ * The discount class which contains its variables
  * @author Rafael
  * @author Gustavo
  */
@@ -21,10 +18,10 @@ public class Discount {
     private Date endingDate;
 
     /**
-     *
-     * @param description
-     * @param startDate
-     * @param endDate
+     * The Discount constructor
+     * @param description What is the discount for and extra information
+     * @param startDate The starting date of this discount
+     * @param endDate The discount expiring date
      */
     public Discount(String description, Date startDate, Date endDate) {
         this.description = description;
@@ -33,7 +30,7 @@ public class Discount {
     }
     
     /**
-     * 
+     * The Discount constructor, requiring nothing and initializing variables with "empty" values and the current date
      */
     public Discount() {
         this.description = "";
@@ -42,48 +39,48 @@ public class Discount {
     }
 
     /**
-     *
-     * @return
+     * Returns the current discount description
+     * @return The discount description
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     *
-     * @param description
+     * Sets a new discount description (which is sent as an argument)
+     * @param description The new discount description to be set
      */
     public void setDescription(String description) {
         this.description = description;
     }
 
     /**
-     *
-     * @return
+     * Returns the current discount starting date
+     * @return The discount starting date
      */
     public Date getStartingDate() {
         return startingDate;
     }
 
     /**
-     *
-     * @param startingDate
+     * Sets a new discount starting date (which is sent as an argument)
+     * @param startingDate The new discount starting date to be set
      */
     public void setStartingDate(Date startingDate) {
         this.startingDate = startingDate;
     }
 
     /**
-     *
-     * @return
+     * Returns the current discount expiring date
+     * @return The discount expiring date
      */
     public Date getEndingDate() {
         return endingDate;
     }
 
     /**
-     *
-     * @param endingDate
+     * Sets a new discount expiring date (which is sent as an argument)
+     * @param endingDate The new discount expiring date to be set
      */
     public void setEndingDate(Date endingDate) {
         this.endingDate = endingDate;

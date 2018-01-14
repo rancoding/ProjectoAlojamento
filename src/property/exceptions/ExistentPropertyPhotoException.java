@@ -11,10 +11,17 @@ package property.exceptions;
  */
 public class ExistentPropertyPhotoException extends Exception {
     
+    /**
+     *
+     */
     public ExistentPropertyPhotoException() {
         super();
     }
     
+    /**
+     *
+     * @param message
+     */
     public ExistentPropertyPhotoException(String message) {
         super(message);
     }

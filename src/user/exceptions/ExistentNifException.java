@@ -11,10 +11,17 @@ package user.exceptions;
  */
 public class ExistentNifException extends Exception{
 
+    /**
+     *
+     */
     public ExistentNifException() {
         super();
     }
     
+    /**
+     *
+     * @param message
+     */
     public ExistentNifException(String message) {
         super(message);
     }

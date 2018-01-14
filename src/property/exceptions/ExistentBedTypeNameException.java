@@ -11,10 +11,17 @@ package property.exceptions;
  */
 public class ExistentBedTypeNameException extends Exception {
     
+    /**
+     *
+     */
     public ExistentBedTypeNameException() {
         super();
     }
     
+    /**
+     *
+     * @param message
+     */
     public ExistentBedTypeNameException(String message) {
         super(message);
     }

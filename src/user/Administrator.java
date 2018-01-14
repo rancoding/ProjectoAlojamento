@@ -18,20 +18,44 @@ public class Administrator extends User {
     
     private Division division;
 
+    /**
+     *
+     * @param username
+     * @param password
+     * @param name
+     * @param citizenID
+     * @param NIF
+     * @param phoneNumber
+     * @param address
+     * @param location
+     * @param registerDate
+     * @param privateProfile
+     */
     public Administrator(String username, String password, String name, String citizenID, int NIF, int phoneNumber, String address, String location, Date registerDate, boolean privateProfile){
         super(username, password, name, citizenID, NIF, phoneNumber, address, location, registerDate, privateProfile);
         this.division = new Division();
     }
     
+    /**
+     *
+     */
     public Administrator() {
         super("","","","",-1,-1,"","",new Date(),false);
         this.division = new Division();
     }
 
+    /**
+     *
+     * @return
+     */
     public Division getDivision() {
         return division;
     }
 
+    /**
+     *
+     * @param division
+     */
     public void setDivision(Division division) {
         this.division = division;
     }

@@ -10,10 +10,18 @@ package user.exceptions;
  * @author Rafael
  */
 public class ExistentUsernameException extends Exception {
+
+    /**
+     *
+     */
     public ExistentUsernameException() {
         super();
     }
     
+    /**
+     *
+     * @param message
+     */
     public ExistentUsernameException(String message) {
         super(message);
     }

@@ -38,6 +38,9 @@ public class Rating {
         this.client = client;
     }
     
+    /**
+     *
+     */
     public Rating() {
         this.subject = "";
         this.message = "";

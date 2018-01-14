@@ -24,6 +24,9 @@ public class PaymentType {
         this.description = description;
     }
     
+    /**
+     *
+     */
     public PaymentType() {
         this.name = "";
         this.description = "";

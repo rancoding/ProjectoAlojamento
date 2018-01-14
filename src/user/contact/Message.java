@@ -21,6 +21,13 @@ public class Message {
     private User sender;
     private List<User> receivers;
 
+    /**
+     *
+     * @param subject
+     * @param description
+     * @param sender
+     * @param receivers
+     */
     public Message(String subject, String description, User sender, List<User> receivers) {
         this.subject = subject;
         this.message = description;
@@ -28,6 +35,9 @@ public class Message {
         this.receivers = receivers;
     }
     
+    /**
+     *
+     */
     public Message() {
         this.subject = "";
         this.message = "";
@@ -35,34 +45,66 @@ public class Message {
         this.receivers = new ArrayList<>();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getSubject() {
         return subject;
     }
 
+    /**
+     *
+     * @param subject
+     */
     public void setSubject(String subject) {
         this.subject = subject;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMessage() {
         return message;
     }
 
+    /**
+     *
+     * @param message
+     */
     public void setMessage(String message) {
         this.message = message;
     }
 
+    /**
+     *
+     * @return
+     */
     public User getSender() {
         return sender;
     }
 
+    /**
+     *
+     * @param sender
+     */
     public void setSender(User sender) {
         this.sender = sender;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<User> getReceivers() {
         return receivers;
     }
 
+    /**
+     *
+     * @param receivers
+     */
     public void setReceivers(List<User> receivers) {
         this.receivers = receivers;
     }

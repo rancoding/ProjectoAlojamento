@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import property.PropertyCharacteristics;
+import property.Room;
 import user.User;
 import user.contact.Category;
 import user.contact.Division;
@@ -36,7 +37,7 @@ import user.Owner;
 import user.exceptions.*;
 
 /**
- *
+ * Repository where most of the lists will be saved
  * @author Rafael
  * @author Gustavo
  */
@@ -54,6 +55,9 @@ public class Repository {
     private List<TicketType> ticketTypes;
     private List<Division> divisions;
     
+    /**
+     * Initializes all the repository lists
+     */
     public Repository() {
         this.properties = new HashMap<>();
         this.propertiesTypes = new ArrayList<>();
@@ -69,107 +73,213 @@ public class Repository {
         this.divisions = new ArrayList<>();
     }
 
+    /**
+     * Returns the whole properties map
+     * @return The existent properties map
+     */
     public Map<Property, County> getProperties() {
         return properties;
     }
 
+    /**
+     * Returns the whole property types list
+     * @return The existent property types
+     */
     public List<PropertyType> getPropertiesTypes() {
         return propertiesTypes;
     }
 
+    /**
+     * Returns the whole bed types list
+     * @return The existent bed types
+     */
     public List<BedType> getBedTypes() {
         return bedTypes;
     }
 
+    /**
+     * Returns the whole location list
+     * @return The existent locations (which includes districts and counties)
+     */
     public List<Location> getLocations() {
         return locations;
     }
 
+    /**
+     * Returns the whole payment types list
+     * @return The existent payment types
+     */
     public List<PaymentType> getPaymentTypes() {
         return paymentTypes;
     }
 
+    /**
+     * Returns the whole booking types list
+     * @return The existent booking types
+     */
     public List<BookingType> getBookingTypes() {
         return bookingTypes;
     }
 
+    /**
+     * Returns the whole user list
+     * @return The existent users (Owners, Clients and Administrators)
+     */
     public List<User> getUsers() {
         return users;
     }
 
+    /**
+     * Returns the whole ticket list
+     * @return The existent tickets
+     */
     public List<Ticket> getTickets() {
         return tickets;
     }
 
+    /**
+     * Returns the whole ticket categories list
+     * @return The existent ticket categories
+     */
     public List<Category> getTicketCategories() {
         return ticketCategories;
     }
 
+    /**
+     * Returns the whole ticket status list
+     * @return The existent ticket statuses
+     */
     public List<Status> getTicketStatus() {
         return ticketStatus;
     }
 
+    /**
+     * Returns the whole ticket types list
+     * @return The existent ticket types
+     */
     public List<TicketType> getTicketTypes() {
         return ticketTypes;
     }
 
+    /**
+     * Returns the whole division list
+     * @return The existent divisions
+     */
     public List<Division> getDivisions() {
         return divisions;
-    }
-
+    }   
+    
+    /**
+     * Sets a new property map (which is sent as an argument)
+     * @param properties The new property map to be set
+     */
     public void setProperties(Map<Property, County> properties) {
         this.properties = properties;
     }
 
+    /**
+     * Sets a new property type list (which is sent as an argument)
+     * @param propertiesTypes The new property type list to be set
+     */
     public void setPropertiesTypes(List<PropertyType> propertiesTypes) {
         this.propertiesTypes = propertiesTypes;
     }
 
+    /**
+     * Sets a new bed type list (which is sent as an argument)
+     * @param bedTypes The new bed type list to be set
+     */
     public void setBedTypes(List<BedType> bedTypes) {
         this.bedTypes = bedTypes;
     }
 
+    /**
+     * Sets a new location list (which is sent as an argument)
+     * @param locations The new location list to be set
+     */
     public void setLocations(List<Location> locations) {
         this.locations = locations;
     }
 
+    /**
+     * Sets a new payment type list (which is sent as an argument)
+     * @param paymentTypes The new payment type list to be set
+     */
     public void setPaymentTypes(List<PaymentType> paymentTypes) {
         this.paymentTypes = paymentTypes;
     }
 
+    /**
+     * Sets a new booking type list (which is sent as an argument)
+     * @param bookingTypes The new booking type list to be set
+     */
     public void setBookingTypes(List<BookingType> bookingTypes) {
         this.bookingTypes = bookingTypes;
     }
 
+    /**
+     * Sets a new user list (which is sent as an argument)
+     * @param users The new user list to be set
+     */
+    public void setUsers(List<User> users) {
+        this.users = users;
+    } 
+    
+    /**
+     * Sets a new ticket list (which is sent as an argument)
+     * @param tickets The new ticket list to be set
+     */
     public void setTickets(List<Ticket> tickets) {
         this.tickets = tickets;
     }
 
+    /**
+     * Sets a new ticket category list (which is sent as an argument)
+     * @param ticketCategories The new ticket category list to be set
+     */
     public void setTicketCategories(List<Category> ticketCategories) {
         this.ticketCategories = ticketCategories;
     }
 
+    /**
+     * Sets a new ticket status list (which is sent as an argument)
+     * @param ticketStatus The new ticket status list to be set
+     */
     public void setTicketStatus(List<Status> ticketStatus) {
         this.ticketStatus = ticketStatus;
     }
 
+    /**
+     * Sets a new ticket type list (which is sent as an argument)
+     * @param ticketTypes The new ticket type list to be set
+     */
     public void setTicketTypes(List<TicketType> ticketTypes) {
         this.ticketTypes = ticketTypes;
     }
 
+    /**
+     * Sets a new divisions list (which is sent as an argument)
+     * @param divisions The new divisions list to be set
+     */
     public void setDivisions(List<Division> divisions) {
         this.divisions = divisions;
     }
 
     /* List */
     /* **** */
-    
+
+    /**
+     * By receiving an object via parameter (whose contains the information to be listed), checks if every single variable that is to be searched is different than -1 or different than the current
+     * property map info. If so, the map will be filtered to only contain the list of properties whose info is equal.
+     * @param property The object which contains what is to be searched
+     * @return The map that contains all the properties that correspond to the sent object
+     */
     public Map listProperties(Property property) {
         Map<Property, County> newMap = this.properties;
         
         if(property.getPricePerNight() != -1)
         {
-            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getPricePerNight() == property.getPricePerNight()).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getPricePerNight() >= property.getPricePerNight()).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
         }
         
         if(!(property.getPropertyType().equals(new PropertyType())))
@@ -190,6 +300,12 @@ public class Repository {
         return newMap;
     }
     
+    /**
+     * By receiving an object via parameter (whose contains the information to be listed), checks if every single variable that is to be searched is different than -1 or different than the current
+     * ticket list info. If so, the list will be filtered to only contain the list of tickets whose info is equal.
+     * @param ticket The object which contains what is to be searched
+     * @return The list that contains all the tickets that correspond to the sent object
+     */
     public List listTickets(Ticket ticket) {
         List<Ticket> newList = this.tickets;
         
@@ -211,11 +327,6 @@ public class Repository {
         if(!(ticket.getTicketType().getCategory().getName().equals(new Category())))
         {
             newList = newList.stream().filter(t -> t.getTicketType().getCategory().getName().equals(ticket.getTicketType().getCategory().getName())).collect(Collectors.toList());
-        }
-        
-        if(!(ticket.getDivision().equals(new Division())))
-        {
-            newList = newList.stream().filter(t -> t.getDivision().equals(ticket.getDivision())).collect(Collectors.toList());
         }
         
         if(ticket.isFinalised() == false)
@@ -240,6 +351,12 @@ public class Repository {
         return newList;
     }
     
+    /**
+     * By receiving an object via parameter (whose contains the information to be listed), checks if every single variable that is to be searched is different than -1 or different than the current
+     * user list info. If so, the list will be filtered to only contain the list of tickets whose info is equal.
+     * @param user The object which contains what is to be searched
+     * @return The list that contains all the users that correspond to the sent object
+     */
     public List listUsers(User user) {
         List<User> newList = this.users;
         
@@ -300,11 +417,12 @@ public class Repository {
     /* *************************** */
     
     /**
-     * Using a class parameter, allows you to login with any type of user
+     * Using a class parameter, allows you to login with any type of user within a single method. By sending as an argument the class Owner, Client or Administrator, we're able to check if the user exists
+     * for the type of user specified (as a user can have both owner and client accounts).
      * @param c The class sent as an argument (Client, Owner or Administrator)
      * @param username The username of the user you want to log in as
      * @param password The password of the user you want to log in as
-     * @return 
+     * @return Either the user that was found, or an exception of no user found.
      */
     public User login(Class c, String username, String password) {  
         
@@ -329,14 +447,20 @@ public class Repository {
     // Lista alojamentos dado uma localizaçao
     // Adiciona a uma lista para a retornar depois (para no swing termos a lista com a localizaçao dada)
     // deve ser algo assim
-    public Map getPropertyByLocation(County country) {
+
+    /**
+     * Searches the property map to to check if the given county exists in any property, returning a map containing those existent properties.
+     * @param county The county that is to be searched within all the properties
+     * @return A list of properties that are located at given county
+     */
+        public Map getPropertyByLocation(County county) {
         Map<Property, County> propertyMap = new HashMap<>(); // Não sei se é HashMap mas y
         
         for(Map.Entry<Property, County> mp : this.properties.entrySet())
         {
-            if(mp.getValue().equals(country))
+            if(mp.getValue().equals(county))
             {
-                propertyMap.put(mp.getKey(), country);
+                propertyMap.put(mp.getKey(), county);
             }
         }
         
@@ -345,7 +469,13 @@ public class Repository {
     
     // Lista alojamentos dado o Dono dos mesmos
     // Adiciona a uma lista para a retornar depois (para no swing termos a lista com o dono dado)
-    public Map getPropertyByOwner(User owner){
+
+    /**
+     * Searches the property map to check if the given owner owns any property, returning a map containing those properties.
+     * @param owner The owner that is to be searched within all the properties
+     * @return A list of properties that are owned by given owner
+     */
+        public Map getPropertyByOwner(User owner) {
         Map<Property, County> propertyOwner = new HashMap<>();
 
         for(Map.Entry<Property, County> mp : this.properties.entrySet())
@@ -364,8 +494,8 @@ public class Repository {
     /* *********************************** */
     
     /**
-     * Checks whether a given property type name exists
-     * @param pt The property type list value
+     * Checks whether a given property type name exists or not
+     * @param pt The current property type list object
      * @param name The new property type name
      * @throws ExistentPropertyTypeNameException in case the property type name already exists inside the list
      */
@@ -405,6 +535,12 @@ public class Repository {
         }
     }
     
+    /**
+     * Creates a new list and searches the current property type list to be able to know what is the property type to be modified, and then, if found, adds the new property type to the list instead of the existing property type
+     * @param oldPropertyType The old property type to be able to check if it equals to the property type in the repository list
+     * @param newPropertyType The new property type to add to the list if the old property type is found
+     * @return The list with the modified property type
+     */
     public List editPropertyType(PropertyType oldPropertyType, PropertyType newPropertyType) {
         List<PropertyType> newList = new ArrayList<>();
         
@@ -428,7 +564,7 @@ public class Repository {
     /* ****************************** */
     
     /**
-     * Check whether a given bed type name exists
+     * Checks whether a given bed type name exists or not
      * @param bt The bed type list value
      * @param name The new bed type name
      * @throws ExistentBedTypeNameException in case the bed type name already exists inside the list
@@ -470,6 +606,12 @@ public class Repository {
          
     }
     
+    /**
+     * Creates a new list and searches the current bed type list to be able to know what is the bed type to be modified, and then, if found, adds the new bed type to the list instead of the existing bed type
+     * @param oldBedType The old bed type to be able to check if it equals to the bed type in the repository list
+     * @param newBedType The new bed type to add to the list if the old bed type is found
+     * @return The list with the modified bed type
+     */
     public List editBedType(BedType oldBedType, BedType newBedType) {
         List<BedType> newList = new ArrayList<>();
         
@@ -535,6 +677,11 @@ public class Repository {
         
     }
     
+    /**
+     * Creates a new list and searches the current location list to be able to know what is the location to be modified, and then, if found (via ID), adds the new location to the list instead of the existing location
+     * @param location The location to be added at the old location position in the list
+     * @return The list with the modified location
+     */
     public List editLocation(Location location) {
         List<Location> newList = new ArrayList<>();
         
@@ -558,7 +705,7 @@ public class Repository {
     /* ********************************** */
     
     /**
-     * Check whether a given payment type name exists
+     * Check whether a given payment type name exists or not
      * @param pt The payment type list value
      * @param name The new payment type name
      * @throws ExistentPaymentTypeNameException in case the payment type name already exists inside the list
@@ -599,6 +746,12 @@ public class Repository {
         }
     }
     
+    /**
+     * Creates a new list and searches the current payment type list to be able to know what is the payment type to be modified, and then, if found, adds the new payment type to the list instead of the existing payment type
+     * @param oldPaymentType The old payment type to be able to check if it equals to the payment type in the repository list
+     * @param newPaymentType The new payment type to add to the list if the old payment type is found
+     * @return The list with the modified payment type
+     */
     public List editPaymentType(PaymentType oldPaymentType, PaymentType newPaymentType) {
         List<PaymentType> newList = new ArrayList<>();
         
@@ -664,6 +817,12 @@ public class Repository {
         
     }
     
+    /**
+     * Creates a new list and searches the current booking type list to be able to know what is the booking type to be modified, and then, if found, adds the new booking type to the list instead of the existing booking type
+     * @param oldBookingType The old booking type to be able to check if it equals to the booking type in the repository list
+     * @param newBookingType The new booking type to add to the list if the old booking type is found
+     * @return The list with the modified booking type
+     */
     public List editBookingType(BookingType oldBookingType, BookingType newBookingType) {
         List<BookingType> newList = new ArrayList<>();
         
@@ -685,7 +844,11 @@ public class Repository {
     
     /*            Ticket            */
     /* **************************** */
-    
+
+    /**
+     * Adds a ticket to the repository ticket list
+     * @param tickets The ticket to be added to the list
+     */
     public void addTicket(Ticket tickets){
         this.tickets.add(tickets);   
     }
@@ -695,7 +858,7 @@ public class Repository {
     /* ********************************* */
     
     /**
-     * Check whether a given ticket type name exists
+     * Check whether a given ticket type name exists or not
      * @param tt The ticket type list value
      * @param name The new ticket type name
      * @throws ExistentTicketTypeNameException in case the ticket type name already exists inside the list
@@ -736,6 +899,12 @@ public class Repository {
         }
     }
     
+    /**
+     * Creates a new list and searches the current ticket type list to be able to know what is the ticket type to be modified, and then, if found, adds the new ticket type to the list instead of the existing ticket type
+     * @param oldTicketType The old ticket type to be able to check if it equals to the ticket type in the repository list
+     * @param newTicketType The new ticket type to add to the list if the old ticket type is found
+     * @return The list with the modified ticket type
+     */
     public List editTicketType(TicketType oldTicketType, TicketType newTicketType) {
         List<TicketType> newList = new ArrayList<>();
         
@@ -759,7 +928,7 @@ public class Repository {
     /* ************************************* */
     
     /**
-     * Check whether a given ticket category name exists
+     * Check whether a given ticket category name exists or not
      * @param tc The ticket category list value
      * @param name The new ticket category name
      * @throws ExistentTicketCategoryNameException in case the ticket category name already exists inside the list
@@ -799,7 +968,13 @@ public class Repository {
         }
     }
     
-    public List editTicketType(Category oldTicketCategory, Category newTicketCategory) {
+    /**
+     * Creates a new list and searches the current ticket category list to be able to know what is the ticket category to be modified, and then, if found, adds the new ticket category to the list instead of the existing ticket category
+     * @param oldTicketCategory The old ticket category to be able to check if it equals to the ticket category in the repository list
+     * @param newTicketCategory The new ticket category to add to the list if the old ticket category is found
+     * @return The list with the modified ticket category
+     */
+    public List editTicketCategory(Category oldTicketCategory, Category newTicketCategory) {
         List<Category> newList = new ArrayList<>();
         
         for(Category tc : this.ticketCategories)
@@ -822,7 +997,7 @@ public class Repository {
     /* *********************************** */
     
     /**
-     * Check whether a given ticket status name exists
+     * Check whether a given ticket status name exists or not
      * @param ts The ticket status list value
      * @param name The new ticket status name
      * @throws ExistentTicketStatusNameException in case the ticket status name already exists inside the list
@@ -862,6 +1037,12 @@ public class Repository {
         }
     }
     
+    /**
+     * Creates a new list and searches the current ticket status list to be able to know what is the ticket status to be modified, and then, if found, adds the new ticket status to the list instead of the existing ticket status
+     * @param oldTicketStatus The old ticket status to be able to check if it equals to the ticket status in the repository list
+     * @param newTicketStatus The new ticket status to add to the list if the old ticket status is found
+     * @return The list with the modified ticket status
+     */
     public List editTicketStatus(Status oldTicketStatus, Status newTicketStatus) {
         List<Status> newList = new ArrayList<>();
         
@@ -884,7 +1065,7 @@ public class Repository {
     /* ****************************** */
     
     /**
-     * Check whether a given division name exists
+     * Check whether a given division name exists or not
      * @param d The division list value
      * @param name The new division name
      * @throws ExistentDivisionNameException in case the division name already exists inside the list
@@ -924,6 +1105,12 @@ public class Repository {
         }
     }
   
+    /**
+     * Creates a new list and searches the current division list to be able to know what is the division to be modified, and then, if found, adds the new division to the list instead of the existing division
+     * @param oldDivision The old division to be able to check if it equals to the division in the repository list
+     * @param newDivision The new division to add to the list if the old division is found
+     * @return The list with the modified division
+     */
     public List editDivision(Division oldDivision, Division newDivision) {
         List<Division> newList = new ArrayList<>();
         
@@ -948,9 +1135,9 @@ public class Repository {
     //////////////////////////////////////////// Adding User /////////////////////////////////////////////
     
     /**
-    *   Verifica se o Cartão de Cidadão de um utilizador já existe na lista do repositório
-    *   @param user User para ir buscar o próprio Cartão de Cidadão com qual deseja comparar o Cartão de Cidadão enviado por parâmetro
-    *   @param citizenID Cartão de cidadão enviado para comparar com o cartão de cidadão do utilizador
+    *   Checks if the Citizen ID already exists in a given user
+    *   @param user Current user in the list
+    *   @param citizenID New user Citizen ID
     *   @return If the citizenID exists or not
     */
     public boolean verifyCitizenID(User user, String citizenID) {
@@ -965,9 +1152,9 @@ public class Repository {
     }
     
     /**
-    *   Verifica se o NIF de um utilizador já existe na lista do repositório
-    *   @param user User para ir buscar o próprio NIF com qual deseja comparar o NIF enviado por parâmetro
-    *   @param NIF NIF enviado para comparar com o NIF do utilizador
+    *   Checks if the NIF already exists in a given user
+    *   @param user Current user in the list
+    *   @param NIF New user NIF
     *   @return If the NIF exists or not
     */
     public boolean verifyNIF(User user, int NIF) {
@@ -982,7 +1169,7 @@ public class Repository {
     }
     
     /**
-    *   Check if the username is already in the database 
+    *   Check if the username is already in the repository list 
     *   @param user User already created to know his username
     *   @param username username sent to see if exists another user with the same username
     *   @return If the username exists or not
@@ -999,6 +1186,14 @@ public class Repository {
         return exists;
     }
     
+    /**
+     * Verifies the new user CitizenID, NIF and Username to check if it exists already or not
+     * @param u The current user in the list
+     * @param user The user to be added and verify
+     * @throws ExistentCitizenIdException in case the citizen ID already exists
+     * @throws ExistentNifException in case the NIF already exists
+     * @throws ExistentUsernameException in case the username is already taken
+     */
     public void verifyUserInfo(User u, User user) throws ExistentCitizenIdException, ExistentNifException, ExistentUsernameException {
         boolean exists;
         
@@ -1022,13 +1217,17 @@ public class Repository {
     }
     
     //Add users in the list
-    public void addUser(User user)  {
+
+    /**
+     * Adds a user while verifying its data between all types of users, meaning if a username, citizen ID or NIF already exists in a client, an owner or admin cannot create that user
+     * @param user The new user information
+     */
+        public void addUser(User user)  {
         
         boolean exists = false;
         
         for(User u: users)
         {
-            
             try
             {
                 verifyUserInfo(u, user);
@@ -1037,8 +1236,6 @@ public class Repository {
             {
                 exists = true;
             }
-            
-           
         }
         
         if(!exists)
@@ -1047,7 +1244,12 @@ public class Repository {
         }
     }
     
-    public void addUserAutoRegister(Class c,User user) {
+    /**
+     * Adds a user not verifying all types of users, meaning a client can create an owner account with the same account information, and vice-versa.
+     * @param c The class in which the to be added user is situated
+     * @param user The to be added user information
+     */
+    public void addUserAutoRegister(Class c, User user) {
          boolean exists = false;
         
         for(User u: users)
@@ -1073,10 +1275,20 @@ public class Repository {
     ///////////////////////////////////////// Adding Property //////////////////////////////////////////////
     
     //Add properties in the list
-    public void addProperty(Property property, County country) {
-        this.properties.put(property, country);
+
+    /**
+     * Adds a property to the repository map
+     * @param property The property info
+     * @param county The county in which the property is situated
+     */
+        public void addProperty(Property property, County county) {
+        this.properties.put(property, county);
     }
     
+    /**
+     * Gets the lowest number of clients within all the existent properties
+     * @return The minimum number of clients found
+     */
     public int getLowestNumberOfClients() {
         
         Map.Entry<Property, County> m = (Map.Entry<Property, County>) this.properties.entrySet();
@@ -1093,6 +1305,10 @@ public class Repository {
         return min;
     }
     
+    /**
+     * Gets the highest number of clients within all the existent properties
+     * @return The maximum number of clients found
+     */
     public int getHighestNumberOfClients() {
         
         int max = 0;
@@ -1107,15 +1323,118 @@ public class Repository {
         
         return max;
     }
+
+    /**
+     * This function will create an empty list (which will be returned at the end) and at each iteration inside the properties map, if it does not found the property county inside the created list
+     * it will add that county to the list.
+     * @return The list of all the locations that are available within all the existent properties
+     */
+    public List getAllPropertyLocations() {
+        List<County> counties = new ArrayList<>();
+        boolean exists = false;
+        
+        for(Map.Entry<Property, County> mp : this.properties.entrySet())
+        {
+            for(County c : counties)
+            {
+                if(mp.getValue().getName().equals(c.getName()))
+                {
+                   exists = true; 
+                }
+            }
+            
+            if(!exists)
+            {
+                counties.add(mp.getValue());
+            }
+            exists = false;
+        }
+        
+        return counties;
+    }
+    
+    /**
+     * This function will create an empty list (which will be returned at the end) and at each iteration inside the properties map, if it does not found the property type inside the created list
+     * it will add that type to the list.
+     * @return The list of all the property types that exist within all the existent properties
+     */
+    public List getAllPropertyTypes() {
+        List<PropertyType> propertyTypes = new ArrayList<>();
+        boolean exists = false;
+        
+        for(Map.Entry<Property, County> mp : this.properties.entrySet())
+        {
+            for(PropertyType pt : propertyTypes)
+            {
+                if(mp.getKey().getPropertyType().equals(pt))
+                {
+                   exists = true; 
+                }
+            }
+            
+            if(!exists)
+            {
+                propertyTypes.add(mp.getKey().getPropertyType());
+            }
+            exists = false;
+        }
+        
+        return propertyTypes;
+    }
+    
+    /** 
+     * This function will create an empty list (which will be returned at the end) and at each iteration inside the properties map, and then it will search the property
+     * map rooms list, and then the bed types list inside those rooms, and then for each existent bed type on the created list it will see if it equals the room bed types
+     * @return The list of all the bed types that exist within all the existent properties and their rooms
+     */
+    public List getAllBedTypes() {
+        List<BedType> bedTypes = new ArrayList<>();
+        boolean exists = false;
+        
+        for(Map.Entry<Property, County> mp : this.properties.entrySet())
+        {
+            List<Room> rooms = mp.getKey().getCharacteristics().getRooms();
+            for(Room r : rooms)
+            {
+                List<BedType> existingBeds = r.getBedType();
+                for(BedType bt2 : existingBeds)
+                {
+                    for(BedType bt : bedTypes)
+                    {
+                        if(bt2.equals(bt))
+                        {
+                            exists = true;
+                        }
+                    }
+                        
+                    if(!exists)
+                    {
+                        bedTypes.add(bt2);
+                    }
+                        
+                    exists = false;
+                }
+            }
+        }
+        
+        return bedTypes;
+    }
     
     ////////////////////////////////////// Edit /////////////////////////////////////////
     
     /////////// Edit Users ///////////////
     
-    
-    public List<User> editUsers(Class c, User user){
+    /**
+     * Creates an empty list and searches within the repository user list (checking if the user is an instance of the send class) for a given user and if found, adds it to the new list instead of the current user.
+     * In case the user isn't an instance of the class, then it will just add the current user.
+     * @param c The class to know if it is an instance of the current user on the list
+     * @param user The user with modified information
+     * @return The list with the modified user
+     */
+    public List<User> editUsers(Class c, User user) {
         
     List<User> novaLista = new ArrayList<>();
+    
     for(User u : users) 
     {
         if(c.isInstance(u))
@@ -1134,25 +1453,22 @@ public class Repository {
             novaLista.add(u);
         }
     }
-    return novaLista; 
-        
+    
+    return novaLista;
     }
-    
-public void setUsers(List<User> users){
-    this.users = users;
-}    
-        
-    
     
     ////////////////////////////////////// List /////////////////////////////////////////
     
     //////////// List Type of Users //////////////
     
-    public List<User> listUserTypes(Class c){
-        return this.users.stream().filter(p -> c.isInstance(p)).collect(Collectors.toList());
-                
+    /**
+     * Lists all the user that are of a given class (Owner, Client, Administrator)
+     * @param c The class which the user belongs to
+     * @return The list of users in the given class
+     */
+    public List<User> listUserTypes(Class c) {
+        return this.users.stream().filter(p -> c.isInstance(p)).collect(Collectors.toList());     
     }
-    
     
     //////////////////////////////////////////// Serialize and Deserialize Lists ///////////////////////////////////////////
 
@@ -1204,8 +1520,6 @@ public void setUsers(List<User> users){
     
     }
     
-    
-    
     //////////////////////////////////////////// Serialize and Deserialize Maps ///////////////////////////////////////////
   
     /**
@@ -1255,7 +1569,6 @@ public void setUsers(List<User> users){
         }
     
     }
-    
 }
 
 

@@ -18,7 +18,7 @@ public class Room {
     private List<BedType> bedType;
 
     /**
-     *
+     * 
      * @param bedsQuantity
      */
     public Room(int bedsQuantity) {

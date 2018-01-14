@@ -11,10 +11,17 @@ package property.exceptions;
  */
 public class ExistentDiscountDescriptionException extends Exception {
     
+    /**
+     *
+     */
     public ExistentDiscountDescriptionException() {
         super();
     }
     
+    /**
+     *
+     * @param message
+     */
     public ExistentDiscountDescriptionException(String message) {
         super(message);
     }
