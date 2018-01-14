@@ -6,6 +6,7 @@
 package projectoalojamento.application;
 
 import projectoalojamento.Repository;
+import user.User;
 
 /**
  *
@@ -15,16 +16,16 @@ public class JPAutoRegister extends javax.swing.JPanel {
 
     private Application frame;
     private JPProfile jpp;
-    private Repository repo;
+    private User user;
     
     /**
      * Creates new form JPAutoRegister
      */
-    public JPAutoRegister(Application frame, Repository repo,Object language) {
+    public JPAutoRegister(Application frame, User user, Object language) {
         initComponents();
         this.frame = frame;
+        this.user = user;
         this.autoRegisterLanguageBox.setSelectedItem(language);
-        this.repo=repo;
     }
 
     /**
@@ -253,13 +254,13 @@ public class JPAutoRegister extends javax.swing.JPanel {
 
     private void autoRegisterBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autoRegisterBackButtonActionPerformed
         // TODO add your handling code here:
-        this.jpp = new JPProfile(this.frame, this.repo,this.autoRegisterLanguageBox.getSelectedItem());
+        this.jpp = new JPProfile(this.frame, this.user, this.autoRegisterLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpp);
     }//GEN-LAST:event_autoRegisterBackButtonActionPerformed
 
     private void autoRegisterRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autoRegisterRegisterButtonActionPerformed
         // TODO add your handling code here:
-        this.jpp = new JPProfile(this.frame, this.repo,this.autoRegisterLanguageBox.getSelectedItem());
+        this.jpp = new JPProfile(this.frame, this.user, this.autoRegisterLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpp);
     }//GEN-LAST:event_autoRegisterRegisterButtonActionPerformed
 

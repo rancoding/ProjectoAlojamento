@@ -5,12 +5,14 @@
  */
 package property.location;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Rafael
  * @author Gustavo
  */
-public class County {
+public class County implements Serializable {
     private String name;
 
     /**

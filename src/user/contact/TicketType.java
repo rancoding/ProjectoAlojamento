@@ -5,6 +5,7 @@
  */
 package user.contact;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * @author Rafael
  * @author Gustavo
  */
-public class TicketType {
+public class TicketType implements Serializable {
     private String name;
     private String description;
     private Category category;

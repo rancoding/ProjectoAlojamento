@@ -5,12 +5,14 @@
  */
 package property;
 
+import java.io.Serializable;
+
 /**
  * The bed type class which contains its variables
  * @author Rafael
  * @author Gustavo
  */
-public class BedType {
+public class BedType implements Serializable {
     private String name;
     private String description;
 

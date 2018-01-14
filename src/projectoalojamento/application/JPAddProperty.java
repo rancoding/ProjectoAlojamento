@@ -5,12 +5,13 @@
  */
 package projectoalojamento.application;
 
-import java.awt.Color;
+import java.util.Map;
 import projectoalojamento.Repository;
 import property.Property;
 import property.PropertyCharacteristics;
+import property.PropertyType;
 import property.location.County;
-import user.User;
+import user.Owner;
 
 /**
  *
@@ -18,21 +19,20 @@ import user.User;
  */
 public class JPAddProperty extends javax.swing.JPanel {
 
-    private Repository repo;
     private Application frame;
     private JPPropertySearchInfo jpsi;
     private JPProfile jpprof;
     private JPAfterLoginOwner jpalo;
-    private User user;
+    private Owner owner;
     
     /**
      * Creates new form JPAddProperty
      */
-    public JPAddProperty(Application frame, Repository repo,Object language) {
+    public JPAddProperty(Application frame, Owner owner, Object language) {
         initComponents();
         
-        this.repo = repo;
         this.frame = frame;
+        this.owner = owner;
         this.addPropertyLanguageBox.setSelectedItem(language);
     }
 
@@ -47,7 +47,7 @@ public class JPAddProperty extends javax.swing.JPanel {
 
         addPropertyPanel = new javax.swing.JPanel();
         addPropertyTopBarPanel = new javax.swing.JPanel();
-        addPropertyLanguageBox = new javax.swing.JComboBox<>();
+        addPropertyLanguageBox = new javax.swing.JComboBox<String>();
         addPropertyNickLabel = new javax.swing.JLabel();
         addPropertyMessageButton = new javax.swing.JButton();
         addPropertyTitlePanel = new javax.swing.JPanel();
@@ -55,7 +55,7 @@ public class JPAddProperty extends javax.swing.JPanel {
         addPropertyErrorPanel = new javax.swing.JPanel();
         addPropertyErrorLabel = new javax.swing.JLabel();
         addPropertyInformationPanel = new javax.swing.JPanel();
-        addPropertyTypeBox = new javax.swing.JComboBox<>();
+        addPropertyTypeBox = new javax.swing.JComboBox<String>();
         addPropertyDiscountLabel = new javax.swing.JLabel();
         addPropertyDiscountTextField = new javax.swing.JTextField();
         addPropertyPercentageLabel = new javax.swing.JLabel();
@@ -87,9 +87,9 @@ public class JPAddProperty extends javax.swing.JPanel {
         addPropertyNMaxClientsLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         addPropertyDescriptionTextArea = new javax.swing.JTextArea();
-        addPropertyLocationBox = new javax.swing.JComboBox<>();
+        addPropertyLocationBox = new javax.swing.JComboBox<String>();
 
-        addPropertyLanguageBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PT", "EN" }));
+        addPropertyLanguageBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PT", "EN" }));
 
         addPropertyNickLabel.setText("Rafael Morais");
         addPropertyNickLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -161,7 +161,7 @@ public class JPAddProperty extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        addPropertyTypeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Apartamento", "Casa" }));
+        addPropertyTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Apartamento", "Casa" }));
 
         addPropertyDiscountLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addPropertyDiscountLabel.setText("Desconto:");
@@ -198,15 +198,15 @@ public class JPAddProperty extends javax.swing.JPanel {
 
         addPropertyExtraSearchInfoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Informação Extra"));
 
-        addPropertyNMinClientsSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        addPropertyNMinClientsSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
 
-        addPropertyNRoomsSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        addPropertyNRoomsSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
         addPropertyNRoomsSpinner.setToolTipText("Número mínimo de quartos do alojamento");
 
-        addPropertyNBathroomsSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        addPropertyNBathroomsSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
         addPropertyNBathroomsSpinner.setToolTipText("Número mínimo de quartos de banho do alojamento");
 
-        addPropertyNBedsSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        addPropertyNBedsSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
         addPropertyNBedsSpinner.setToolTipText("Número mínimo de camas do alojamento");
 
         addPropertyNMinClientsLabel.setText("Nº Min Pessoas");
@@ -285,7 +285,7 @@ public class JPAddProperty extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        addPropertyNMaxClientsSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        addPropertyNMaxClientsSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
 
         addPropertyNMaxClientsLabel.setText("Nº Max Pessoas");
 
@@ -329,11 +329,12 @@ public class JPAddProperty extends javax.swing.JPanel {
                 .addGroup(addPropertyExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(addPropertyInfoExtraInfoPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(addPropertyExtraSearchInfoPanelLayout.createSequentialGroup()
-                        .addGroup(addPropertyExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addPropertyNMinClientsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addPropertyNMinClientsLabel)
-                            .addComponent(addPropertyNMaxClientsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addPropertyNMaxClientsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(addPropertyExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addPropertyNMaxClientsLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(addPropertyExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(addPropertyNMinClientsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(addPropertyNMinClientsLabel)
+                                .addComponent(addPropertyNMaxClientsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(addPropertyExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addPropertyNRoomsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -354,7 +355,7 @@ public class JPAddProperty extends javax.swing.JPanel {
         addPropertyDescriptionTextArea.setRows(5);
         jScrollPane1.setViewportView(addPropertyDescriptionTextArea);
 
-        addPropertyLocationBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        addPropertyLocationBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout addPropertyInformationPanelLayout = new javax.swing.GroupLayout(addPropertyInformationPanel);
         addPropertyInformationPanel.setLayout(addPropertyInformationPanelLayout);
@@ -500,23 +501,44 @@ public class JPAddProperty extends javax.swing.JPanel {
         }
         else
         {
-           // PropertyCharacteristics pc = new PropertyCharacteristics(this.addPropertyNMinClientsSpinner.getValue(),this.addPropertyNMaxClientsSpinner.getValue(), this.addPropertyNRoomsSpinner.getValue(), this.addPropertyNBathroomsSpinner.getValue(), this.addPropertyPetsCheckBox) 
-            //Property property = new Property(Double.parseDouble(this.addPropertyPriceTextField.getText()),this.addPropertyDescriptionTextArea.getText(), this.addPropertyTypeBox.getSelectedItem(),this.user, );
-            //property.setDescription();
-            //property.setPricePerNight();
+            PropertyCharacteristics pc = new PropertyCharacteristics();
+            pc.setMinClients((int) this.addPropertyNMinClientsSpinner.getValue());
+            pc.setMaxClients((int) this.addPropertyNMaxClientsSpinner.getValue());
+            pc.setRoomsQuantity((int) this.addPropertyNRoomsSpinner.getValue());
+            pc.setBathroomQuantity((int) this.addPropertyNBathroomsSpinner.getValue());
+            pc.setPets(this.addPropertyPetsCheckBox.isSelected());
+            pc.setKitchen(this.addPropertyKitchenCheckBox.isSelected());
+            pc.setWashingMachine(this.addPropertyWashingMachineCheckBox.isSelected());
+            pc.setBreakfast(this.addPropertyBreakfastCheckBox.isSelected());
+            pc.setPool(this.addPropertyPoolCheckBox.isSelected());
+            pc.setWifi(this.addPropertyWifiCheckBox.isSelected());
             
-            //repo.addProperty(property, (County) this.addPropertyLocationBox.getSelectedItem()); // Location é combo box, não text field
+            PropertyType p = new PropertyType((String) this.addPropertyTypeBox.getSelectedItem(), "Oi");
+            
+            Property property = new Property(Double.parseDouble(this.addPropertyPriceTextField.getText()), this.addPropertyDescriptionTextArea.getText(), p, this.owner, pc, false);
+            
+            County c = new County((String)this.addPropertyLocationBox.getSelectedItem());
+            
+            Repository.getRepo().addProperty(property, c);
            
-            
-            this.jpalo = new JPAfterLoginOwner(this.frame,this.repo , this.addPropertyLanguageBox.getSelectedItem());
+            this.jpalo = new JPAfterLoginOwner(this.frame, this.owner, this.addPropertyLanguageBox.getSelectedItem());
             this.frame.changePanel(this.jpalo);
+            
+            Map<Property, County> m = Repository.getRepo().getProperties();
+            
+            for(Map.Entry<Property, County> mp : m.entrySet())
+            {
+                System.out.println("Descrição: " + mp.getKey().getDescription());
+                System.out.println("Owner: " + mp.getKey().getOwner());
+                System.out.println("Piscina: " + mp.getKey().getCharacteristics().isPool());
+            }
         }
     }//GEN-LAST:event_addPropertyButtonActionPerformed
 
     private void addPropertyNickLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addPropertyNickLabelMouseClicked
         // TODO add your handling code here:
-        this.jpprof = new JPProfile(this.frame,this.repo, this.addPropertyLanguageBox.getSelectedItem());
-            this.frame.changePanel(this.jpprof);
+        this.jpprof = new JPProfile(this.frame, this.owner, this.addPropertyLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jpprof);
     }//GEN-LAST:event_addPropertyNickLabelMouseClicked
 
     private void addPropertyDiscountTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_addPropertyDiscountTextFieldFocusLost
@@ -536,12 +558,10 @@ public class JPAddProperty extends javax.swing.JPanel {
         {
             addPropertyDiscountTextField.setText(String.valueOf(discount * (-1)));
         }
-        else
+        
+        if(discount>100)
         {
-            if(discount>100)
-            {
-                addPropertyDiscountTextField.setText("100");
-            }
+            addPropertyDiscountTextField.setText("100");
         }
     }//GEN-LAST:event_addPropertyDiscountTextFieldFocusLost
 

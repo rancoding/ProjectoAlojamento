@@ -5,6 +5,7 @@
  */
 package property;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Date;
  * @author Rafael
  * @author Gustavo
  */
-public class Discount {
+public class Discount implements Serializable {
     
     private String description;
     private int percentage;

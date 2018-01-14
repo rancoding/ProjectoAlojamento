@@ -6,6 +6,7 @@
 package property;
 
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 import user.Client;
@@ -15,7 +16,7 @@ import user.Client;
  * @author Rafael
  * @author Gustavo
  */
-public class Rating {
+public class Rating implements Serializable {
     private String subject;
     private String message;
     private float points;

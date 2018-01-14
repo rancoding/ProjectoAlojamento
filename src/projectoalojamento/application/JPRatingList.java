@@ -6,6 +6,7 @@
 package projectoalojamento.application;
 
 import projectoalojamento.Repository;
+import user.Client;
 
 /**
  *
@@ -15,15 +16,16 @@ public class JPRatingList extends javax.swing.JPanel {
 
     private Application frame;
     private JPProfile jpp;
-    private Repository repo;
+    private Client client;
+    
     /**
      * Creates new form JPRatingList
      */
-    public JPRatingList(Application frame, Repository repo,Object language) {
+    public JPRatingList(Application frame, Client client, Object language) {
         initComponents();
         this.frame = frame;
+        this.client = client;
         this.ratingListLanguageBox.setSelectedItem(language);
-        this.repo=repo;
     }
 
     /**
@@ -261,7 +263,7 @@ public class JPRatingList extends javax.swing.JPanel {
 
     private void ratingListBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ratingListBackButtonActionPerformed
         // TODO add your handling code here:
-        this.jpp = new JPProfile(this.frame, this.repo,this.ratingListLanguageBox.getSelectedItem());
+        this.jpp = new JPProfile(this.frame, this.client, this.ratingListLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpp);
     }//GEN-LAST:event_ratingListBackButtonActionPerformed
 

@@ -5,6 +5,7 @@
  */
 package property;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JSpinner;
@@ -14,7 +15,7 @@ import javax.swing.JSpinner;
  * @author Rafael
  * @author Gustavo
  */
-public class PropertyCharacteristics {
+public class PropertyCharacteristics implements Serializable {
     private int minClients;
     private int maxClients;
     private int roomsQuantity;

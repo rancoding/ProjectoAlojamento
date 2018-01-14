@@ -5,6 +5,7 @@
  */
 package property.booking;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -15,7 +16,7 @@ import user.Client;
  * @author Rafael
  * @author Gustavo
  */
-public class Booking {
+public class Booking implements Serializable {
     private final int referenceID;
     private int nClients;
     private double finalPrice;

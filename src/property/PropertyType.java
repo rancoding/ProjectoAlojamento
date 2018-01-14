@@ -5,12 +5,14 @@
  */
 package property;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Rafael
  * @author Gustavo
  */
-public class PropertyType {
+public class PropertyType implements Serializable {
     private String name;
     private String description;
 

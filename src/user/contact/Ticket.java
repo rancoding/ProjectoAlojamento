@@ -5,6 +5,7 @@
  */
 package user.contact;
 
+import java.io.Serializable;
 import user.User;
 
 /**
@@ -12,7 +13,7 @@ import user.User;
  * @author Rafael
  * @author Gustavo
  */
-public class Ticket {
+public class Ticket implements Serializable {
     private final int referenceID;
     private TicketType ticketType;
     private String subject;

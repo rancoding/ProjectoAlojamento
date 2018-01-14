@@ -5,12 +5,14 @@
  */
 package property.booking;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Rafael
  * @author Gustavo
  */
-public class BookingType {
+public class BookingType implements Serializable {
     private String name;
     private String description;
 

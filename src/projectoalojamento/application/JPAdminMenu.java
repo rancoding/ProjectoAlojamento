@@ -14,19 +14,14 @@ import projectoalojamento.Repository;
 public class JPAdminMenu extends javax.swing.JPanel {
 
     private Application frame;
-    private Repository repo;
     
     /**
      * Creates new form JPAdminMenu
      */
-    public JPAdminMenu(Application frame,Repository repo, Object language) {
+    public JPAdminMenu(Application frame, Object language) {
         initComponents();
         this.frame = frame;
-        this.repo = repo;
         this.adminMenuLanguageBox.setSelectedItem(language);
-        
-        
-        
     }
 
     /**

@@ -5,6 +5,8 @@
  */
 package projectoalojamento.application;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,6 +18,9 @@ import projectoalojamento.Repository;
 import property.Property;
 import property.booking.Booking;
 import property.location.County;
+import user.Client;
+import user.Owner;
+import user.User;
 
 /**
  *
@@ -28,7 +33,7 @@ public class Application extends javax.swing.JFrame implements Runnable {
     private JPRegister jpr;
     private JPPropertySearch jpps;
     private JPAddProperty jpap;
-    Repository repo = new Repository();
+    private static int threadCounter = -1;
     
     /**
      * Creates new form Application
@@ -36,21 +41,41 @@ public class Application extends javax.swing.JFrame implements Runnable {
     public Application() {
         initComponents();
         
+        if(threadCounter == -1)
+        {
+            System.out.println("Chamou");
+            Repository.deserialize();
+            threadCounter = 1;
+        }
+        
         this.visiblePanel = this.framePanel;
         this.pack();
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
             
+        /*Client c1 = new Client("g","g","Gustavo Vieira", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", "Esposende", new Date(), false);
+        Repository.getRepo().getUsers().add(c1);
+        Owner o1 = new Owner("g","g","Gustavo Vieira", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", "Esposende", new Date(), false);
+        Owner o2 = new Owner("e","e","Gustavo Vieira", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", "Esposende", new Date(), false);
+        Repository.getRepo().getUsers().add(o1);
+        Repository.getRepo().getUsers().add(o2);*/
+        
+        List<User> users = Repository.getRepo().getUsers();
+        for(User u : users)
+        {
+            System.out.println("User: " + u.getUsername() + " Pass: " + u.getPassword());
+        }
+        
         this.changeTextToSelectedLanguage();
         
-        Date[] dates = {
+        /*Date[] dates = {
             
         };
         
         int count = 0;
         
-        for(Map.Entry<Property, County> m : repo.getProperties().entrySet()) {
+        for(Map.Entry<Property, County> m : Repository.getRepo().getProperties().entrySet()) {
             for(Booking b : m.getKey().getBookings()) {
                 dates[count] = b.getStartingDate();
                 count++;
@@ -78,6 +103,23 @@ public class Application extends javax.swing.JFrame implements Runnable {
         this.startingDatePicker.setDate(d);
         d.setTime(this.startingDatePicker.getDate().getTime() + 86400000);
         this.endingDatePicker.setDate(d);
+        */
+        this.setDefaultCloseOperation(Application.DISPOSE_ON_CLOSE);
+        
+        this.addWindowListener(new WindowAdapter() {
+            
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                threadCounter --;
+                
+                if(threadCounter == 0)
+                {
+                    System.out.println("Guardou");
+                    Repository.serialize();
+                }
+            }
+        });
     }
 
     /**
@@ -105,7 +147,6 @@ public class Application extends javax.swing.JFrame implements Runnable {
         languageBox = new javax.swing.JComboBox();
         registerButton = new javax.swing.JButton();
         loginButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         frameLogoPanel = new javax.swing.JPanel();
         frameInfoPanel = new javax.swing.JPanel();
         startingDatePicker = new org.jdesktop.swingx.JXDatePicker();
@@ -143,13 +184,6 @@ public class Application extends javax.swing.JFrame implements Runnable {
             }
         });
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout frameTopBarPanelLayout = new javax.swing.GroupLayout(frameTopBarPanel);
         frameTopBarPanel.setLayout(frameTopBarPanelLayout);
         frameTopBarPanelLayout.setHorizontalGroup(
@@ -157,8 +191,6 @@ public class Application extends javax.swing.JFrame implements Runnable {
             .addGroup(frameTopBarPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(languageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(138, 138, 138)
-                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(loginButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -172,8 +204,7 @@ public class Application extends javax.swing.JFrame implements Runnable {
                 .addGroup(frameTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(languageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(registerButton)
-                    .addComponent(loginButton)
-                    .addComponent(jButton1))
+                    .addComponent(loginButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -332,7 +363,7 @@ public class Application extends javax.swing.JFrame implements Runnable {
         // TODO add your handling code here:
         Application a = new Application();
         
-        a.jpr = new JPRegister(a, this.repo,this.languageBox.getSelectedItem());
+        a.jpr = new JPRegister(a, this.languageBox.getSelectedItem());
         a.changePanel(a.jpr);
         
         Thread t = new Thread(a);
@@ -353,12 +384,6 @@ public class Application extends javax.swing.JFrame implements Runnable {
     private void startingDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startingDatePickerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_startingDatePickerActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        this.jpap = new JPAddProperty(this, this.repo,this.languageBox.getSelectedItem());
-        this.changePanel(this.jpap);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -430,7 +455,6 @@ public class Application extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel frameLogoPanel;
     private javax.swing.JPanel framePanel;
     private javax.swing.JPanel frameTopBarPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox languageBox;
     private javax.swing.JButton loginButton;

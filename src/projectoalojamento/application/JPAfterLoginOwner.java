@@ -7,6 +7,7 @@ package projectoalojamento.application;
 
 import projectoalojamento.Repository;
 import user.Owner;
+import user.User;
 
 /**
  *
@@ -18,19 +19,16 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
     private JPProfile jpprof;
     private JPConfirmBooking jpcb;
     private JPAddProperty jpap;
-    private Repository repo;
-    
-    
-    
-    
+    private Owner owner;
     /**
      * Creates new form JPAfterLoginOwner
      */
    
-    public JPAfterLoginOwner(Application frame,Repository repo, Object language) {
+    public JPAfterLoginOwner(Application frame, Owner owner, Object language) {
         initComponents();
         this.frame = frame;
         this.frame.setSize(1000, 253);
+        this.owner = owner;
         
         /*if(panel instanceof JPLogin)
         {
@@ -41,7 +39,6 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
             this.jpr = (JPRegister)panel;
         }*/
         this.afterLoginOwnerLanguageBox.setSelectedItem(language);
-        this.repo=repo;
     }
 
 
@@ -541,7 +538,7 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
 
     private void afterLoginOwnerAddPropertyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afterLoginOwnerAddPropertyButtonActionPerformed
         // TODO add your handling code here:
-         this.jpap = new JPAddProperty(this.frame, this.repo, this.afterLoginOwnerLanguageBox.getSelectedItem());
+        this.jpap = new JPAddProperty(this.frame, this.owner, this.afterLoginOwnerLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpap);
     }//GEN-LAST:event_afterLoginOwnerAddPropertyButtonActionPerformed
 
@@ -551,19 +548,18 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
 
     private void afterLoginOwnerNickLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_afterLoginOwnerNickLabelMouseClicked
         // TODO add your handling code here:
-        this.jpprof = new JPProfile(this.frame, this.repo,this.afterLoginOwnerLanguageBox.getSelectedItem());
+        this.jpprof = new JPProfile(this.frame, this.owner, this.afterLoginOwnerLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpprof);
     }//GEN-LAST:event_afterLoginOwnerNickLabelMouseClicked
 
     private void afterLoginOwnerBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afterLoginOwnerBookingButtonActionPerformed
         // TODO add your handling code here:
-        this.jpcb = new JPConfirmBooking(this.frame, this.repo,this.afterLoginOwnerLanguageBox.getSelectedItem());
+        this.jpcb = new JPConfirmBooking(this.frame, this.owner, this.afterLoginOwnerLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpcb);
     }//GEN-LAST:event_afterLoginOwnerBookingButtonActionPerformed
 
     private void afterLoginOwnerNickLabelPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_afterLoginOwnerNickLabelPropertyChange
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_afterLoginOwnerNickLabelPropertyChange
 
 

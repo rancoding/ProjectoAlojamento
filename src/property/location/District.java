@@ -5,6 +5,7 @@
  */
 package property.location;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * @author Rafael
  * @author Gustavo
  */
-public class District {
+public class District implements Serializable {
     private int id;
     private String name;
     List<County> counties;

@@ -6,6 +6,7 @@
 package projectoalojamento.application;
 
 import projectoalojamento.Repository;
+import user.Client;
 
 /**
  *
@@ -16,16 +17,16 @@ public class JPBookingList extends javax.swing.JPanel {
     private Application frame;
     private JPProfile jpp;
     private JPRating jpr;
-    private Repository repo;
+    private Client client;
     
     /**
      * Creates new form JPBookingList
      */
-    public JPBookingList(Application frame, Repository repo,Object language) {
+    public JPBookingList(Application frame, Client client, Object language) {
         initComponents();
         this.frame = frame;
+        this.client = client;
         this.bookingListLanguageBox.setSelectedItem(language);
-        this.repo=repo;
     }
 
     /**
@@ -326,13 +327,13 @@ public class JPBookingList extends javax.swing.JPanel {
 
     private void bookingListRatingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingListRatingButtonActionPerformed
         // TODO add your handling code here:
-        this.jpp = new JPProfile(this.frame, this.repo,this.bookingListLanguageBox.getSelectedItem());
+        this.jpp = new JPProfile(this.frame, this.client, this.bookingListLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpp);
     }//GEN-LAST:event_bookingListRatingButtonActionPerformed
 
     private void bookingListBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingListBackButtonActionPerformed
         // TODO add your handling code here:
-        this.jpr = new JPRating(this.frame, this.repo,this.bookingListLanguageBox.getSelectedItem());
+        this.jpr = new JPRating(this.frame, this.client, this.bookingListLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpr);
     }//GEN-LAST:event_bookingListBackButtonActionPerformed
 

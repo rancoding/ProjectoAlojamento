@@ -18,6 +18,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,7 +42,8 @@ import user.exceptions.*;
  * @author Rafael
  * @author Gustavo
  */
-public class Repository {
+public class Repository implements Serializable {
+    private static Repository repo = null;
     private Map<Property, County> properties;
     private List<PropertyType> propertiesTypes;
     private List<BedType> bedTypes;
@@ -73,6 +75,16 @@ public class Repository {
         this.divisions = new ArrayList<>();
     }
 
+    public static Repository getRepo()
+    {
+        if(repo == null)
+        {
+            repo = new Repository();
+        }
+        
+        return repo;
+    }
+    
     /**
      * Returns the whole properties map
      * @return The existent properties map
@@ -423,15 +435,22 @@ public class Repository {
      * @param username The username of the user you want to log in as
      * @param password The password of the user you want to log in as
      * @return Either the user that was found, or an exception of no user found.
+     * @throws user.exceptions.NonExistentUserException
      */
     public User login(Class c, String username, String password) {  
-        
-        for(User u: users)
+        System.out.println("Entrou na funçao");
+        for(User u: this.users)
         {
+            System.out.println("Entrou no if");
+            System.out.println(c.toString());
             if(c.isInstance(u))
             {
+                System.out.println("Sou um cliente");
+                System.out.println("Username: " + u.getUsername() + " Password: " + u.getPassword());
+                System.out.println("Username: " + username + " Password: " + password);
                 if(username.equals(u.getUsername()) && password.equals(u.getPassword()))
                 {
+                    System.out.println("Encontrou");
                     return u;
                 }
             }    
@@ -1568,6 +1587,49 @@ public class Repository {
             System.out.println("Classe não encontrada");
         }
     
+    }
+    
+    public static void serialize() {
+        
+        try(ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("repository.ser")))
+        {
+            os.writeObject(repo);
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println("Ficheiro não encontrado");
+        }
+        catch (IOException e)
+        {
+            System.out.println("Não sei o que é");
+        }
+    
+    }
+    
+    public static Repository deserialize() {
+        
+        try(ObjectInputStream os = new ObjectInputStream(new FileInputStream("repository.ser")))
+        {
+            repo = (Repository)os.readObject();
+            System.out.println("ola");
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println("Ficheiro não encontrado");
+            return null;
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+        catch (ClassNotFoundException ex)
+        {
+            System.out.println("Classe não encontrada");
+            return null;
+        }
+    
+        return repo;
     }
 }
 

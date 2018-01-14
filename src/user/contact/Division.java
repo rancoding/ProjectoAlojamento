@@ -5,12 +5,14 @@
  */
 package user.contact;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Rafael
  * @author Gustavo
  */
-public class Division {
+public class Division implements Serializable {
     private String name;
     private String description;
 

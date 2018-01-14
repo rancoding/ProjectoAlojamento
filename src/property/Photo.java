@@ -5,12 +5,14 @@
  */
 package property;
 
+import java.io.Serializable;
+
 /**
  * The photo class which contains its variables
  * @author Rafael
  * @author Gustavo
  */
-public class Photo {
+public class Photo implements Serializable {
     private String name;
     private String directory;
     private String format;

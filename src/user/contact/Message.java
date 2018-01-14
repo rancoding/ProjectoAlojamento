@@ -5,6 +5,7 @@
  */
 package user.contact;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import user.User;
@@ -14,7 +15,7 @@ import user.User;
  * @author Rafael
  * @author Gustavo
  */
-public class Message {
+public class Message implements Serializable {
     
     private String subject;
     private String message;

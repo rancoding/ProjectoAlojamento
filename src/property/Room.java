@@ -5,6 +5,7 @@
  */
 package property;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * @author Rafael
  * @author Gustavo
  */
-public class Room {
+public class Room implements Serializable {
     private int bedsQuantity;
     private List<BedType> bedType;
 

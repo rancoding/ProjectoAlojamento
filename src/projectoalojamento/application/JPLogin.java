@@ -5,8 +5,6 @@
  */
 package projectoalojamento.application;
 
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import projectoalojamento.Repository;
 import user.Client;
 import user.Owner;
@@ -21,12 +19,13 @@ public class JPLogin extends javax.swing.JPanel {
     private Application frame;
     private JPAfterLogin jpal;
     private JPAfterLoginOwner jpalo;
-    private User user;
-    private Repository repo;
+    private User user = new User();
     private JPAdminMenu jpam;
     
     /**
      * Creates new form JPLogin
+     * @param frame
+     * @param language
      */
     public JPLogin(Application frame, Object language) {
         initComponents();
@@ -141,28 +140,28 @@ public class JPLogin extends javax.swing.JPanel {
         loginUserPassPanelLayout.setHorizontalGroup(
             loginUserPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginUserPassPanelLayout.createSequentialGroup()
-                .addGap(117, 117, 117)
+                .addContainerGap(136, Short.MAX_VALUE)
                 .addGroup(loginUserPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(loginUserPassPanelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginUserPassPanelLayout.createSequentialGroup()
+                        .addGroup(loginUserPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(loginPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(loginUserField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(187, 187, 187))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginUserPassPanelLayout.createSequentialGroup()
                         .addComponent(loginClientAccountButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(loginOwnerAccountButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(loginAdminAccountButton))
-                    .addGroup(loginUserPassPanelLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addGroup(loginUserPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(loginUserField)
-                            .addComponent(loginPassField, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))))
-                .addContainerGap(116, Short.MAX_VALUE))
+                        .addComponent(loginAdminAccountButton)
+                        .addGap(97, 97, 97))))
         );
         loginUserPassPanelLayout.setVerticalGroup(
             loginUserPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginUserPassPanelLayout.createSequentialGroup()
                 .addComponent(loginUserField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(loginPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(loginPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
                 .addGroup(loginUserPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginClientAccountButton)
                     .addComponent(loginOwnerAccountButton)
@@ -181,7 +180,7 @@ public class JPLogin extends javax.swing.JPanel {
         loginButtonPanelLayout.setHorizontalGroup(
             loginButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginButtonPanelLayout.createSequentialGroup()
-                .addGap(219, 219, 219)
+                .addGap(229, 229, 229)
                 .addComponent(loginButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -193,23 +192,25 @@ public class JPLogin extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        loginErrorLabel.setForeground(new java.awt.Color(240, 240, 240));
+        loginErrorLabel.setForeground(new java.awt.Color(204, 0, 51));
+        loginErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        loginErrorLabel.setLabelFor(loginErrorPanel);
         loginErrorLabel.setText(" ");
 
         javax.swing.GroupLayout loginErrorPanelLayout = new javax.swing.GroupLayout(loginErrorPanel);
         loginErrorPanel.setLayout(loginErrorPanelLayout);
         loginErrorPanelLayout.setHorizontalGroup(
             loginErrorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginErrorPanelLayout.createSequentialGroup()
-                .addGap(237, 237, 237)
-                .addComponent(loginErrorLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginErrorPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(loginErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         loginErrorPanelLayout.setVerticalGroup(
             loginErrorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginErrorPanelLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(loginErrorLabel)
+                .addContainerGap()
+                .addComponent(loginErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -276,60 +277,79 @@ public class JPLogin extends javax.swing.JPanel {
         // Para Login User //
         //this.jpal = new JPAfterLogin(this.frame, this.loginLanguageBox.getSelectedItem());   
         //this.frame.changePanel(this.jpal);
-        if(loginOwnerAccountButton.isSelected()){
-            user = repo.login(Owner.class, user.getUsername(), user.getPassword());
-            if(user!= null){
-                this.jpalo = new JPAfterLoginOwner(this.frame, this.repo,this.loginLanguageBox.getSelectedItem()); 
-                this.frame.changePanel(this.jpalo);
-            }    
-        }else{
-            if (loginClientAccountButton.isSelected()){
-                user = repo.login(Client.class, user.getUsername(), user.getPassword());
-                if(user!= null){
-                    this.jpal = new JPAfterLogin(this.frame, this.repo,this.loginLanguageBox.getSelectedItem()); 
-                    this.frame.changePanel(this.jpalo);
-                }
-            }
-            else {
-                
-                if(loginAdminAccountButton.isSelected()){
-                    user = repo.login(Owner.class, user.getUsername(), user.getPassword());
-                    if(user!= null){
-                        this.jpam = new JPAdminMenu(this.frame, this.repo,this.loginLanguageBox.getSelectedItem()); 
-                        this.frame.changePanel(this.jpalo);
-                    }
-                    
-
-                }
-            }
-        }
-        if(user == null){
-                if(this.loginLanguageBox.getSelectedIndex()== 0){
-                    this.loginErrorLabel.setText("Utilizador não encontrado");
-                }
-                else{
-                    this.loginErrorLabel.setText("User not found");
-                }
-        }
-            
-        
-        
-        // Para Login Owner 
-        
-        
-        
-        
+        this.userLogin();
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void loginLanguageBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_loginLanguageBoxItemStateChanged
         // TODO add your handling code here:
-        if(this.loginLanguageBox.getSelectedItem() == "EN")
-        {
-            this.loginTitleLabel.setText("SIGN IN");
-        }
     }//GEN-LAST:event_loginLanguageBoxItemStateChanged
         
-
+    public void loginError() {
+        
+        if(this.loginLanguageBox.getSelectedIndex()== 0)
+        {
+            this.loginErrorLabel.setText("Utilizador não encontrado");
+        }
+        else
+        {
+            this.loginErrorLabel.setText("User not found");
+        }
+        
+    }
+    
+    public void userLogin() {
+        
+        if(this.loginOwnerAccountButton.isSelected())
+        {
+            this.user = Repository.getRepo().login(Owner.class, this.loginUserField.getText(), this.loginPassField.getText());
+                
+            if(this.user == null)
+            {
+                loginError();
+            }
+            else
+            {
+                this.jpalo = new JPAfterLoginOwner(this.frame, (Owner)this.user, this.loginLanguageBox.getSelectedItem()); 
+                this.frame.changePanel(this.jpalo);
+            }
+        }
+        else
+        {
+            if (this.loginClientAccountButton.isSelected())
+            {
+                this.user = Repository.getRepo().login(Client.class, this.loginUserField.getText(),  this.loginPassField.getText());
+                    
+                if(this.user == null)
+                {
+                    loginError();
+                }
+                else
+                {
+                    this.jpal = new JPAfterLogin(this.frame, (Client) this.user, this.loginLanguageBox.getSelectedItem()); 
+                    this.frame.changePanel(this.jpal);
+                }
+            }
+            else
+            {
+                if(this.loginAdminAccountButton.isSelected())
+                {
+                    this.user = Repository.getRepo().login(Owner.class, this.loginUserField.getText(), this.loginPassField.getText());
+                        
+                    
+                    if(this.user == null)
+                    {
+                        loginError();
+                    }
+                    else
+                    {
+                        this.jpam = new JPAdminMenu(this.frame, this.loginLanguageBox.getSelectedItem());
+                        this.frame.changePanel(this.jpam);
+                    }
+                }
+            }
+        }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
