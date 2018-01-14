@@ -7,6 +7,10 @@ package projectoalojamento.application;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import projectoalojamento.Repository;
+import user.Client;
+import user.Owner;
+import user.User;
 
 /**
  *
@@ -17,6 +21,9 @@ public class JPLogin extends javax.swing.JPanel {
     private Application frame;
     private JPAfterLogin jpal;
     private JPAfterLoginOwner jpalo;
+    private User user;
+    private Repository repo;
+    private JPAdminMenu jpam;
     
     /**
      * Creates new form JPLogin
@@ -269,10 +276,49 @@ public class JPLogin extends javax.swing.JPanel {
         // Para Login User //
         //this.jpal = new JPAfterLogin(this.frame, this.loginLanguageBox.getSelectedItem());   
         //this.frame.changePanel(this.jpal);
+        if(loginOwnerAccountButton.isSelected()){
+            user = repo.login(Owner.class, user.getUsername(), user.getPassword());
+            if(user!= null){
+                this.jpalo = new JPAfterLoginOwner(this.frame, this.repo,this.loginLanguageBox.getSelectedItem()); 
+                this.frame.changePanel(this.jpalo);
+            }    
+        }else{
+            if (loginClientAccountButton.isSelected()){
+                user = repo.login(Client.class, user.getUsername(), user.getPassword());
+                if(user!= null){
+                    this.jpal = new JPAfterLogin(this.frame, this.repo,this.loginLanguageBox.getSelectedItem()); 
+                    this.frame.changePanel(this.jpalo);
+                }
+            }
+            else {
+                
+                if(loginAdminAccountButton.isSelected()){
+                    user = repo.login(Owner.class, user.getUsername(), user.getPassword());
+                    if(user!= null){
+                        this.jpam = new JPAdminMenu(this.frame, this.repo,this.loginLanguageBox.getSelectedItem()); 
+                        this.frame.changePanel(this.jpalo);
+                    }
+                    
+
+                }
+            }
+        }
+        if(user == null){
+                if(this.loginLanguageBox.getSelectedIndex()== 0){
+                    this.loginErrorLabel.setText("Utilizador não encontrado");
+                }
+                else{
+                    this.loginErrorLabel.setText("User not found");
+                }
+        }
+            
+        
         
         // Para Login Owner 
-        this.jpalo = new JPAfterLoginOwner(this.frame, this.loginLanguageBox.getSelectedItem());
-        this.frame.changePanel(this.jpalo);
+        
+        
+        
+        
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void loginLanguageBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_loginLanguageBoxItemStateChanged

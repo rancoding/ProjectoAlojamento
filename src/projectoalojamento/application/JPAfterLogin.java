@@ -6,6 +6,7 @@
 package projectoalojamento.application;
 
 import javax.swing.JPanel;
+import projectoalojamento.Repository;
 
 /**
  *
@@ -18,11 +19,12 @@ public class JPAfterLogin extends javax.swing.JPanel {
     //private JPRegister jpr;
     private JPPropertySearch jpps;
     private JPProfile jpp;
+    private Repository repo;
     
     /**
      * Creates new form JPAfterLogin
      */
-    public JPAfterLogin(Application frame, Object language) {
+    public JPAfterLogin(Application frame, Repository repo,Object language) {
         initComponents();
         this.frame = frame;
         this.frame.setSize(1000, 253);
@@ -36,6 +38,7 @@ public class JPAfterLogin extends javax.swing.JPanel {
             this.jpr = (JPRegister)panel;
         }*/
         this.afterLoginLanguageBox.setSelectedItem(language);
+        this.repo= repo;
     }
 
     /**
@@ -227,13 +230,13 @@ public class JPAfterLogin extends javax.swing.JPanel {
 
     private void afterLoginNameLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_afterLoginNameLabelMouseClicked
         // TODO add your handling code here:
-        this.jpp = new JPProfile(this.frame, this.afterLoginLanguageBox.getSelectedItem());
+        this.jpp = new JPProfile(this.frame, this.repo,this.afterLoginLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpp);
     }//GEN-LAST:event_afterLoginNameLabelMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.jpp = new JPProfile(this.frame, this.afterLoginLanguageBox.getSelectedItem());
+        this.jpp = new JPProfile(this.frame, this.repo,this.afterLoginLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpp);
     }//GEN-LAST:event_jButton1ActionPerformed
 

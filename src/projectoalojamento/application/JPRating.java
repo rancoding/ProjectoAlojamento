@@ -5,6 +5,8 @@
  */
 package projectoalojamento.application;
 
+import projectoalojamento.Repository;
+
 /**
  *
  * @author Gustavo Vieira
@@ -13,14 +15,16 @@ public class JPRating extends javax.swing.JPanel {
 
     private Application frame;
     private JPBookingList jbrl;
+    private Repository repo;
     
     /**
      * Creates new form JPRating
      */
-    public JPRating(Application frame, Object language) {
+    public JPRating(Application frame, Repository repo, Object language) {
         initComponents();
         this.frame = frame;
         this.ratingLanguageBox.setSelectedItem(language);
+        this.repo=repo;
     }
 
     /**
@@ -205,13 +209,13 @@ public class JPRating extends javax.swing.JPanel {
 
     private void ratingBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ratingBackButtonActionPerformed
         // TODO add your handling code here:
-        this.jbrl = new JPBookingList(this.frame, this.ratingLanguageBox.getSelectedItem());
+        this.jbrl = new JPBookingList(this.frame, this.repo,this.ratingLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jbrl);
     }//GEN-LAST:event_ratingBackButtonActionPerformed
 
     private void ratingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ratingButtonActionPerformed
         // TODO add your handling code here:
-        this.jbrl = new JPBookingList(this.frame, this.ratingLanguageBox.getSelectedItem());
+        this.jbrl = new JPBookingList(this.frame, this.repo,this.ratingLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jbrl);
     }//GEN-LAST:event_ratingButtonActionPerformed
 

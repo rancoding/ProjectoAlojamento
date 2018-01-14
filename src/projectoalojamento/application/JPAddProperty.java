@@ -8,7 +8,9 @@ package projectoalojamento.application;
 import java.awt.Color;
 import projectoalojamento.Repository;
 import property.Property;
+import property.PropertyCharacteristics;
 import property.location.County;
+import user.User;
 
 /**
  *
@@ -19,11 +21,14 @@ public class JPAddProperty extends javax.swing.JPanel {
     private Repository repo;
     private Application frame;
     private JPPropertySearchInfo jpsi;
+    private JPProfile jpprof;
+    private JPAfterLoginOwner jpalo;
+    private User user;
     
     /**
      * Creates new form JPAddProperty
      */
-    public JPAddProperty(Application frame, Repository repo, Object language) {
+    public JPAddProperty(Application frame, Repository repo,Object language) {
         initComponents();
         
         this.repo = repo;
@@ -42,7 +47,7 @@ public class JPAddProperty extends javax.swing.JPanel {
 
         addPropertyPanel = new javax.swing.JPanel();
         addPropertyTopBarPanel = new javax.swing.JPanel();
-        addPropertyLanguageBox = new javax.swing.JComboBox<String>();
+        addPropertyLanguageBox = new javax.swing.JComboBox<>();
         addPropertyNickLabel = new javax.swing.JLabel();
         addPropertyMessageButton = new javax.swing.JButton();
         addPropertyTitlePanel = new javax.swing.JPanel();
@@ -50,10 +55,7 @@ public class JPAddProperty extends javax.swing.JPanel {
         addPropertyErrorPanel = new javax.swing.JPanel();
         addPropertyErrorLabel = new javax.swing.JLabel();
         addPropertyInformationPanel = new javax.swing.JPanel();
-        addPropertyDescriptionTextField = new javax.swing.JTextField();
-        addPropertyLocationTextField = new javax.swing.JTextField();
-        addPropertyTypeBox = new javax.swing.JComboBox<String>();
-        addPropertyDivisionsBox = new javax.swing.JComboBox<String>();
+        addPropertyTypeBox = new javax.swing.JComboBox<>();
         addPropertyDiscountLabel = new javax.swing.JLabel();
         addPropertyDiscountTextField = new javax.swing.JTextField();
         addPropertyPercentageLabel = new javax.swing.JLabel();
@@ -62,11 +64,11 @@ public class JPAddProperty extends javax.swing.JPanel {
         addPropertyAddPicturesButton = new javax.swing.JButton();
         addPropertyButton = new javax.swing.JButton();
         addPropertyExtraSearchInfoPanel = new javax.swing.JPanel();
-        addPropertyNClientsSpinner = new javax.swing.JSpinner();
+        addPropertyNMinClientsSpinner = new javax.swing.JSpinner();
         addPropertyNRoomsSpinner = new javax.swing.JSpinner();
         addPropertyNBathroomsSpinner = new javax.swing.JSpinner();
         addPropertyNBedsSpinner = new javax.swing.JSpinner();
-        addPropertyNClientsLabel = new javax.swing.JLabel();
+        addPropertyNMinClientsLabel = new javax.swing.JLabel();
         addPropertyNRoomsLabel = new javax.swing.JLabel();
         addPropertyNBathroomssLabel = new javax.swing.JLabel();
         addPropertyNBedsLabel = new javax.swing.JLabel();
@@ -81,10 +83,20 @@ public class JPAddProperty extends javax.swing.JPanel {
         addPropertyWifiCheckBox = new javax.swing.JCheckBox();
         addPropertyBreakfastCheckBox = new javax.swing.JCheckBox();
         addPropertyPoolCheckBox = new javax.swing.JCheckBox();
+        addPropertyNMaxClientsSpinner = new javax.swing.JSpinner();
+        addPropertyNMaxClientsLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        addPropertyDescriptionTextArea = new javax.swing.JTextArea();
+        addPropertyLocationBox = new javax.swing.JComboBox<>();
 
-        addPropertyLanguageBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PT", "EN" }));
+        addPropertyLanguageBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PT", "EN" }));
 
         addPropertyNickLabel.setText("Rafael Morais");
+        addPropertyNickLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addPropertyNickLabelMouseClicked(evt);
+            }
+        });
 
         addPropertyMessageButton.setText("jButton7");
         addPropertyMessageButton.addActionListener(new java.awt.event.ActionListener() {
@@ -149,20 +161,18 @@ public class JPAddProperty extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        addPropertyDescriptionTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        addPropertyDescriptionTextField.setText("E isto aqui é uma text área não uma text field, já agora não precisa do T1 tem ali Nº Quartos\ne o tipo de cama nao sei como meter mas ali so se pode escolher 1");
-
-        addPropertyLocationTextField.setText("O que era aqui?");
-
-        addPropertyTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Apartamento", "Casa" }));
-
-        addPropertyDivisionsBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "T1", "T2", "T3", "T4", "T5" }));
+        addPropertyTypeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Apartamento", "Casa" }));
 
         addPropertyDiscountLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addPropertyDiscountLabel.setText("Desconto:");
 
         addPropertyDiscountTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         addPropertyDiscountTextField.setText("0");
+        addPropertyDiscountTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                addPropertyDiscountTextFieldFocusLost(evt);
+            }
+        });
 
         addPropertyPercentageLabel.setText("%");
 
@@ -188,18 +198,18 @@ public class JPAddProperty extends javax.swing.JPanel {
 
         addPropertyExtraSearchInfoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Informação Extra"));
 
-        addPropertyNClientsSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        addPropertyNMinClientsSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
-        addPropertyNRoomsSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        addPropertyNRoomsSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         addPropertyNRoomsSpinner.setToolTipText("Número mínimo de quartos do alojamento");
 
-        addPropertyNBathroomsSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        addPropertyNBathroomsSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         addPropertyNBathroomsSpinner.setToolTipText("Número mínimo de quartos de banho do alojamento");
 
-        addPropertyNBedsSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        addPropertyNBedsSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         addPropertyNBedsSpinner.setToolTipText("Número mínimo de camas do alojamento");
 
-        addPropertyNClientsLabel.setText("Nº Pessoas");
+        addPropertyNMinClientsLabel.setText("Nº Min Pessoas");
 
         addPropertyNRoomsLabel.setText("Nº Quartos");
 
@@ -251,7 +261,7 @@ public class JPAddProperty extends javax.swing.JPanel {
                                 .addComponent(addPropertyExtrasCheckBox)
                                 .addGap(18, 18, 18)
                                 .addComponent(addPropertyRatingsCheckBox)))))
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         addPropertyInfoExtraInfoPanelLayout.setVerticalGroup(
             addPropertyInfoExtraInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,6 +285,10 @@ public class JPAddProperty extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        addPropertyNMaxClientsSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        addPropertyNMaxClientsLabel.setText("Nº Max Pessoas");
+
         javax.swing.GroupLayout addPropertyExtraSearchInfoPanelLayout = new javax.swing.GroupLayout(addPropertyExtraSearchInfoPanel);
         addPropertyExtraSearchInfoPanel.setLayout(addPropertyExtraSearchInfoPanelLayout);
         addPropertyExtraSearchInfoPanelLayout.setHorizontalGroup(
@@ -282,10 +296,10 @@ public class JPAddProperty extends javax.swing.JPanel {
             .addGroup(addPropertyExtraSearchInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(addPropertyExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(addPropertyNClientsSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(addPropertyNRoomsSpinner)
+                    .addComponent(addPropertyNRoomsSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                     .addComponent(addPropertyNBathroomsSpinner)
-                    .addComponent(addPropertyNBedsSpinner))
+                    .addComponent(addPropertyNBedsSpinner)
+                    .addComponent(addPropertyNMinClientsSpinner))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(addPropertyExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(addPropertyExtraSearchInfoPanelLayout.createSequentialGroup()
@@ -295,11 +309,15 @@ public class JPAddProperty extends javax.swing.JPanel {
                         .addGap(262, 262, 262))
                     .addGroup(addPropertyExtraSearchInfoPanelLayout.createSequentialGroup()
                         .addGroup(addPropertyExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addPropertyNBedsLabel)
+                            .addComponent(addPropertyNMinClientsLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                        .addGroup(addPropertyExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(addPropertyBedTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(addPropertyExtraSearchInfoPanelLayout.createSequentialGroup()
-                                .addComponent(addPropertyNClientsLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(addPropertyBedTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(addPropertyNBedsLabel))
+                                .addComponent(addPropertyNMaxClientsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8)
+                                .addComponent(addPropertyNMaxClientsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)))
                 .addComponent(addPropertyInfoExtraInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -312,9 +330,10 @@ public class JPAddProperty extends javax.swing.JPanel {
                     .addComponent(addPropertyInfoExtraInfoPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(addPropertyExtraSearchInfoPanelLayout.createSequentialGroup()
                         .addGroup(addPropertyExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addPropertyNClientsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addPropertyNClientsLabel)
-                            .addComponent(addPropertyBedTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(addPropertyNMinClientsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addPropertyNMinClientsLabel)
+                            .addComponent(addPropertyNMaxClientsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addPropertyNMaxClientsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(addPropertyExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addPropertyNRoomsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -326,9 +345,16 @@ public class JPAddProperty extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(addPropertyExtraSearchInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addPropertyNBedsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addPropertyNBedsLabel))))
-                .addContainerGap(16, Short.MAX_VALUE))
+                            .addComponent(addPropertyNBedsLabel)
+                            .addComponent(addPropertyBedTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
+
+        addPropertyDescriptionTextArea.setColumns(20);
+        addPropertyDescriptionTextArea.setRows(5);
+        jScrollPane1.setViewportView(addPropertyDescriptionTextArea);
+
+        addPropertyLocationBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout addPropertyInformationPanelLayout = new javax.swing.GroupLayout(addPropertyInformationPanel);
         addPropertyInformationPanel.setLayout(addPropertyInformationPanelLayout);
@@ -341,22 +367,21 @@ public class JPAddProperty extends javax.swing.JPanel {
                         .addComponent(addPropertyAddPicturesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(addPropertyInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addPropertyDescriptionTextField)
                             .addGroup(addPropertyInformationPanelLayout.createSequentialGroup()
-                                .addComponent(addPropertyTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(addPropertyTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(addPropertyDivisionsBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)
                                 .addComponent(addPropertyDiscountLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(addPropertyDiscountTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(addPropertyPercentageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(254, 254, 254)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(addPropertyLocationBox, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(addPropertyPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(addPropertyCoinTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(addPropertyLocationTextField)))
+                            .addComponent(jScrollPane1)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPropertyInformationPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(addPropertyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -369,18 +394,17 @@ public class JPAddProperty extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(addPropertyInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(addPropertyInformationPanelLayout.createSequentialGroup()
-                        .addComponent(addPropertyLocationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9)
-                        .addComponent(addPropertyDescriptionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(addPropertyInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(addPropertyTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addPropertyDivisionsBox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addPropertyPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addPropertyCoinTypeLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addPropertyPercentageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addPropertyDiscountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addPropertyDiscountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(addPropertyInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(addPropertyDiscountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(addPropertyDiscountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(addPropertyPercentageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(addPropertyLocationBox)))
                     .addComponent(addPropertyAddPicturesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(addPropertyExtraSearchInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -476,25 +500,60 @@ public class JPAddProperty extends javax.swing.JPanel {
         }
         else
         {
-            Property property = new Property();
-            property.setDescription(this.addPropertyDescriptionTextField.getText());
-            property.setPricePerNight(Double.parseDouble(this.addPropertyPriceTextField.getText()));
-            repo.addProperty(property, new County()); // Location é combo box, não text field
+           // PropertyCharacteristics pc = new PropertyCharacteristics(this.addPropertyNMinClientsSpinner.getValue(),this.addPropertyNMaxClientsSpinner.getValue(), this.addPropertyNRoomsSpinner.getValue(), this.addPropertyNBathroomsSpinner.getValue(), this.addPropertyPetsCheckBox) 
+            //Property property = new Property(Double.parseDouble(this.addPropertyPriceTextField.getText()),this.addPropertyDescriptionTextArea.getText(), this.addPropertyTypeBox.getSelectedItem(),this.user, );
+            //property.setDescription();
+            //property.setPricePerNight();
             
-            this.jpsi = new JPPropertySearchInfo(this.frame, this.addPropertyLanguageBox.getSelectedItem());
-            this.frame.changePanel(this.jpsi);
+            //repo.addProperty(property, (County) this.addPropertyLocationBox.getSelectedItem()); // Location é combo box, não text field
+           
+            
+            this.jpalo = new JPAfterLoginOwner(this.frame,this.repo , this.addPropertyLanguageBox.getSelectedItem());
+            this.frame.changePanel(this.jpalo);
         }
     }//GEN-LAST:event_addPropertyButtonActionPerformed
+
+    private void addPropertyNickLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addPropertyNickLabelMouseClicked
+        // TODO add your handling code here:
+        this.jpprof = new JPProfile(this.frame,this.repo, this.addPropertyLanguageBox.getSelectedItem());
+            this.frame.changePanel(this.jpprof);
+    }//GEN-LAST:event_addPropertyNickLabelMouseClicked
+
+    private void addPropertyDiscountTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_addPropertyDiscountTextFieldFocusLost
+        // TODO add your handling code here:
+        int discount = 0;
+        
+        try
+        {
+            discount = Integer.parseInt(addPropertyDiscountTextField.getText());
+        }
+        catch(NumberFormatException e)
+        {
+            addPropertyDiscountTextField.setText("0");
+        }
+        
+        if(discount < 0)
+        {
+            addPropertyDiscountTextField.setText(String.valueOf(discount * (-1)));
+        }
+        else
+        {
+            if(discount>100)
+            {
+                addPropertyDiscountTextField.setText("100");
+            }
+        }
+    }//GEN-LAST:event_addPropertyDiscountTextFieldFocusLost
 
     public boolean checkAddPossibility() {
         boolean canAdd = true;
         
-        if(this.addPropertyLocationTextField.getText().isEmpty())
+        if(this.addPropertyLocationBox.getSelectedIndex()==0)
         {
             return false;
         }
         
-        if(this.addPropertyDescriptionTextField.getText().isEmpty())
+        if(this.addPropertyDescriptionTextArea.getText().isEmpty())
         {
             return false;
         }
@@ -511,6 +570,8 @@ public class JPAddProperty extends javax.swing.JPanel {
         
         return canAdd;
     }
+    
+   // public void saveProperty()
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addPropertyAddPicturesButton;
@@ -518,11 +579,10 @@ public class JPAddProperty extends javax.swing.JPanel {
     private javax.swing.JCheckBox addPropertyBreakfastCheckBox;
     private javax.swing.JButton addPropertyButton;
     private javax.swing.JLabel addPropertyCoinTypeLabel;
-    private javax.swing.JTextField addPropertyDescriptionTextField;
+    private javax.swing.JTextArea addPropertyDescriptionTextArea;
     private javax.swing.JLabel addPropertyDiscountLabel;
     private javax.swing.JTextField addPropertyDiscountTextField;
     private javax.swing.JCheckBox addPropertyDiscountsCheckBox;
-    private javax.swing.JComboBox<String> addPropertyDivisionsBox;
     private javax.swing.JLabel addPropertyErrorLabel;
     private javax.swing.JPanel addPropertyErrorPanel;
     private javax.swing.JPanel addPropertyExtraSearchInfoPanel;
@@ -532,14 +592,16 @@ public class JPAddProperty extends javax.swing.JPanel {
     private javax.swing.JPanel addPropertyInformationPanel;
     private javax.swing.JCheckBox addPropertyKitchenCheckBox;
     private javax.swing.JComboBox<String> addPropertyLanguageBox;
-    private javax.swing.JTextField addPropertyLocationTextField;
+    private javax.swing.JComboBox<String> addPropertyLocationBox;
     private javax.swing.JButton addPropertyMessageButton;
     private javax.swing.JSpinner addPropertyNBathroomsSpinner;
     private javax.swing.JLabel addPropertyNBathroomssLabel;
     private javax.swing.JLabel addPropertyNBedsLabel;
     private javax.swing.JSpinner addPropertyNBedsSpinner;
-    private javax.swing.JLabel addPropertyNClientsLabel;
-    private javax.swing.JSpinner addPropertyNClientsSpinner;
+    private javax.swing.JLabel addPropertyNMaxClientsLabel;
+    private javax.swing.JSpinner addPropertyNMaxClientsSpinner;
+    private javax.swing.JLabel addPropertyNMinClientsLabel;
+    private javax.swing.JSpinner addPropertyNMinClientsSpinner;
     private javax.swing.JLabel addPropertyNRoomsLabel;
     private javax.swing.JSpinner addPropertyNRoomsSpinner;
     private javax.swing.JLabel addPropertyNickLabel;
@@ -554,5 +616,6 @@ public class JPAddProperty extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> addPropertyTypeBox;
     private javax.swing.JCheckBox addPropertyWashingMachineCheckBox;
     private javax.swing.JCheckBox addPropertyWifiCheckBox;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

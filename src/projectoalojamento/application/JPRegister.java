@@ -5,6 +5,8 @@
  */
 package projectoalojamento.application;
 
+import projectoalojamento.Repository;
+
 /**
  *
  * @author Gustavo Vieira
@@ -14,15 +16,17 @@ public class JPRegister extends javax.swing.JPanel {
     private Application frame;
     private JPAfterLogin jpal;
     private JPAfterLoginOwner jpalo;
+    private Repository repo;
     
     /**
      * Creates new form JPRegister
      */
-    public JPRegister(Application frame, Object language) {
+    public JPRegister(Application frame,Repository repo, Object language) {
         initComponents();
         this.frame = frame;
         this.frame.setSize(500,472);
         this.registerLanguageBox.setSelectedItem(language);
+        this.repo=repo;
     }
 
     /**
@@ -301,7 +305,7 @@ public class JPRegister extends javax.swing.JPanel {
         //this.frame.changePanel(this.jpal);
         
         // Se for Dono //
-        this.jpalo = new JPAfterLoginOwner(this.frame, this.registerLanguageBox.getSelectedItem());   
+        this.jpalo = new JPAfterLoginOwner(this.frame, this.repo,this.registerLanguageBox.getSelectedItem());   
         this.frame.changePanel(this.jpalo);
     }//GEN-LAST:event_registerButtonActionPerformed
 

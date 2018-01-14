@@ -99,6 +99,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Rafael Morais"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addPropertyNickLabelMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="addPropertyMessageButton">
               <Properties>
@@ -188,23 +191,22 @@
                                   <Component id="addPropertyAddPicturesButton" min="-2" pref="159" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="addPropertyDescriptionTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="addPropertyTypeBox" min="-2" pref="153" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="addPropertyTypeBox" min="-2" pref="206" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="addPropertyDivisionsBox" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                           <Component id="addPropertyDiscountLabel" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="addPropertyDiscountTextField" pref="84" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="addPropertyPercentageLabel" min="-2" pref="25" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="254" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="addPropertyLocationBox" min="-2" pref="240" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="addPropertyPriceTextField" min="-2" pref="124" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="addPropertyCoinTypeLabel" min="-2" pref="16" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="addPropertyLocationTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane1" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -223,18 +225,18 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="addPropertyLocationTextField" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                                  <Component id="addPropertyDescriptionTextField" min="-2" pref="91" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane1" min="-2" pref="120" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="addPropertyTypeBox" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Component id="addPropertyDivisionsBox" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
                                       <Component id="addPropertyPriceTextField" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
                                       <Component id="addPropertyCoinTypeLabel" alignment="1" min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Component id="addPropertyPercentageLabel" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Component id="addPropertyDiscountLabel" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Component id="addPropertyDiscountTextField" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                          <Component id="addPropertyDiscountTextField" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                                          <Component id="addPropertyDiscountLabel" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                                          <Component id="addPropertyPercentageLabel" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="addPropertyLocationBox" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="addPropertyAddPicturesButton" max="32767" attributes="0"/>
@@ -249,39 +251,12 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="addPropertyDescriptionTextField">
-                  <Properties>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="E isto aqui &#xe9; uma text &#xe1;rea n&#xe3;o uma text field, j&#xe1; agora n&#xe3;o precisa do T1 tem ali N&#xba; Quartos&#xa;e o tipo de cama nao sei como meter mas ali so se pode escolher 1"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="addPropertyLocationTextField">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="O que era aqui?"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JComboBox" name="addPropertyTypeBox">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="2">
                         <StringItem index="0" value="Apartamento"/>
                         <StringItem index="1" value="Casa"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="addPropertyDivisionsBox">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="T1"/>
-                        <StringItem index="1" value="T2"/>
-                        <StringItem index="2" value="T3"/>
-                        <StringItem index="3" value="T4"/>
-                        <StringItem index="4" value="T5"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -302,6 +277,9 @@
                     <Property name="horizontalAlignment" type="int" value="4"/>
                     <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="addPropertyDiscountTextFieldFocusLost"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="addPropertyPercentageLabel">
                   <Properties>
@@ -353,10 +331,10 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="addPropertyNClientsSpinner" alignment="0" pref="100" max="32767" attributes="0"/>
-                                  <Component id="addPropertyNRoomsSpinner" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="addPropertyNRoomsSpinner" alignment="0" pref="100" max="32767" attributes="0"/>
                                   <Component id="addPropertyNBathroomsSpinner" alignment="0" max="32767" attributes="0"/>
                                   <Component id="addPropertyNBedsSpinner" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="addPropertyNMinClientsSpinner" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -369,12 +347,17 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="addPropertyNClientsLabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="addPropertyBedTypeBox" min="-2" pref="200" max="-2" attributes="0"/>
-                                          </Group>
                                           <Component id="addPropertyNBedsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="addPropertyNMinClientsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="100" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="addPropertyBedTypeBox" min="-2" pref="200" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="addPropertyNMaxClientsSpinner" min="-2" pref="100" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                              <Component id="addPropertyNMaxClientsLabel" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                   </Group>
@@ -392,9 +375,10 @@
                                   <Component id="addPropertyInfoExtraInfoPanel" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="addPropertyNClientsSpinner" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                          <Component id="addPropertyNClientsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="addPropertyBedTypeBox" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="addPropertyNMinClientsSpinner" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="addPropertyNMinClientsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="addPropertyNMaxClientsSpinner" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="addPropertyNMaxClientsLabel" alignment="1" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -410,16 +394,17 @@
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="addPropertyNBedsSpinner" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                           <Component id="addPropertyNBedsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="addPropertyBedTypeBox" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="16" max="32767" attributes="0"/>
+                              <EmptySpace pref="14" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JSpinner" name="addPropertyNClientsSpinner">
+                    <Component class="javax.swing.JSpinner" name="addPropertyNMinClientsSpinner">
                       <Properties>
                         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
                           <SpinnerModel initial="1" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
@@ -450,9 +435,9 @@
                         <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero m&#xed;nimo de camas do alojamento"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="addPropertyNClientsLabel">
+                    <Component class="javax.swing.JLabel" name="addPropertyNMinClientsLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="N&#xba; Pessoas"/>
+                        <Property name="text" type="java.lang.String" value="N&#xba; Min Pessoas"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="addPropertyNRoomsLabel">
@@ -514,7 +499,7 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="95" max="32767" attributes="0"/>
+                                  <EmptySpace pref="68" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -593,8 +578,50 @@
                         </Component>
                       </SubComponents>
                     </Container>
+                    <Component class="javax.swing.JSpinner" name="addPropertyNMaxClientsSpinner">
+                      <Properties>
+                        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                          <SpinnerModel initial="1" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="addPropertyNMaxClientsLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="N&#xba; Max Pessoas"/>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextArea" name="addPropertyDescriptionTextArea">
+                      <Properties>
+                        <Property name="columns" type="int" value="20"/>
+                        <Property name="rows" type="int" value="5"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JComboBox" name="addPropertyLocationBox">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Item 1"/>
+                        <StringItem index="1" value="Item 2"/>
+                        <StringItem index="2" value="Item 3"/>
+                        <StringItem index="3" value="Item 4"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>

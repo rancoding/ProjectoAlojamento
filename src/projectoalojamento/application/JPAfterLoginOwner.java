@@ -5,6 +5,9 @@
  */
 package projectoalojamento.application;
 
+import projectoalojamento.Repository;
+import user.Owner;
+
 /**
  *
  * @author Rafael
@@ -14,13 +17,17 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
     private Application frame;
     private JPProfile jpprof;
     private JPConfirmBooking jpcb;
+    private JPAddProperty jpap;
+    private Repository repo;
+    
+    
     
     
     /**
      * Creates new form JPAfterLoginOwner
      */
    
-    public JPAfterLoginOwner(Application frame, Object language) {
+    public JPAfterLoginOwner(Application frame,Repository repo, Object language) {
         initComponents();
         this.frame = frame;
         this.frame.setSize(1000, 253);
@@ -34,6 +41,7 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
             this.jpr = (JPRegister)panel;
         }*/
         this.afterLoginOwnerLanguageBox.setSelectedItem(language);
+        this.repo=repo;
     }
 
 
@@ -104,6 +112,11 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
         afterLoginOwnerNickLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 afterLoginOwnerNickLabelMouseClicked(evt);
+            }
+        });
+        afterLoginOwnerNickLabel.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                afterLoginOwnerNickLabelPropertyChange(evt);
             }
         });
 
@@ -528,6 +541,8 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
 
     private void afterLoginOwnerAddPropertyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afterLoginOwnerAddPropertyButtonActionPerformed
         // TODO add your handling code here:
+         this.jpap = new JPAddProperty(this.frame, this.repo, this.afterLoginOwnerLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jpap);
     }//GEN-LAST:event_afterLoginOwnerAddPropertyButtonActionPerformed
 
     private void afterLoginOwnerMessageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afterLoginOwnerMessageButtonActionPerformed
@@ -536,15 +551,20 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
 
     private void afterLoginOwnerNickLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_afterLoginOwnerNickLabelMouseClicked
         // TODO add your handling code here:
-        this.jpprof = new JPProfile(this.frame, this.afterLoginOwnerLanguageBox.getSelectedItem());
+        this.jpprof = new JPProfile(this.frame, this.repo,this.afterLoginOwnerLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpprof);
     }//GEN-LAST:event_afterLoginOwnerNickLabelMouseClicked
 
     private void afterLoginOwnerBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afterLoginOwnerBookingButtonActionPerformed
         // TODO add your handling code here:
-        this.jpcb = new JPConfirmBooking(this.frame, this.afterLoginOwnerLanguageBox.getSelectedItem());
+        this.jpcb = new JPConfirmBooking(this.frame, this.repo,this.afterLoginOwnerLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpcb);
     }//GEN-LAST:event_afterLoginOwnerBookingButtonActionPerformed
+
+    private void afterLoginOwnerNickLabelPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_afterLoginOwnerNickLabelPropertyChange
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_afterLoginOwnerNickLabelPropertyChange
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

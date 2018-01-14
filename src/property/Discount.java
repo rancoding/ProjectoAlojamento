@@ -13,7 +13,9 @@ import java.util.Date;
  * @author Gustavo
  */
 public class Discount {
+    
     private String description;
+    private int percentage;
     private Date startingDate;
     private Date endingDate;
 
@@ -23,8 +25,9 @@ public class Discount {
      * @param startDate The starting date of this discount
      * @param endDate The discount expiring date
      */
-    public Discount(String description, Date startDate, Date endDate) {
+    public Discount(String description,int percentage, Date startDate, Date endDate) {
         this.description = description;
+        this.percentage=percentage;
         this.startingDate = startDate;
         this.endingDate = endDate;
     }
@@ -34,8 +37,17 @@ public class Discount {
      */
     public Discount() {
         this.description = "";
+        this.percentage = 0;
         this.startingDate = new Date();
         this.endingDate = new Date();
+    }
+
+    public int getPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(int percentage) {
+        this.percentage = percentage;
     }
 
     /**

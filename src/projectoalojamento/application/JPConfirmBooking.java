@@ -5,6 +5,8 @@
  */
 package projectoalojamento.application;
 
+import projectoalojamento.Repository;
+
 /**
  *
  * @author Rafael
@@ -12,12 +14,13 @@ package projectoalojamento.application;
 public class JPConfirmBooking extends javax.swing.JPanel {
     private Application frame;
     private JPAfterLoginOwner jpalo;
+    private Repository repo;
     /**
      * Creates new form JPConfirmBooking
      */
     
 
-    public JPConfirmBooking(Application frame, Object language) {
+    public JPConfirmBooking(Application frame, Repository repo,Object language) {
         initComponents();
         this.frame = frame;
         this.frame.setSize(1000, 253);
@@ -31,6 +34,7 @@ public class JPConfirmBooking extends javax.swing.JPanel {
             this.jpr = (JPRegister)panel;
         }*/
         this.confirmBookingLanguageBox.setSelectedItem(language);
+        this.repo=repo;
     }
 
     /**
@@ -368,7 +372,7 @@ public class JPConfirmBooking extends javax.swing.JPanel {
 
     private void confirmBookingBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBookingBackButtonActionPerformed
         // TODO add your handling code here:
-        this.jpalo = new JPAfterLoginOwner(this.frame, this.confirmBookingLanguageBox.getSelectedItem());
+        this.jpalo = new JPAfterLoginOwner(this.frame, this.repo,this.confirmBookingLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpalo);
         
     }//GEN-LAST:event_confirmBookingBackButtonActionPerformed

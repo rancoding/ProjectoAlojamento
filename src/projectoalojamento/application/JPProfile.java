@@ -5,6 +5,8 @@
  */
 package projectoalojamento.application;
 
+import projectoalojamento.Repository;
+
 /**
  *
  * @author Gustavo Vieira
@@ -15,14 +17,16 @@ public class JPProfile extends javax.swing.JPanel {
     private JPRatingList jprl;
     private JPBookingList jpbl;
     private JPAutoRegister jpar;
+    private Repository repo;
     
     /**
      * Creates new form JPProfile
      */
-    public JPProfile(Application frame, Object language) {
+    public JPProfile(Application frame, Repository repo,Object language) {
         initComponents();
         this.frame = frame;
         this.profileLanguageBox.setSelectedItem(language);
+        this.repo = repo;
     }
 
     /**
@@ -305,19 +309,19 @@ public class JPProfile extends javax.swing.JPanel {
 
     private void profileBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileBookingButtonActionPerformed
         // TODO add your handling code here:
-        this.jpbl = new JPBookingList(this.frame, this.profileLanguageBox.getSelectedItem());
+        this.jpbl = new JPBookingList(this.frame, this.repo,this.profileLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpbl);
     }//GEN-LAST:event_profileBookingButtonActionPerformed
 
     private void profileRatingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileRatingButtonActionPerformed
         // TODO add your handling code here:
-        this.jprl = new JPRatingList(this.frame, this.profileLanguageBox.getSelectedItem());
+        this.jprl = new JPRatingList(this.frame, this.repo,this.profileLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jprl);
     }//GEN-LAST:event_profileRatingButtonActionPerformed
 
     private void profileAutoRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileAutoRegisterButtonActionPerformed
         // TODO add your handling code here:
-        this.jpar = new JPAutoRegister(this.frame, this.profileLanguageBox.getSelectedItem());
+        this.jpar = new JPAutoRegister(this.frame, this.repo,this.profileLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpar);
     }//GEN-LAST:event_profileAutoRegisterButtonActionPerformed
 

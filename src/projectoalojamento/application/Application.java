@@ -332,7 +332,7 @@ public class Application extends javax.swing.JFrame implements Runnable {
         // TODO add your handling code here:
         Application a = new Application();
         
-        a.jpr = new JPRegister(a, this.languageBox.getSelectedItem());
+        a.jpr = new JPRegister(a, this.repo,this.languageBox.getSelectedItem());
         a.changePanel(a.jpr);
         
         Thread t = new Thread(a);
@@ -356,7 +356,7 @@ public class Application extends javax.swing.JFrame implements Runnable {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.jpap = new JPAddProperty(this, this.repo, this.languageBox.getSelectedItem());
+        this.jpap = new JPAddProperty(this, this.repo,this.languageBox.getSelectedItem());
         this.changePanel(this.jpap);
     }//GEN-LAST:event_jButton1ActionPerformed
 

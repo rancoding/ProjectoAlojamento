@@ -104,6 +104,7 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="afterLoginOwnerNickLabelMouseClicked"/>
+                <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="afterLoginOwnerNickLabelPropertyChange"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="afterLoginOwnerMessageButton">
