@@ -5,7 +5,9 @@
  */
 package projectoalojamento.application;
 
+import java.util.List;
 import projectoalojamento.Repository;
+import property.booking.Booking;
 import user.Client;
 
 /**
@@ -17,14 +19,15 @@ public class JPRating extends javax.swing.JPanel {
     private Application frame;
     private JPBookingList jbrl;
     private Client client;
-    
+    private List<Booking> bookings;
     /**
      * Creates new form JPRating
      */
-    public JPRating(Application frame, Client client, Object language) {
+    public JPRating(Application frame, Client client, List<Booking> bookings, Object language) {
         initComponents();
         this.frame = frame;
         this.client = client;
+        this.bookings = bookings;
         this.ratingLanguageBox.setSelectedItem(language);
     }
 
@@ -210,13 +213,13 @@ public class JPRating extends javax.swing.JPanel {
 
     private void ratingBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ratingBackButtonActionPerformed
         // TODO add your handling code here:
-        this.jbrl = new JPBookingList(this.frame, this.client, this.ratingLanguageBox.getSelectedItem());
+        this.jbrl = new JPBookingList(this.frame, this.client, this.bookings, this.ratingLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jbrl);
     }//GEN-LAST:event_ratingBackButtonActionPerformed
 
     private void ratingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ratingButtonActionPerformed
         // TODO add your handling code here:
-        this.jbrl = new JPBookingList(this.frame, this.client, this.ratingLanguageBox.getSelectedItem());
+        this.jbrl = new JPBookingList(this.frame, this.client, this.bookings, this.ratingLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jbrl);
     }//GEN-LAST:event_ratingButtonActionPerformed
 

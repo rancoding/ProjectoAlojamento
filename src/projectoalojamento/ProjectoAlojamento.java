@@ -68,7 +68,7 @@ public class ProjectoAlojamento {
         // Adicionar 20 características
         // Adicionar as localidades
         
-        Client c1 = new Client("gustavo","gustavo123","Gustavo Vieira", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", "Esposende", new Date(), false);
+/*        Client c1 = new Client("gustavo","gustavo123","Gustavo Vieira", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", "Esposende", new Date(), false);
         Client c2 = new Client("rafael","rafael123","Rafa Morais", "222222222",987654321,963222222,"Rua de Outeiro", "Outeiro", new Date(), false);
         Client c3 = new Client("andre","andre123","André Nogueira", "333333333",321654987,964333333,"Rua da Matemática", "Arcos de Valdevez", new Date(), false);
         Client c4 = new Client("joao","joao123","João Cortez", "444444444",123654789,965444444,"Rua perto do IPVC", "Viana de Castelo", new Date(), false);
@@ -89,7 +89,7 @@ public class ProjectoAlojamento {
         Administrator a1 = new Administrator("admin1", "admin123", "Administrador Principal", "999999999", 989898989, 962045932, "Rua dos Administradores", "Porto", new Date(), true);
         Administrator a2 = new Administrator("admin2", "admin123", "Administrador 2", "888888888", 767676767, 963243954, "Rua dos Administradores secundários", "Viana de Castelo", new Date(), false);
         Administrator a3 = new Administrator("admin2", "admin123", "Administrador 3", "777777777", 545454545, 965023493, "Rua dos Administradores secundários", "Viana de Castelo", new Date(), false);
-        
+        */
         PropertyType pt1 = new PropertyType("Quarto", "Um quarto com camas e mobília necessária");
         PropertyType pt2 = new PropertyType("Apartamento", "Uma casa com possíveis quartos e mobília necessária");
         
@@ -115,8 +115,8 @@ public class ProjectoAlojamento {
         Status s2 = new Status("Respondido", "Ticket respondido por um administrador");
         Status s3 = new Status("Completo", "Ticket completo");
         
-        Ticket t1 = new Ticket(tt1, "Não consigo adicionar a minha reserva", "Tenho a reserva e meto os meus dados e não consigo adicioná-la!", false, s1, c1);
-        Ticket t2 = new Ticket(tt1, "Não adiciona a reserva!", "Não importa o quanto tento eu não consigo adicionar!", false, s2, c1);
+        //Ticket t1 = new Ticket(tt1, "Não consigo adicionar a minha reserva", "Tenho a reserva e meto os meus dados e não consigo adicioná-la!", false, s1, c1);
+        //Ticket t2 = new Ticket(tt1, "Não adiciona a reserva!", "Não importa o quanto tento eu não consigo adicionar!", false, s2, c1);
         Ticket t3 = new Ticket();
         Ticket t4 = new Ticket();
         Ticket t5 = new Ticket();
@@ -376,7 +376,7 @@ public class ProjectoAlojamento {
         */
         
         Repository repo = new Repository();
-        
+        /*
         repo.addUser(c1);
         repo.addUser(c2);
         repo.addUser(c3);
@@ -395,7 +395,7 @@ public class ProjectoAlojamento {
         
         repo.addUser(a1);
         repo.addUser(a2);
-        repo.addUser(a3);
+        repo.addUser(a3);*/
         
         repo.addPropertyType(pt1);
         repo.addPropertyType(pt2);
@@ -425,13 +425,13 @@ public class ProjectoAlojamento {
        // repo.addCategory(ca5);
         
         // Não deveria ser aqui mas sim no user talvez, mas pronto
-        repo.addTicket(t1);
-        repo.addTicket(t2);
+        //repo.addTicket(t1);
+        //repo.addTicket(t2);
         repo.addTicket(t3);
         repo.addTicket(t4);
         repo.addTicket(t5);
         
-        c1.setMessages(messages);
+        //c1.setMessages(messages);
         
         repo.addProperty(p1, null);
         repo.addProperty(p2, null);

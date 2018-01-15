@@ -5,8 +5,12 @@
  */
 package projectoalojamento.application;
 
+import java.util.List;
 import projectoalojamento.Repository;
+import property.booking.Booking;
 import user.Client;
+import user.Owner;
+import user.User;
 
 /**
  *
@@ -17,15 +21,18 @@ public class JPBookingList extends javax.swing.JPanel {
     private Application frame;
     private JPProfile jpp;
     private JPRating jpr;
-    private Client client;
+    private User user;
+    private List<Booking> bookings;
+    private Booking booking;
     
     /**
      * Creates new form JPBookingList
      */
-    public JPBookingList(Application frame, Client client, Object language) {
+    public JPBookingList(Application frame, User user, List<Booking> bookings, Object language) {
         initComponents();
         this.frame = frame;
-        this.client = client;
+        this.user = user;
+        this.bookings = bookings;
         this.bookingListLanguageBox.setSelectedItem(language);
     }
 
@@ -327,16 +334,50 @@ public class JPBookingList extends javax.swing.JPanel {
 
     private void bookingListRatingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingListRatingButtonActionPerformed
         // TODO add your handling code here:
-        this.jpp = new JPProfile(this.frame, this.client, this.bookingListLanguageBox.getSelectedItem());
+        this.jpp = new JPProfile(this.frame, this.user, this.bookingListLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpp);
     }//GEN-LAST:event_bookingListRatingButtonActionPerformed
 
     private void bookingListBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingListBackButtonActionPerformed
         // TODO add your handling code here:
-        this.jpr = new JPRating(this.frame, this.client, this.bookingListLanguageBox.getSelectedItem());
+        this.jpr = new JPRating(this.frame, (Client) this.user, this.bookings, this.bookingListLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpr);
     }//GEN-LAST:event_bookingListBackButtonActionPerformed
 
+    private void changeButtons() {
+        
+        if(this.user instanceof Client)
+        {
+            this.bookingListEditButton.setText("Editar");
+            this.bookingListRatingButton.setText("Avaliar");
+            this.bookingListConfirmedCheckBox.setEnabled(false);
+            this.bookingListOwnerField.setText(this.user.getName());
+            this.bookingListOwnerField.setText(Repository.getRepo().getBookingOwnerName(booking));
+        }
+        else
+        {
+            if(this.user instanceof Owner)
+            {
+                if(this.bookingListLanguageBox.getSelectedIndex() == 0)
+                {
+                    this.bookingListEditButton.setText("Rejeitar");
+                    this.bookingListRatingButton.setText("Confirmar");
+                }
+                else
+                {
+                    this.bookingListEditButton.setText("Refuse");
+                    this.bookingListRatingButton.setText("Accept");
+                }
+                    
+                this.bookingListConfirmedCheckBox.setEnabled(true);
+                this.bookingListOwnerField.setText(this.booking.getClient().getName());
+            }
+        }
+    }
+    
+    private void setInfo() {
+        this.bookingListNameLabel.setText(this.user.getName());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList bookingList;

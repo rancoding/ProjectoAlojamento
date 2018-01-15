@@ -30,6 +30,7 @@ import property.Discount;
 import property.PropertyCharacteristics;
 import property.Rating;
 import property.Room;
+import property.booking.Booking;
 import user.User;
 import user.contact.Category;
 import user.contact.Division;
@@ -37,6 +38,7 @@ import user.contact.Status;
 import user.contact.Ticket;
 import user.contact.TicketType;
 import property.exceptions.*;
+import user.Client;
 import user.Owner;
 import user.exceptions.*;
 
@@ -475,9 +477,9 @@ public class Repository implements Serializable {
             newList = newList.stream().filter(u -> u.getAddress().equals(user.getAddress())).collect(Collectors.toList());
         }
         
-        if(!(user.getLocation().equals("")))
+        if(!(user.getCounty().getName().equals("")))
         {
-            newList = newList.stream().filter(u -> u.getLocation().equals(user.getLocation())).collect(Collectors.toList());
+            newList = newList.stream().filter(u -> u.getCounty().equals(user.getCounty())).collect(Collectors.toList());
         }
         
         /*if(!(user.getRegisterDate().equals("0/0/0")))
@@ -572,8 +574,8 @@ public class Repository implements Serializable {
      * @param owner The owner that is to be searched within all the properties
      * @return A list of properties that are owned by given owner
      */
-        public Map getPropertyByOwner(User owner) {
-        Map<Property, County> propertyOwner = new HashMap<>();
+        public Map getPropertyByOwner(Owner owner) {
+        Map<Property, County> propertyOwner = new LinkedHashMap<>();
 
         for(Map.Entry<Property, County> mp : this.properties.entrySet())
         {
@@ -1334,12 +1336,18 @@ public class Repository implements Serializable {
      */
     public int getLowestNumberOfClients() {
         
-        Map.Entry<Property, County> m = (Map.Entry<Property, County>) this.properties.entrySet();
-        int min = m.getKey().getCharacteristics().getMinClients();
+        int min = 0;
+        int pos = 0;
         
         for(Map.Entry<Property, County> mp : this.properties.entrySet())
         {
-            if(min < mp.getKey().getCharacteristics().getMinClients())
+            if(pos == 0)
+            {
+                pos = 1;
+                min = mp.getKey().getCharacteristics().getMinClients();
+            }
+                
+            if(min > mp.getKey().getCharacteristics().getMinClients())
             {
                 min = mp.getKey().getCharacteristics().getMinClients();
             }
@@ -1358,7 +1366,7 @@ public class Repository implements Serializable {
         
         for(Map.Entry<Property, County> mp : this.properties.entrySet())
         {
-            if(max > mp.getKey().getCharacteristics().getMaxClients())
+            if(max < mp.getKey().getCharacteristics().getMaxClients())
             {
                 max = mp.getKey().getCharacteristics().getMaxClients();
             }
@@ -1709,6 +1717,57 @@ public class Repository implements Serializable {
         }
     
         return repo;
+    }
+    
+    public List getBookingsByClient(Client client) {
+        List<Booking> bookings = new ArrayList<>();
+        
+        for(Map.Entry<Property, County> mp : this.properties.entrySet())
+        {
+            for(Booking b : mp.getKey().getBookings())
+            {
+                if(b.getClient().equals(client))
+                {
+                    bookings.add(b);
+                }
+            }
+        }
+        
+        return bookings;
+    }
+    
+    public List getOwnerBookings(Owner owner) {
+        Map<Property, County> mp = this.getPropertyByOwner(owner);
+        List<Booking> bookings = new ArrayList<>();
+        
+        for(Map.Entry<Property, County> m : mp.entrySet())
+        {
+            if(m.getKey().getOwner().equals(owner))
+            {
+                for(Booking b : m.getKey().getBookings())
+                {
+                    bookings.add(b);
+                }
+            }
+        }
+        
+        return bookings;
+    }
+    
+    public String getBookingOwnerName(Booking booking) {
+        
+        for(Map.Entry<Property, County> mp : this.properties.entrySet())
+        {
+            for(Booking b : mp.getKey().getBookings())
+            {
+                if(b.getReferenceID() == booking.getReferenceID())
+                {
+                    return mp.getKey().getOwner().getName();
+                }
+            }
+        }
+        
+        return "";
     }
 }
 

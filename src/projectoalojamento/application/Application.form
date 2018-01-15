@@ -153,7 +153,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jComboBox1" min="-2" pref="200" max="-2" attributes="0"/>
+                      <Component id="locationBox" min="-2" pref="200" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="startingDatePicker" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -179,7 +179,7 @@
                           <Component id="propertyTypeBox" max="32767" attributes="0"/>
                           <Component id="searchButton" pref="30" max="32767" attributes="0"/>
                           <Component id="endingDatePicker" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jComboBox1" max="32767" attributes="0"/>
+                          <Component id="locationBox" max="32767" attributes="0"/>
                           <Component id="NClientsSpinner" max="32767" attributes="0"/>
                           <Component id="afterLoginNClientsLabel" max="32767" attributes="0"/>
                       </Group>
@@ -195,12 +195,16 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="startingDatePickerActionPerformed"/>
+                <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="startingDatePickerPropertyChange"/>
               </Events>
             </Component>
             <Component class="org.jdesktop.swingx.JXDatePicker" name="endingDatePicker">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Data final dispon&#xed;vel em reserva"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="endingDatePickerActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="propertyTypeBox">
               <Properties>
@@ -230,7 +234,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="locationBox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">

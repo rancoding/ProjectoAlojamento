@@ -782,7 +782,7 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
     }//GEN-LAST:event_afterLoginOwnerDiscountTextFieldFocusLost
 
     
-    public boolean checkEditPossibility() {
+    private boolean checkEditPossibility() {
         boolean canEdit = true;
         
         if(this.afterLoginOwnerLocationBox.getSelectedIndex()==0)
