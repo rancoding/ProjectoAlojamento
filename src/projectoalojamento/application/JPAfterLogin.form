@@ -58,7 +58,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="afterLoginLanguageBox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="afterLoginNameLabel" min="-2" pref="200" max="-2" attributes="0"/>
+                      <Component id="afterLoginTicketButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="afterLoginMessageButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="afterLoginNameLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -70,6 +74,8 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="afterLoginLanguageBox" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="afterLoginNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="afterLoginMessageButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="afterLoginTicketButton" alignment="3" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
@@ -87,6 +93,9 @@
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
+              <Events>
+                <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="afterLoginLanguageBoxPropertyChange"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="afterLoginNameLabel">
               <Properties>
@@ -96,6 +105,16 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="afterLoginNameLabelMouseClicked"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="afterLoginMessageButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Mensagens"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="afterLoginTicketButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tickets"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -152,7 +171,7 @@
                           <Component id="afterLoginNClientsSpinner" max="32767" attributes="0"/>
                           <Component id="afterLoginNClientsLabel" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="52" max="32767" attributes="0"/>
+                      <EmptySpace pref="49" max="32767" attributes="0"/>
                       <Component id="afterLoginErrorPanel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>

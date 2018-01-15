@@ -5,8 +5,6 @@
  */
 package projectoalojamento.application;
 
-import javax.swing.JPanel;
-import projectoalojamento.Repository;
 import user.Client;
 
 /**
@@ -16,8 +14,6 @@ import user.Client;
 public class JPAfterLogin extends javax.swing.JPanel {
 
     private Application frame;
-    //private JPLogin jpl;
-    //private JPRegister jpr;
     private JPPropertySearch jpps;
     private JPProfile jpp;
     private Client client;
@@ -30,16 +26,8 @@ public class JPAfterLogin extends javax.swing.JPanel {
         this.frame = frame;
         this.frame.setSize(1000, 253);
         this.client = client;
-        
-        /*if(panel instanceof JPLogin)
-        {
-            this.jpl = (JPLogin)panel;
-        }
-        else
-        {
-            this.jpr = (JPRegister)panel;
-        }*/
         this.afterLoginLanguageBox.setSelectedItem(language);
+        this.changeTextToSelectedLanguage();
     }
 
     /**
@@ -55,6 +43,8 @@ public class JPAfterLogin extends javax.swing.JPanel {
         afterLoginTopBarPanel = new javax.swing.JPanel();
         afterLoginLanguageBox = new javax.swing.JComboBox();
         afterLoginNameLabel = new javax.swing.JLabel();
+        afterLoginMessageButton = new javax.swing.JButton();
+        afterLoginTicketButton = new javax.swing.JButton();
         afterLoginLogoPanel = new javax.swing.JPanel();
         afterLoginInfoPanel = new javax.swing.JPanel();
         afterLoginErrorPanel = new javax.swing.JPanel();
@@ -69,6 +59,11 @@ public class JPAfterLogin extends javax.swing.JPanel {
 
         afterLoginLanguageBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PT", "EN" }));
         afterLoginLanguageBox.setToolTipText("");
+        afterLoginLanguageBox.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                afterLoginLanguageBoxPropertyChange(evt);
+            }
+        });
 
         afterLoginNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         afterLoginNameLabel.setText("Gustavo Moreira Vieira");
@@ -78,6 +73,10 @@ public class JPAfterLogin extends javax.swing.JPanel {
             }
         });
 
+        afterLoginMessageButton.setText("Mensagens");
+
+        afterLoginTicketButton.setText("Tickets");
+
         javax.swing.GroupLayout afterLoginTopBarPanelLayout = new javax.swing.GroupLayout(afterLoginTopBarPanel);
         afterLoginTopBarPanel.setLayout(afterLoginTopBarPanelLayout);
         afterLoginTopBarPanelLayout.setHorizontalGroup(
@@ -86,7 +85,11 @@ public class JPAfterLogin extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(afterLoginLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(afterLoginNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(afterLoginTicketButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(afterLoginMessageButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(afterLoginNameLabel)
                 .addContainerGap())
         );
         afterLoginTopBarPanelLayout.setVerticalGroup(
@@ -95,7 +98,9 @@ public class JPAfterLogin extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(afterLoginTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(afterLoginLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(afterLoginNameLabel))
+                    .addComponent(afterLoginNameLabel)
+                    .addComponent(afterLoginMessageButton)
+                    .addComponent(afterLoginTicketButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -178,7 +183,7 @@ public class JPAfterLogin extends javax.swing.JPanel {
                     .addComponent(afterLoginSearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(afterLoginNClientsSpinner)
                     .addComponent(afterLoginNClientsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(afterLoginErrorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -214,7 +219,7 @@ public class JPAfterLogin extends javax.swing.JPanel {
 
     private void afterLoginSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afterLoginSearchButtonActionPerformed
         // TODO add your handling code here:
-        this.jpps = new JPPropertySearch(this.frame, this.afterLoginLanguageBox.getSelectedItem());
+        this.jpps = new JPPropertySearch(this.frame, this.client, this.afterLoginLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpps);
     }//GEN-LAST:event_afterLoginSearchButtonActionPerformed
 
@@ -224,8 +229,32 @@ public class JPAfterLogin extends javax.swing.JPanel {
         this.frame.changePanel(this.jpp);
     }//GEN-LAST:event_afterLoginNameLabelMouseClicked
 
+    private void afterLoginLanguageBoxPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_afterLoginLanguageBoxPropertyChange
+        // TODO add your handling code here:
+        this.changeTextToSelectedLanguage();
+    }//GEN-LAST:event_afterLoginLanguageBoxPropertyChange
+
         //frame.changePanel(this.jpl);
 
+    private void changeTextToSelectedLanguage() {
+        
+        if(this.afterLoginLanguageBox.getSelectedIndex() == 0)
+        {
+            this.afterLoginMessageButton.setText("Mensagens");
+            this.afterLoginTicketButton.setText("Tickets");
+            this.afterLoginNClientsLabel.setText("Nº Viajantes");
+            this.afterLoginSearchButton.setText("Pesquisar");
+        }
+        else
+        {
+            this.afterLoginMessageButton.setText("Messages");
+            this.afterLoginTicketButton.setText("Tickets");
+            this.afterLoginNClientsLabel.setText("Nº of Travelers");
+            this.afterLoginSearchButton.setText("Search");
+        }
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jdesktop.swingx.JXDatePicker afterLoginEndingDatePicker;
     private javax.swing.JLabel afterLoginErrorLabel;
@@ -234,6 +263,7 @@ public class JPAfterLogin extends javax.swing.JPanel {
     private javax.swing.JComboBox afterLoginLanguageBox;
     private javax.swing.JTextField afterLoginLocationField;
     private javax.swing.JPanel afterLoginLogoPanel;
+    private javax.swing.JButton afterLoginMessageButton;
     private javax.swing.JLabel afterLoginNClientsLabel;
     private javax.swing.JSpinner afterLoginNClientsSpinner;
     private javax.swing.JLabel afterLoginNameLabel;
@@ -241,6 +271,7 @@ public class JPAfterLogin extends javax.swing.JPanel {
     private javax.swing.JComboBox afterLoginPropertyTypeBox;
     private javax.swing.JButton afterLoginSearchButton;
     private org.jdesktop.swingx.JXDatePicker afterLoginStartingDatePicker;
+    private javax.swing.JButton afterLoginTicketButton;
     private javax.swing.JPanel afterLoginTopBarPanel;
     // End of variables declaration//GEN-END:variables
 }
