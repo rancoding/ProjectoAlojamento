@@ -71,45 +71,6 @@ public class Application extends javax.swing.JFrame implements Runnable {
         d1.setTime(new Date().getTime() + 86400000);
         this.endingDatePicker.getMonthView().setLowerBound(d1);
         
-        County co0 = new County("Todas as localidades");
-        County co1 = new County("Santa Cruz das Flores");
-        County co2 = new County("Corvo");
-        County co3 = new County("Castelo de Paiva");
-        County co4 = new County("Espinho");
-        County co5 = new County("Estarreja");
-        County co6 = new County("Santa Maria da Feira");
-        County co7 = new County("Ílhavo");
-        County co8 = new County("Mealhada");
-        County co9 = new County("Murtosa");
-        County co10 = new County("Oliveira de Azeméis");
-        
-        Client c1 = new Client("g","g","Fuck this", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", co1, new Date(), false);
-        Repository.getRepo().getUsers().add(c1);
-        Owner o1 = new Owner("g","g","Vagina", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", co1, new Date(), false);
-        Owner o2 = new Owner("e","e","Gustavo Vieira", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", co2, new Date(), false);
-        Repository.getRepo().getUsers().add(o1);
-        Repository.getRepo().getUsers().add(o2);
-        
-        
-        Repository.getRepo().getCounties().add(co0);
-        Repository.getRepo().getCounties().add(co1);
-        Repository.getRepo().getCounties().add(co2);
-        Repository.getRepo().getCounties().add(co3);
-        Repository.getRepo().getCounties().add(co4);
-        Repository.getRepo().getCounties().add(co5);
-        Repository.getRepo().getCounties().add(co6);
-        Repository.getRepo().getCounties().add(co7);
-        Repository.getRepo().getCounties().add(co8);
-        Repository.getRepo().getCounties().add(co9);
-        Repository.getRepo().getCounties().add(co10);
-        
-        PropertyType pt0 = new PropertyType("Todos os tipos de alojamento", "Para qualquer tipo de alojamento");
-        PropertyType pt1 = new PropertyType("Casa", "Uma casa");
-        PropertyType pt2 = new PropertyType("Apartamento", "Um apartamento");
-        Repository.getRepo().getPropertiesTypes().add(pt0);
-        Repository.getRepo().getPropertiesTypes().add(pt1);
-        Repository.getRepo().getPropertiesTypes().add(pt2);
-        
         this.changeTextToSelectedLanguage();
         
         this.setDefaultCloseOperation(Application.DISPOSE_ON_CLOSE);
