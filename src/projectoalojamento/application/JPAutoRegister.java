@@ -25,6 +25,7 @@ public class JPAutoRegister extends javax.swing.JPanel {
         initComponents();
         this.frame = frame;
         this.user = user;
+        this.autoRegisterNameLabel.setText(this.user.getName());
         this.autoRegisterLanguageBox.setSelectedItem(language);
     }
 

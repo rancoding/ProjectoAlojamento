@@ -88,7 +88,7 @@ public class Property implements Serializable {
         this.ratings = new ArrayList<>();
         this.photos = new ArrayList<>();
         this.oldDiscounts = new ArrayList<>();
-        this.discount = new Discount();
+        this.discount = discount;
         this.extras = new ArrayList<>();
         this.bookings = new ArrayList<>();
         this.closed = false;
@@ -500,9 +500,6 @@ public class Property implements Serializable {
         return valid;
     }
     
-    /**
-     *
-     */
     public void transferOldDiscounts() {
         
         if(this.discount.getEndingDate().after(new Date()))

@@ -36,6 +36,7 @@ public class JPConfirmBooking extends javax.swing.JPanel {
         {
             this.jpr = (JPRegister)panel;
         }*/
+        this.confirmBookingNickLabel.setText(this.owner.getName());
         this.confirmBookingLanguageBox.setSelectedItem(language);
     }
 
