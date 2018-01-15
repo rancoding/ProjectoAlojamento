@@ -29,6 +29,7 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
         this.frame = frame;
         this.frame.setSize(1000, 253);
         this.owner = owner;
+        this.afterLoginOwnerNickLabel.setText(this.owner.getName() + " : " + this.owner.getUsername());
         
         /*if(panel instanceof JPLogin)
         {

@@ -16,6 +16,12 @@ public class PropertyType implements Serializable {
     private String name;
     private String description;
 
+    @Override
+    public String toString()
+    {
+        return name;
+    }
+    
     /**
      *
      * @param name

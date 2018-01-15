@@ -14,7 +14,13 @@ import java.io.Serializable;
  */
 public class County implements Serializable {
     private String name;
-
+    
+    @Override
+    public String toString()
+    {
+        return name;
+    }
+    
     /**
      *
      * @param name

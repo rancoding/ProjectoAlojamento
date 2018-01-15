@@ -26,9 +26,9 @@ public class Discount implements Serializable {
      * @param startDate The starting date of this discount
      * @param endDate The discount expiring date
      */
-    public Discount(String description,int percentage, Date startDate, Date endDate) {
+    public Discount(String description, int percentage, Date startDate, Date endDate) {
         this.description = description;
-        this.percentage=percentage;
+        this.percentage = percentage;
         this.startingDate = startDate;
         this.endingDate = endDate;
     }
@@ -38,7 +38,7 @@ public class Discount implements Serializable {
      */
     public Discount() {
         this.description = "";
-        this.percentage = 0;
+        this.percentage = -1;
         this.startingDate = new Date();
         this.endingDate = new Date();
     }

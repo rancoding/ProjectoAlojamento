@@ -27,6 +27,7 @@ import user.Owner;
 public class Property implements Serializable {
     private final int referenceID;
     private double pricePerNight;
+    private String name;
     private String description;
     private PropertyType propertyType;
     private Owner owner;
@@ -34,12 +35,18 @@ public class Property implements Serializable {
     private List<Rating> ratings;
     private List<Photo> photos;
     private List<Discount> oldDiscounts;
-    private List<Discount> discounts;
+    private Discount discount;
     private List<Discount> extras;
     private List<Booking> bookings;
     private boolean closed;
     private static int count = 0;
 
+    @Override
+    public String toString()
+    {
+        return "[ID] " + referenceID + "        " + name + "       [ " + propertyType + "]        " + pricePerNight + "€        (" + this.getPropertyRatingMedianPoints() + ")";
+    }
+    
     /**
      * The Property constructor
      * @param pricePerNight The property cost per night
@@ -49,9 +56,10 @@ public class Property implements Serializable {
      * @param characteristics The multiple characteristics of the property
      * @param closed If the property is closed or not
      */
-    public Property(double pricePerNight, String description, PropertyType propertyType, Owner owner, PropertyCharacteristics characteristics, boolean closed) {
+    public Property(double pricePerNight, String name, String description, PropertyType propertyType, Owner owner, PropertyCharacteristics characteristics, Discount discount, boolean closed) {
         this.referenceID = count;
         this.pricePerNight = pricePerNight;
+        this.name = name;
         this.description = description;
         this.propertyType = propertyType;
         this.owner = owner;
@@ -59,7 +67,7 @@ public class Property implements Serializable {
         this.ratings = new ArrayList<>();
         this.photos = new ArrayList<>();
         this.oldDiscounts = new ArrayList<>();
-        this.discounts = new ArrayList<>();
+        this.discount = discount;
         this.extras = new ArrayList<>();
         this.bookings = new ArrayList<>();
         this.closed = closed;
@@ -72,6 +80,7 @@ public class Property implements Serializable {
     public Property() {
         this.referenceID = -1;
         this.pricePerNight = -1;
+        this.name = "";
         this.description = "";
         this.propertyType = new PropertyType();
         this.owner = new Owner();
@@ -79,7 +88,7 @@ public class Property implements Serializable {
         this.ratings = new ArrayList<>();
         this.photos = new ArrayList<>();
         this.oldDiscounts = new ArrayList<>();
-        this.discounts = new ArrayList<>();
+        this.discount = new Discount();
         this.extras = new ArrayList<>();
         this.bookings = new ArrayList<>();
         this.closed = false;
@@ -101,6 +110,14 @@ public class Property implements Serializable {
         this.pricePerNight = pricePerNight;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     /**
      * Returns the current property description
      * @return The description
@@ -206,8 +223,8 @@ public class Property implements Serializable {
     }
 
     /**
-     * Sets a new old discounts list (which is sent as an argument)
-     * @param oldDiscounts The new old discounts list to be set
+     * Sets a new old discount list (which is sent as an argument)
+     * @param oldDiscounts The new old discount list to be set
      */
     public void setOldDiscounts(List<Discount> oldDiscounts) {
         this.oldDiscounts = oldDiscounts;
@@ -217,16 +234,16 @@ public class Property implements Serializable {
      * Returns the whole discount list
      * @return The property discount list
      */
-    public List<Discount> getDiscounts() {
-        return discounts;
+    public Discount getDiscount() {
+        return discount;
     }
 
     /**
-     * Sets a new discounts list (which is sent as an argument)
-     * @param discounts The new discounts list to be set
+     * Sets a new discount list (which is sent as an argument)
+     * @param discount The new discount list to be set
      */
-    public void setDiscounts(List<Discount> discounts) {
-        this.discounts = discounts;
+    public void setDiscount(Discount discount) {
+        this.discount = discount;
     }
 
     /**
@@ -467,32 +484,6 @@ public class Property implements Serializable {
     
     /**
      *
-     * @param discount
-     */
-    public void addDiscount(Discount discount) {
-        
-        boolean exists = false;
-        
-        for(Discount d : this.discounts)
-        {
-            try
-            {
-                exists = verifyDiscountDescription(d, discount.getDescription());
-            }
-            catch(ExistentDiscountDescriptionException e)
-            {
-                exists = true;
-            }
-        }
-        
-        if(exists)
-        {
-            this.discounts.add(discount);
-        }
-    }
-    
-    /**
-     *
      * @param date
      * @return
      */
@@ -514,42 +505,14 @@ public class Property implements Serializable {
      */
     public void transferOldDiscounts() {
         
-        Iterator it = this.discounts.iterator();
-        
-        while(it.hasNext())
+        if(this.discount.getEndingDate().after(new Date()))
         {
-            Discount d = (Discount)it.next();
-            
-            if(!(verifyDate(d.getEndingDate())))
+            if(!(verifyDate(this.discount.getEndingDate())))
             {
-                this.oldDiscounts.add(d);
-                it.remove();
+                this.oldDiscounts.add(this.discount);
+                this.setDiscount(new Discount());
             }
         }
-    }
-    
-    /**
-     *
-     * @param oldDiscount
-     * @param newDiscount
-     * @return
-     */
-    public List editDiscount(Discount oldDiscount, Discount newDiscount) {
-        List<Discount> newList = new ArrayList<>();
-        
-        for(Discount d : this.discounts)
-        {
-            if(d.equals(oldDiscount))
-            {
-                newList.add(newDiscount);
-            }
-            else
-            {
-                newList.add(d);
-            }
-        }
-        
-        return newList;
     }
     
     /* Extras */

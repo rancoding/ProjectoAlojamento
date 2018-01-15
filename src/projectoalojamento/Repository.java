@@ -21,11 +21,14 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
+import property.Discount;
 import property.PropertyCharacteristics;
+import property.Rating;
 import property.Room;
 import user.User;
 import user.contact.Category;
@@ -47,7 +50,7 @@ public class Repository implements Serializable {
     private Map<Property, County> properties;
     private List<PropertyType> propertiesTypes;
     private List<BedType> bedTypes;
-    private List<Location> locations;
+    private List<County> counties;
     private List<PaymentType> paymentTypes;
     private List<BookingType> bookingTypes;
     private List<User> users;
@@ -61,10 +64,10 @@ public class Repository implements Serializable {
      * Initializes all the repository lists
      */
     public Repository() {
-        this.properties = new HashMap<>();
+        this.properties = new LinkedHashMap<>();
         this.propertiesTypes = new ArrayList<>();
         this.bedTypes = new ArrayList<>();
-        this.locations = new ArrayList<>();
+        this.counties = new ArrayList<>();
         this.paymentTypes = new ArrayList<>();
         this.bookingTypes = new ArrayList<>();
         this.users = new ArrayList<>();
@@ -110,11 +113,11 @@ public class Repository implements Serializable {
     }
 
     /**
-     * Returns the whole location list
-     * @return The existent locations (which includes districts and counties)
+     * Returns the whole county list
+     * @return The existent counties (which includes districts and counties)
      */
-    public List<Location> getLocations() {
-        return locations;
+    public List<County> getCounties() {
+        return counties;
     }
 
     /**
@@ -206,11 +209,11 @@ public class Repository implements Serializable {
     }
 
     /**
-     * Sets a new location list (which is sent as an argument)
-     * @param locations The new location list to be set
+     * Sets a new county list (which is sent as an argument)
+     * @param counties The new counties list to be set
      */
-    public void setLocations(List<Location> locations) {
-        this.locations = locations;
+    public void setCounties(List<County> counties) {
+        this.counties = counties;
     }
 
     /**
@@ -286,28 +289,102 @@ public class Repository implements Serializable {
      * @param property The object which contains what is to be searched
      * @return The map that contains all the properties that correspond to the sent object
      */
-    public Map listProperties(Property property) {
+    public Map listProperties(Property property, County county, double maxPrice) {
         Map<Property, County> newMap = this.properties;
         
         if(property.getPricePerNight() != -1)
         {
             newMap = newMap.entrySet().stream().filter(p -> p.getKey().getPricePerNight() >= property.getPricePerNight()).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getPricePerNight() <= maxPrice).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
         }
         
-        if(!(property.getPropertyType().equals(new PropertyType())))
+        if(!(property.getPropertyType().getName().equals("")))
         {
             newMap = newMap.entrySet().stream().filter(p -> p.getKey().getPropertyType().getName().equalsIgnoreCase(property.getPropertyType().getName())).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
         }
         
-        if(!(property.getCharacteristics().equals(new PropertyCharacteristics())))
+        if(property.getCharacteristics().getMinClients() != -1)
         {
-            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getCharacteristics().equals(property.getCharacteristics())).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+            newMap = newMap.entrySet().stream().filter(p -> property.getCharacteristics().getMinClients() >= p.getKey().getCharacteristics().getMinClients()).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+            newMap = newMap.entrySet().stream().filter(p -> property.getCharacteristics().getMinClients() <= p.getKey().getCharacteristics().getMaxClients()).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
         }
         
-        if(!(property.getOwner().equals(new Owner())))
+        if(property.getCharacteristics().getRoomsQuantity() != -1)
         {
-            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getOwner().equals(property.getOwner())).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getCharacteristics().getRoomsQuantity() >= property.getCharacteristics().getRoomsQuantity()).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
         }
+        
+        if(property.getCharacteristics().getBathroomQuantity() != -1)
+        {
+            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getCharacteristics().getBathroomQuantity() >= property.getCharacteristics().getBathroomQuantity()).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+        }
+        
+        if(property.getCharacteristics().isPets())
+        {
+            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getCharacteristics().isPets() == true).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+        }
+        
+        if(property.getCharacteristics().isKitchen())
+        {
+            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getCharacteristics().isKitchen() == true).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+        }
+        
+        if(property.getCharacteristics().isWashingMachine())
+        {
+            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getCharacteristics().isWashingMachine() == true).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+        }
+        
+        if(property.getCharacteristics().isBreakfast())
+        {
+            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getCharacteristics().isBreakfast() == true).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+        }
+        
+        if(property.getCharacteristics().isPool())
+        {
+            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getCharacteristics().isPool() == true).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+        }
+        
+        if(property.getCharacteristics().isWifi())
+        {
+            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getCharacteristics().isWifi() == true).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+        }
+        
+        if(!(county.getName().equals("")))
+        {
+            newMap = newMap.entrySet().stream().filter(p -> p.getValue().equals(county)).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+        }
+        
+        if(property.getDiscount().getPercentage() != -1)
+        {
+            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getDiscount().getPercentage() > 0).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+        }
+        
+        if(!(property.getExtras().isEmpty()))
+        {
+            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getExtras().isEmpty() == false).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+        }
+        
+        if(!(property.getRatings().isEmpty()))
+        {
+            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getRatings().isEmpty() == false).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+            
+            if(!(newMap.isEmpty()))
+            {
+                newMap = newMap.entrySet().stream().filter(p -> p.getKey().getPropertyRatingMedianPoints() >= property.getRatings().get(0).getPoints()).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+            }
+        }
+        
+        System.out.println("---------------");
+        for(Map.Entry<Property,County> mp : newMap.entrySet())
+        {
+            System.out.println("");
+            System.out.println("Descrição:");
+            System.out.println(mp.getKey().getDescription());
+            System.out.println("");
+        }
+        
+        if(newMap.isEmpty())
+            System.out.println("Sem alojamentos");
         
         return newMap;
     }
@@ -665,60 +742,6 @@ public class Repository implements Serializable {
             throw new ExistentLocationNameException();
         }
     }
-    
-    /**
-     * Adds a location if no exceptions are thrown
-     * @param location The location to be added
-     */
-    public void addLocation(Location location) {
-        
-        boolean exists = false;
-        
-        for(Location l : this.locations) // Mudar o for para um iterator
-        {
-            if(l.getName().equals(location.getName()))
-            {
-                try
-                {
-                    verifyLocationName(l, location.getName());
-                }
-                catch(ExistentLocationNameException ex)
-                {
-                    exists = true;
-                }
-            }
-        }
-        
-        if(!exists)
-        {
-            this.locations.add(location);
-        }
-        
-    }
-    
-    /**
-     * Creates a new list and searches the current location list to be able to know what is the location to be modified, and then, if found (via ID), adds the new location to the list instead of the existing location
-     * @param location The location to be added at the old location position in the list
-     * @return The list with the modified location
-     */
-    public List editLocation(Location location) {
-        List<Location> newList = new ArrayList<>();
-        
-        for(Location l : this.locations)
-        {
-            if(l.getId() == location.getId())
-            {
-                newList.add(location);
-            }
-            else
-            {
-                newList.add(l);
-            }
-        }
-        
-        return newList;
-    }
-    
     
     /*            Payment Type            */
     /* ********************************** */

@@ -5,6 +5,10 @@
  */
 package projectoalojamento.application;
 
+import java.util.List;
+import property.Property;
+import user.Client;
+
 /**
  *
  * @author Gustavo Vieira
@@ -14,15 +18,28 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
     private Application frame;
     private JPPropertySearch jpps;
     private JPBooking jpb;
+    private Client client;
+    private List<Property> list;
+    private Property p;
     
     /**
      * Creates new form JPPropertyInfo
      */
-    public JPPropertySearchInfo(Application frame, Object language) {
+    public JPPropertySearchInfo(Application frame, Client client, List<Property> list, Property p, Object language) {
         initComponents();
+        
         this.frame = frame;
         this.frame.setSize(1110, 696);
+        this.client = client;
+        this.list = list;
+        this.p = p;
         this.propertySearchInfoLanguageBox.setSelectedItem(language);
+        
+        if(this.client.getName().isEmpty())
+        {
+            this.propertySearchInfoMessageButton.setEnabled(false);
+            this.propertySearchInfoMessageButton.setVisible(false);
+        }
     }
 
     /**
@@ -38,6 +55,8 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
         propertySearchInfoTopBarPanel = new javax.swing.JPanel();
         propertySearchInfoLanguageBox = new javax.swing.JComboBox();
         propertySearchInfoNameLabel = new javax.swing.JLabel();
+        propertySearchInfoMessageButton = new javax.swing.JButton();
+        propertySearchInfoTicketButton = new javax.swing.JButton();
         propertySearchInfoLogoPanel = new javax.swing.JPanel();
         propertySearchInfoInfoPanel = new javax.swing.JPanel();
         propertySearchInfoPropertyPanel = new javax.swing.JPanel();
@@ -48,7 +67,7 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
         propertySearchInfoDescriptionArea = new javax.swing.JTextArea();
         propertySearchInfoPropertyInfoPanel = new javax.swing.JPanel();
         propertySearchInfoFinalPriceField = new javax.swing.JFormattedTextField();
-        propertySearchInfoMessageButton = new javax.swing.JButton();
+        propertySearchInfoOwnerMessageButton = new javax.swing.JButton();
         propertySearchInfoPropertyTypeField = new javax.swing.JTextField();
         propertySearchInfoDiscountCheckBox = new javax.swing.JCheckBox();
         propertySearchInfoDiscountLabel = new javax.swing.JLabel();
@@ -88,6 +107,10 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
         propertySearchInfoNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         propertySearchInfoNameLabel.setText("Gustavo Moreira Vieira");
 
+        propertySearchInfoMessageButton.setText("Mensagens");
+
+        propertySearchInfoTicketButton.setText("Tickets");
+
         javax.swing.GroupLayout propertySearchInfoTopBarPanelLayout = new javax.swing.GroupLayout(propertySearchInfoTopBarPanel);
         propertySearchInfoTopBarPanel.setLayout(propertySearchInfoTopBarPanelLayout);
         propertySearchInfoTopBarPanelLayout.setHorizontalGroup(
@@ -96,7 +119,11 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(propertySearchInfoLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(propertySearchInfoNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(propertySearchInfoTicketButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(propertySearchInfoMessageButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(propertySearchInfoNameLabel)
                 .addContainerGap())
         );
         propertySearchInfoTopBarPanelLayout.setVerticalGroup(
@@ -105,7 +132,9 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(propertySearchInfoTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(propertySearchInfoLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(propertySearchInfoNameLabel))
+                    .addComponent(propertySearchInfoNameLabel)
+                    .addComponent(propertySearchInfoMessageButton)
+                    .addComponent(propertySearchInfoTicketButton))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -165,7 +194,7 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
         propertySearchInfoFinalPriceField.setText("120,000.00€");
         propertySearchInfoFinalPriceField.setFocusable(false);
 
-        propertySearchInfoMessageButton.setText("Enviar mensagem a DonoXPTO");
+        propertySearchInfoOwnerMessageButton.setText("Enviar mensagem a DonoXPTO");
 
         propertySearchInfoPropertyTypeField.setEditable(false);
         propertySearchInfoPropertyTypeField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -196,7 +225,7 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
             propertySearchInfoPropertyInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(propertySearchInfoPropertyInfoPanelLayout.createSequentialGroup()
                 .addGroup(propertySearchInfoPropertyInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(propertySearchInfoMessageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(propertySearchInfoOwnerMessageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(propertySearchInfoDiscountCheckBox))
                 .addGap(190, 190, 190)
                 .addComponent(propertySearchInfoPropertyTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,7 +245,7 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
             .addGroup(propertySearchInfoPropertyInfoPanelLayout.createSequentialGroup()
                 .addGroup(propertySearchInfoPropertyInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(propertySearchInfoFinalPriceField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(propertySearchInfoMessageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(propertySearchInfoOwnerMessageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(propertySearchInfoPropertyTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(propertySearchInfoRatingField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
@@ -540,13 +569,13 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
 
     private void propertySearchInfoBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchInfoBackButtonActionPerformed
         // TODO add your handling code here:
-        this.jpps = new JPPropertySearch(this.frame, this.propertySearchInfoLanguageBox.getSelectedItem());
+        this.jpps = new JPPropertySearch(this.frame, this.client, this.propertySearchInfoLanguageBox.getSelectedItem());
         frame.changePanel(this.jpps);
     }//GEN-LAST:event_propertySearchInfoBackButtonActionPerformed
 
     private void propertySearchInfoBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchInfoBookingButtonActionPerformed
         // TODO add your handling code here:
-        this.jpb = new JPBooking(this.frame, this.propertySearchInfoLanguageBox.getSelectedItem());
+        this.jpb = new JPBooking(this.frame, this.client, this.propertySearchInfoLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpb);
     }//GEN-LAST:event_propertySearchInfoBookingButtonActionPerformed
 
@@ -585,6 +614,7 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
     private javax.swing.JLabel propertySearchInfoNRoomsLabel;
     private javax.swing.JLabel propertySearchInfoNameLabel;
     private javax.swing.JLabel propertySearchInfoOriginalPriceLabel;
+    private javax.swing.JButton propertySearchInfoOwnerMessageButton;
     private javax.swing.JPanel propertySearchInfoPanel;
     private javax.swing.JCheckBox propertySearchInfoPetsCheckBox;
     private javax.swing.JTextField propertySearchInfoPhotoField;
@@ -597,6 +627,7 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
     private javax.swing.JList propertySearchInfoRatingList;
     private javax.swing.JPanel propertySearchInfoRatingPanel;
     private javax.swing.JScrollPane propertySearchInfoRatingScrollPane;
+    private javax.swing.JButton propertySearchInfoTicketButton;
     private javax.swing.JPanel propertySearchInfoTopBarPanel;
     private javax.swing.JCheckBox propertySearchInfoWashingMachineCheckBox;
     private javax.swing.JCheckBox propertySearchInfoWifiCheckBox;

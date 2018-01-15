@@ -7,16 +7,12 @@ package projectoalojamento.application;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import projectoalojamento.Repository;
-import property.Property;
-import property.booking.Booking;
+import property.PropertyType;
 import property.location.County;
 import user.Client;
 import user.Owner;
@@ -59,13 +55,42 @@ public class Application extends javax.swing.JFrame implements Runnable {
         Owner o1 = new Owner("g","g","Gustavo Vieira", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", "Esposende", new Date(), false);
         Owner o2 = new Owner("e","e","Gustavo Vieira", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", "Esposende", new Date(), false);
         Repository.getRepo().getUsers().add(o1);
-        Repository.getRepo().getUsers().add(o2);*/
+        Repository.getRepo().getUsers().add(o2);
         
+        County co1 = new County("Santa Cruz das Flores");
+        County co2 = new County("Corvo");
+        County co3 = new County("Castelo de Paiva");
+        County co4 = new County("Espinho");
+        County co5 = new County("Estarreja");
+        County co6 = new County("Santa Maria da Feira");
+        County co7 = new County("Ílhavo");
+        County co8 = new County("Mealhada");
+        County co9 = new County("Murtosa");
+        County co10 = new County("Oliveira de Azeméis");
+        
+        Repository.getRepo().getCounties().add(co1);
+        Repository.getRepo().getCounties().add(co2);
+        Repository.getRepo().getCounties().add(co3);
+        Repository.getRepo().getCounties().add(co4);
+        Repository.getRepo().getCounties().add(co5);
+        Repository.getRepo().getCounties().add(co6);
+        Repository.getRepo().getCounties().add(co7);
+        Repository.getRepo().getCounties().add(co8);
+        Repository.getRepo().getCounties().add(co9);
+        Repository.getRepo().getCounties().add(co10);
+        
+        PropertyType pt1 = new PropertyType("Casa", "Uma casa");
+        PropertyType pt2 = new PropertyType("Apartamento", "Um apartamento");
+        Repository.getRepo().getPropertiesTypes().add(pt1);
+        Repository.getRepo().getPropertiesTypes().add(pt2);
+        */
         List<User> users = Repository.getRepo().getUsers();
         for(User u : users)
         {
             System.out.println("User: " + u.getUsername() + " Pass: " + u.getPassword());
         }
+        
+        System.out.println(Repository.getRepo().getUsers().size());
         
         this.changeTextToSelectedLanguage();
         
@@ -357,6 +382,8 @@ public class Application extends javax.swing.JFrame implements Runnable {
         
         Thread t = new Thread(a);
         t.start();
+        
+        threadCounter++;
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
@@ -368,11 +395,13 @@ public class Application extends javax.swing.JFrame implements Runnable {
         
         Thread t = new Thread(a);
         t.start();
+        
+        threadCounter++;
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-        this.jpps = new JPPropertySearch(this, this.languageBox.getSelectedItem());
+        this.jpps = new JPPropertySearch(this, new Client(),this.languageBox.getSelectedItem());
         this.changePanel(this.jpps);
     }//GEN-LAST:event_searchButtonActionPerformed
 
@@ -426,7 +455,7 @@ public class Application extends javax.swing.JFrame implements Runnable {
     /**
      *
      */
-    public void changeTextToSelectedLanguage() {
+    private void changeTextToSelectedLanguage() {
         
         if(this.languageBox.getSelectedIndex() == 0)
         {

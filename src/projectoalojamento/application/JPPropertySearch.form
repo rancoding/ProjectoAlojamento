@@ -61,6 +61,16 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="propertySearchLanguageBox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="propertySearchLoginButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="propertySearchRegisterButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="propertySearchTicketButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="propertySearchMessageButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="propertySearchNameLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -68,7 +78,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="propertySearchLanguageBox" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="propertySearchLanguageBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="propertySearchNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="propertySearchMessageButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="propertySearchTicketButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="propertySearchRegisterButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="propertySearchLoginButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace pref="14" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -83,6 +100,34 @@
                     <StringItem index="1" value="EN"/>
                   </StringArray>
                 </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="propertySearchLanguageBoxPropertyChange"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="propertySearchNameLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Gustavo Moreira Vieira"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="propertySearchMessageButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Mensagens"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="propertySearchTicketButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tickets"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="propertySearchRegisterButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Registo"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="propertySearchLoginButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Login"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -112,15 +157,15 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="propertySearchExtraSearchInfoPanel" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="propertySearchLocationField" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="propertySearchLocationBox" min="-2" pref="200" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="propertySearchStartingDatePicker" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="propertySearchStartingDateLabel" min="-2" pref="95" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="propertySearchEndingDatePicker" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="propertySearchStartingDatePicker" min="-2" pref="164" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="propertySearchNClientsSlider" min="-2" pref="135" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="propertySearchNClientsField" min="-2" pref="63" max="-2" attributes="0"/>
+                              <Component id="propertySearchEndingDateLabel" min="-2" pref="95" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="propertySearchEndingDatePicker" min="-2" pref="162" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="propertySearchPropertyTypeBox" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -135,14 +180,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="propertySearchSearchButton" max="32767" attributes="0"/>
-                          <Component id="propertySearchNClientsSlider" pref="30" max="32767" attributes="0"/>
-                          <Component id="propertySearchEndingDatePicker" max="32767" attributes="0"/>
-                          <Component id="propertySearchStartingDatePicker" max="32767" attributes="0"/>
-                          <Component id="propertySearchLocationField" max="32767" attributes="0"/>
-                          <Component id="propertySearchNClientsField" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="propertySearchSearchButton" pref="30" max="32767" attributes="0"/>
                           <Component id="propertySearchPropertyTypeBox" alignment="0" max="32767" attributes="0"/>
+                          <Component id="propertySearchLocationBox" alignment="0" max="32767" attributes="0"/>
+                          <Component id="propertySearchStartingDateLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="propertySearchStartingDatePicker" alignment="0" max="32767" attributes="0"/>
+                          <Component id="propertySearchEndingDateLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="propertySearchEndingDatePicker" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="propertySearchExtraSearchInfoPanel" max="32767" attributes="0"/>
@@ -152,14 +197,6 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="propertySearchLocationField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value=" Localidade"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertySearchLocationFieldActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="org.jdesktop.swingx.JXDatePicker" name="propertySearchStartingDatePicker">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Dia inicial dispon&#xed;vel para reserva"/>
@@ -176,14 +213,11 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertySearchEndingDatePickerActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JSlider" name="propertySearchNClientsSlider">
-            </Component>
             <Component class="javax.swing.JComboBox" name="propertySearchPropertyTypeBox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="Quarto"/>
-                    <StringItem index="1" value="Apartamento"/>
+                  <StringArray count="1">
+                    <StringItem index="0" value="Tipo de Alojamento"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -192,12 +226,15 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pesquisar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertySearchSearchButtonActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="propertySearchExtraSearchInfoPanel">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Informa&#xe7;&#xe3;o Extra"/>
+                    <TitledBorder title="Extras"/>
                   </Border>
                 </Property>
               </Properties>
@@ -302,12 +339,20 @@
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JSpinner" name="propertySearchNClientsSpinner">
+                  <Properties>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="1" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                    </Property>
+                  </Properties>
                   <Events>
                     <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="propertySearchNClientsSpinnerPropertyChange"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="propertySearchNRoomsSpinner">
                   <Properties>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="1" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                    </Property>
                     <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero m&#xed;nimo de quartos do alojamento"/>
                   </Properties>
                   <Events>
@@ -316,6 +361,9 @@
                 </Component>
                 <Component class="javax.swing.JSpinner" name="propertySearchNBathroomsSpinner">
                   <Properties>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="1" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                    </Property>
                     <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero m&#xed;nimo de quartos de banho do alojamento"/>
                   </Properties>
                   <Events>
@@ -324,6 +372,9 @@
                 </Component>
                 <Component class="javax.swing.JSpinner" name="propertySearchNBedsSpinner">
                   <Properties>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="1" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                    </Property>
                     <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero m&#xed;nimo de camas do alojamento"/>
                   </Properties>
                   <Events>
@@ -399,7 +450,7 @@
                 <Component class="javax.swing.JSpinner" name="propertySearchMinRatingField">
                   <Properties>
                     <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                      <SpinnerModel initial="0" maximum="10" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                      <SpinnerModel initial="0.0" maximum="10.0" minimum="0.0" numberType="java.lang.Float" stepSize="1.0" type="number"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -552,11 +603,25 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JTextField" name="propertySearchNClientsField">
+            <Component class="javax.swing.JComboBox" name="propertySearchLocationBox">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="1">
+                    <StringItem index="0" value="Localidade"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="propertySearchEndingDateLabel">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="50"/>
-                <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero de Viajantes"/>
+                <Property name="text" type="java.lang.String" value="Data Final"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="propertySearchStartingDateLabel">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Data Inicial"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -576,7 +641,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="propertySearchListScrollPane" pref="211" max="32767" attributes="0"/>
+                      <Component id="propertySearchListScrollPane" pref="208" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>

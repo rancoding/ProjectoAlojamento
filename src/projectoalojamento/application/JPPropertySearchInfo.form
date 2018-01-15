@@ -58,7 +58,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="propertySearchInfoLanguageBox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="propertySearchInfoNameLabel" min="-2" pref="200" max="-2" attributes="0"/>
+                      <Component id="propertySearchInfoTicketButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="propertySearchInfoMessageButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="propertySearchInfoNameLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -70,6 +74,8 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="propertySearchInfoLanguageBox" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="propertySearchInfoNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="propertySearchInfoMessageButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="propertySearchInfoTicketButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="14" max="32767" attributes="0"/>
                   </Group>
@@ -91,6 +97,16 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="text" type="java.lang.String" value="Gustavo Moreira Vieira"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="propertySearchInfoMessageButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Mensagens"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="propertySearchInfoTicketButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tickets"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -249,7 +265,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="propertySearchInfoMessageButton" min="-2" pref="250" max="-2" attributes="0"/>
+                                  <Component id="propertySearchInfoOwnerMessageButton" min="-2" pref="250" max="-2" attributes="0"/>
                                   <Component id="propertySearchInfoDiscountCheckBox" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
@@ -274,7 +290,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="propertySearchInfoFinalPriceField" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Component id="propertySearchInfoMessageButton" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="propertySearchInfoOwnerMessageButton" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="propertySearchInfoPropertyTypeField" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="propertySearchInfoRatingField" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
@@ -298,7 +314,7 @@
                         <Property name="focusable" type="boolean" value="false"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="propertySearchInfoMessageButton">
+                    <Component class="javax.swing.JButton" name="propertySearchInfoOwnerMessageButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Enviar mensagem a DonoXPTO"/>
                       </Properties>

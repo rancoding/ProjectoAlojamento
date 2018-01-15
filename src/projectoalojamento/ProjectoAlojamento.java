@@ -22,6 +22,8 @@ import property.Room;
 import property.booking.Booking;
 import property.booking.PaymentType;
 import property.location.County;
+import property.location.District;
+import property.location.Location;
 import user.Administrator;
 import user.Client;
 import user.Owner;
@@ -458,7 +460,9 @@ public class ProjectoAlojamento {
         
         p1.setRatings(ratings);
         
-        p1.setDiscounts(discounts);
+        
+        
+        //p1.setDiscounts(discounts);
         
         /*
         Client c1 = new Client("gustavo","pass","G~ustávô vieira","111222",1010,962222222,"Rua Das ruas","Portugal",new Date(),false);

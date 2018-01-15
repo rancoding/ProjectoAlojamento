@@ -5,6 +5,8 @@
  */
 package projectoalojamento.application;
 
+import user.Client;
+
 /**
  *
  * @author Gustavo Vieira
@@ -13,14 +15,16 @@ public class JPBooking extends javax.swing.JPanel {
 
     private Application frame;
     private JPPropertySearchInfo jppsi;
+    private Client client;
     
     /**
      * Creates new form JPBooking
      */
-    public JPBooking(Application frame, Object language) {
+    public JPBooking(Application frame, Client client, Object language) {
         initComponents();
         this.frame = frame;
         this.frame.setSize(666, 581);
+        this.client = client;
         this.bookingLanguageBox.setSelectedItem(language);
     }
 
@@ -498,13 +502,13 @@ public class JPBooking extends javax.swing.JPanel {
 
     private void bookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingButtonActionPerformed
         // TODO add your handling code here:
-        this.jppsi = new JPPropertySearchInfo(this.frame, this.bookingLanguageBox.getSelectedItem());
+        //this.jppsi = new JPPropertySearchInfo(this.frame, this.client, this.bookingLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jppsi);
     }//GEN-LAST:event_bookingButtonActionPerformed
 
     private void bookingBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingBackButtonActionPerformed
         // TODO add your handling code here:
-        this.jppsi = new JPPropertySearchInfo(this.frame, this.bookingLanguageBox.getSelectedItem());
+        //this.jppsi = new JPPropertySearchInfo(this.frame, this.client, this.bookingLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jppsi);
     }//GEN-LAST:event_bookingBackButtonActionPerformed
 
