@@ -27,7 +27,7 @@ public class JPPropertySearch extends javax.swing.JPanel {
     private Application frame;
     private JPPropertySearchInfo jppsi;
     private Client client;
-    List<Property> list;
+    Map<Property, County> map;
     Property prop = new Property();
     int min = 0;
     int max = 5000;
@@ -593,7 +593,8 @@ public class JPPropertySearch extends javax.swing.JPanel {
         {
             if(list.getModel().getSize() != 0)
             {
-                this.jppsi = new JPPropertySearchInfo(this.frame, this.client, this.list, (Property) this.propertySearchList.getSelectedValue(), this.propertySearchLanguageBox.getSelectedItem());
+                Property prop = (Property) this.propertySearchList.getSelectedValue();
+                this.jppsi = new JPPropertySearchInfo(this.frame, this.client, this.map, prop, this.propertySearchLanguageBox.getSelectedItem());
                 this.frame.changePanel(this.jppsi);
             }
         }
@@ -786,7 +787,7 @@ public class JPPropertySearch extends javax.swing.JPanel {
         }
         
         Map<Property, County> mp = Repository.getRepo().listProperties(p, (County) this.propertySearchLocationBox.getSelectedItem(), this.propertySearchMaxPricePerNightSlider.getValue());
-        
+        this.map = mp;
         this.propertySearchList.setListData(mp.keySet().toArray());
     }//GEN-LAST:event_propertySearchSearchButtonActionPerformed
 

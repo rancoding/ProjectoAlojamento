@@ -230,6 +230,7 @@
                                           <Component id="afterLoginOwnerCoinTypeLabel" min="-2" pref="16" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jScrollPane1" max="32767" attributes="0"/>
+                                      <Component id="afterLoginOwnerNameField" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="afterLoginOwnerExtraSearchInfoPanel" alignment="0" max="32767" attributes="0"/>
@@ -245,8 +246,10 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="afterLoginOwnerPhotos" min="-2" pref="164" max="-2" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jScrollPane1" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="afterLoginOwnerNameField" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="afterLoginOwnerTypeBox" pref="33" max="32767" attributes="0"/>
@@ -299,6 +302,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField4"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="afterLoginOwnerDiscountTextFieldFocusLost"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="afterLoginOwnerPercentageLabel">
                   <Properties>
@@ -309,6 +315,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField5"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="afterLoginOwnerPriceTextFieldFocusLost"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="afterLoginOwnerCoinTypeLabel">
                   <Properties>
@@ -636,6 +645,8 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JTextField" name="afterLoginOwnerNameField">
+                </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JButton" name="afterLoginOwnerPreviousButton">
@@ -666,6 +677,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="ELIMINAR ALOJAMENTO"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="afterLoginOwnerDeletePropertyButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="afterLoginOwnerSaveChangesButton">
               <Properties>
@@ -679,6 +693,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="CANCELAR ALTERA&#xc7;&#xd5;ES"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="afterLoginOwnerCancelChangesButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

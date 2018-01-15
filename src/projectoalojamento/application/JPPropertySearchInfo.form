@@ -58,6 +58,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="propertySearchInfoLanguageBox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="propertySearchInfoLoginButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="propertySearchInfoRegisterButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="propertySearchInfoTicketButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="propertySearchInfoMessageButton" min="-2" max="-2" attributes="0"/>
@@ -76,6 +80,8 @@
                           <Component id="propertySearchInfoNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="propertySearchInfoMessageButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="propertySearchInfoTicketButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="propertySearchInfoRegisterButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="propertySearchInfoLoginButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="14" max="32767" attributes="0"/>
                   </Group>
@@ -92,6 +98,9 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="propertySearchInfoLanguageBoxPropertyChange"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="propertySearchInfoNameLabel">
               <Properties>
@@ -107,6 +116,16 @@
             <Component class="javax.swing.JButton" name="propertySearchInfoTicketButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tickets"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="propertySearchInfoRegisterButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Registo"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="propertySearchInfoLoginButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Login"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -161,9 +180,9 @@
                               <Component id="propertySearchInfoDescriptionPanel" max="32767" attributes="0"/>
                               <Component id="propertySearchInfoPropertyInfoPanel" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jComboBox2" min="-2" pref="250" max="-2" attributes="0"/>
+                                  <Component id="propertySearchInfoExtrasBox" min="-2" pref="250" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField6" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="propertySearchInfoExtrasDateField" min="-2" pref="150" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -178,8 +197,8 @@
                           <Component id="propertySearchInfoPropertyInfoPanel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jComboBox2" pref="29" max="32767" attributes="0"/>
-                              <Component id="jTextField6" max="32767" attributes="0"/>
+                              <Component id="propertySearchInfoExtrasBox" pref="29" max="32767" attributes="0"/>
+                              <Component id="propertySearchInfoExtrasDateField" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -223,17 +242,22 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="propertySearchInfoDescriptionScrollPane" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="propertySearchInfoDescriptionScrollPane" max="32767" attributes="0"/>
+                                  <Component id="propertySearchInfoPropertyNameField" max="32767" attributes="0"/>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="propertySearchInfoDescriptionScrollPane" max="32767" attributes="0"/>
+                              <Component id="propertySearchInfoPropertyNameField" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="propertySearchInfoDescriptionScrollPane" min="-2" pref="70" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -256,6 +280,11 @@
                         </Component>
                       </SubComponents>
                     </Container>
+                    <Component class="javax.swing.JTextField" name="propertySearchInfoPropertyNameField">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="propertySearchInfoPropertyInfoPanel">
@@ -371,7 +400,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JComboBox" name="jComboBox2">
+                <Component class="javax.swing.JComboBox" name="propertySearchInfoExtrasBox">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="3">
@@ -382,7 +411,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField6">
+                <Component class="javax.swing.JTextField" name="propertySearchInfoExtrasDateField">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
@@ -417,7 +446,7 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Caracter&#xed;sticas"/>
+                        <TitledBorder title="Extras"/>
                       </Border>
                     </Property>
                   </Properties>

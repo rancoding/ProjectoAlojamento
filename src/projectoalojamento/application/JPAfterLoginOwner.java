@@ -6,6 +6,7 @@
 package projectoalojamento.application;
 
 import java.util.Map;
+import javax.swing.DefaultComboBoxModel;
 import projectoalojamento.Repository;
 import property.Discount;
 import property.Property;
@@ -59,7 +60,16 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
             writeData(this.p);
            
         }
+   
+        if(position == 0)
+        {
+            this.afterLoginOwnerPreviousButton.setEnabled(false);
+        }
         
+        if(count <= 1)
+        {
+            this.afterLoginOwnerNextButton.setEnabled(false);
+        }
    
     }
     
@@ -82,8 +92,12 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
         afterLoginOwnerWashingMachineCheckBox.setSelected(p.getCharacteristics().isWashingMachine());
         afterLoginOwnerWifiCheckBox.setSelected(p.getCharacteristics().isWifi());
         afterLoginOwnerBreakfastCheckBox.setSelected(p.getCharacteristics().isBreakfast());
-
-    
+        this.afterLoginOwnerLocationBox.setModel(new DefaultComboBoxModel(Repository.getRepo().getCounties().toArray()));
+        this.afterLoginOwnerLocationBox.setSelectedItem(this.map.get(this.p));
+        this.afterLoginOwnerTypeBox.setModel(new DefaultComboBoxModel(Repository.getRepo().getPropertiesTypes().toArray()));
+        this.afterLoginOwnerTypeBox.setSelectedItem(this.p.getPropertyType());
+        this.afterLoginOwnerNameField.setText(this.p.getName());
+        this.afterLoginOwnerScoreLabel.setText(String.valueOf(this.p.getPropertyRatingMedianPoints()));
     }
               
     
@@ -141,6 +155,7 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
         afterLoginOwnerLocationBox = new javax.swing.JComboBox<String>();
         jScrollPane1 = new javax.swing.JScrollPane();
         afterLoginOwnerDescriptionTextArea = new javax.swing.JTextArea();
+        afterLoginOwnerNameField = new javax.swing.JTextField();
         afterLoginOwnerPreviousButton = new javax.swing.JButton();
         afterLoginOwnerNextButton = new javax.swing.JButton();
         afterLoginOwnerBookingButton = new javax.swing.JButton();
@@ -225,10 +240,20 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
         afterLoginOwnerDiscountLabel.setText("Desconto:");
 
         afterLoginOwnerDiscountTextField.setText("jTextField4");
+        afterLoginOwnerDiscountTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                afterLoginOwnerDiscountTextFieldFocusLost(evt);
+            }
+        });
 
         afterLoginOwnerPercentageLabel.setText("%");
 
         afterLoginOwnerPriceTextField.setText("jTextField5");
+        afterLoginOwnerPriceTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                afterLoginOwnerPriceTextFieldFocusLost(evt);
+            }
+        });
 
         afterLoginOwnerCoinTypeLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         afterLoginOwnerCoinTypeLabel.setText("€");
@@ -423,7 +448,8 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
                                 .addComponent(afterLoginOwnerPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(afterLoginOwnerCoinTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1)))
+                            .addComponent(jScrollPane1)
+                            .addComponent(afterLoginOwnerNameField)))
                     .addComponent(afterLoginOwnerExtraSearchInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane3))
                 .addContainerGap())
@@ -434,8 +460,10 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(afterLoginOwnerInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(afterLoginOwnerPhotos, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, afterLoginOwnerInformationPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
+                    .addGroup(afterLoginOwnerInformationPanelLayout.createSequentialGroup()
+                        .addComponent(afterLoginOwnerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(afterLoginOwnerInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(afterLoginOwnerTypeBox, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
@@ -474,6 +502,11 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
         });
 
         afterLoginOwnerDeletePropertyButton.setText("ELIMINAR ALOJAMENTO");
+        afterLoginOwnerDeletePropertyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                afterLoginOwnerDeletePropertyButtonActionPerformed(evt);
+            }
+        });
 
         afterLoginOwnerSaveChangesButton.setText("GUARDAR ALTERAÇÕES");
         afterLoginOwnerSaveChangesButton.addActionListener(new java.awt.event.ActionListener() {
@@ -483,6 +516,11 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
         });
 
         afterLoginOwnerCancelChangesButton.setText("CANCELAR ALTERAÇÕES");
+        afterLoginOwnerCancelChangesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                afterLoginOwnerCancelChangesButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout afterLoginOwnerInfoPanelLayout = new javax.swing.GroupLayout(afterLoginOwnerInfoPanel);
         afterLoginOwnerInfoPanel.setLayout(afterLoginOwnerInfoPanelLayout);
@@ -584,6 +622,16 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
             position--;
            this.p = Repository.getRepo().currentProperty(this.map,this.position);   
            this.writeData(p);
+           
+           if(this.position == 0)
+           {
+               this.afterLoginOwnerPreviousButton.setEnabled(false);
+           }
+           
+           if(this.position >= 0 && this.position <= this.count - 1)
+           {
+               this.afterLoginOwnerNextButton.setEnabled(true);
+           }
         }
     }//GEN-LAST:event_afterLoginOwnerPreviousButtonActionPerformed
 
@@ -607,13 +655,29 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
             this.p.setDescription(afterLoginOwnerDescriptionTextArea.getText());
             this.p.getDiscount().setPercentage(Integer.parseInt(afterLoginOwnerDiscountTextField.getText()));
             this.p.setPropertyType((PropertyType) afterLoginOwnerTypeBox.getSelectedItem());
-            this.map.get(afterLoginOwnerLocationBox.getSelectedItem());
-            this.p.setPricePerNight(Integer.parseInt(afterLoginOwnerPriceTextField.getText()));
+            this.map.put(this.p, (County) this.afterLoginOwnerLocationBox.getSelectedItem());
+            
+            try
+            {
+                this.p.setPricePerNight(Integer.parseInt(afterLoginOwnerPriceTextField.getText()));
+            }
+            catch(NumberFormatException e)
+            {
+                this.p.setPricePerNight(this.p.getPricePerNight());
+            }
+                
+            
             this.p.getCharacteristics().setMinClients((int) afterLoginOwnerNMinClientsSpinner.getValue());
             this.p.getCharacteristics().setMaxClients((int) afterLoginOwnerNMaxClientsSpinner.getValue());
             this.p.getCharacteristics().setRoomsQuantity((int) afterLoginOwnerNRoomsSpinner.getValue());
             this.p.getCharacteristics().setBathroomQuantity((int) afterLoginOwnerNBathroomsSpinner.getValue());
-            
+            this.p.getCharacteristics().setPool(this.afterLoginOwnerPoolCheckBox.isSelected());
+            this.p.getCharacteristics().setPets(this.afterLoginOwnerPetsCheckBox.isSelected());
+            this.p.getCharacteristics().setKitchen(this.afterLoginOwnerKitchenCheckBox.isSelected());
+            this.p.getCharacteristics().setBreakfast(this.afterLoginOwnerBreakfastCheckBox.isSelected());
+            this.p.getCharacteristics().setWashingMachine(this.afterLoginOwnerWashingMachineCheckBox.isSelected());
+            this.p.getCharacteristics().setWifi(this.afterLoginOwnerWifiCheckBox.isSelected());
+            this.p.setName(this.afterLoginOwnerNameField.getText());
             
             
         }
@@ -651,8 +715,71 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
             position++;
            this.p = Repository.getRepo().currentProperty(this.map,this.position);   
            this.writeData(p);
+           
+           if(this.position == this.count - 1)
+           {
+               this.afterLoginOwnerNextButton.setEnabled(false);
+           }
+           
+           if(this.position == 1)
+           {
+               this.afterLoginOwnerPreviousButton.setEnabled(true);
+           }
         }
     }//GEN-LAST:event_afterLoginOwnerNextButtonActionPerformed
+
+    private void afterLoginOwnerCancelChangesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afterLoginOwnerCancelChangesButtonActionPerformed
+        // TODO add your handling code here:
+        this.writeData(this.p);
+    }//GEN-LAST:event_afterLoginOwnerCancelChangesButtonActionPerformed
+
+    private void afterLoginOwnerDeletePropertyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afterLoginOwnerDeletePropertyButtonActionPerformed
+        // TODO add your handling code here:
+        this.p.setClosed(true);
+    }//GEN-LAST:event_afterLoginOwnerDeletePropertyButtonActionPerformed
+
+    private void afterLoginOwnerPriceTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_afterLoginOwnerPriceTextFieldFocusLost
+        // TODO add your handling code here:
+        double price = 0.0;
+        
+        try
+        {
+            price = Double.parseDouble(afterLoginOwnerPriceTextField.getText());
+        }
+        catch(NumberFormatException e)
+        {
+            afterLoginOwnerPriceTextField.setText(String.valueOf(this.p.getPricePerNight()));
+        }
+        
+        if(price < 0)
+        {
+            afterLoginOwnerPriceTextField.setText(String.valueOf(price * (-1)));
+        }
+    }//GEN-LAST:event_afterLoginOwnerPriceTextFieldFocusLost
+
+    private void afterLoginOwnerDiscountTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_afterLoginOwnerDiscountTextFieldFocusLost
+        // TODO add your handling code here:
+        int discount = 0;
+        
+        try
+        {
+            discount = Integer.parseInt(afterLoginOwnerDiscountTextField.getText());
+        }
+        catch(NumberFormatException e)
+        {
+            afterLoginOwnerDiscountTextField.setText(String.valueOf(this.p.getDiscount().getPercentage()));
+        }
+        
+        if(discount < 0)
+        {
+            afterLoginOwnerDiscountTextField.setText(String.valueOf(discount * (-1)));
+        }
+        
+        if(discount>100)
+        {
+            afterLoginOwnerDiscountTextField.setText("100");
+        }
+    }//GEN-LAST:event_afterLoginOwnerDiscountTextFieldFocusLost
 
     
     public boolean checkEditPossibility() {
@@ -712,6 +839,7 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
     private javax.swing.JSpinner afterLoginOwnerNMinClientsSpinner;
     private javax.swing.JLabel afterLoginOwnerNRoomsLabel;
     private javax.swing.JSpinner afterLoginOwnerNRoomsSpinner;
+    private javax.swing.JTextField afterLoginOwnerNameField;
     private javax.swing.JButton afterLoginOwnerNextButton;
     private javax.swing.JLabel afterLoginOwnerNickLabel;
     private javax.swing.JPanel afterLoginOwnerPanel;

@@ -33,6 +33,7 @@ public class JPProfile extends javax.swing.JPanel {
         this.user = user;
         this.profileNameLabel.setText(this.user.getName());
         this.profileLanguageBox.setSelectedItem(language);
+        setInfo();
     }
 
     /**
@@ -356,6 +357,27 @@ public class JPProfile extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
+    private void setInfo() {
+        this.profileNameLabel.setText(this.user.getName());
+        this.profileUserField.setText(this.user.getUsername());
+        this.profilePasswordField.setText(this.user.getPassword());
+        this.profileNameField.setText(this.user.getName());
+        this.profileAddressField.setText(this.user.getAddress());
+        this.profileLocationBox.setSelectedItem(this.user.getLocation()); // Nao deve dar, nao ta como County no User
+        this.profileCitizenIdField.setText(this.user.getCitizenID());
+        this.profileNIFField.setText(String.valueOf(this.user.getNIF()));
+        this.profilePhoneNumberField.setText(String.valueOf(this.user.getPhoneNumber()));
+        
+        if(this.user.isPrivateProfile())
+        {
+            this.profileBox.setSelectedIndex(0);
+        }
+        else
+        {
+            this.profileBox.setSelectedIndex(1);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JTextField profileAddressField;

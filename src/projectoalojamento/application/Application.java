@@ -49,7 +49,7 @@ public class Application extends javax.swing.JFrame implements Runnable {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
-          /*  
+          /* 
         Client c1 = new Client("g","g","Fuck this", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", "Esposende", new Date(), false);
         Repository.getRepo().getUsers().add(c1);
         Owner o1 = new Owner("g","g","Vagina", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", "Esposende", new Date(), false);

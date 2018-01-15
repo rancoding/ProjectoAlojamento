@@ -6,7 +6,12 @@
 package projectoalojamento.application;
 
 import java.util.List;
+import java.util.Map;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ListModel;
+import projectoalojamento.Repository;
 import property.Property;
+import property.location.County;
 import user.Client;
 
 /**
@@ -19,19 +24,19 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
     private JPPropertySearch jpps;
     private JPBooking jpb;
     private Client client;
-    private List<Property> list;
+    private Map<Property, County> map;
     private Property p;
     
     /**
      * Creates new form JPPropertyInfo
      */
-    public JPPropertySearchInfo(Application frame, Client client, List<Property> list, Property p, Object language) {
+    public JPPropertySearchInfo(Application frame, Client client, Map<Property, County> map, Property p, Object language) {
         initComponents();
         
         this.frame = frame;
         this.frame.setSize(1110, 696);
         this.client = client;
-        this.list = list;
+        this.map = map;
         this.p = p;
         this.propertySearchInfoLanguageBox.setSelectedItem(language);
         
@@ -39,7 +44,13 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
         {
             this.propertySearchInfoMessageButton.setEnabled(false);
             this.propertySearchInfoMessageButton.setVisible(false);
+            this.propertySearchInfoTicketButton.setEnabled(false);
+            this.propertySearchInfoTicketButton.setVisible(false);
         }
+        
+        this.setInfo();
+        this.changeButtons();
+        this.changeTextToSelectedLanguage();
     }
 
     /**
@@ -57,6 +68,8 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
         propertySearchInfoNameLabel = new javax.swing.JLabel();
         propertySearchInfoMessageButton = new javax.swing.JButton();
         propertySearchInfoTicketButton = new javax.swing.JButton();
+        propertySearchInfoRegisterButton = new javax.swing.JButton();
+        propertySearchInfoLoginButton = new javax.swing.JButton();
         propertySearchInfoLogoPanel = new javax.swing.JPanel();
         propertySearchInfoInfoPanel = new javax.swing.JPanel();
         propertySearchInfoPropertyPanel = new javax.swing.JPanel();
@@ -65,6 +78,7 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
         propertySearchInfoDescriptionPanel = new javax.swing.JPanel();
         propertySearchInfoDescriptionScrollPane = new javax.swing.JScrollPane();
         propertySearchInfoDescriptionArea = new javax.swing.JTextArea();
+        propertySearchInfoPropertyNameField = new javax.swing.JTextField();
         propertySearchInfoPropertyInfoPanel = new javax.swing.JPanel();
         propertySearchInfoFinalPriceField = new javax.swing.JFormattedTextField();
         propertySearchInfoOwnerMessageButton = new javax.swing.JButton();
@@ -73,8 +87,8 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
         propertySearchInfoDiscountLabel = new javax.swing.JLabel();
         propertySearchInfoOriginalPriceLabel = new javax.swing.JLabel();
         propertySearchInfoRatingField = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox();
-        jTextField6 = new javax.swing.JTextField();
+        propertySearchInfoExtrasBox = new javax.swing.JComboBox();
+        propertySearchInfoExtrasDateField = new javax.swing.JTextField();
         propertySearchInfoCharacteristicsPanel = new javax.swing.JPanel();
         propertySearchInfoContainerPanel = new javax.swing.JPanel();
         propertySearchInfoMinClientsField = new javax.swing.JTextField();
@@ -103,6 +117,11 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
         propertySearchInfoBackButton = new javax.swing.JButton();
 
         propertySearchInfoLanguageBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PT", "EN" }));
+        propertySearchInfoLanguageBox.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                propertySearchInfoLanguageBoxPropertyChange(evt);
+            }
+        });
 
         propertySearchInfoNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         propertySearchInfoNameLabel.setText("Gustavo Moreira Vieira");
@@ -110,6 +129,10 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
         propertySearchInfoMessageButton.setText("Mensagens");
 
         propertySearchInfoTicketButton.setText("Tickets");
+
+        propertySearchInfoRegisterButton.setText("Registo");
+
+        propertySearchInfoLoginButton.setText("Login");
 
         javax.swing.GroupLayout propertySearchInfoTopBarPanelLayout = new javax.swing.GroupLayout(propertySearchInfoTopBarPanel);
         propertySearchInfoTopBarPanel.setLayout(propertySearchInfoTopBarPanelLayout);
@@ -119,6 +142,10 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(propertySearchInfoLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(propertySearchInfoLoginButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(propertySearchInfoRegisterButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(propertySearchInfoTicketButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(propertySearchInfoMessageButton)
@@ -134,7 +161,9 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
                     .addComponent(propertySearchInfoLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(propertySearchInfoNameLabel)
                     .addComponent(propertySearchInfoMessageButton)
-                    .addComponent(propertySearchInfoTicketButton))
+                    .addComponent(propertySearchInfoTicketButton)
+                    .addComponent(propertySearchInfoRegisterButton)
+                    .addComponent(propertySearchInfoLoginButton))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -173,19 +202,25 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
         propertySearchInfoDescriptionArea.setRows(5);
         propertySearchInfoDescriptionScrollPane.setViewportView(propertySearchInfoDescriptionArea);
 
+        propertySearchInfoPropertyNameField.setEnabled(false);
+
         javax.swing.GroupLayout propertySearchInfoDescriptionPanelLayout = new javax.swing.GroupLayout(propertySearchInfoDescriptionPanel);
         propertySearchInfoDescriptionPanel.setLayout(propertySearchInfoDescriptionPanelLayout);
         propertySearchInfoDescriptionPanelLayout.setHorizontalGroup(
             propertySearchInfoDescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, propertySearchInfoDescriptionPanelLayout.createSequentialGroup()
-                .addComponent(propertySearchInfoDescriptionScrollPane)
+            .addGroup(propertySearchInfoDescriptionPanelLayout.createSequentialGroup()
+                .addGroup(propertySearchInfoDescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(propertySearchInfoDescriptionScrollPane)
+                    .addComponent(propertySearchInfoPropertyNameField))
                 .addContainerGap())
         );
         propertySearchInfoDescriptionPanelLayout.setVerticalGroup(
             propertySearchInfoDescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(propertySearchInfoDescriptionPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, propertySearchInfoDescriptionPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(propertySearchInfoDescriptionScrollPane)
+                .addComponent(propertySearchInfoPropertyNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(propertySearchInfoDescriptionScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -256,11 +291,11 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Contém Extras", "Extra 1", "Extra 2" }));
+        propertySearchInfoExtrasBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Contém Extras", "Extra 1", "Extra 2" }));
 
-        jTextField6.setEditable(false);
-        jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField6.setText("17/06/2017");
+        propertySearchInfoExtrasDateField.setEditable(false);
+        propertySearchInfoExtrasDateField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        propertySearchInfoExtrasDateField.setText("17/06/2017");
 
         javax.swing.GroupLayout propertySearchInfoPropertyPanelLayout = new javax.swing.GroupLayout(propertySearchInfoPropertyPanel);
         propertySearchInfoPropertyPanel.setLayout(propertySearchInfoPropertyPanelLayout);
@@ -273,9 +308,9 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
                     .addComponent(propertySearchInfoDescriptionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(propertySearchInfoPropertyInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(propertySearchInfoPropertyPanelLayout.createSequentialGroup()
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(propertySearchInfoExtrasBox, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(propertySearchInfoExtrasDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         propertySearchInfoPropertyPanelLayout.setVerticalGroup(
@@ -286,13 +321,13 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
                 .addComponent(propertySearchInfoPropertyInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(propertySearchInfoPropertyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                    .addComponent(jTextField6))
+                    .addComponent(propertySearchInfoExtrasBox, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                    .addComponent(propertySearchInfoExtrasDateField))
                 .addContainerGap())
             .addComponent(propertySearchInfoPhotoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        propertySearchInfoContainerPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Características"));
+        propertySearchInfoContainerPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Extras"));
 
         propertySearchInfoMinClientsField.setEditable(false);
         propertySearchInfoMinClientsField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -575,14 +610,129 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
 
     private void propertySearchInfoBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchInfoBookingButtonActionPerformed
         // TODO add your handling code here:
-        this.jpb = new JPBooking(this.frame, this.client, this.propertySearchInfoLanguageBox.getSelectedItem());
+        this.jpb = new JPBooking(this.frame, this.client, this.map, this.p, this.propertySearchInfoLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpb);
     }//GEN-LAST:event_propertySearchInfoBookingButtonActionPerformed
 
+    private void propertySearchInfoLanguageBoxPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_propertySearchInfoLanguageBoxPropertyChange
+        // TODO add your handling code here:
+        this.changeTextToSelectedLanguage();
+    }//GEN-LAST:event_propertySearchInfoLanguageBoxPropertyChange
+
+    private void setInfo() {
+        this.propertySearchInfoNameLabel.setText(this.client.getName());
+        this.propertySearchInfoPropertyNameField.setText(this.p.getName());
+        this.propertySearchInfoDescriptionArea.setText(this.p.getDescription());
+        
+        if(this.propertySearchInfoLanguageBox.getSelectedIndex() == 0)
+        {
+            this.propertySearchInfoOwnerMessageButton.setText("Enviar mensagem a " + this.p.getOwner().getName());
+        }
+        else
+        {
+            this.propertySearchInfoOwnerMessageButton.setText("Send a message to " + this.p.getOwner().getName());
+        }
+            
+        this.propertySearchInfoPropertyTypeField.setText(this.p.getPropertyType().getName());
+        this.propertySearchInfoRatingField.setText(String.valueOf(this.p.getPropertyRatingMedianPoints()));
+        double calc = this.p.getPricePerNight() * (1 - (this.p.getDiscount().getPercentage()/100));
+        this.propertySearchInfoFinalPriceField.setText(String.valueOf(calc));
+        
+        if(this.p.getDiscount().getPercentage() == 0)
+        {
+            this.propertySearchInfoDiscountLabel.setEnabled(false);
+            this.propertySearchInfoOriginalPriceLabel.setEnabled(false);
+            this.propertySearchInfoDiscountCheckBox.setSelected(false);
+        }
+        else
+        {
+            this.propertySearchInfoDiscountLabel.setText(String.valueOf(this.p.getDiscount().getPercentage()) + "%");
+            this.propertySearchInfoOriginalPriceLabel.setText(String.valueOf(this.p.getPricePerNight()));
+            this.propertySearchInfoDiscountCheckBox.setSelected(true);
+        }
+        
+        this.propertySearchInfoMinClientsField.setText(String.valueOf(this.p.getCharacteristics().getMinClients()));
+        this.propertySearchInfoMaxClientsField.setText(String.valueOf(this.p.getCharacteristics().getMaxClients()));
+        this.propertySearchInfoNRoomsField.setText(String.valueOf(this.p.getCharacteristics().getRoomsQuantity()));
+        this.propertySearchInfoNBathroomsField.setText(String.valueOf(this.p.getCharacteristics().getBathroomQuantity()));
+        this.propertySearchInfoNBedsField.setText(String.valueOf(Repository.getRepo().nBeds(p)));
+        
+        this.propertySearchInfoPetsCheckBox.setSelected(this.p.getCharacteristics().isPets());
+        this.propertySearchInfoBreakfastCheckBox.setSelected(this.p.getCharacteristics().isBreakfast());
+        this.propertySearchInfoWifiCheckBox.setSelected(this.p.getCharacteristics().isWifi());
+        this.propertySearchInfoKitchenCheckBox.setSelected(this.p.getCharacteristics().isKitchen());
+        this.propertySearchInfoWashingMachineCheckBox.setSelected(this.p.getCharacteristics().isWashingMachine());
+        this.propertySearchInfoPoolCheckBox.setSelected(this.p.getCharacteristics().isPool());
+        this.propertySearchInfoBedsTypeBox.setModel(new DefaultComboBoxModel(this.p.getCharacteristics().getBedTypeList().toArray()));
+        
+        if(this.p.getExtras().isEmpty())
+        {
+            this.propertySearchInfoExtrasBox.setEnabled(false);
+            this.propertySearchInfoExtrasBox.setVisible(false);
+            this.propertySearchInfoExtrasDateField.setEnabled(false);
+            this.propertySearchInfoExtrasDateField.setVisible(false);
+        }
+        else
+        {
+            this.propertySearchInfoExtrasBox.setModel(new DefaultComboBoxModel(this.p.getExtras().toArray()));
+            this.propertySearchInfoExtrasDateField.setText(String.valueOf(this.p.getExtras().get(this.propertySearchInfoExtrasBox.getSelectedIndex()).getEndingDate()));
+        }
+        
+        //this.propertySearchInfoRatingList.setModel(this.p.getRatings().toArray());
+    }
+    
+    private void changeButtons() {
+        if(this.client.getName().isEmpty())
+        {
+            this.propertySearchInfoNameLabel.setEnabled(false);
+            this.propertySearchInfoNameLabel.setVisible(false);
+            this.propertySearchInfoMessageButton.setEnabled(false);
+            this.propertySearchInfoMessageButton.setVisible(false);
+            this.propertySearchInfoTicketButton.setEnabled(false);
+            this.propertySearchInfoTicketButton.setVisible(false);
+            this.propertySearchInfoOwnerMessageButton.setEnabled(false);
+            this.propertySearchInfoBookingButton.setEnabled(false);
+        }
+        else
+        {
+            this.propertySearchInfoLoginButton.setEnabled(false);
+            this.propertySearchInfoLoginButton.setVisible(false);
+            this.propertySearchInfoRegisterButton.setEnabled(false);
+            this.propertySearchInfoRegisterButton.setVisible(false);
+        }
+    }
+    
+    private void changeTextToSelectedLanguage() {
+        
+        if(this.propertySearchInfoLanguageBox.getSelectedIndex() == 0)
+        {
+            this.propertySearchInfoDiscountCheckBox.setText("Contém desconto");
+            this.propertySearchInfoMinClientsLabel.setText("Nº Viajantes Mínimo");
+            this.propertySearchInfoMaxClientsLabel.setText("Nº Viajantes Máximo");
+            this.propertySearchInfoNRoomsLabel.setText("Nº Quartos");
+            this.propertySearchInfoNBathroomsLabel.setText("Nº Quartos de Banho");
+            this.propertySearchInfoPetsCheckBox.setText("Animais de Estimação");
+            this.propertySearchInfoBreakfastCheckBox.setText("Pequeno Almoço");
+            this.propertySearchInfoKitchenCheckBox.setText("Cozinha");
+            this.propertySearchInfoWashingMachineCheckBox.setText("Máquina de Lavar");
+            this.propertySearchInfoPoolCheckBox.setText("Piscina");
+        }
+        else
+        {
+            this.propertySearchInfoDiscountCheckBox.setText("Contains discount");
+            this.propertySearchInfoMinClientsLabel.setText("Minimum Travelers");
+            this.propertySearchInfoMaxClientsLabel.setText("Maximum Travelers");
+            this.propertySearchInfoNRoomsLabel.setText("Nº Rooms");
+            this.propertySearchInfoNBathroomsLabel.setText("Nº Bathrooms");
+            this.propertySearchInfoPetsCheckBox.setText("Pets");
+            this.propertySearchInfoBreakfastCheckBox.setText("Breakfast");
+            this.propertySearchInfoKitchenCheckBox.setText("Kitchen");
+            this.propertySearchInfoWashingMachineCheckBox.setText("Washing Machine");
+            this.propertySearchInfoPoolCheckBox.setText("Pool");
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JButton propertySearchInfoBackButton;
     private javax.swing.JComboBox propertySearchInfoBedsTypeBox;
     private javax.swing.JButton propertySearchInfoBookingButton;
@@ -595,11 +745,14 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
     private javax.swing.JScrollPane propertySearchInfoDescriptionScrollPane;
     private javax.swing.JCheckBox propertySearchInfoDiscountCheckBox;
     private javax.swing.JLabel propertySearchInfoDiscountLabel;
+    private javax.swing.JComboBox propertySearchInfoExtrasBox;
+    private javax.swing.JTextField propertySearchInfoExtrasDateField;
     private javax.swing.JPanel propertySearchInfoExtrasLeftPanel;
     private javax.swing.JFormattedTextField propertySearchInfoFinalPriceField;
     private javax.swing.JPanel propertySearchInfoInfoPanel;
     private javax.swing.JCheckBox propertySearchInfoKitchenCheckBox;
     private javax.swing.JComboBox propertySearchInfoLanguageBox;
+    private javax.swing.JButton propertySearchInfoLoginButton;
     private javax.swing.JPanel propertySearchInfoLogoPanel;
     private javax.swing.JTextField propertySearchInfoMaxClientsField;
     private javax.swing.JLabel propertySearchInfoMaxClientsLabel;
@@ -621,12 +774,14 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
     private javax.swing.JPanel propertySearchInfoPhotoPanel;
     private javax.swing.JCheckBox propertySearchInfoPoolCheckBox;
     private javax.swing.JPanel propertySearchInfoPropertyInfoPanel;
+    private javax.swing.JTextField propertySearchInfoPropertyNameField;
     private javax.swing.JPanel propertySearchInfoPropertyPanel;
     private javax.swing.JTextField propertySearchInfoPropertyTypeField;
     private javax.swing.JTextField propertySearchInfoRatingField;
     private javax.swing.JList propertySearchInfoRatingList;
     private javax.swing.JPanel propertySearchInfoRatingPanel;
     private javax.swing.JScrollPane propertySearchInfoRatingScrollPane;
+    private javax.swing.JButton propertySearchInfoRegisterButton;
     private javax.swing.JButton propertySearchInfoTicketButton;
     private javax.swing.JPanel propertySearchInfoTopBarPanel;
     private javax.swing.JCheckBox propertySearchInfoWashingMachineCheckBox;

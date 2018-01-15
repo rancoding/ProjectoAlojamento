@@ -23,6 +23,12 @@ public class Rating implements Serializable {
     private Date ratingDate;
     private Client client;
 
+    @Override
+    public String toString()
+    {
+        return "[" + subject + "] " + message + "    "  + "(" + points + ")";
+    }
+    
     /**
      *
      * @param subject

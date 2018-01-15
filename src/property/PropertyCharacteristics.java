@@ -247,4 +247,34 @@ public class PropertyCharacteristics implements Serializable {
     public void setWifi(boolean wifi) {
         this.wifi = wifi;
     }
+    
+    public List getBedTypeList() {
+        List<BedType> bt = new ArrayList<>();
+        boolean exists = false;
+        
+        for(Room r : this.rooms)
+        {
+            List<BedType> rbt = r.getBedType();
+            
+            for(BedType rb : rbt)
+            {
+                for(BedType b : bt)
+                {
+                    if(rb.getName().equals(b.getName()))
+                    {
+                        exists = true;
+                    }
+                }
+                
+                if(!exists)
+                {
+                    bt.add(rb);
+                }
+                
+                exists = false;
+            }
+        }
+        
+        return bt;
+    }
 }
