@@ -475,9 +475,9 @@ public class Repository implements Serializable {
             newList = newList.stream().filter(u -> u.getAddress().equals(user.getAddress())).collect(Collectors.toList());
         }
         
-        if(!(user.getLocation().equals("")))
+        if(!(user.getCounty().getName().equals("")))
         {
-            newList = newList.stream().filter(u -> u.getLocation().equals(user.getLocation())).collect(Collectors.toList());
+            newList = newList.stream().filter(u -> u.getCounty().getName().equals(user.getCounty().getName())).collect(Collectors.toList());
         }
         
         /*if(!(user.getRegisterDate().equals("0/0/0")))
@@ -572,8 +572,8 @@ public class Repository implements Serializable {
      * @param owner The owner that is to be searched within all the properties
      * @return A list of properties that are owned by given owner
      */
-        public Map getPropertyByOwner(User owner) {
-        Map<Property, County> propertyOwner = new HashMap<>();
+        public Map getPropertyByOwner(Owner owner) {
+        Map<Property, County> propertyOwner = new LinkedHashMap<>();
 
         for(Map.Entry<Property, County> mp : this.properties.entrySet())
         {
@@ -1463,18 +1463,7 @@ public class Repository implements Serializable {
         return bedTypes;
     }
     
-    /////////////////////// Show Owner Properties ////////////////////
-    
-    public Map<Property, County> ownerProperties(User user){
-        Map<Property, County> map = this.getProperties();
-       
-        for(Map.Entry<Property, County> mp : map.entrySet()){
-            if(mp.getKey().getOwner().equals(user)){
-                map.put(mp.getKey(), mp.getValue()); 
-            }
-        }
-        return map;
-    }
+   
     
     /////Number Owner Properties ///////
     

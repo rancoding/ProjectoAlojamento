@@ -363,7 +363,7 @@ public class JPProfile extends javax.swing.JPanel {
         this.profilePasswordField.setText(this.user.getPassword());
         this.profileNameField.setText(this.user.getName());
         this.profileAddressField.setText(this.user.getAddress());
-        this.profileLocationBox.setSelectedItem(this.user.getLocation()); // Nao deve dar, nao ta como County no User
+        this.profileLocationBox.setSelectedItem(this.user.getCounty()); // Nao deve dar, nao ta como County no User
         this.profileCitizenIdField.setText(this.user.getCitizenID());
         this.profileNIFField.setText(String.valueOf(this.user.getNIF()));
         this.profilePhoneNumberField.setText(String.valueOf(this.user.getPhoneNumber()));

@@ -45,7 +45,7 @@ public class JPAfterLoginOwner extends javax.swing.JPanel {
         this.owner = owner;
         this.afterLoginOwnerNickLabel.setText(this.owner.getName());
         count = Repository.getRepo().nPropertiesByOwner(this.owner);
-        map = Repository.getRepo().ownerProperties(this.owner);
+        map = Repository.getRepo().getPropertyByOwner(this.owner);
         /*if(panel instanceof JPLogin)
         {
             this.jpl = (JPLogin)panel;

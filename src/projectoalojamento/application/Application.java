@@ -56,7 +56,7 @@ public class Application extends javax.swing.JFrame implements Runnable {
         Owner o2 = new Owner("e","e","Gustavo Vieira", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", "Esposende", new Date(), false);
         Repository.getRepo().getUsers().add(o1);
         Repository.getRepo().getUsers().add(o2);
-        
+        */
         County co1 = new County("Santa Cruz das Flores");
         County co2 = new County("Corvo");
         County co3 = new County("Castelo de Paiva");
@@ -83,7 +83,7 @@ public class Application extends javax.swing.JFrame implements Runnable {
         PropertyType pt2 = new PropertyType("Apartamento", "Um apartamento");
         Repository.getRepo().getPropertiesTypes().add(pt1);
         Repository.getRepo().getPropertiesTypes().add(pt2);
-        */
+        
         List<User> users = Repository.getRepo().getUsers();
         for(User u : users)
         {

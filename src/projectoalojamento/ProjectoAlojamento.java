@@ -67,7 +67,7 @@ public class ProjectoAlojamento {
         // Adicionar 5 categorias xxxxxxxxxxxxxx
         // Adicionar 20 características
         // Adicionar as localidades
-        
+        /*
         Client c1 = new Client("gustavo","gustavo123","Gustavo Vieira", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", "Esposende", new Date(), false);
         Client c2 = new Client("rafael","rafael123","Rafa Morais", "222222222",987654321,963222222,"Rua de Outeiro", "Outeiro", new Date(), false);
         Client c3 = new Client("andre","andre123","André Nogueira", "333333333",321654987,964333333,"Rua da Matemática", "Arcos de Valdevez", new Date(), false);
@@ -312,7 +312,7 @@ public class ProjectoAlojamento {
         List<Booking> bookings = new ArrayList<>();
         List<Rating> ratings = new ArrayList<>();
         //List<Discount> discounts = new ArrayList<>();
-        
+        /*
         messages.add(m1);
         messages.add(m2);
         messages.add(m3);
@@ -374,7 +374,7 @@ public class ProjectoAlojamento {
         discounts.add(dis9)
         ;
         */
-        
+        /*
         Repository repo = new Repository();
         
         repo.addUser(c1);
