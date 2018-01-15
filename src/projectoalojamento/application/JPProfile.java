@@ -21,6 +21,8 @@ public class JPProfile extends javax.swing.JPanel {
     private JPBookingList jpbl;
     private JPAutoRegister jpar;
     private User user;
+    private JPAfterLoginOwner jpalo;
+    private JPAddProperty jpap;
     
     /**
      * Creates new form JPProfile
@@ -29,6 +31,7 @@ public class JPProfile extends javax.swing.JPanel {
         initComponents();
         this.frame = frame;
         this.user = user;
+        this.profileNameLabel.setText(this.user.getName());
         this.profileLanguageBox.setSelectedItem(language);
     }
 
@@ -53,6 +56,7 @@ public class JPProfile extends javax.swing.JPanel {
         profileBookingButton = new javax.swing.JButton();
         profileRatingButton = new javax.swing.JButton();
         profileAutoRegisterButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         profileInfoUserPanel = new javax.swing.JPanel();
         profileInfoContainerPanel = new javax.swing.JPanel();
         profileEditButton = new javax.swing.JButton();
@@ -79,7 +83,7 @@ public class JPProfile extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(profileLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(profileNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(profileNameLabel)
                 .addContainerGap())
         );
         profileTopBarPanelLayout.setVerticalGroup(
@@ -141,6 +145,13 @@ public class JPProfile extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("Voltar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout profileButtonPanelLayout = new javax.swing.GroupLayout(profileButtonPanel);
         profileButtonPanel.setLayout(profileButtonPanelLayout);
         profileButtonPanelLayout.setHorizontalGroup(
@@ -150,8 +161,10 @@ public class JPProfile extends javax.swing.JPanel {
                 .addComponent(profileBookingButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(profileRatingButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(profileAutoRegisterButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
                 .addContainerGap())
         );
         profileButtonPanelLayout.setVerticalGroup(
@@ -161,7 +174,8 @@ public class JPProfile extends javax.swing.JPanel {
                 .addGroup(profileButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(profileBookingButton)
                     .addComponent(profileRatingButton)
-                    .addComponent(profileAutoRegisterButton))
+                    .addComponent(profileAutoRegisterButton)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -328,8 +342,22 @@ public class JPProfile extends javax.swing.JPanel {
         this.frame.changePanel(this.jpar);
     }//GEN-LAST:event_profileAutoRegisterButtonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int count = Repository.getRepo().nPropertiesByOwner((Owner)this.user);
+        if(count>0){
+            this.jpalo = new JPAfterLoginOwner(this.frame, (Owner)this.user, this.profileLanguageBox.getSelectedItem());
+            this.frame.changePanel(this.jpalo);
+        }
+        else{
+            this.jpap = new JPAddProperty(this.frame, (Owner)this.user, this.profileLanguageBox.getSelectedItem());
+            this.frame.changePanel(this.jpap);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JTextField profileAddressField;
     private javax.swing.JButton profileAutoRegisterButton;
     private javax.swing.JButton profileBookingButton;

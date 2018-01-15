@@ -21,6 +21,7 @@ public class JPLogin extends javax.swing.JPanel {
     private JPAfterLoginOwner jpalo;
     private User user = new User();
     private JPAdminMenu jpam;
+    private JPAddProperty jpap;
     
     /**
      * Creates new form JPLogin
@@ -309,8 +310,16 @@ public class JPLogin extends javax.swing.JPanel {
             }
             else
             {
-                this.jpalo = new JPAfterLoginOwner(this.frame, (Owner)this.user, this.loginLanguageBox.getSelectedItem()); 
-                this.frame.changePanel(this.jpalo);
+                int count = Repository.getRepo().nPropertiesByOwner(this.user);
+                if(count > 0){
+                    this.jpalo = new JPAfterLoginOwner(this.frame, (Owner)this.user, this.loginLanguageBox.getSelectedItem()); 
+                    this.frame.changePanel(this.jpalo);
+                } else
+                {
+                    this.jpap = new JPAddProperty(this.frame, (Owner)this.user, this.loginLanguageBox.getSelectedItem());
+                    this.frame.changePanel(this.jpap);
+                }
+                
             }
         }
         else

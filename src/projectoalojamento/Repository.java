@@ -21,6 +21,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -61,7 +62,7 @@ public class Repository implements Serializable {
      * Initializes all the repository lists
      */
     public Repository() {
-        this.properties = new HashMap<>();
+        this.properties = new LinkedHashMap<>();
         this.propertiesTypes = new ArrayList<>();
         this.bedTypes = new ArrayList<>();
         this.locations = new ArrayList<>();
@@ -74,6 +75,8 @@ public class Repository implements Serializable {
         this.ticketTypes = new ArrayList<>();
         this.divisions = new ArrayList<>();
     }
+    
+   
 
     public static Repository getRepo()
     {
@@ -81,7 +84,6 @@ public class Repository implements Serializable {
         {
             repo = new Repository();
         }
-        
         return repo;
     }
     
@@ -1438,6 +1440,61 @@ public class Repository implements Serializable {
         
         return bedTypes;
     }
+    
+    /////////////////////// Show Owner Properties ////////////////////
+    
+    public Map<Property, County> ownerProperties(User user){
+        Map<Property, County> map = this.getProperties();
+       
+        for(Map.Entry<Property, County> mp : map.entrySet()){
+            if(mp.getKey().getOwner().equals(user)){
+                map.put(mp.getKey(), mp.getValue()); 
+            }
+        }
+        return map;
+    }
+    
+    /////Number Owner Properties ///////
+    
+    public int nPropertiesByOwner(User user){
+        int count =0;
+        
+        for(Map.Entry<Property, County> mp : this.properties.entrySet()){
+            if(mp.getKey().getOwner().equals(user)){
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    ///// Number of Property from Owner //////////
+    
+    public Property currentProperty(Map<Property, County> map, int position){
+        int number = 0;
+        
+        for(Map.Entry<Property, County> mp : map.entrySet())
+        {
+            if(number == position){
+                return mp.getKey();
+            
+            }
+            number++;
+        }
+        return null;
+    }
+    
+    //////// Number of Beds in Property ////////
+    
+    public int nBeds(Property p){
+        int n = 0;
+        for(Room rooms : p.getCharacteristics().getRooms()){
+            n = n + rooms.getBedsQuantity();
+        }
+        return n;
+    }
+    
+   
+    
     
     ////////////////////////////////////// Edit /////////////////////////////////////////
     

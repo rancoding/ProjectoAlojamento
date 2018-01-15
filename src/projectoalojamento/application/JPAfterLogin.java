@@ -219,7 +219,7 @@ public class JPAfterLogin extends javax.swing.JPanel {
 
     private void afterLoginSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afterLoginSearchButtonActionPerformed
         // TODO add your handling code here:
-        this.jpps = new JPPropertySearch(this.frame, this.client, this.afterLoginLanguageBox.getSelectedItem());
+        //this.jpps = new JPPropertySearch(this.frame, this.client, this.afterLoginLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpps);
     }//GEN-LAST:event_afterLoginSearchButtonActionPerformed
 

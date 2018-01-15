@@ -291,7 +291,8 @@ public class ProjectoAlojamento {
         Rating ra19 = new Rating();
         Rating ra20 = new Rating();
         
-        Discount dis1 = new Discount();
+        
+        /*Discount dis1 = new Discount();
         Discount dis2 = new Discount();
         Discount dis3 = new Discount();
         Discount dis4 = new Discount();
@@ -301,13 +302,14 @@ public class ProjectoAlojamento {
         Discount dis8 = new Discount();
         Discount dis9 = new Discount();
         Discount dis10 = new Discount();
+        */
         
         List<Message> messages = new ArrayList<>();
         List<Photo> photos = new ArrayList<>();
         List<Room> rooms = new ArrayList<>();
         List<Booking> bookings = new ArrayList<>();
         List<Rating> ratings = new ArrayList<>();
-        List<Discount> discounts = new ArrayList<>();
+        //List<Discount> discounts = new ArrayList<>();
         
         messages.add(m1);
         messages.add(m2);
@@ -359,7 +361,7 @@ public class ProjectoAlojamento {
         ratings.add(ra8);
         ratings.add(ra9);
         
-        discounts.add(dis1);
+       /* discounts.add(dis1);
         discounts.add(dis2);
         discounts.add(dis3);
         discounts.add(dis4);
@@ -367,7 +369,9 @@ public class ProjectoAlojamento {
         discounts.add(dis6);
         discounts.add(dis7);
         discounts.add(dis8);
-        discounts.add(dis9);
+        discounts.add(dis9)
+        ;
+        */
         
         Repository repo = new Repository();
         
@@ -458,7 +462,7 @@ public class ProjectoAlojamento {
         
         p1.setRatings(ratings);
         
-        p1.setDiscounts(discounts);
+       // p1.setDiscount(discount);
         
         /*
         Client c1 = new Client("gustavo","pass","G~ustávô vieira","111222",1010,962222222,"Rua Das ruas","Portugal",new Date(),false);
