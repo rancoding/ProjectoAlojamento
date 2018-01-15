@@ -7,6 +7,7 @@ package user;
 
 import java.time.LocalDate;
 import java.util.Date;
+import property.location.County;
 
 /**
  *
@@ -29,8 +30,8 @@ public class Owner extends User {
      * @param registerDate
      * @param privateProfile
      */
-    public Owner(String username, String password, String name, String citizenID, int NIF, int phoneNumber, String address, String location, Date registerDate, boolean privateProfile){
-        super(username, password, name, citizenID, NIF, phoneNumber, address, location, registerDate, privateProfile);
+    public Owner(String username, String password, String name, String citizenID, int NIF, int phoneNumber, String address, County county, Date registerDate, boolean privateProfile){
+        super(username, password, name, citizenID, NIF, phoneNumber, address, county, registerDate, privateProfile);
         this.banned = false;
     }
     
@@ -39,7 +40,7 @@ public class Owner extends User {
      */
     public Owner() {
         
-        super("","","","",-1,-1,"","", new Date(),false);
+        super("","","","",-1,-1,"",new County(), new Date(),false);
         this.banned = false;
     }
 

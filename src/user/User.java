@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import property.location.County;
 import user.contact.Message;
 import user.contact.Ticket;
 
@@ -22,7 +23,7 @@ public class User implements Serializable {
     private int NIF;
     private int phoneNumber;
     private String address;
-    private String location;
+    private County county;
     private Date registerDate;
     private List<Message> messages;
     private List<Ticket> tickets;
@@ -41,7 +42,7 @@ public class User implements Serializable {
      * @param registerDate
      * @param privateProfile
      */
-    public User(String username, String password, String name, String citizenID, int NIF, int phoneNumber, String address, String location, Date registerDate, boolean privateProfile) {
+    public User(String username, String password, String name, String citizenID, int NIF, int phoneNumber, String address, County county, Date registerDate, boolean privateProfile) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -49,7 +50,7 @@ public class User implements Serializable {
         this.NIF = NIF;
         this.phoneNumber = phoneNumber;
         this.address = address;
-        this.location = location;
+        this.county = county;
         this.registerDate = registerDate;
         this.privateProfile = privateProfile;
         messages = new ArrayList<>();
@@ -67,7 +68,7 @@ public class User implements Serializable {
         this.NIF = -1;
         this.phoneNumber = -1;
         this.address = "";
-        this.location = "";
+        this.county = new County();
         this.registerDate = new Date();
         this.privateProfile = false;
         messages = new ArrayList<>();
@@ -189,16 +190,16 @@ public class User implements Serializable {
      *
      * @return
      */
-    public String getLocation() {
-        return location;
+    public County getCounty() {
+        return county;
     }
 
     /**
      *
      * @param location
      */
-    public void setLocation(String location) {
-        this.location = location;
+    public void setCounty(County county) {
+        this.county = county;
     }
 
     /**

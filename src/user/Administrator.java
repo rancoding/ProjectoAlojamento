@@ -7,6 +7,7 @@ package user;
 
 import java.time.LocalDate;
 import java.util.Date;
+import property.location.County;
 import user.contact.Division;
 
 /**
@@ -31,8 +32,8 @@ public class Administrator extends User {
      * @param registerDate
      * @param privateProfile
      */
-    public Administrator(String username, String password, String name, String citizenID, int NIF, int phoneNumber, String address, String location, Date registerDate, boolean privateProfile){
-        super(username, password, name, citizenID, NIF, phoneNumber, address, location, registerDate, privateProfile);
+    public Administrator(String username, String password, String name, String citizenID, int NIF, int phoneNumber, String address, County county, Date registerDate, boolean privateProfile){
+        super(username, password, name, citizenID, NIF, phoneNumber, address, county, registerDate, privateProfile);
         this.division = new Division();
     }
     
@@ -40,7 +41,7 @@ public class Administrator extends User {
      *
      */
     public Administrator() {
-        super("","","","",-1,-1,"","",new Date(),false);
+        super("","","","",-1,-1,"",new County(),new Date(),false);
         this.division = new Division();
     }
 

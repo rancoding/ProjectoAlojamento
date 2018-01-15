@@ -10,6 +10,7 @@ import property.Property;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import property.location.County;
 
 /**
  *
@@ -34,8 +35,8 @@ public class Client extends User {
      * @param registerDate
      * @param privateProfile
      */
-    public Client(String username, String password, String name, String citizenID, int NIF, int phoneNumber, String address, String location, Date registerDate, boolean privateProfile){
-        super(username, password, name, citizenID, NIF, phoneNumber, address, location, registerDate, privateProfile);
+    public Client(String username, String password, String name, String citizenID, int NIF, int phoneNumber, String address, County county, Date registerDate, boolean privateProfile){
+        super(username, password, name, citizenID, NIF, phoneNumber, address, county, registerDate, privateProfile);
         this.banned = false;
         favorites = new ArrayList<>();
     }
@@ -44,7 +45,7 @@ public class Client extends User {
      *
      */
     public Client() {
-        super("","","","",-1,-1,"","", new Date(),false);
+        super("","","","",-1,-1,"",new County(), new Date(),false);
         this.banned = false;
         this.favorites = new ArrayList<>();
     }
