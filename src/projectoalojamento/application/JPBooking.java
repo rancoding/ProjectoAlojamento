@@ -5,8 +5,10 @@
  */
 package projectoalojamento.application;
 
+import java.util.Date;
 import java.util.Map;
 import property.Property;
+import property.PropertyType;
 import property.location.County;
 import user.Client;
 
@@ -19,19 +21,29 @@ public class JPBooking extends javax.swing.JPanel {
     private Application frame;
     private JPPropertySearchInfo jppsi;
     private Client client;
-    private Map<Property, County> map;
     private Property p;
+    private PropertyType propertyType;
+    private County county;
+    private Date starting;
+    private Date ending;
+    private int nClients;
+    private Map<Property, County> map;
     
     /**
      * Creates new form JPBooking
      */
-    public JPBooking(Application frame, Client client, Map<Property, County> map, Property p, Object language) {
+    public JPBooking(Application frame, Client client, Map<Property, County> map, Property p, County county, PropertyType propertyType, int nClients, Date starting, Date ending, Object language) {
         initComponents();
         this.frame = frame;
         this.frame.setSize(666, 581);
         this.client = client;
         this.map = map;
         this.p = p;
+        this.propertyType = propertyType;
+        this.county = county;
+        this.starting = starting;
+        this.nClients = nClients;
+        this.ending = ending;
         this.bookingLanguageBox.setSelectedItem(language);
     }
 
@@ -509,13 +521,13 @@ public class JPBooking extends javax.swing.JPanel {
 
     private void bookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingButtonActionPerformed
         // TODO add your handling code here:
-        this.jppsi = new JPPropertySearchInfo(this.frame, this.client, this.map, this.p, this.bookingLanguageBox.getSelectedItem());
+        this.jppsi = new JPPropertySearchInfo(this.frame, this.client, this.map, this.p, this.county, this.propertyType, this.nClients, this.starting, this.ending, this.bookingLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jppsi);
     }//GEN-LAST:event_bookingButtonActionPerformed
 
     private void bookingBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingBackButtonActionPerformed
         // TODO add your handling code here:
-        this.jppsi = new JPPropertySearchInfo(this.frame, this.client, this.map, this.p, this.bookingLanguageBox.getSelectedItem());
+        this.jppsi = new JPPropertySearchInfo(this.frame, this.client, this.map, this.p, this.county, this.propertyType, this.nClients, this.starting, this.ending, this.bookingLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jppsi);
     }//GEN-LAST:event_bookingBackButtonActionPerformed
 

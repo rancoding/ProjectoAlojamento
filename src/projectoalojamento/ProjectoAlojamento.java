@@ -312,7 +312,7 @@ public class ProjectoAlojamento {
         List<Booking> bookings = new ArrayList<>();
         List<Rating> ratings = new ArrayList<>();
         //List<Discount> discounts = new ArrayList<>();
-        
+        /*
         messages.add(m1);
         messages.add(m2);
         messages.add(m3);
@@ -374,7 +374,7 @@ public class ProjectoAlojamento {
         discounts.add(dis9)
         ;
         */
-        
+        /*
         Repository repo = new Repository();
         /*
         repo.addUser(c1);
@@ -395,7 +395,7 @@ public class ProjectoAlojamento {
         
         repo.addUser(a1);
         repo.addUser(a2);
-        repo.addUser(a3);*/
+        repo.addUser(a3);
         
         repo.addPropertyType(pt1);
         repo.addPropertyType(pt2);
@@ -465,7 +465,7 @@ public class ProjectoAlojamento {
         p1.setRatings(ratings);
         
         
-        
+        */
         //p1.setDiscounts(discounts);
         
         /*

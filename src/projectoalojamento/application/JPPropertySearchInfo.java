@@ -5,12 +5,14 @@
  */
 package projectoalojamento.application;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ListModel;
 import projectoalojamento.Repository;
 import property.Property;
+import property.PropertyType;
 import property.location.County;
 import user.Client;
 
@@ -23,14 +25,21 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
     private Application frame;
     private JPPropertySearch jpps;
     private JPBooking jpb;
+    private JPLogin jpl;
+    private JPRegister jpr;
     private Client client;
-    private Map<Property, County> map;
     private Property p;
+    private PropertyType propertyType;
+    private County county;
+    private Date starting;
+    private Date ending;
+    private int nClients;
+    private Map<Property, County> map;
     
     /**
      * Creates new form JPPropertyInfo
      */
-    public JPPropertySearchInfo(Application frame, Client client, Map<Property, County> map, Property p, Object language) {
+    public JPPropertySearchInfo(Application frame, Client client, Map<Property, County> map, Property p, County county, PropertyType propertyType, int nClients, Date starting, Date ending, Object language) {
         initComponents();
         
         this.frame = frame;
@@ -38,6 +47,12 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
         this.client = client;
         this.map = map;
         this.p = p;
+        this.propertyType = propertyType;
+        this.county = county;
+        this.starting = starting;
+        this.nClients = nClients;
+        this.ending = ending;
+        
         this.propertySearchInfoLanguageBox.setSelectedItem(language);
         
         if(this.client.getName().isEmpty())
@@ -131,8 +146,18 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
         propertySearchInfoTicketButton.setText("Tickets");
 
         propertySearchInfoRegisterButton.setText("Registo");
+        propertySearchInfoRegisterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                propertySearchInfoRegisterButtonActionPerformed(evt);
+            }
+        });
 
         propertySearchInfoLoginButton.setText("Login");
+        propertySearchInfoLoginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                propertySearchInfoLoginButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout propertySearchInfoTopBarPanelLayout = new javax.swing.GroupLayout(propertySearchInfoTopBarPanel);
         propertySearchInfoTopBarPanel.setLayout(propertySearchInfoTopBarPanelLayout);
@@ -604,13 +629,13 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
 
     private void propertySearchInfoBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchInfoBackButtonActionPerformed
         // TODO add your handling code here:
-        this.jpps = new JPPropertySearch(this.frame, this.client, this.propertySearchInfoLanguageBox.getSelectedItem());
+        this.jpps = new JPPropertySearch(this.frame, this.client, this.map, this.county, this.propertyType, this.nClients, this.starting, this.ending, this.propertySearchInfoLanguageBox.getSelectedItem());
         frame.changePanel(this.jpps);
     }//GEN-LAST:event_propertySearchInfoBackButtonActionPerformed
 
     private void propertySearchInfoBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchInfoBookingButtonActionPerformed
         // TODO add your handling code here:
-        this.jpb = new JPBooking(this.frame, this.client, this.map, this.p, this.propertySearchInfoLanguageBox.getSelectedItem());
+        this.jpb = new JPBooking(this.frame, this.client, this.map, this.p, this.county, this.propertyType, this.nClients, this.starting, this.ending, this.propertySearchInfoLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpb);
     }//GEN-LAST:event_propertySearchInfoBookingButtonActionPerformed
 
@@ -618,6 +643,32 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
         // TODO add your handling code here:
         this.changeTextToSelectedLanguage();
     }//GEN-LAST:event_propertySearchInfoLanguageBoxPropertyChange
+
+    private void propertySearchInfoRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchInfoRegisterButtonActionPerformed
+        // TODO add your handling code here:
+        Application a = new Application();
+        
+        a.jpr = new JPRegister(a, this.propertySearchInfoLanguageBox.getSelectedItem());
+        a.changePanel(a.jpr);
+        
+        Thread t = new Thread(a);
+        t.start();
+        
+        this.frame.threadCounter++;
+    }//GEN-LAST:event_propertySearchInfoRegisterButtonActionPerformed
+
+    private void propertySearchInfoLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchInfoLoginButtonActionPerformed
+        // TODO add your handling code here:
+        Application a = new Application();
+        
+        a.jpl = new JPLogin(a, this.propertySearchInfoLanguageBox.getSelectedItem());
+        a.changePanel(a.jpl);
+        
+        Thread t = new Thread(a);
+        t.start();
+        
+        this.frame.threadCounter++;
+    }//GEN-LAST:event_propertySearchInfoLoginButtonActionPerformed
 
     private void setInfo() {
         this.propertySearchInfoNameLabel.setText(this.client.getName());
@@ -635,13 +686,15 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
             
         this.propertySearchInfoPropertyTypeField.setText(this.p.getPropertyType().getName());
         this.propertySearchInfoRatingField.setText(String.valueOf(this.p.getPropertyRatingMedianPoints()));
-        double calc = this.p.getPricePerNight() * (1 - (this.p.getDiscount().getPercentage()/100));
+        double calc = this.p.getPricePerNight() * (1 - ((double)this.p.getDiscount().getPercentage()/100));
         this.propertySearchInfoFinalPriceField.setText(String.valueOf(calc));
         
         if(this.p.getDiscount().getPercentage() == 0)
         {
             this.propertySearchInfoDiscountLabel.setEnabled(false);
+            this.propertySearchInfoDiscountLabel.setVisible(false);
             this.propertySearchInfoOriginalPriceLabel.setEnabled(false);
+            this.propertySearchInfoOriginalPriceLabel.setVisible(false);
             this.propertySearchInfoDiscountCheckBox.setSelected(false);
         }
         else

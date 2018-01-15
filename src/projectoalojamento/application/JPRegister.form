@@ -312,16 +312,26 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value=" N&#xba; Cart&#xe3;o Cidad&#xe3;o"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="registerCitizenIdFieldFocusLost"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="registerNIFField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value=" NIF"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="registerNIFFieldFocusLost"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="registerPhoneNumberField">
                   <Properties>
                     <Property name="text" type="java.lang.String" value=" N&#xba; Telem&#xf3;vel"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="registerPhoneNumberFieldFocusLost"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerPhoneNumberFieldActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="registerProfileBox">
                   <Properties>

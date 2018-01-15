@@ -5,7 +5,10 @@
  */
 package projectoalojamento.application;
 
+import javax.swing.DefaultComboBoxModel;
 import projectoalojamento.Repository;
+import property.location.County;
+import user.Client;
 import user.Owner;
 import user.User;
 
@@ -28,6 +31,9 @@ public class JPRegister extends javax.swing.JPanel {
         this.frame = frame;
         this.frame.setSize(500,472);
         this.registerLanguageBox.setSelectedItem(language);
+        
+         this.registerLocationBox.setModel(new DefaultComboBoxModel(Repository.getRepo().getCounties().toArray()));
+       
     }
 
     /**
@@ -142,10 +148,30 @@ public class JPRegister extends javax.swing.JPanel {
         registerLocationBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Localidade 1", "Localidade 2" }));
 
         registerCitizenIdField.setText(" Nº Cartão Cidadão");
+        registerCitizenIdField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                registerCitizenIdFieldFocusLost(evt);
+            }
+        });
 
         registerNIFField.setText(" NIF");
+        registerNIFField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                registerNIFFieldFocusLost(evt);
+            }
+        });
 
         registerPhoneNumberField.setText(" Nº Telemóvel");
+        registerPhoneNumberField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                registerPhoneNumberFieldFocusLost(evt);
+            }
+        });
+        registerPhoneNumberField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerPhoneNumberFieldActionPerformed(evt);
+            }
+        });
 
         registerProfileBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Perfil Privado", "Perfil Público" }));
 
@@ -301,15 +327,196 @@ public class JPRegister extends javax.swing.JPanel {
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
         // Dentro do button 
+        boolean valid = checkAddPossibility();
+        
+        if(!valid)
+        {
+            if(this.registerLanguageBox.getSelectedIndex() == 0)
+            {
+                this.registerErrorLabel.setText("POR FAVOR VERIFIQUE QUE TODOS OS CAMPOS ESTÃO PREENCHIDOS");
+            }
+            else
+            {
+                this.registerErrorLabel.setText("PLEASE CHECK IF EVERY FIELD IS FILLED");
+            }
+        }
+        
+        else
+        {
+            
+            if(this.registerClientAccountButton.isSelected()){
+                Client c = new Client();
+                c.setUsername(registerUsernameField.getText());
+                c.setPassword(String.valueOf(registerPasswordField.getPassword()));
+                c.setName(registerNameField.getText());
+                c.setNIF(Integer.parseInt(registerNIFField.getText()));
+                c.setAddress(registerAddressField.getText());
+                c.setCitizenID(registerCitizenIdField.getText());
+                c.setPhoneNumber(Integer.parseInt(registerPhoneNumberField.getText()));
+                c.setCounty((County) registerLocationBox.getSelectedItem());
+                if(registerProfileBox.getSelectedIndex()==0)
+                {
+                    c.setPrivateProfile(false);
+                }
+                else
+                {
+                    c.setPrivateProfile(true);
+                }
+                
+                
+                
+                Repository.getRepo().addUser(c);
+                
+                c= (Client) Repository.getRepo().login(Client.class, c.getUsername(), c.getPassword());
+                if(c != null){
+                    this.jpal = new JPAfterLogin(this.frame, c ,this.registerLanguageBox.getSelectedItem());   
+                    this.frame.changePanel(this.jpal);
+                }
+                else
+                {
+                    if(this.registerLanguageBox.getSelectedIndex() == 0)
+                    {
+                        this.registerErrorLabel.setText("A CONTA JÁ EXISTE");
+                    }
+                    else
+                    {
+                        this.registerErrorLabel.setText("THE ACCOUNT ALREADY EXISTS");
+                    }
+                }
+            }
+            if(this.registerOwnerAccountButton.isSelected()){
+                Owner o= new Owner();
+                o.setUsername(registerUsernameField.getText());
+                o.setPassword(String.valueOf(registerPasswordField.getPassword()));
+                o.setName(registerNameField.getText());
+                o.setNIF(Integer.parseInt(registerNIFField.getText()));
+                o.setAddress(registerAddressField.getText());
+                o.setCitizenID(registerCitizenIdField.getText());
+                o.setPhoneNumber(Integer.parseInt(registerPhoneNumberField.getText()));
+                o.setCounty((County) registerLocationBox.getSelectedItem());
+                if(registerProfileBox.getSelectedIndex()==0)
+                {
+                    o.setPrivateProfile(false);
+                }
+                else
+                {
+                    o.setPrivateProfile(true);
+                }
+                
+                
+                Repository.getRepo().addUser(o);
+                
+                o= (Owner) Repository.getRepo().login(Owner.class, o.getUsername() ,o.getPassword());
+                if(o != null){
+                    this.jpalo = new JPAfterLoginOwner(this.frame, o, this.registerLanguageBox.getSelectedItem());   
+                    this.frame.changePanel(this.jpalo);
+                }
+                else
+                {
+                    if(this.registerLanguageBox.getSelectedIndex() == 0)
+                    {
+                        this.registerErrorLabel.setText("A CONTA JÁ EXISTE");
+                    }
+                    else
+                    {
+                        this.registerErrorLabel.setText("THE ACCOUNT ALREADY EXISTS");
+                    }
+                }
+                
+                
+            
+            }
+            
+        }
+        
+        
         // Se for Cliente //
-        //this.jpal = new JPAfterLogin(this.frame, this.registerLanguageBox.getSelectedItem());   
-        //this.frame.changePanel(this.jpal);
+        
         
         // Se for Dono //
-        this.jpalo = new JPAfterLoginOwner(this.frame, (Owner)this.user, this.registerLanguageBox.getSelectedItem());   
-        this.frame.changePanel(this.jpalo);
+        
     }//GEN-LAST:event_registerButtonActionPerformed
 
+    private void registerPhoneNumberFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerPhoneNumberFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registerPhoneNumberFieldActionPerformed
+
+    private void registerCitizenIdFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_registerCitizenIdFieldFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registerCitizenIdFieldFocusLost
+
+    private void registerPhoneNumberFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_registerPhoneNumberFieldFocusLost
+        // TODO add your handling code here:
+        int phoneNumber= 0;
+        try
+        {
+            phoneNumber = Integer.parseInt(registerPhoneNumberField.getText());
+        }
+        catch(NumberFormatException e)
+        {
+            registerPhoneNumberField.setText("");
+        }
+    }//GEN-LAST:event_registerPhoneNumberFieldFocusLost
+
+    private void registerNIFFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_registerNIFFieldFocusLost
+        // TODO add your handling code here:
+        int nif= 0;
+        try
+        {
+            nif = Integer.parseInt(registerNIFField.getText());
+        }
+        catch(NumberFormatException e)
+        {
+            registerNIFField.setText("");
+        }
+    }//GEN-LAST:event_registerNIFFieldFocusLost
+
+    
+    public boolean checkAddPossibility() {
+        boolean canAdd = true;
+        
+        if(this.registerUsernameField.getText().isEmpty())
+        {
+            return false;
+        }
+        
+        if(this.registerPasswordField.getPassword().length==0)
+        {
+            return false;
+        }
+        
+        if(this.registerNameField.getText().isEmpty())
+        {
+            return false;
+        }
+        
+        if(this.registerCitizenIdField.getText().isEmpty())
+        {
+            return false;
+        }
+        
+        if(this.registerNIFField.getText().isEmpty())
+        {
+            return false;
+        }
+        
+        if(this.registerNIFField.getText().isEmpty())
+        {
+            return false;
+        }
+
+        if(this.registerPhoneNumberField.getText().isEmpty())
+        {
+            return false;
+        }
+        if(this.registerOwnerAccountButton.isSelected() && this.registerClientAccountButton.isSelected())
+        {
+            return false;
+        }
+        
+        
+        return canAdd;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

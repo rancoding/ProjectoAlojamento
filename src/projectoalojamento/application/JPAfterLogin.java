@@ -5,6 +5,16 @@
  */
 package projectoalojamento.application;
 
+import java.util.Date;
+import java.util.Map;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.SpinnerNumberModel;
+import projectoalojamento.Repository;
+import property.Discount;
+import property.Property;
+import property.PropertyType;
+import property.booking.Booking;
+import property.location.County;
 import user.Client;
 
 /**
@@ -17,6 +27,10 @@ public class JPAfterLogin extends javax.swing.JPanel {
     private JPPropertySearch jpps;
     private JPProfile jpp;
     private Client client;
+    private Date starting;
+    private Date ending;
+    private Map<Property, County> map;
+    
     
     /**
      * Creates new form JPAfterLogin
@@ -28,6 +42,20 @@ public class JPAfterLogin extends javax.swing.JPanel {
         this.client = client;
         this.afterLoginLanguageBox.setSelectedItem(language);
         this.changeTextToSelectedLanguage();
+        
+        
+        this.map = Repository.getRepo().getProperties();
+        this.afterLoginPropertyTypeBox.setModel(new DefaultComboBoxModel(Repository.getRepo().getPropertiesTypes().toArray()));
+        this.afterLoginLocationBox.setModel(new DefaultComboBoxModel(Repository.getRepo().getCounties().toArray()));
+        this.afterLoginNClientsSpinner.setModel(new SpinnerNumberModel(Repository.getRepo().getLowestNumberOfClients(), Repository.getRepo().getLowestNumberOfClients(), Repository.getRepo().getHighestNumberOfClients(), 1));
+        
+        this.afterLoginStartingDatePicker.getMonthView().setLowerBound(new Date());
+        this.afterLoginStartingDatePicker.setDate(new Date());
+        
+        Date d1 = new Date();
+        d1.setTime(new Date().getTime() + 86400000);
+        this.afterLoginEndingDatePicker.getMonthView().setLowerBound(d1);
+        
     }
 
     /**
@@ -49,13 +77,13 @@ public class JPAfterLogin extends javax.swing.JPanel {
         afterLoginInfoPanel = new javax.swing.JPanel();
         afterLoginErrorPanel = new javax.swing.JPanel();
         afterLoginErrorLabel = new javax.swing.JLabel();
-        afterLoginLocationField = new javax.swing.JTextField();
         afterLoginStartingDatePicker = new org.jdesktop.swingx.JXDatePicker();
         afterLoginEndingDatePicker = new org.jdesktop.swingx.JXDatePicker();
         afterLoginPropertyTypeBox = new javax.swing.JComboBox();
         afterLoginSearchButton = new javax.swing.JButton();
         afterLoginNClientsSpinner = new javax.swing.JSpinner();
         afterLoginNClientsLabel = new javax.swing.JLabel();
+        afterLoginLocationBox = new javax.swing.JComboBox();
 
         afterLoginLanguageBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PT", "EN" }));
         afterLoginLanguageBox.setToolTipText("");
@@ -135,7 +163,17 @@ public class JPAfterLogin extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        afterLoginLocationField.setText(" Procurar por localidade");
+        afterLoginStartingDatePicker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                afterLoginStartingDatePickerActionPerformed(evt);
+            }
+        });
+
+        afterLoginEndingDatePicker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                afterLoginEndingDatePickerActionPerformed(evt);
+            }
+        });
 
         afterLoginPropertyTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Quarto", "Apartamento" }));
 
@@ -149,6 +187,8 @@ public class JPAfterLogin extends javax.swing.JPanel {
         afterLoginNClientsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         afterLoginNClientsLabel.setText("Nº Viajantes");
 
+        afterLoginLocationBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout afterLoginInfoPanelLayout = new javax.swing.GroupLayout(afterLoginInfoPanel);
         afterLoginInfoPanel.setLayout(afterLoginInfoPanelLayout);
         afterLoginInfoPanelLayout.setHorizontalGroup(
@@ -156,7 +196,7 @@ public class JPAfterLogin extends javax.swing.JPanel {
             .addComponent(afterLoginErrorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(afterLoginInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(afterLoginLocationField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(afterLoginLocationBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(afterLoginStartingDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -176,13 +216,13 @@ public class JPAfterLogin extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, afterLoginInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(afterLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(afterLoginLocationField)
                     .addComponent(afterLoginStartingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(afterLoginEndingDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(afterLoginPropertyTypeBox)
                     .addComponent(afterLoginSearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(afterLoginNClientsSpinner)
-                    .addComponent(afterLoginNClientsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(afterLoginNClientsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(afterLoginLocationBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(afterLoginErrorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -219,8 +259,67 @@ public class JPAfterLogin extends javax.swing.JPanel {
 
     private void afterLoginSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afterLoginSearchButtonActionPerformed
         // TODO add your handling code here:
-        this.jpps = new JPPropertySearch(this.frame, this.client, this.afterLoginLanguageBox.getSelectedItem());
-        this.frame.changePanel(this.jpps);
+        Property p = new Property();
+        p.setPricePerNight(-1);
+        p.getCharacteristics().setBathroomQuantity(-1);
+        p.getCharacteristics().setRoomsQuantity(-1);
+        Discount d = new Discount();
+        p.setDiscount(d);
+        p.getDiscount().setPercentage(-1);
+        p.getCharacteristics().setBathroomQuantity(-1);
+        
+        p.getCharacteristics().setMinClients((int) this.afterLoginNClientsSpinner.getValue());
+
+        County county = new County();
+        if(this.afterLoginLocationBox.getSelectedIndex() != 0)
+        {
+            county = (County) this.afterLoginLocationBox.getSelectedItem();
+        }
+
+        if(this.afterLoginPropertyTypeBox.getSelectedIndex() == 0)
+        {
+            p.setPropertyType((PropertyType) this.afterLoginPropertyTypeBox.getSelectedItem());
+        }
+
+        Booking booking = new Booking();
+        if(this.afterLoginStartingDatePicker.getDate() != null)
+        {
+            booking.setStartingDate(starting);
+
+            if(this.afterLoginEndingDatePicker.getDate() == null)
+            {
+                booking.setEndingDate(ending);
+            }
+
+            p.getBookings().add(booking);
+        }
+        else
+        {
+            if(this.afterLoginEndingDatePicker.getDate() == null)
+            {
+                booking.setEndingDate(ending);
+                p.getBookings().add(booking);
+            }
+        }
+
+        this.map = Repository.getRepo().listProperties(p, county, -1);
+
+        if(this.map.isEmpty())
+        {
+            if(this.afterLoginLanguageBox.getSelectedIndex() == 0)
+            {
+                this.afterLoginErrorLabel.setText("Não foram encontrados alojamentos com os dados introduzidos");
+            }
+            else
+            {
+                this.afterLoginErrorLabel.setText("No properties were found with the given info");
+            }
+        }
+        else
+        {
+            this.jpps = new JPPropertySearch(this.frame, this.client, this.map, (County) this.afterLoginLocationBox.getSelectedItem(), (PropertyType) this.afterLoginPropertyTypeBox.getSelectedItem(), (int) this.afterLoginNClientsSpinner.getValue(), this.starting, this.ending, this.afterLoginLanguageBox.getSelectedItem());
+            this.frame.changePanel(this.jpps);
+        }
     }//GEN-LAST:event_afterLoginSearchButtonActionPerformed
 
     private void afterLoginNameLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_afterLoginNameLabelMouseClicked
@@ -233,6 +332,23 @@ public class JPAfterLogin extends javax.swing.JPanel {
         // TODO add your handling code here:
         this.changeTextToSelectedLanguage();
     }//GEN-LAST:event_afterLoginLanguageBoxPropertyChange
+
+    private void afterLoginStartingDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afterLoginStartingDatePickerActionPerformed
+        // TODO add your handling code here:
+        this.afterLoginEndingDatePicker.getMonthView().setLowerBound(this.afterLoginStartingDatePicker.getDate());
+        
+        if(this.afterLoginStartingDatePicker.getDate() != null)
+        {
+            Date[] dates = { this.afterLoginStartingDatePicker.getDate() };
+            this.afterLoginEndingDatePicker.getMonthView().setUnselectableDates(dates);
+        }
+            
+        this.starting = this.afterLoginStartingDatePicker.getDate();
+    }//GEN-LAST:event_afterLoginStartingDatePickerActionPerformed
+
+    private void afterLoginEndingDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afterLoginEndingDatePickerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_afterLoginEndingDatePickerActionPerformed
 
         //frame.changePanel(this.jpl);
 
@@ -261,7 +377,7 @@ public class JPAfterLogin extends javax.swing.JPanel {
     private javax.swing.JPanel afterLoginErrorPanel;
     private javax.swing.JPanel afterLoginInfoPanel;
     private javax.swing.JComboBox afterLoginLanguageBox;
-    private javax.swing.JTextField afterLoginLocationField;
+    private javax.swing.JComboBox afterLoginLocationBox;
     private javax.swing.JPanel afterLoginLogoPanel;
     private javax.swing.JButton afterLoginMessageButton;
     private javax.swing.JLabel afterLoginNClientsLabel;

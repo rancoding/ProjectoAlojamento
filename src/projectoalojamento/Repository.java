@@ -21,6 +21,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -298,7 +299,11 @@ public class Repository implements Serializable {
         if(property.getPricePerNight() != -1)
         {
             newMap = newMap.entrySet().stream().filter(p -> p.getKey().getPricePerNight() >= property.getPricePerNight()).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
-            newMap = newMap.entrySet().stream().filter(p -> p.getKey().getPricePerNight() <= maxPrice).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+            
+            if(maxPrice != -1)
+            {
+                newMap = newMap.entrySet().stream().filter(p -> p.getKey().getPricePerNight() <= maxPrice).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+            }
         }
         
         if(!(property.getPropertyType().getName().equals("")))
@@ -377,6 +382,11 @@ public class Repository implements Serializable {
             }
         }
         
+        if(!(property.getBookings().isEmpty()))
+        {
+            newMap = listBookings(newMap, property);
+        }
+        
         System.out.println("---------------");
         for(Map.Entry<Property,County> mp : newMap.entrySet())
         {
@@ -390,6 +400,56 @@ public class Repository implements Serializable {
             System.out.println("Sem alojamentos");
         
         return newMap;
+    }
+    
+    public Map<Property, County> listBookings(Map<Property, County> map, Property p)
+    {
+        Map<Property, County> m = map;
+        boolean found = false;
+        
+        for(Map.Entry<Property, County> mp : map.entrySet())
+        {
+            for(Booking b : mp.getKey().getBookings())
+            {
+                if(p.getBookings().get(0).getStartingDate() != null)
+                {
+                    if(p.getBookings().get(0).getEndingDate() != null)
+                    {
+                        if(p.getBookings().get(0).getStartingDate().after(b.getStartingDate()) && p.getBookings().get(0).getStartingDate().before(b.getEndingDate()))
+                        {
+                            if(p.getBookings().get(0).getEndingDate().before(b.getEndingDate()) || p.getBookings().get(0).getEndingDate().equals(b.getEndingDate()))
+                            {
+                                found = true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if(p.getBookings().get(0).getStartingDate().after(b.getStartingDate()))
+                        {
+                            found = true;
+                        }
+                    }
+                }
+                else
+                {
+                    if(p.getBookings().get(0).getEndingDate().before(b.getEndingDate()))
+                    {
+                        found = true;
+                    }
+                }
+                
+            }
+            
+            if(found)
+            {
+                m.remove(mp.getKey());
+            }
+            
+            found = false;
+        }
+        
+        return m;
     }
     
     /**
@@ -1471,18 +1531,7 @@ public class Repository implements Serializable {
         return bedTypes;
     }
     
-    /////////////////////// Show Owner Properties ////////////////////
-    
-    public Map<Property, County> ownerProperties(User user){
-        Map<Property, County> map = this.getProperties();
-       
-        for(Map.Entry<Property, County> mp : map.entrySet()){
-            if(mp.getKey().getOwner().equals(user)){
-                map.put(mp.getKey(), mp.getValue()); 
-            }
-        }
-        return map;
-    }
+   
     
     /////Number Owner Properties ///////
     
@@ -1768,6 +1817,43 @@ public class Repository implements Serializable {
         }
         
         return "";
+    }
+    
+    public double getPropertiesMaximumPrice() {
+        double max = 0;
+        
+        for(Map.Entry<Property, County> mp : this.properties.entrySet())
+        {
+            if(max < mp.getKey().getPricePerNight())
+            {
+                max = mp.getKey().getPricePerNight();
+            }
+        }
+        
+        return max;
+    }
+    
+    public double getPropertiesMinimumPrice() {
+        double min = 0;
+        int count = 0;
+        
+        for(Map.Entry<Property, County> mp : this.properties.entrySet())
+        {
+            if(count == 0)
+            {
+                min = mp.getKey().getPricePerNight();
+                count = 1;
+            }
+            else
+            {
+                if(min > mp.getKey().getPricePerNight())
+                {
+                    min = mp.getKey().getPricePerNight();
+                }
+            }
+        }
+        
+        return min;
     }
 }
 

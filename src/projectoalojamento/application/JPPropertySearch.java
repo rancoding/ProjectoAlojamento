@@ -5,6 +5,7 @@
  */
 package projectoalojamento.application;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
@@ -26,30 +27,55 @@ public class JPPropertySearch extends javax.swing.JPanel {
 
     private Application frame;
     private JPPropertySearchInfo jppsi;
+    private JPLogin jpl;
+    private JPRegister JPRegister;
     private Client client;
-    Map<Property, County> map;
-    Property prop = new Property();
-    int min = 0;
-    int max = 5000;
+    private Map<Property, County> map;
+    private Property prop = new Property();
+    private Date starting;
+    private Date ending;
+    private County county;
+    private int nClients;
+    private PropertyType propertyType;
     
     /**
      * Creates new form JPPropertySearch
      */
-    public JPPropertySearch(Application frame, Client client, Object language) {
+    public JPPropertySearch(Application frame, Client client, Map<Property, County> map, County county, PropertyType propertyType, int nClients, Date starting, Date ending, Object language) {
         initComponents();
         
         this.frame = frame;
         this.frame.setSize(1000,600);
         this.client = client;
+        this.map = map;
+        this.starting = starting;
+        this.ending = ending;
+        this.county = county;
+        this.nClients = nClients;
+        this.propertyType = propertyType;
+        
         this.propertySearchLanguageBox.setSelectedItem(language);
-        this.propertySearchMaxPricePerNightSlider.setMaximum(max);
-        this.propertySearchMinPricePerNightSlider.setMinimum(min);
+        this.propertySearchMaxPricePerNightSlider.setMaximum((int) Repository.getRepo().getPropertiesMaximumPrice());
+        this.propertySearchMinPricePerNightSlider.setMinimum((int) Repository.getRepo().getPropertiesMinimumPrice());
         this.propertySearchMaxPricePerNightField.setText(String.valueOf(propertySearchMaxPricePerNightSlider.getValue()) );
         this.propertySearchMinPricePerNightField.setText(String.valueOf(propertySearchMinPricePerNightSlider.getValue()) );
         
         this.propertySearchPropertyTypeBox.setModel(new DefaultComboBoxModel(Repository.getRepo().getPropertiesTypes().toArray()));
+        this.propertySearchPropertyTypeBox.setSelectedItem(propertyType);
         this.propertySearchLocationBox.setModel(new DefaultComboBoxModel(Repository.getRepo().getCounties().toArray()));
-        this.propertySearchList.setListData(Repository.getRepo().getProperties().keySet().toArray());
+        this.propertySearchLocationBox.setSelectedItem(county);
+        this.propertySearchNClientsSpinner.setValue(nClients);
+        this.propertySearchList.setListData(map.keySet().toArray());
+        
+        this.propertySearchStartingDatePicker.setDate(starting);
+        this.propertySearchEndingDatePicker.setDate(ending);
+        
+        this.propertySearchStartingDatePicker.getMonthView().setLowerBound(new Date());
+        this.propertySearchStartingDatePicker.setDate(new Date());
+        
+        Date d1 = new Date();
+        d1.setTime(new Date().getTime() + 86400000);
+        this.propertySearchEndingDatePicker.getMonthView().setLowerBound(d1);
         
         this.changeTextToSelectedLanguage();
         this.changeButtons();
@@ -125,8 +151,18 @@ public class JPPropertySearch extends javax.swing.JPanel {
         propertySearchTicketButton.setText("Tickets");
 
         propertySearchRegisterButton.setText("Registo");
+        propertySearchRegisterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                propertySearchRegisterButtonActionPerformed(evt);
+            }
+        });
 
         propertySearchLoginButton.setText("Login");
+        propertySearchLoginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                propertySearchLoginButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout propertySearchTopBarPanelLayout = new javax.swing.GroupLayout(propertySearchTopBarPanel);
         propertySearchTopBarPanel.setLayout(propertySearchTopBarPanelLayout);
@@ -593,8 +629,7 @@ public class JPPropertySearch extends javax.swing.JPanel {
         {
             if(list.getModel().getSize() != 0)
             {
-                Property prop = (Property) this.propertySearchList.getSelectedValue();
-                this.jppsi = new JPPropertySearchInfo(this.frame, this.client, this.map, prop, this.propertySearchLanguageBox.getSelectedItem());
+                this.jppsi = new JPPropertySearchInfo(this.frame, this.client, this.map, (Property) this.propertySearchList.getSelectedValue(), this.county, this.propertyType, this.nClients, this.starting, this.ending, this.propertySearchLanguageBox.getSelectedItem());
                 this.frame.changePanel(this.jppsi);
             }
         }
@@ -616,10 +651,18 @@ public class JPPropertySearch extends javax.swing.JPanel {
 
     private void propertySearchStartingDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchStartingDatePickerActionPerformed
         // TODO add your handling code here:
+        this.propertySearchEndingDatePicker.getMonthView().setLowerBound(this.propertySearchStartingDatePicker.getDate());
+        if(this.propertySearchStartingDatePicker.getDate() != null)
+        {
+            Date[] dates = { this.propertySearchStartingDatePicker.getDate() };
+            this.propertySearchEndingDatePicker.getMonthView().setUnselectableDates(dates);
+        }
+        this.starting = this.propertySearchStartingDatePicker.getDate();
     }//GEN-LAST:event_propertySearchStartingDatePickerActionPerformed
 
     private void propertySearchEndingDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchEndingDatePickerActionPerformed
         // TODO add your handling code here:
+        this.ending = this.propertySearchEndingDatePicker.getDate();
     }//GEN-LAST:event_propertySearchEndingDatePickerActionPerformed
 
     private void propertySearchKitchenCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchKitchenCheckBoxActionPerformed
@@ -789,7 +832,39 @@ public class JPPropertySearch extends javax.swing.JPanel {
         Map<Property, County> mp = Repository.getRepo().listProperties(p, (County) this.propertySearchLocationBox.getSelectedItem(), this.propertySearchMaxPricePerNightSlider.getValue());
         this.map = mp;
         this.propertySearchList.setListData(mp.keySet().toArray());
+        
+        this.starting = this.propertySearchStartingDatePicker.getDate();
+        this.ending = this.propertySearchEndingDatePicker.getDate();
+        this.county = (County) this.propertySearchLocationBox.getSelectedItem();
+        this.nClients = (int) this.propertySearchNClientsSpinner.getValue();
+        this.propertyType = (PropertyType) this.propertySearchPropertyTypeBox.getSelectedItem();
     }//GEN-LAST:event_propertySearchSearchButtonActionPerformed
+
+    private void propertySearchLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchLoginButtonActionPerformed
+        // TODO add your handling code here:
+        Application a = new Application();
+        
+        a.jpl = new JPLogin(a, this.propertySearchLanguageBox.getSelectedItem());
+        a.changePanel(a.jpl);
+        
+        Thread t = new Thread(a);
+        t.start();
+        
+        this.frame.threadCounter++;
+    }//GEN-LAST:event_propertySearchLoginButtonActionPerformed
+
+    private void propertySearchRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertySearchRegisterButtonActionPerformed
+        // TODO add your handling code here:
+        Application a = new Application();
+        
+        a.jpr = new JPRegister(a, this.propertySearchLanguageBox.getSelectedItem());
+        a.changePanel(a.jpr);
+        
+        Thread t = new Thread(a);
+        t.start();
+        
+        this.frame.threadCounter++;
+    }//GEN-LAST:event_propertySearchRegisterButtonActionPerformed
 
     private void changeButtons() {
         if(this.client.getName().isEmpty())

@@ -9,12 +9,16 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SpinnerNumberModel;
 import projectoalojamento.Repository;
+import property.Discount;
+import property.Property;
 import property.PropertyType;
+import property.booking.Booking;
 import property.location.County;
 import user.Client;
 import user.Owner;
@@ -27,11 +31,14 @@ import user.User;
 public class Application extends javax.swing.JFrame implements Runnable {
 
     private JPanel visiblePanel;
-    private JPLogin jpl;
-    private JPRegister jpr;
+    public JPLogin jpl;
+    public JPRegister jpr;
     private JPPropertySearch jpps;
     private JPAddProperty jpap;
-    private static int threadCounter = -1;
+    private Date starting;
+    private Date ending;
+    private Map<Property, County> map;
+    public static int threadCounter = -1;
     
     /**
      * Creates new form Application
@@ -52,23 +59,19 @@ public class Application extends javax.swing.JFrame implements Runnable {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
         
+        this.map = Repository.getRepo().getProperties();
         this.propertyTypeBox.setModel(new DefaultComboBoxModel(Repository.getRepo().getPropertiesTypes().toArray()));
         this.locationBox.setModel(new DefaultComboBoxModel(Repository.getRepo().getCounties().toArray()));
-        System.out.println(Repository.getRepo().getLowestNumberOfClients() + " " + Repository.getRepo().getHighestNumberOfClients());
         this.NClientsSpinner.setModel(new SpinnerNumberModel(Repository.getRepo().getLowestNumberOfClients(), Repository.getRepo().getLowestNumberOfClients(), Repository.getRepo().getHighestNumberOfClients(), 1));
+        
         this.startingDatePicker.getMonthView().setLowerBound(new Date());
+        this.startingDatePicker.setDate(new Date());
+        
         Date d1 = new Date();
         d1.setTime(new Date().getTime() + 86400000);
         this.endingDatePicker.getMonthView().setLowerBound(d1);
-        
-          /* 
-        Client c1 = new Client("g","g","Fuck this", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", "Esposende", new Date(), false);
-        Repository.getRepo().getUsers().add(c1);
-        Owner o1 = new Owner("g","g","Vagina", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", "Esposende", new Date(), false);
-        Owner o2 = new Owner("e","e","Gustavo Vieira", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", "Esposende", new Date(), false);
-        Repository.getRepo().getUsers().add(o1);
-        Repository.getRepo().getUsers().add(o2);
-        
+        /*
+        County co0 = new County("Todas as localidades");
         County co1 = new County("Santa Cruz das Flores");
         County co2 = new County("Corvo");
         County co3 = new County("Castelo de Paiva");
@@ -79,6 +82,14 @@ public class Application extends javax.swing.JFrame implements Runnable {
         County co8 = new County("Mealhada");
         County co9 = new County("Murtosa");
         County co10 = new County("Oliveira de Azeméis");
+        
+        Client c1 = new Client("g","g","Fuck this", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", co1, new Date(), false);
+        Repository.getRepo().getUsers().add(c1);
+        Owner o1 = new Owner("g","g","Vagina", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", co1, new Date(), false);
+        Owner o2 = new Owner("e","e","Gustavo Vieira", "111111111",123456789,962111111,"Rua Dr. Ramiro Barros Lima", co2, new Date(), false);
+        Repository.getRepo().getUsers().add(o1);
+        Repository.getRepo().getUsers().add(o2);
+        
         
         Repository.getRepo().getCounties().add(co1);
         Repository.getRepo().getCounties().add(co2);
@@ -91,12 +102,11 @@ public class Application extends javax.swing.JFrame implements Runnable {
         Repository.getRepo().getCounties().add(co9);
         Repository.getRepo().getCounties().add(co10);
         
+        PropertyType pt0 = new PropertyType("Todos os tipos de alojamento", "Para qualquer tipo de alojamento");
         PropertyType pt1 = new PropertyType("Casa", "Uma casa");
-        PropertyType pt2 = new PropertyType("Apartamento", "Um apartamento");
-        Repository.getRepo().getPropertiesTypes().add(pt1);
+        PropertyType pt2 = new PropertyType("Apartamento", "Um apartamento");e
         Repository.getRepo().getPropertiesTypes().add(pt2);
         */
-        
         this.changeTextToSelectedLanguage();
         
         /*Date[] dates = {
@@ -416,8 +426,69 @@ public class Application extends javax.swing.JFrame implements Runnable {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-        this.jpps = new JPPropertySearch(this, new Client(),this.languageBox.getSelectedItem());
-        this.changePanel(this.jpps);
+       
+            Property p = new Property();
+            
+            p.setPricePerNight(-1);
+            p.getCharacteristics().setBathroomQuantity(-1);
+            p.getCharacteristics().setRoomsQuantity(-1);
+            Discount d = new Discount();
+            p.setDiscount(d);
+            p.getDiscount().setPercentage(-1);
+            p.getCharacteristics().setBathroomQuantity(-1);
+            
+            p.getCharacteristics().setMinClients((int) this.NClientsSpinner.getValue());
+            
+            County county = new County();
+            if(this.locationBox.getSelectedIndex() != 0)
+            {
+                county = (County) this.locationBox.getSelectedItem();
+            }
+            
+            if(this.propertyTypeBox.getSelectedIndex() == 0)
+            {
+                p.setPropertyType((PropertyType) this.propertyTypeBox.getSelectedItem());
+            }
+            
+            Booking booking = new Booking();
+            if(this.startingDatePicker.getDate() != null)
+            {
+                booking.setStartingDate(starting);
+                
+                if(this.endingDatePicker.getDate() == null)
+                {
+                    booking.setEndingDate(ending);
+                }
+                
+                p.getBookings().add(booking);
+            }
+            else
+            {
+                if(this.endingDatePicker.getDate() == null)
+                {
+                    booking.setEndingDate(ending);
+                    p.getBookings().add(booking);
+                }
+            }
+            
+            this.map = Repository.getRepo().listProperties(p, county, -1);
+            
+            if(this.map.isEmpty())
+            {
+                if(this.languageBox.getSelectedIndex() == 0)
+                {
+                    this.errorLabel.setText("Não foram encontrados alojamentos com os dados introduzidos");
+                }
+                else
+                {
+                    this.errorLabel.setText("No properties were found with the given info");
+                }
+            }
+            else
+            {
+                this.jpps = new JPPropertySearch(this, new Client(), this.map, (County) this.locationBox.getSelectedItem(), (PropertyType) this.propertyTypeBox.getSelectedItem(), (int) this.NClientsSpinner.getValue(), this.starting, this.ending, this.languageBox.getSelectedItem());
+                this.changePanel(this.jpps);
+            }
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void languageBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_languageBoxItemStateChanged
@@ -427,20 +498,24 @@ public class Application extends javax.swing.JFrame implements Runnable {
 
     private void startingDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startingDatePickerActionPerformed
         // TODO add your handling code here:
+        this.endingDatePicker.getMonthView().setLowerBound(this.startingDatePicker.getDate());
+        
+        if(this.startingDatePicker.getDate() != null)
+        {
+            Date[] dates = { this.startingDatePicker.getDate() };
+            this.endingDatePicker.getMonthView().setUnselectableDates(dates);
+        }
+            
+        this.starting = this.startingDatePicker.getDate();
     }//GEN-LAST:event_startingDatePickerActionPerformed
 
     private void endingDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endingDatePickerActionPerformed
         // TODO add your handling code here:
+        this.ending = this.endingDatePicker.getDate();
     }//GEN-LAST:event_endingDatePickerActionPerformed
 
     private void startingDatePickerPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_startingDatePickerPropertyChange
         // TODO add your handling code here:
-        
-        Date d = new Date();
-        //long day = this.endingDatePicker.getDate();
-        //System.out.println(day);
-        //d.setTime(day);
-        this.endingDatePicker.getMonthView().setLowerBound(this.startingDatePicker.getDate());
     }//GEN-LAST:event_startingDatePickerPropertyChange
 
     /**

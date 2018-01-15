@@ -122,11 +122,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Registo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertySearchInfoRegisterButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="propertySearchInfoLoginButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Login"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertySearchInfoLoginButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
