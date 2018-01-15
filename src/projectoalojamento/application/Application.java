@@ -7,6 +7,7 @@ package projectoalojamento.application;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -144,6 +145,24 @@ public class Application extends javax.swing.JFrame implements Runnable {
         d.setTime(this.startingDatePicker.getDate().getTime() + 86400000);
         this.endingDatePicker.setDate(d);
         */
+        List<Booking> bookings = new ArrayList<>();
+        
+        for(Map.Entry<Property, County> mp : Repository.getRepo().getProperties().entrySet())
+        {
+            if((mp.getKey().getBookings().isEmpty()))
+            {
+                for(Booking b : mp.getKey().getBookings())
+                {
+                    bookings.add(b);
+                    System.out.println("-------");
+                    System.out.println("Data Inicio: " + b.getStartingDate());
+                    System.out.println("Data Final: " + b.getEndingDate());
+                    System.out.println("Cliente: " + b.getClient().getName());
+                    System.out.println("Preço Final: " + b.getFinalPrice());
+                }
+            }
+        }
+        
         this.setDefaultCloseOperation(Application.DISPOSE_ON_CLOSE);
         
         this.addWindowListener(new WindowAdapter() {

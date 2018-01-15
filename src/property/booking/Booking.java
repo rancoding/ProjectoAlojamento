@@ -40,7 +40,7 @@ public class Booking implements Serializable {
      * @param paymentType
      * @param client
      */
-    public Booking(int nClients, double finalPrice, Date dataInicio, Date dataFim, BookingType bookingType, PaymentType paymentType, Client client) {
+    public Booking(int nClients, double finalPrice, Date dataInicio, Date dataFim, PaymentType paymentType, Client client) {
         this.referenceID = count;
         this.nClients = nClients;
         this.finalPrice = finalPrice;
@@ -49,7 +49,6 @@ public class Booking implements Serializable {
         this.paid = false;
         this.startingDate = dataInicio;
         this.endingDate = dataFim;
-        this.bookingType = bookingType;
         this.paymentType = paymentType;
         this.client = client;
         count++;

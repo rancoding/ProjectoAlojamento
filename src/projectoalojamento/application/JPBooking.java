@@ -7,8 +7,13 @@ package projectoalojamento.application;
 
 import java.util.Date;
 import java.util.Map;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.SpinnerNumberModel;
+import projectoalojamento.Repository;
 import property.Property;
 import property.PropertyType;
+import property.booking.Booking;
+import property.booking.PaymentType;
 import property.location.County;
 import user.Client;
 
@@ -45,6 +50,39 @@ public class JPBooking extends javax.swing.JPanel {
         this.nClients = nClients;
         this.ending = ending;
         this.bookingLanguageBox.setSelectedItem(language);
+        
+        this.setInfo();
+        
+        Date[] dates = {
+            
+        };
+        
+        int count = 0;
+        
+        for(Booking b : this.p.getBookings()) {
+            dates[count] = b.getStartingDate();
+            count++;
+
+            long difference = b.getEndingDate().getTime() - b.getStartingDate().getTime();
+            System.out.println("Difference: " + difference);
+            difference = difference / 86400000;
+            System.out.println("Difference: " + difference);
+            System.out.println();
+            Date d = new Date();
+            for(int i = 1; i <= difference; i++) {
+                d.setTime(b.getStartingDate().getTime() + i);
+                dates[count] = d;
+                count++;
+            }
+        }
+        
+        for(Date d : dates)
+        {
+            System.out.println("Date: " + d.getTime());
+        }
+        
+        bookingStartingDatePicker.getMonthView().setUnselectableDates(dates);
+        bookingStartingDatePicker.getMonthView().setLowerBound(new Date());
     }
 
     /**
@@ -60,6 +98,8 @@ public class JPBooking extends javax.swing.JPanel {
         bookingTopBarPanel = new javax.swing.JPanel();
         bookingLanguageBox = new javax.swing.JComboBox();
         bookingNameLabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         bookingLogoPanel = new javax.swing.JPanel();
         bookingInfoPanel = new javax.swing.JPanel();
         bookingInfoDateClientsPanel = new javax.swing.JPanel();
@@ -106,6 +146,10 @@ public class JPBooking extends javax.swing.JPanel {
         bookingNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         bookingNameLabel.setText("Gustavo Moreira Vieira");
 
+        jButton1.setText("Mensagens");
+
+        jButton2.setText("Tickets");
+
         javax.swing.GroupLayout bookingTopBarPanelLayout = new javax.swing.GroupLayout(bookingTopBarPanel);
         bookingTopBarPanel.setLayout(bookingTopBarPanelLayout);
         bookingTopBarPanelLayout.setHorizontalGroup(
@@ -114,7 +158,11 @@ public class JPBooking extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(bookingLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bookingNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bookingNameLabel)
                 .addContainerGap())
         );
         bookingTopBarPanelLayout.setVerticalGroup(
@@ -123,7 +171,9 @@ public class JPBooking extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(bookingTopBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bookingLanguageBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bookingNameLabel))
+                    .addComponent(bookingNameLabel)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -139,8 +189,18 @@ public class JPBooking extends javax.swing.JPanel {
         );
 
         bookingStartingDatePicker.setToolTipText("Data de Entrada");
+        bookingStartingDatePicker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookingStartingDatePickerActionPerformed(evt);
+            }
+        });
 
         bookingEndingDatePicker.setToolTipText("Data de Saída");
+        bookingEndingDatePicker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookingEndingDatePickerActionPerformed(evt);
+            }
+        });
 
         bookingNClientsSpinner.setToolTipText("Número de Viajantes");
 
@@ -183,6 +243,16 @@ public class JPBooking extends javax.swing.JPanel {
 
         bookingNightNumberSlider.setMinimum(1);
         bookingNightNumberSlider.setValue(1);
+        bookingNightNumberSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                bookingNightNumberSliderStateChanged(evt);
+            }
+        });
+        bookingNightNumberSlider.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                bookingNightNumberSliderPropertyChange(evt);
+            }
+        });
 
         bookingNightNumberField.setEditable(false);
         bookingNightNumberField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -521,8 +591,24 @@ public class JPBooking extends javax.swing.JPanel {
 
     private void bookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingButtonActionPerformed
         // TODO add your handling code here:
-        this.jppsi = new JPPropertySearchInfo(this.frame, this.client, this.map, this.p, this.county, this.propertyType, this.nClients, this.starting, this.ending, this.bookingLanguageBox.getSelectedItem());
-        this.frame.changePanel(this.jppsi);
+        double price = 0;
+        
+        try {
+            price = Double.parseDouble(this.bookingFinalPriceField.getText());
+        }
+        catch(NumberFormatException e)
+        {
+            price = -1;
+        }
+        
+        if(price != -1)
+        {
+            Booking b = new Booking((int) this.bookingNClientsSpinner.getValue(), Double.parseDouble(this.bookingFinalPriceField.getText()), this.bookingStartingDatePicker.getDate(), this.bookingEndingDatePicker.getDate(), (PaymentType) this.bookingPaymentTypeBox.getSelectedItem(), this.client);
+            this.p.getBookings().add(b);
+            Repository.getRepo().getProperties().put(this.p, this.county);
+            this.jppsi = new JPPropertySearchInfo(this.frame, this.client, this.map, this.p, this.county, this.propertyType, this.nClients, this.starting, this.ending, this.bookingLanguageBox.getSelectedItem());
+            this.frame.changePanel(this.jppsi);
+        }
     }//GEN-LAST:event_bookingButtonActionPerformed
 
     private void bookingBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingBackButtonActionPerformed
@@ -531,6 +617,106 @@ public class JPBooking extends javax.swing.JPanel {
         this.frame.changePanel(this.jppsi);
     }//GEN-LAST:event_bookingBackButtonActionPerformed
 
+    private void bookingNightNumberSliderPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_bookingNightNumberSliderPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bookingNightNumberSliderPropertyChange
+
+    private void bookingStartingDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingStartingDatePickerActionPerformed
+        // TODO add your handling code here:
+        this.bookingEndingDatePicker.getMonthView().setLowerBound(this.bookingStartingDatePicker.getDate());
+        
+        if(this.bookingStartingDatePicker.getDate() != null)
+        {
+            Date[] dates = { this.bookingStartingDatePicker.getDate() };
+            this.bookingEndingDatePicker.getMonthView().setUnselectableDates(dates);
+        }
+            
+        this.starting = this.bookingStartingDatePicker.getDate();
+    }//GEN-LAST:event_bookingStartingDatePickerActionPerformed
+
+    private void bookingEndingDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingEndingDatePickerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bookingEndingDatePickerActionPerformed
+
+    private void bookingNightNumberSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bookingNightNumberSliderStateChanged
+        // TODO add your handling code here:
+        if(this.bookingLanguageBox.getSelectedIndex() == 0)
+        {
+            this.bookingFinalPriceField.setText(String.valueOf(this.p.getPricePerNight() * this.bookingNightNumberSlider.getValue()));
+            this.bookingNightNumberField.setText(this.bookingNightNumberSlider.getValue() + " Noites");
+        }
+        else
+        {
+            this.bookingPricePerNightField.setText(String.valueOf(this.p.getPricePerNight() * this.bookingNightNumberSlider.getValue()));
+            this.bookingNightNumberField.setText(this.bookingNightNumberSlider.getValue() + " Nights");
+        }
+    }//GEN-LAST:event_bookingNightNumberSliderStateChanged
+
+    private void setInfo() {
+        
+        this.bookingNClientsSpinner.setModel(new SpinnerNumberModel(this.nClients, p.getCharacteristics().getMinClients(), p.getCharacteristics().getMaxClients(), 1));
+        
+        this.bookingNameLabel.setText(this.client.getName());
+        this.bookingStartingDatePicker.setDate(starting);
+        this.bookingEndingDatePicker.setDate(ending);
+        this.bookingNClientsSpinner.setValue(this.nClients);
+        
+        if(this.bookingLanguageBox.getSelectedIndex() == 0)
+        {
+            this.bookingPricePerNightField.setText(this.p.getPricePerNight() + "€ por noite");
+            this.bookingNightNumberField.setText(this.bookingNightNumberSlider.getValue() + " Noites");
+        }
+        else
+        {
+            this.bookingPricePerNightField.setText(this.p.getPricePerNight() + "€ per night");
+            this.bookingNightNumberField.setText(this.bookingNightNumberSlider.getValue() + " Nights");
+        }
+        
+        this.bookingPaymentTypeBox.setModel(new DefaultComboBoxModel(Repository.getRepo().getPaymentTypes().toArray()));
+        
+        this.bookingMinClientsField.setText(String.valueOf(this.p.getCharacteristics().getMinClients()));
+        this.bookingMaxClientsField.setText(String.valueOf(this.p.getCharacteristics().getMaxClients()));
+        this.bookingNRoomsField.setText(String.valueOf(this.p.getCharacteristics().getRoomsQuantity()));
+        this.bookingNBathroomsField.setText(String.valueOf(this.p.getCharacteristics().getBathroomQuantity()));
+        this.bookingNBedsField.setText(String.valueOf(Repository.getRepo().nBeds(this.p)));
+        
+        this.bookingPropertyTypeField.setText(this.p.getPropertyType().getName());
+        this.bookingRatingField.setText(String.valueOf(this.p.getPropertyRatingMedianPoints()));
+        
+        if(this.p.getDiscount().getPercentage() > 0)
+        {
+            this.bookingDiscountField.setVisible(true);
+        }
+        else
+        {
+            this.bookingDiscountField.setVisible(false);
+        }
+        
+        if(this.p.getExtras().isEmpty())
+        {
+            this.bookingExtraCheckBox.setSelected(false);
+        }
+        else
+        {
+            this.bookingExtraCheckBox.setSelected(true);
+        }
+        
+        if(this.p.getRatings().isEmpty())
+        {
+            this.bookingRatingCheckBox.setSelected(false);
+        }
+        else
+        {
+            this.bookingRatingCheckBox.setSelected(true);
+        }
+        
+        this.bookingPetsCheckBox.setSelected(this.p.getCharacteristics().isPets());
+        this.bookingKitchenCheckBox.setSelected(this.p.getCharacteristics().isKitchen());
+        this.bookingBreakfastCheckBox.setSelected(this.p.getCharacteristics().isBreakfast());
+        this.bookingWashingMachineCheckBox.setSelected(this.p.getCharacteristics().isWashingMachine());
+        this.bookingWifiCheckBox.setSelected(this.p.getCharacteristics().isWifi());
+        this.bookingPoolCheckBox.setSelected(this.p.getCharacteristics().isPool());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bookingBackButton;
@@ -577,5 +763,7 @@ public class JPBooking extends javax.swing.JPanel {
     private javax.swing.JPanel bookingTopBarPanel;
     private javax.swing.JCheckBox bookingWashingMachineCheckBox;
     private javax.swing.JCheckBox bookingWifiCheckBox;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }
