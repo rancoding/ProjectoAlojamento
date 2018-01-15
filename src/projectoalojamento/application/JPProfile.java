@@ -5,7 +5,11 @@
  */
 package projectoalojamento.application;
 
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import projectoalojamento.Repository;
+import property.booking.Booking;
+import property.location.County;
 import user.Client;
 import user.Owner;
 import user.User;
@@ -23,6 +27,7 @@ public class JPProfile extends javax.swing.JPanel {
     private User user;
     private JPAfterLoginOwner jpalo;
     private JPAddProperty jpap;
+    private List<Booking> bookings;
     
     /**
      * Creates new form JPProfile
@@ -31,8 +36,22 @@ public class JPProfile extends javax.swing.JPanel {
         initComponents();
         this.frame = frame;
         this.user = user;
+        
+        if(this.user instanceof Client)
+        {
+            this.bookings = Repository.getRepo().getBookingsByClient((Client) this.user);
+        }
+        else
+        {
+            if(this.user instanceof Owner)
+            {
+                this.bookings = Repository.getRepo().getOwnerBookings((Owner) this.user);
+            }
+        }
+        
         this.profileNameLabel.setText(this.user.getName());
         this.profileLanguageBox.setSelectedItem(language);
+        this.profileLocationBox.setModel(new DefaultComboBoxModel(Repository.getRepo().getCounties().toArray()));
         setInfo();
     }
 
@@ -183,6 +202,11 @@ public class JPProfile extends javax.swing.JPanel {
         profileInfoContainerPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Informação"));
 
         profileEditButton.setText("Editar");
+        profileEditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                profileEditButtonActionPerformed(evt);
+            }
+        });
 
         profileUserField.setEditable(false);
         profileUserField.setText(" Username");
@@ -327,7 +351,18 @@ public class JPProfile extends javax.swing.JPanel {
 
     private void profileBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileBookingButtonActionPerformed
         // TODO add your handling code here:
-        this.jpbl = new JPBookingList(this.frame, (Client)this.user, this.profileLanguageBox.getSelectedItem());
+        if(this.user instanceof Client)
+        {
+            this.jpbl = new JPBookingList(this.frame, (Client)this.user, this.bookings, this.profileLanguageBox.getSelectedItem());
+        }
+        else
+        {
+            if(this.user instanceof Owner)
+            {
+                this.jpbl = new JPBookingList(this.frame, (Owner)this.user, this.bookings, this.profileLanguageBox.getSelectedItem());
+            }
+        }
+            
         this.frame.changePanel(this.jpbl);
     }//GEN-LAST:event_profileBookingButtonActionPerformed
 
@@ -356,6 +391,51 @@ public class JPProfile extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void profileEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileEditButtonActionPerformed
+        // TODO add your handling code here:
+        boolean valid = checkEditPossibility();
+        
+        if(!valid)
+        {
+            if(this.profileLanguageBox.getSelectedIndex() == 0)
+            {
+                this.profileErrorLabel.setText("POR FAVOR VERIFIQUE QUE TODOS OS CAMPOS ESTÃO PREENCHIDOS");
+            }
+            else
+            {
+                this.profileErrorLabel.setText("PLEASE CHECK IF EVERY FIELD IS FILLED");
+            }
+        }
+        else
+        {
+            this.user.setName(this.profileNameField.getText());
+            this.user.setAddress(this.profileAddressField.getText());
+            this.user.setCitizenID(this.profileCitizenIdField.getText());
+            
+            try
+            {
+                this.user.setNIF(Integer.parseInt(profileNIFField.getText()));
+            }
+            catch(NumberFormatException e)
+            {
+                this.user.setNIF(this.user.getNIF());
+            }
+            
+            try
+            {
+                this.user.setPhoneNumber(Integer.parseInt(profilePhoneNumberField.getText()));
+            }
+            catch(NumberFormatException e)
+            {
+                this.user.setPhoneNumber(this.user.getPhoneNumber());
+            }
+            
+            this.user.setCounty((County) this.profileLocationBox.getSelectedItem());;
+            
+            setInfo();
+        }
+    }//GEN-LAST:event_profileEditButtonActionPerformed
+
 
     private void setInfo() {
         this.profileNameLabel.setText(this.user.getName());
@@ -363,7 +443,7 @@ public class JPProfile extends javax.swing.JPanel {
         this.profilePasswordField.setText(this.user.getPassword());
         this.profileNameField.setText(this.user.getName());
         this.profileAddressField.setText(this.user.getAddress());
-        this.profileLocationBox.setSelectedItem(this.user.getLocation()); // Nao deve dar, nao ta como County no User
+        this.profileLocationBox.setSelectedItem(this.user.getCounty()); // Nao deve dar, nao ta como County no User
         this.profileCitizenIdField.setText(this.user.getCitizenID());
         this.profileNIFField.setText(String.valueOf(this.user.getNIF()));
         this.profilePhoneNumberField.setText(String.valueOf(this.user.getPhoneNumber()));
@@ -376,6 +456,48 @@ public class JPProfile extends javax.swing.JPanel {
         {
             this.profileBox.setSelectedIndex(1);
         }
+    }
+    
+    private boolean checkEditPossibility() {
+        boolean canEdit = true;
+        
+        if(this.profilePasswordField.getPassword().length == 0)
+        {
+            this.profilePasswordField.setText(this.user.getPassword());
+            canEdit = false;
+        }
+        
+        if(this.profileNameField.getText().isEmpty())
+        {
+            this.profileNameField.setText(this.user.getName());
+            canEdit = false;
+        }
+        
+        if(this.profileAddressField.getText().isEmpty())
+        {
+            this.profileAddressField.setText(this.user.getAddress());
+            canEdit = false;
+        }
+        
+        if(this.profileCitizenIdField.getText().isEmpty())
+        {
+            this.profileCitizenIdField.setText(this.user.getCitizenID());
+            canEdit = false;
+        }
+        
+        if(this.profileNIFField.getText().isEmpty())
+        {
+            this.profileNIFField.setText(String.valueOf(this.user.getNIF()));
+            canEdit = false;
+        }
+        
+        if(this.profilePhoneNumberField.getText().isEmpty())
+        {
+            this.profilePhoneNumberField.setText(String.valueOf(this.user.getPhoneNumber()));
+            canEdit = false;
+        }
+        
+        return canEdit;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
