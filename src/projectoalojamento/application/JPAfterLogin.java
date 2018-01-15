@@ -276,7 +276,7 @@ public class JPAfterLogin extends javax.swing.JPanel {
             county = (County) this.afterLoginLocationBox.getSelectedItem();
         }
 
-        if(this.afterLoginPropertyTypeBox.getSelectedIndex() == 0)
+        if(this.afterLoginPropertyTypeBox.getSelectedIndex() != 0)
         {
             p.setPropertyType((PropertyType) this.afterLoginPropertyTypeBox.getSelectedItem());
         }
@@ -284,11 +284,11 @@ public class JPAfterLogin extends javax.swing.JPanel {
         Booking booking = new Booking();
         if(this.afterLoginStartingDatePicker.getDate() != null)
         {
-            booking.setStartingDate(starting);
+            booking.setStartingDate(this.afterLoginStartingDatePicker.getDate());
 
             if(this.afterLoginEndingDatePicker.getDate() == null)
             {
-                booking.setEndingDate(ending);
+                booking.setEndingDate(this.afterLoginEndingDatePicker.getDate());
             }
 
             p.getBookings().add(booking);
@@ -297,7 +297,7 @@ public class JPAfterLogin extends javax.swing.JPanel {
         {
             if(this.afterLoginEndingDatePicker.getDate() == null)
             {
-                booking.setEndingDate(ending);
+                booking.setEndingDate(this.afterLoginEndingDatePicker.getDate());
                 p.getBookings().add(booking);
             }
         }

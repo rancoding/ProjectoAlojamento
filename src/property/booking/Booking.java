@@ -30,6 +30,12 @@ public class Booking implements Serializable {
     private Client client;
     private static int count;
 
+    @Override
+    public String toString()
+    {
+        return "[ID] " + referenceID + " [ De: " + startingDate + " a " + endingDate + " ]" + " " + finalPrice + "€";
+    }
+    
     /**
      *
      * @param nClients

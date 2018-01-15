@@ -27,6 +27,7 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
     private JPBooking jpb;
     private JPLogin jpl;
     private JPRegister jpr;
+    private JPProfile jpp;
     private Client client;
     private Property p;
     private PropertyType propertyType;
@@ -140,6 +141,11 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
 
         propertySearchInfoNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         propertySearchInfoNameLabel.setText("Gustavo Moreira Vieira");
+        propertySearchInfoNameLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                propertySearchInfoNameLabelMouseClicked(evt);
+            }
+        });
 
         propertySearchInfoMessageButton.setText("Mensagens");
 
@@ -669,6 +675,13 @@ public class JPPropertySearchInfo extends javax.swing.JPanel {
         
         this.frame.threadCounter++;
     }//GEN-LAST:event_propertySearchInfoLoginButtonActionPerformed
+
+    private void propertySearchInfoNameLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_propertySearchInfoNameLabelMouseClicked
+        // TODO add your handling code here:
+        
+        this.jpp = new JPProfile(this.frame, this.client, this.propertySearchInfoLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jpp);
+    }//GEN-LAST:event_propertySearchInfoNameLabelMouseClicked
 
     private void setInfo() {
         this.propertySearchInfoNameLabel.setText(this.client.getName());

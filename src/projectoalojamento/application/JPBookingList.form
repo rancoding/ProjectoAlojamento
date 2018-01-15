@@ -92,6 +92,9 @@
                 <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="text" type="java.lang.String" value="Gustavo Moreira Vieira"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bookingListNameLabelMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

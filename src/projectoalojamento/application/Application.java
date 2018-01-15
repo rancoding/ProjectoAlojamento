@@ -49,7 +49,6 @@ public class Application extends javax.swing.JFrame implements Runnable {
         
         if(threadCounter == -1)
         {
-            System.out.println("Chamou");
             Repository.deserialize();
             threadCounter = 1;
         }
@@ -71,7 +70,7 @@ public class Application extends javax.swing.JFrame implements Runnable {
         Date d1 = new Date();
         d1.setTime(new Date().getTime() + 86400000);
         this.endingDatePicker.getMonthView().setLowerBound(d1);
-        /*
+        
         County co0 = new County("Todas as localidades");
         County co1 = new County("Santa Cruz das Flores");
         County co2 = new County("Corvo");
@@ -92,6 +91,7 @@ public class Application extends javax.swing.JFrame implements Runnable {
         Repository.getRepo().getUsers().add(o2);
         
         
+        Repository.getRepo().getCounties().add(co0);
         Repository.getRepo().getCounties().add(co1);
         Repository.getRepo().getCounties().add(co2);
         Repository.getRepo().getCounties().add(co3);
@@ -105,63 +105,12 @@ public class Application extends javax.swing.JFrame implements Runnable {
         
         PropertyType pt0 = new PropertyType("Todos os tipos de alojamento", "Para qualquer tipo de alojamento");
         PropertyType pt1 = new PropertyType("Casa", "Uma casa");
-        PropertyType pt2 = new PropertyType("Apartamento", "Um apartamento");e
+        PropertyType pt2 = new PropertyType("Apartamento", "Um apartamento");
+        Repository.getRepo().getPropertiesTypes().add(pt0);
+        Repository.getRepo().getPropertiesTypes().add(pt1);
         Repository.getRepo().getPropertiesTypes().add(pt2);
-        */
+        
         this.changeTextToSelectedLanguage();
-        
-        /*Date[] dates = {
-            
-        };
-        
-        int count = 0;
-        
-        for(Map.Entry<Property, County> m : Repository.getRepo().getProperties().entrySet()) {
-            for(Booking b : m.getKey().getBookings()) {
-                dates[count] = b.getStartingDate();
-                count++;
-                
-                long difference = b.getEndingDate().getTime() - b.getStartingDate().getTime();
-                Date d = new Date();
-                for(int i = 1; i <= difference; i++) {
-                    d.setTime(b.getStartingDate().getTime() + i);
-                    dates[count] = d;
-                    count++;
-                }
-            }
-        }
-        
-        for(Date d : dates)
-        {
-            System.out.println("Date: " + d.getTime());
-        }
-        
-        startingDatePicker.getMonthView().setUnselectableDates(dates);
-        startingDatePicker.getMonthView().setLowerBound(new Date());
-        
-        Date d = new Date();
-        
-        this.startingDatePicker.setDate(d);
-        d.setTime(this.startingDatePicker.getDate().getTime() + 86400000);
-        this.endingDatePicker.setDate(d);
-        */
-        List<Booking> bookings = new ArrayList<>();
-        
-        for(Map.Entry<Property, County> mp : Repository.getRepo().getProperties().entrySet())
-        {
-            if((mp.getKey().getBookings().isEmpty()))
-            {
-                for(Booking b : mp.getKey().getBookings())
-                {
-                    bookings.add(b);
-                    System.out.println("-------");
-                    System.out.println("Data Inicio: " + b.getStartingDate());
-                    System.out.println("Data Final: " + b.getEndingDate());
-                    System.out.println("Cliente: " + b.getClient().getName());
-                    System.out.println("Preço Final: " + b.getFinalPrice());
-                }
-            }
-        }
         
         this.setDefaultCloseOperation(Application.DISPOSE_ON_CLOSE);
         
@@ -174,7 +123,6 @@ public class Application extends javax.swing.JFrame implements Runnable {
                 
                 if(threadCounter == 0)
                 {
-                    System.out.println("Guardou");
                     Repository.serialize();
                 }
             }
@@ -464,7 +412,7 @@ public class Application extends javax.swing.JFrame implements Runnable {
                 county = (County) this.locationBox.getSelectedItem();
             }
             
-            if(this.propertyTypeBox.getSelectedIndex() == 0)
+            if(this.propertyTypeBox.getSelectedIndex() != 0)
             {
                 p.setPropertyType((PropertyType) this.propertyTypeBox.getSelectedItem());
             }
@@ -472,11 +420,11 @@ public class Application extends javax.swing.JFrame implements Runnable {
             Booking booking = new Booking();
             if(this.startingDatePicker.getDate() != null)
             {
-                booking.setStartingDate(starting);
+                booking.setStartingDate(this.startingDatePicker.getDate());
                 
                 if(this.endingDatePicker.getDate() == null)
                 {
-                    booking.setEndingDate(ending);
+                    booking.setEndingDate(this.endingDatePicker.getDate());
                 }
                 
                 p.getBookings().add(booking);
@@ -485,7 +433,7 @@ public class Application extends javax.swing.JFrame implements Runnable {
             {
                 if(this.endingDatePicker.getDate() == null)
                 {
-                    booking.setEndingDate(ending);
+                    booking.setEndingDate(this.endingDatePicker.getDate());
                     p.getBookings().add(booking);
                 }
             }

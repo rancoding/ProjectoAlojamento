@@ -25,6 +25,7 @@ public class JPBooking extends javax.swing.JPanel {
 
     private Application frame;
     private JPPropertySearchInfo jppsi;
+    private JPProfile jpp;
     private Client client;
     private Property p;
     private PropertyType propertyType;
@@ -40,7 +41,7 @@ public class JPBooking extends javax.swing.JPanel {
     public JPBooking(Application frame, Client client, Map<Property, County> map, Property p, County county, PropertyType propertyType, int nClients, Date starting, Date ending, Object language) {
         initComponents();
         this.frame = frame;
-        this.frame.setSize(666, 581);
+        this.frame.setSize(700, 584);
         this.client = client;
         this.map = map;
         this.p = p;
@@ -53,35 +54,6 @@ public class JPBooking extends javax.swing.JPanel {
         
         this.setInfo();
         
-        Date[] dates = {
-            
-        };
-        
-        int count = 0;
-        
-        for(Booking b : this.p.getBookings()) {
-            dates[count] = b.getStartingDate();
-            count++;
-
-            long difference = b.getEndingDate().getTime() - b.getStartingDate().getTime();
-            System.out.println("Difference: " + difference);
-            difference = difference / 86400000;
-            System.out.println("Difference: " + difference);
-            System.out.println();
-            Date d = new Date();
-            for(int i = 1; i <= difference; i++) {
-                d.setTime(b.getStartingDate().getTime() + i);
-                dates[count] = d;
-                count++;
-            }
-        }
-        
-        for(Date d : dates)
-        {
-            System.out.println("Date: " + d.getTime());
-        }
-        
-        bookingStartingDatePicker.getMonthView().setUnselectableDates(dates);
         bookingStartingDatePicker.getMonthView().setLowerBound(new Date());
     }
 
@@ -145,6 +117,11 @@ public class JPBooking extends javax.swing.JPanel {
 
         bookingNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         bookingNameLabel.setText("Gustavo Moreira Vieira");
+        bookingNameLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bookingNameLabelMouseClicked(evt);
+            }
+        });
 
         jButton1.setText("Mensagens");
 
@@ -232,7 +209,7 @@ public class JPBooking extends javax.swing.JPanel {
         bookingPricePerNightField.setText("120,000.00€ por noite");
 
         bookingFinalPriceField.setEditable(false);
-        bookingFinalPriceField.setText("120,000.00€");
+        bookingFinalPriceField.setText("120");
 
         bookingPaymentTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo de Pagamento" }));
         bookingPaymentTypeBox.addActionListener(new java.awt.event.ActionListener() {
@@ -601,13 +578,35 @@ public class JPBooking extends javax.swing.JPanel {
             price = -1;
         }
         
+        if(this.bookingStartingDatePicker.getDate() == null)
+        {
+            this.bookingStartingDatePicker.setDate(new Date());
+            
+            if(this.bookingEndingDatePicker.getDate() == null)
+            {
+                Date d = new Date();
+                d.setTime(d.getTime() + 86400000);
+                this.bookingEndingDatePicker.setDate(d);
+            }
+        }
+        else
+        {
+            Date[] dates = { this.bookingStartingDatePicker.getDate() };
+            this.bookingEndingDatePicker.getMonthView().setUnselectableDates(dates);
+        }
+        
+        boolean found = Repository.getRepo().canMakeBooking(this.p, this.bookingStartingDatePicker.getDate(), this.bookingEndingDatePicker.getDate());
+        
         if(price != -1)
         {
-            Booking b = new Booking((int) this.bookingNClientsSpinner.getValue(), Double.parseDouble(this.bookingFinalPriceField.getText()), this.bookingStartingDatePicker.getDate(), this.bookingEndingDatePicker.getDate(), (PaymentType) this.bookingPaymentTypeBox.getSelectedItem(), this.client);
-            this.p.getBookings().add(b);
-            Repository.getRepo().getProperties().put(this.p, this.county);
-            this.jppsi = new JPPropertySearchInfo(this.frame, this.client, this.map, this.p, this.county, this.propertyType, this.nClients, this.starting, this.ending, this.bookingLanguageBox.getSelectedItem());
-            this.frame.changePanel(this.jppsi);
+            if(!found)
+            {
+                Booking b = new Booking((int) this.bookingNClientsSpinner.getValue(), Double.parseDouble(this.bookingFinalPriceField.getText()), this.bookingStartingDatePicker.getDate(), this.bookingEndingDatePicker.getDate(), (PaymentType) this.bookingPaymentTypeBox.getSelectedItem(), this.client);
+                this.p.getBookings().add(b);
+                Repository.getRepo().getProperties().put(this.p, this.county);
+                this.jppsi = new JPPropertySearchInfo(this.frame, this.client, this.map, this.p, this.county, this.propertyType, this.nClients, this.starting, this.ending, this.bookingLanguageBox.getSelectedItem());
+                this.frame.changePanel(this.jppsi);
+            }
         }
     }//GEN-LAST:event_bookingButtonActionPerformed
 
@@ -630,7 +629,11 @@ public class JPBooking extends javax.swing.JPanel {
             Date[] dates = { this.bookingStartingDatePicker.getDate() };
             this.bookingEndingDatePicker.getMonthView().setUnselectableDates(dates);
         }
-            
+        else
+        {
+            this.bookingStartingDatePicker.setDate(new Date());
+        }
+        
         this.starting = this.bookingStartingDatePicker.getDate();
     }//GEN-LAST:event_bookingStartingDatePickerActionPerformed
 
@@ -652,6 +655,12 @@ public class JPBooking extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_bookingNightNumberSliderStateChanged
 
+    private void bookingNameLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookingNameLabelMouseClicked
+        // TODO add your handling code here:
+        this.jpp = new JPProfile(this.frame, this.client, this.bookingLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jpp);
+    }//GEN-LAST:event_bookingNameLabelMouseClicked
+
     private void setInfo() {
         
         this.bookingNClientsSpinner.setModel(new SpinnerNumberModel(this.nClients, p.getCharacteristics().getMinClients(), p.getCharacteristics().getMaxClients(), 1));
@@ -672,6 +681,7 @@ public class JPBooking extends javax.swing.JPanel {
             this.bookingNightNumberField.setText(this.bookingNightNumberSlider.getValue() + " Nights");
         }
         
+        this.bookingFinalPriceField.setText(String.valueOf(this.p.getPricePerNight() * this.bookingNightNumberSlider.getValue()));
         this.bookingPaymentTypeBox.setModel(new DefaultComboBoxModel(Repository.getRepo().getPaymentTypes().toArray()));
         
         this.bookingMinClientsField.setText(String.valueOf(this.p.getCharacteristics().getMinClients()));

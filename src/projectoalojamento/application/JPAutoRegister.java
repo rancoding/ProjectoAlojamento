@@ -27,6 +27,8 @@ public class JPAutoRegister extends javax.swing.JPanel {
         this.user = user;
         this.autoRegisterNameLabel.setText(this.user.getName());
         this.autoRegisterLanguageBox.setSelectedItem(language);
+        this.setInfo();
+        this.changeTextToSelectedLanguage();
     }
 
     /**
@@ -59,6 +61,11 @@ public class JPAutoRegister extends javax.swing.JPanel {
         autoRegisterInfoLabel = new javax.swing.JLabel();
 
         autoRegisterLanguageBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PT", "EN" }));
+        autoRegisterLanguageBox.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                autoRegisterLanguageBoxPropertyChange(evt);
+            }
+        });
 
         autoRegisterNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         autoRegisterNameLabel.setText("Gustavo Moreira Vieira");
@@ -261,11 +268,51 @@ public class JPAutoRegister extends javax.swing.JPanel {
 
     private void autoRegisterRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autoRegisterRegisterButtonActionPerformed
         // TODO add your handling code here:
+        Repository.getRepo().addUserAutoRegister(this.user.getClass(), this.user);
         this.jpp = new JPProfile(this.frame, this.user, this.autoRegisterLanguageBox.getSelectedItem());
         this.frame.changePanel(this.jpp);
     }//GEN-LAST:event_autoRegisterRegisterButtonActionPerformed
 
+    private void autoRegisterLanguageBoxPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_autoRegisterLanguageBoxPropertyChange
+        // TODO add your handling code here:
+        this.changeTextToSelectedLanguage();
+    }//GEN-LAST:event_autoRegisterLanguageBoxPropertyChange
 
+    private void setInfo()
+    {
+        this.autoRegisterNameField.setText(this.user.getName());
+        this.autoRegisterAddressField.setText(this.user.getAddress());
+        this.autoRegisterLocationField.setText(this.user.getCounty().getName());
+        this.autoRegisterCitizenIdField.setText(this.user.getCitizenID());
+        this.autoRegisterNIFField.setText(String.valueOf(this.user.getNIF()));
+        this.autoRegisterPhoneNumberField.setText(String.valueOf(this.user.getPhoneNumber()));
+        
+        if(this.user.isPrivateProfile())
+        {
+            this.autoRegisterProfileBox.setSelectedIndex(0);
+        }
+        else
+        {
+            this.autoRegisterProfileBox.setSelectedIndex(1);
+        }
+    }
+
+    private void changeTextToSelectedLanguage() {
+        if(this.autoRegisterLanguageBox.getSelectedIndex() == 0)
+        {
+            this.autoRegisterTitleLabel.setText("AUTO-REGISTO");
+            this.autoRegisterInfoLabel.setText("O utilizador e a password da sua nova conta serão iguais aos da conta actual");
+            this.autoRegisterRegisterButton.setText("Registar");
+            this.autoRegisterBackButton.setText("Voltar");
+        }
+        else
+        {
+            this.autoRegisterTitleLabel.setText("AUTO-REGISTER");
+            this.autoRegisterInfoLabel.setText("Both user and password will be the same as the current account");
+            this.autoRegisterRegisterButton.setText("Register");
+            this.autoRegisterBackButton.setText("Back");
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField autoRegisterAddressField;
     private javax.swing.JButton autoRegisterBackButton;

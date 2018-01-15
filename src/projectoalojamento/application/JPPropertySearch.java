@@ -29,6 +29,7 @@ public class JPPropertySearch extends javax.swing.JPanel {
     private JPPropertySearchInfo jppsi;
     private JPLogin jpl;
     private JPRegister JPRegister;
+    private JPProfile jpp;
     private Client client;
     private Map<Property, County> map;
     private Property prop = new Property();
@@ -145,6 +146,11 @@ public class JPPropertySearch extends javax.swing.JPanel {
         });
 
         propertySearchNameLabel.setText("Gustavo Moreira Vieira");
+        propertySearchNameLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                propertySearchNameLabelMouseClicked(evt);
+            }
+        });
 
         propertySearchMessageButton.setText("Mensagens");
 
@@ -799,7 +805,18 @@ public class JPPropertySearch extends javax.swing.JPanel {
         p.getCharacteristics().setRoomsQuantity((int) this.propertySearchNRoomsSpinner.getValue());
         p.getCharacteristics().setBathroomQuantity((int) this.propertySearchNBathroomsSpinner.getValue());
         
-        p.setPropertyType((PropertyType) this.propertySearchPropertyTypeBox.getSelectedItem());
+        County county = new County();
+        if(this.propertySearchLocationBox.getSelectedIndex() != 0)
+        {
+            county = (County) this.propertySearchLocationBox.getSelectedItem();
+        }
+            
+        if(this.propertySearchPropertyTypeBox.getSelectedIndex() == 0)
+        {
+            p.setPropertyType((PropertyType) this.propertySearchPropertyTypeBox.getSelectedItem());
+        }
+        
+            
         
         p.getCharacteristics().setPets(this.propertySearchPetsCheckBox.isSelected());
         p.getCharacteristics().setKitchen(this.propertySearchKitchenCheckBox.isSelected());
@@ -829,7 +846,7 @@ public class JPPropertySearch extends javax.swing.JPanel {
             p.getRatings().add(r);
         }
         
-        Map<Property, County> mp = Repository.getRepo().listProperties(p, (County) this.propertySearchLocationBox.getSelectedItem(), this.propertySearchMaxPricePerNightSlider.getValue());
+        Map<Property, County> mp = Repository.getRepo().listProperties(p, county, this.propertySearchMaxPricePerNightSlider.getValue());
         this.map = mp;
         this.propertySearchList.setListData(mp.keySet().toArray());
         
@@ -865,6 +882,12 @@ public class JPPropertySearch extends javax.swing.JPanel {
         
         this.frame.threadCounter++;
     }//GEN-LAST:event_propertySearchRegisterButtonActionPerformed
+
+    private void propertySearchNameLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_propertySearchNameLabelMouseClicked
+        // TODO add your handling code here:
+        this.jpp = new JPProfile(this.frame, this.client, this.propertySearchLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jpp);
+    }//GEN-LAST:event_propertySearchNameLabelMouseClicked
 
     private void changeButtons() {
         if(this.client.getName().isEmpty())

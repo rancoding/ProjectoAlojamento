@@ -34,6 +34,7 @@ public class JPBookingList extends javax.swing.JPanel {
         this.user = user;
         this.bookings = bookings;
         this.bookingListLanguageBox.setSelectedItem(language);
+        this.setInfo();
     }
 
     /**
@@ -75,6 +76,11 @@ public class JPBookingList extends javax.swing.JPanel {
 
         bookingListNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         bookingListNameLabel.setText("Gustavo Moreira Vieira");
+        bookingListNameLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bookingListNameLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout bookingListTopBarPanelLayout = new javax.swing.GroupLayout(bookingListTopBarPanel);
         bookingListTopBarPanel.setLayout(bookingListTopBarPanelLayout);
@@ -344,6 +350,12 @@ public class JPBookingList extends javax.swing.JPanel {
         this.frame.changePanel(this.jpr);
     }//GEN-LAST:event_bookingListBackButtonActionPerformed
 
+    private void bookingListNameLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookingListNameLabelMouseClicked
+        // TODO add your handling code here:
+        this.jpp = new JPProfile(this.frame, this.user, this.bookingListLanguageBox.getSelectedItem());
+        this.frame.changePanel(this.jpp);
+    }//GEN-LAST:event_bookingListNameLabelMouseClicked
+
     private void changeButtons() {
         
         if(this.user instanceof Client)
@@ -377,6 +389,7 @@ public class JPBookingList extends javax.swing.JPanel {
     
     private void setInfo() {
         this.bookingListNameLabel.setText(this.user.getName());
+        this.bookingList.setListData(Repository.getRepo().getBookingsByClient((Client) this.user).toArray());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

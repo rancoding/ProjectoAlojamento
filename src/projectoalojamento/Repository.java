@@ -20,6 +20,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -433,6 +434,7 @@ public class Repository implements Serializable {
                 }
                 else
                 {
+                    System.out.println("Entrou aqui");
                     if(p.getBookings().get(0).getEndingDate().before(b.getEndingDate()))
                     {
                         found = true;
@@ -450,6 +452,43 @@ public class Repository implements Serializable {
         }
         
         return m;
+    }
+    
+    public boolean canMakeBooking(Property p, Date starting, Date ending)
+    {
+        boolean found = false;
+        for(Booking b : p.getBookings())
+        {
+            if(p.getBookings().get(0).getStartingDate() != null)
+            {
+                if(p.getBookings().get(0).getEndingDate() != null)
+                {
+                    if(p.getBookings().get(0).getStartingDate().after(b.getStartingDate()) && p.getBookings().get(0).getStartingDate().before(b.getEndingDate()))
+                    {
+                        if(p.getBookings().get(0).getEndingDate().before(b.getEndingDate()) || p.getBookings().get(0).getEndingDate().equals(b.getEndingDate()))
+                        {
+                            found = true;
+                        }
+                    }
+                }
+                else
+                {
+                    if(p.getBookings().get(0).getStartingDate().after(b.getStartingDate()))
+                    {
+                        found = true;
+                    }
+                }
+            }
+            else
+            {
+                if(p.getBookings().get(0).getEndingDate().before(b.getEndingDate()))
+                {
+                    found = true;
+                }
+            }
+        }
+        
+        return found;
     }
     
     /**
